@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "circuits": "Our tours",
+    "contact": "Contact",
+    "about": "About us"
+  },
+  "home": {
+    "hero_title": "Discover Uzbekistan",
+    "hero_subtitle": "Authentic journeys along the Silk Road",
+    "cta_reserve": "Book a tour",
+    "cta_contact": "Contact us"
+  },
+  "booking": {
+    "select_date": "Select a date",
+    "num_travelers": "Number of travelers",
+    "reserve": "Book now",
+    "confirm_title": "Booking confirmed"
+  }
+}

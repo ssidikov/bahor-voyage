@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "circuits": "Nos circuits",
+    "contact": "Contact",
+    "about": "À propos"
+  },
+  "home": {
+    "hero_title": "Découvrez l'Ouzbékistan",
+    "hero_subtitle": "Des voyages authentiques au cœur de la Route de la Soie",
+    "cta_reserve": "Réserver un circuit",
+    "cta_contact": "Nous contacter"
+  },
+  "booking": {
+    "select_date": "Choisir une date",
+    "num_travelers": "Nombre de voyageurs",
+    "reserve": "Réserver maintenant",
+    "confirm_title": "Réservation confirmée"
+  }
+}
