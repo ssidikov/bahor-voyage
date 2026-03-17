@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { Cormorant_Garamond, Inter } from 'next/font/google';
@@ -33,6 +34,27 @@ type Props = {
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    metadataBase: new URL('https://www.bahor-voyage.com'),
+    // Default title template — pages override the title, this wraps it
+    title: {
+      default: 'Bahor-Voyage',
+      template: '%s — Bahor-Voyage',
+    },
+    alternates: {
+      // Hreflang tags included on every page of the site
+      languages: {
+        fr: '/',
+        en: '/en',
+        'x-default': '/',
+      },
+      canonical: locale === 'fr' ? '/' : '/en',
+    },
+  };
 }
 
 export default async function LocaleLayout({ children, params }: Props) {

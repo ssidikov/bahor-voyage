@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block Next.js internals
+Disallow: /_next/
+
+Sitemap: https://www.bahor-voyage.com/sitemap.xml
