@@ -1,26 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 export function HeroSection() {
   const t = useTranslations('home');
-  const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 800], ['0%', '25%']);
   const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    setScrolled(latest > 100);
-  });
 
   return (
     <section className="relative h-svh min-h-[600px] overflow-hidden">
@@ -105,28 +93,28 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
+      {/* Scroll indicator — static mouse icon */}
+      <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
-        animate={{ opacity: scrolled ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
         aria-hidden="true"
       >
-        <span className="text-label text-white/50 uppercase tracking-[0.15em]">
+        <svg
+          width="22"
+          height="34"
+          viewBox="0 0 22 34"
+          fill="none"
+          stroke="rgba(255,255,255,0.45)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="1" y="1" width="20" height="32" rx="10" />
+          <line x1="11" y1="8" x2="11" y2="13" stroke="rgba(255,255,255,0.7)" />
+        </svg>
+        <span className="text-label text-white/40 uppercase tracking-[0.15em]">
           {t.raw('hero_cta') === 'Découvrir' ? 'Défiler' : 'Scroll'}
         </span>
-        <motion.div className="w-px bg-white/40 overflow-hidden">
-          <motion.div
-            className="w-full bg-white/80"
-            animate={{ height: ['0px', '60px', '0px'] }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.5,
-              ease: 'easeInOut',
-            }}
-          />
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
