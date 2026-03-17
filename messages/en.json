@@ -3,7 +3,8 @@
     "home": "Home",
     "circuits": "Our tours",
     "contact": "Contact",
-    "about": "About us"
+    "about": "About",
+    "book_cta": "Book now"
   },
   "home": {
     "hero_title": "Discover Uzbekistan",
@@ -16,5 +17,12 @@
     "num_travelers": "Number of travelers",
     "reserve": "Book now",
     "confirm_title": "Booking confirmed"
+  },
+  "footer": {
+    "tagline": "The bridge between Uzbekistan and France",
+    "nav_title": "Navigation",
+    "contact_title": "Contact",
+    "address_note": "In-person consultations in Lyon by appointment",
+    "legal": "Legal notice"
   }
 }

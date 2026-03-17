@@ -3,7 +3,8 @@
     "home": "Accueil",
     "circuits": "Nos circuits",
     "contact": "Contact",
-    "about": "À propos"
+    "about": "À propos",
+    "book_cta": "Réserver"
   },
   "home": {
     "hero_title": "Découvrez l'Ouzbékistan",
@@ -16,5 +17,12 @@
     "num_travelers": "Nombre de voyageurs",
     "reserve": "Réserver maintenant",
     "confirm_title": "Réservation confirmée"
+  },
+  "footer": {
+    "tagline": "Le pont entre l'Ouzbékistan et la France",
+    "nav_title": "Navigation",
+    "contact_title": "Contact",
+    "address_note": "Consultations en présentiel à Lyon sur rendez-vous",
+    "legal": "Mentions légales"
   }
 }
