@@ -9,4 +9,8 @@ export const routing = defineRouting({
   // Résultat :
   //   bahor-voyage.com/circuits       → français
   //   bahor-voyage.com/en/circuits    → anglais
+
+  // Désactive la détection automatique via Accept-Language.
+  // Sans cela, un navigateur en anglais est redirigé vers /en au lieu de /
+  localeDetection: false,
 });

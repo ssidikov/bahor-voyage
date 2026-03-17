@@ -1,8 +1,10 @@
 'use client';
 
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import type { routing } from '@/i18n/routing';
@@ -19,34 +21,67 @@ const LOCALES: Locale[] = ['fr', 'en'];
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const t = useTranslations('nav');
   const currentLocale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const switchLocale = (locale: Locale) => {
-    router.replace(pathname, { locale });
+    const cleanPath = LOCALES.reduce<string>((p, loc) => {
+      if (p === `/${loc}`) return '/';
+      if (p.startsWith(`/${loc}/`)) return p.slice(loc.length + 1);
+      return p;
+    }, pathname);
+    router.replace(cleanPath, { locale });
     setMenuOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-neutral-100">
-      <div className="max-w-6xl mx-auto px-container-pad flex items-center justify-between h-16">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-sand-50/95 backdrop-blur-md border-b border-sand-200'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      <div
+        className={`max-w-[75rem] mx-auto px-6 md:px-10 flex items-center justify-between transition-all duration-500 ${
+          scrolled ? 'h-16 md:h-[72px]' : 'h-16 md:h-20'
+        }`}
+      >
         {/* Logo */}
-        <Link
-          href="/"
-          className="font-serif text-primary font-semibold text-xl tracking-tight"
-        >
-          Bahor-Voyage
+        <Link href="/" aria-label="Bahor-Voyage — Accueil">
+          <Image
+            src="/logo/bahor-voyage-logo.svg"
+            alt="Bahor-Voyage"
+            width={140}
+            height={40}
+            priority
+            className={`h-9 w-auto transition-all duration-300 ${
+              scrolled ? '' : 'brightness-0 invert'
+            }`}
+          />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(({ key, href }) => (
             <Link
               key={key}
               href={href}
-              className="text-sm font-medium text-neutral-600 hover:text-primary transition-colors"
+              className={`link-premium text-label-lg uppercase tracking-[0.1em] font-medium transition-colors duration-300 ${
+                scrolled
+                  ? 'text-charcoal-500 hover:text-primary-400'
+                  : 'text-white/80 hover:text-white'
+              }`}
             >
               {t(key)}
             </Link>
@@ -54,23 +89,32 @@ export function Header() {
         </nav>
 
         {/* Right side */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-5">
           {/* Language switcher */}
-          <div className="flex items-center gap-1 text-sm select-none">
+          <div className="flex items-center gap-1.5 text-label-lg select-none tracking-[0.05em]">
             {LOCALES.map((locale, idx) => (
               <Fragment key={locale}>
                 {idx > 0 && (
-                  <span className="text-neutral-300" aria-hidden>
+                  <span
+                    className={`transition-colors duration-300 ${
+                      scrolled ? 'text-charcoal-200' : 'text-white/30'
+                    }`}
+                    aria-hidden
+                  >
                     |
                   </span>
                 )}
                 <button
                   onClick={() => switchLocale(locale)}
-                  className={
+                  className={`transition-colors duration-300 ${
                     locale === currentLocale
-                      ? 'text-primary font-semibold underline decoration-2 underline-offset-2'
-                      : 'text-neutral-400 hover:text-primary transition-colors'
-                  }
+                      ? scrolled
+                        ? 'text-primary-400 font-semibold'
+                        : 'text-white font-semibold'
+                      : scrolled
+                        ? 'text-charcoal-300 hover:text-primary-400'
+                        : 'text-white/50 hover:text-white'
+                  }`}
                   aria-label={`Switch to ${locale.toUpperCase()}`}
                 >
                   {locale.toUpperCase()}
@@ -82,7 +126,11 @@ export function Header() {
           {/* CTA — desktop only */}
           <Link
             href="/booking"
-            className="hidden md:inline-flex items-center bg-primary text-white px-4 py-2 rounded-pill text-sm font-medium hover:bg-primary-dark transition-colors"
+            className={`hidden md:inline-flex items-center rounded-pill text-label-lg uppercase tracking-[0.08em] font-medium transition-all duration-300 px-6 py-2.5 ${
+              scrolled
+                ? 'bg-primary-400 text-white hover:bg-primary-500'
+                : 'border border-white/60 text-white hover:bg-white hover:text-primary-600'
+            }`}
           >
             {t('book_cta')}
           </Link>
@@ -95,48 +143,98 @@ export function Header() {
             aria-expanded={menuOpen}
           >
             <span
-              className={`block h-0.5 w-full bg-neutral-700 transition-transform origin-center duration-200 ${
-                menuOpen ? 'rotate-45 translate-y-[7px]' : ''
-              }`}
+              className={`block h-[1.5px] w-full transition-all origin-center duration-300 ${
+                scrolled ? 'bg-charcoal-700' : 'bg-white'
+              } ${menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`}
             />
             <span
-              className={`block h-0.5 w-full bg-neutral-700 transition-opacity duration-200 ${
-                menuOpen ? 'opacity-0' : ''
-              }`}
+              className={`block h-[1.5px] w-full transition-all duration-300 ${
+                scrolled ? 'bg-charcoal-700' : 'bg-white'
+              } ${menuOpen ? 'opacity-0' : ''}`}
             />
             <span
-              className={`block h-0.5 w-full bg-neutral-700 transition-transform origin-center duration-200 ${
-                menuOpen ? '-rotate-45 -translate-y-[7px]' : ''
-              }`}
+              className={`block h-[1.5px] w-full transition-all origin-center duration-300 ${
+                scrolled ? 'bg-charcoal-700' : 'bg-white'
+              } ${menuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`}
             />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-neutral-100 bg-white">
-          <nav className="flex flex-col px-container-pad py-4 gap-1">
-            {NAV_LINKS.map(({ key, href }) => (
+      {/* Mobile menu — full screen overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="fixed inset-0 top-0 z-40 bg-sand-50 md:hidden"
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="absolute top-5 right-6 w-8 h-8 flex items-center justify-center text-charcoal-600"
+              aria-label="Close menu"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                className="w-6 h-6"
+              >
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+
+            <nav className="flex flex-col justify-center h-full px-10 gap-6">
               <Link
-                key={key}
-                href={href}
-                className="py-2.5 text-sm font-medium text-neutral-700 hover:text-primary transition-colors"
+                href="/"
+                className="font-serif text-display-md text-charcoal-700 hover:text-primary-400 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                {t(key)}
+                {t('home')}
               </Link>
-            ))}
-            <Link
-              href="/booking"
-              className="mt-3 bg-primary text-white px-4 py-2.5 rounded-pill text-sm font-medium text-center hover:bg-primary-dark transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              {t('book_cta')}
-            </Link>
-          </nav>
-        </div>
-      )}
+              {NAV_LINKS.map(({ key, href }) => (
+                <Link
+                  key={key}
+                  href={href}
+                  className="font-serif text-display-md text-charcoal-700 hover:text-primary-400 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {t(key)}
+                </Link>
+              ))}
+              <div className="divider-gold mt-4 mb-2" />
+              <Link
+                href="/booking"
+                className="inline-flex items-center justify-center bg-primary-400 text-white px-8 py-3.5 rounded-pill text-label-lg uppercase tracking-[0.08em] font-medium hover:bg-primary-500 transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t('book_cta')}
+              </Link>
+
+              {/* Language switcher in mobile */}
+              <div className="flex items-center gap-3 mt-4">
+                {LOCALES.map((locale) => (
+                  <button
+                    key={locale}
+                    onClick={() => switchLocale(locale)}
+                    className={`text-label-lg uppercase tracking-[0.1em] transition-colors ${
+                      locale === currentLocale
+                        ? 'text-primary-400 font-semibold'
+                        : 'text-charcoal-300 hover:text-primary-400'
+                    }`}
+                  >
+                    {locale.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

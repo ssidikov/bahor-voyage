@@ -7,10 +7,23 @@
     "book_cta": "Réserver"
   },
   "home": {
-    "hero_title": "Découvrez l'Ouzbékistan",
+    "hero_title": "Voyager à travers le passé, protéger l'avenir.",
     "hero_subtitle": "Des voyages authentiques au cœur de la Route de la Soie",
+    "hero_cta": "Découvrir",
     "cta_reserve": "Réserver un circuit",
-    "cta_contact": "Nous contacter"
+    "cta_contact": "Nous contacter",
+    "intro_title": "Au cœur de l'Asie centrale, l'Ouzbékistan dévoile ses trésors entre cités mythiques et villages préservés.",
+    "intro_body": "Terre de légendes sur la Route de la Soie, il offre la beauté majestueuse de Samarcande et Boukhara, la chaleur de l'accueil ouzbek, et des paysages entre oasis, désert et montagnes. Pays de culture, de rencontres et de traditions vivantes, l'Ouzbékistan séduit par son authenticité, sa richesse historique et la générosité de ses habitants.",
+    "founder_label": "Notre fondatrice",
+    "founder_title": "L'humain au cœur de chaque rencontre.",
+    "founder_body1": "Je m'appelle Navbakhor Boudot et j'ai créé AFOR pour bâtir des ponts entre mes deux cultures – la France et l'Ouzbékistan – et proposer un tourisme porteur de sens : solidaire, authentique et profondément humain.",
+    "founder_body2": "Nos voyages ne sont pas de simples circuits, mais des expériences humaines qui donnent du sens, enrichissent et rapprochent. Vous ne serez pas seulement spectateur, vous écouterez les récits de ceux qui font vivre les traditions.",
+    "founder_name": "Navbakhor Boudot",
+    "commitments_title": "Un tourisme porteur de sens.",
+    "cta_title": "L'Asie Centrale authentique vous attend.",
+    "cta_email": "Nous écrire",
+    "cta_phone": "Appeler",
+    "cta_whatsapp": "WhatsApp"
   },
   "booking": {
     "select_date": "Choisir une date",
@@ -24,5 +37,30 @@
     "contact_title": "Contact",
     "address_note": "Consultations en présentiel à Lyon sur rendez-vous",
     "legal": "Mentions légales"
+  },
+  "circuits": {
+    "section_title": "Nos Circuits",
+    "section_subtitle": "Des expériences uniques au cœur de la Route de la Soie",
+    "learn_more": "En savoir plus",
+    "c1_duration": "7 Jours / 6 Nuits",
+    "c1_tag": "Court Circuit",
+    "c1_desc": "Des villes Millénaires aux Monuments Saints : Boukhara, Samarcande. Une introduction parfaite à l'histoire de la Route de la Soie, ponctuée de moments de silence et d'admiration.",
+    "c2_duration": "11 Jours / 10 Nuits",
+    "c2_tag": "Voyage Solidaire",
+    "c2_desc": "Entre villes millénaires et découverte des traditions de la campagne ouzbèke. Plongez dans la vie locale et partagez le quotidien des familles, dans un esprit de tourisme équitable.",
+    "c3_duration": "14 Jours / 13 Nuits",
+    "c3_tag": "L'Immersion Totale",
+    "c3_desc": "Des villes vibrantes aux campagnes authentiques : à la découverte profonde de l'Ouzbékistan. Un rythme ralenti pour absorber l'âme du pays.",
+    "c4_duration": "18 Jours / 17 Nuits",
+    "c4_tag": "Voyage Solidaire",
+    "c4_desc": "Itinéraire Confort & Authenticité. Une plongée étendue et profonde dans les merveilles de l'Ouzbékistan, alliant découverte des richesses culturelles et rencontres humaines singulières."
+  },
+  "commitments": {
+    "c1_title": "Plantation d'arbres",
+    "c1_desc": "Lutter contre la désertification et améliorer la qualité de vie des habitants à Gurlan, dans la région de Khorezm.",
+    "c2_title": "Soutien à l'éducation",
+    "c2_desc": "Financement des études universitaires des jeunes issus de milieux défavorisés pour en faire les ambassadeurs de demain.",
+    "c3_title": "Entrepreneuriat féminin",
+    "c3_desc": "Accompagnement et scolarisation des jeunes filles pour soutenir leur indépendance et leur rôle crucial dans la société."
   }
 }

@@ -7,10 +7,23 @@
     "book_cta": "Book now"
   },
   "home": {
-    "hero_title": "Discover Uzbekistan",
+    "hero_title": "Travel through the past, protect the future.",
     "hero_subtitle": "Authentic journeys along the Silk Road",
+    "hero_cta": "Discover",
     "cta_reserve": "Book a tour",
-    "cta_contact": "Contact us"
+    "cta_contact": "Contact us",
+    "intro_title": "At the heart of Central Asia, Uzbekistan reveals its treasures between mythical cities and preserved villages.",
+    "intro_body": "A land of legends on the Silk Road, it offers the majestic beauty of Samarkand and Bukhara, the warmth of Uzbek hospitality, and landscapes ranging from oases to deserts and mountains. A country of culture, encounters and living traditions, Uzbekistan captivates with its authenticity, historical richness and the generosity of its people.",
+    "founder_label": "Our founder",
+    "founder_title": "People at the heart of every encounter.",
+    "founder_body1": "My name is Navbakhor Boudot and I created AFOR to build bridges between my two cultures – France and Uzbekistan – and offer meaningful tourism: solidarity-based, authentic and deeply human.",
+    "founder_body2": "Our trips are not simply tours, but human experiences that give meaning, enrich and bring people together. You will not only be a spectator — you will listen to the stories of those who keep traditions alive.",
+    "founder_name": "Navbakhor Boudot",
+    "commitments_title": "Tourism that makes a difference.",
+    "cta_title": "Authentic Central Asia awaits you.",
+    "cta_email": "Email us",
+    "cta_phone": "Call us",
+    "cta_whatsapp": "WhatsApp"
   },
   "booking": {
     "select_date": "Select a date",
@@ -24,5 +37,30 @@
     "contact_title": "Contact",
     "address_note": "In-person consultations in Lyon by appointment",
     "legal": "Legal notice"
+  },
+  "circuits": {
+    "section_title": "Our Tours",
+    "section_subtitle": "Unique experiences at the heart of the Silk Road",
+    "learn_more": "Learn more",
+    "c1_duration": "7 Days / 6 Nights",
+    "c1_tag": "Short Tour",
+    "c1_desc": "From Millennial Cities to Holy Monuments: Bukhara, Samarkand. A perfect introduction to the history of the Silk Road, punctuated by moments of silence and admiration.",
+    "c2_duration": "11 Days / 10 Nights",
+    "c2_tag": "Solidarity Tour",
+    "c2_desc": "Between millennial cities and discovery of Uzbek countryside traditions. Dive into local life and share family daily life, in a spirit of fair tourism.",
+    "c3_duration": "14 Days / 13 Nights",
+    "c3_tag": "Total Immersion",
+    "c3_desc": "From vibrant cities to authentic countryside: a deep discovery of Uzbekistan. A slower pace to absorb the soul of the country.",
+    "c4_duration": "18 Days / 17 Nights",
+    "c4_tag": "Solidarity Tour",
+    "c4_desc": "Comfort & Authenticity Itinerary. An extended and deep dive into the wonders of Uzbekistan, combining cultural discovery and unique human encounters."
+  },
+  "commitments": {
+    "c1_title": "Tree planting",
+    "c1_desc": "Fighting desertification and improving the quality of life of residents in Gurlan, Khorezm region.",
+    "c2_title": "Education support",
+    "c2_desc": "Funding university studies for young people from disadvantaged backgrounds to make them tomorrow's ambassadors.",
+    "c3_title": "Female entrepreneurship",
+    "c3_desc": "Supporting and educating young girls to support their independence and crucial role in society."
   }
 }
