@@ -28,5 +28,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${BASE_URL}/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          fr: `${BASE_URL}/projects`,
+          en: `${BASE_URL}/en/projects`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          fr: `${BASE_URL}/projects`,
+          en: `${BASE_URL}/en/projects`,
+        },
+      },
+    },
   ];
 }

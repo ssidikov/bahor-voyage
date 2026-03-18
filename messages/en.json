@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "circuits": "Our tours",
+    "projects": "Our projects",
     "contact": "Contact",
     "about": "About",
     "book_cta": "Book now"
@@ -71,5 +72,29 @@
     "c2_desc": "Funding university studies for young people from disadvantaged backgrounds to make them tomorrow's ambassadors.",
     "c3_title": "Female entrepreneurship",
     "c3_desc": "Supporting and educating young girls to support their independence and crucial role in society."
+  },
+  "projects": {
+    "hero_title": "Our Projects",
+    "hero_subtitle": "Concrete actions for a responsible future",
+    "intro": "The France–Uzbekistan Roots Association works for environmental preservation and support for sustainable development in Uzbekistan. Its action is based on three main pillars: tree planting, support for youth education, and promotion of female entrepreneurship.",
+    "intro2": "Every year, concrete initiatives are implemented to contribute to a more responsible and solidarity-based future.",
+    "p1_title": "Tree Planting in Gurlan",
+    "p1_region": "Khorezm Region",
+    "p1_body": "One of the association's major projects is tree planting to fight desertification and improve the quality of life of residents. In 2024, 30 trees were planted in Gurlan, a village located 58 km from Khiva, in the direction of Nukus. The goal is to green this region by involving tourists and the local community. In 2025, several young girls are being supported in their education.",
+    "p1_stat": "30",
+    "p1_stat_label": "trees planted in 2024",
+    "p2_title": "Youth Education Support",
+    "p2_region": "Vulnerable Families",
+    "p2_body": "The association funds university studies for young people from disadvantaged backgrounds, enabling them to become local ambassadors of change and carry forward the general interest. In 2024, 2 students were supported through this program, giving these young people the chance to access quality education and actively participate in their country's future.",
+    "p2_stat": "2",
+    "p2_stat_label": "students supported in 2024",
+    "p3_title": "Female Entrepreneurship Support",
+    "p3_region": "Empowerment",
+    "p3_body": "One of the association's major projects is tree planting to fight desertification and improve the quality of life of residents. In 2024, 30 trees were planted in Gurlan, a village located 58 km from Khiva, in the direction of Nukus. The goal is to green this region by involving tourists and the local community. In 2025, several young girls are being supported in their education.",
+    "p3_stat": "2025",
+    "p3_stat_label": "young girls supported",
+    "cta_title": "Be part of our actions",
+    "cta_body": "Every journey with AFOR directly contributes to these projects. Contact us to learn more.",
+    "cta_button": "Contact us"
   }
 }

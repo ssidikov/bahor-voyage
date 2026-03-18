@@ -31,7 +31,7 @@ export function CommitmentsSection() {
             {tHome('commitments_title')}
           </h2>
           <Link
-            href={`/${locale}/circuits`}
+            href={`/${locale}/projects`}
             className="inline-flex items-center gap-2 mt-6 font-sans text-sm tracking-widest uppercase text-gold hover:text-gold/80 transition-colors group"
           >
             <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all group-hover:after:w-full">

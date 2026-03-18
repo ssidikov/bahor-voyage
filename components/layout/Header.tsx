@@ -13,6 +13,7 @@ type Locale = (typeof routing.locales)[number];
 
 const NAV_LINKS = [
   { key: 'circuits', href: '/circuits' },
+  { key: 'projects', href: '/projects' },
   { key: 'contact', href: '/contact' },
   { key: 'about', href: '/about' },
 ] as const;
