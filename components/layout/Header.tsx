@@ -6,7 +6,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
+import { useRouter } from 'next/navigation';
 import type { routing } from '@/i18n/routing';
 
 type Locale = (typeof routing.locales)[number];
@@ -36,12 +37,21 @@ export function Header() {
   }, []);
 
   const switchLocale = (locale: Locale) => {
+    // pathname might contain the locale prefix if middleware is absent, so we clean it
     const cleanPath = LOCALES.reduce<string>((p, loc) => {
       if (p === `/${loc}`) return '/';
       if (p.startsWith(`/${loc}/`)) return p.slice(loc.length + 1);
       return p;
     }, pathname);
-    router.replace(cleanPath, { locale });
+
+    // Construct the new path natively to guarantee no /fr prefix
+    const newPath =
+      locale === 'fr'
+        ? cleanPath
+        : `/${locale}${cleanPath === '/' ? '' : cleanPath}`;
+
+    // Use the native Next.js router to navigate clean path without forcing /fr
+    router.push(newPath);
     setMenuOpen(false);
   };
 

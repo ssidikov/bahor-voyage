@@ -10,6 +10,6 @@ export const config = {
     // - /_next (assets Next.js)
     // - /_vercel (assets Vercel)
     // - fichiers avec extension (.ico, .png, .svg...)
-    '/((?!api|trpc|_next|_vercel|.*\..*).*)',
+    '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
   ],
 };
