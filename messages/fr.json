@@ -40,7 +40,10 @@
   },
   "circuits": {
     "section_title": "Nos Circuits",
+    "section_kicker": "Voyages Signature",
     "section_subtitle": "Des expériences uniques au cœur de la Route de la Soie",
+    "section_cta": "Échanger avec un conseiller",
+    "section_conversion_note": "Chaque itinéraire est personnalisable selon votre rythme, vos dates et vos envies. Nous construisons votre voyage avec vous, pas à votre place.",
     "learn_more": "En savoir plus",
     "c1_duration": "7 Jours / 6 Nuits",
     "c1_tag": "Court Circuit",
@@ -56,6 +59,11 @@
     "c4_desc": "Itinéraire Confort & Authenticité. Une plongée étendue et profonde dans les merveilles de l'Ouzbékistan, alliant découverte des richesses culturelles et rencontres humaines singulières."
   },
   "commitments": {
+    "section_kicker": "Nos engagements",
+    "section_subtitle": "Chaque départ soutient des actions concrètes pour les communautés locales et les générations futures.",
+    "section_cta": "Construire un voyage responsable",
+    "card_link": "Voir l'impact local",
+    "section_footer_note": "En voyageant avec AFOR, vous soutenez une chaîne locale de partenaires, artisans, familles d'accueil et initiatives éducatives.",
     "c1_title": "Plantation d'arbres",
     "c1_desc": "Lutter contre la désertification et améliorer la qualité de vie des habitants à Gurlan, dans la région de Khorezm.",
     "c2_title": "Soutien à l'éducation",

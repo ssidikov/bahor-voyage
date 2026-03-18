@@ -40,7 +40,10 @@
   },
   "circuits": {
     "section_title": "Our Tours",
+    "section_kicker": "Signature Journeys",
     "section_subtitle": "Unique experiences at the heart of the Silk Road",
+    "section_cta": "Talk with an advisor",
+    "section_conversion_note": "Every itinerary can be tailored to your pace, dates, and travel style. We design your journey with you, not for you.",
     "learn_more": "Learn more",
     "c1_duration": "7 Days / 6 Nights",
     "c1_tag": "Short Tour",
@@ -56,6 +59,11 @@
     "c4_desc": "Comfort & Authenticity Itinerary. An extended and deep dive into the wonders of Uzbekistan, combining cultural discovery and unique human encounters."
   },
   "commitments": {
+    "section_kicker": "Our commitments",
+    "section_subtitle": "Each departure supports concrete actions for local communities and future generations.",
+    "section_cta": "Build a responsible journey",
+    "card_link": "See local impact",
+    "section_footer_note": "By traveling with AFOR, you support a local chain of partners, artisans, host families, and education initiatives.",
     "c1_title": "Tree planting",
     "c1_desc": "Fighting desertification and improving the quality of life of residents in Gurlan, Khorezm region.",
     "c2_title": "Education support",
