@@ -54,19 +54,23 @@ export function Header() {
     >
       <div
         className={`max-w-[75rem] mx-auto px-6 md:px-10 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? 'h-16 md:h-[72px]' : 'h-16 md:h-20'
+          scrolled ? 'h-16 md:h-[72px]' : 'h-20 md:h-24'
         }`}
       >
         {/* Logo */}
         <Link href="/" aria-label="Bahor-Voyage — Accueil">
           <Image
-            src="/logo/bahor-voyage-logo.svg"
+            src="/logo/bahor-voyage-logo-header.svg"
             alt="Bahor-Voyage"
-            width={140}
-            height={40}
+            width={375}
+            height={375}
             priority
-            className={`h-9 w-auto transition-all duration-300 ${
-              scrolled ? '' : 'brightness-0 invert'
+            className={`w-auto transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
+              scrolled ? 'h-8 md:h-9' : 'h-16 md:h-20'
+            } ${
+              scrolled
+                ? '[filter:brightness(0)_saturate(100%)_invert(60%)_sepia(16%)_saturate(2234%)_hue-rotate(136deg)_brightness(95%)_contrast(88%)]'
+                : 'drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]'
             }`}
           />
         </Link>
