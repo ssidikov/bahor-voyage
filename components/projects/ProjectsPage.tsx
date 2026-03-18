@@ -17,17 +17,17 @@ import {
 const PROJECTS = [
   {
     key: 'p1',
-    image: '/images/project-trees.jpg',
+    image: '/images/projects/project-trees.jpg',
     imageAlt: 'Tree planting in Gurlan, Khorezm',
   },
   {
     key: 'p2',
-    image: '/images/project-education.jpg',
+    image: '/images/projects/project-education.jpg',
     imageAlt: 'Youth education support',
   },
   {
     key: 'p3',
-    image: '/images/project-entrepreneurship.jpg',
+    image: '/images/projects/project-entrepreneurship.jpg',
     imageAlt: 'Female entrepreneurship in Uzbekistan',
   },
 ] as const;
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
           style={{ y: heroParallax }}
         >
           <Image
-            src="/images/projects-hero.jpg"
+            src="/images/projects/projects-hero.jpg"
             alt=""
             fill
             priority
