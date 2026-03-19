@@ -22,7 +22,7 @@ const PROJECTS = [
   },
   {
     key: 'p2',
-    image: '/images/projects/project-education.jpg',
+    image: '/images/projects/project-education-AFOR.jpg',
     imageAlt: 'Youth education support',
   },
   {
