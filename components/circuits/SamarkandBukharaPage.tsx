@@ -343,79 +343,359 @@ export default function SamarkandBukharaPage() {
       </section>
 
       {/* ═══════════════ INTRO ═══════════════ */}
-      <section className="bg-sand-50 py-16 md:py-20 lg:py-section">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+      <section className="relative overflow-hidden bg-[#faf8f4] py-20 md:py-28 lg:py-36">
+        {/* Atmospheric background — subtle warm amber tints */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,160,80,0.10) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 10% 80%, rgba(210,180,120,0.12) 0%, transparent 60%)',
+          }}
+        />
+        {/* Fine grain texture overlay */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")",
+            backgroundSize: '256px 256px',
+          }}
+        />
+
+        <div className="relative max-w-[88rem] mx-auto px-6 md:px-10 lg:px-16">
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: '-60px' }}
             variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
+            className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-stretch"
           >
-            {/* Left: sticky image */}
+            {/* ── LEFT COLUMN: image stack ── */}
             <motion.div
               variants={slideRight}
-              className="lg:col-span-5 lg:sticky lg:top-28"
+              className="relative flex flex-col lg:pr-14"
             >
+              {/* Main portrait image */}
               <div
-                className="relative aspect-[4/5] overflow-hidden rounded-sm"
-                style={{
-                  boxShadow: 'inset 0 0 0 1px rgba(200,169,110,0.25)',
-                }}
+                className="relative aspect-[3/4] overflow-hidden"
+                style={{ clipPath: 'inset(0 0 0 0)' }}
               >
                 <Image
-                  src="/images/afor-voyage.jpg"
-                  alt="Navbakhor presenting the circuit"
+                  src="/images/tours/Registan.jpg"
+                  alt="Registan — Samarkand"
                   fill
-                  className="object-cover"
+                  className="object-cover scale-[1.03] hover:scale-[1.06] transition-transform duration-[1400ms] ease-out"
                   placeholder="empty"
                 />
-                {/* Gold corners */}
-                <div className="absolute top-0 left-0 w-14 h-14">
-                  <div className="absolute top-0 left-0 w-full h-px bg-gold/50" />
-                  <div className="absolute top-0 left-0 w-px h-full bg-gold/50" />
+                {/* Gradient vignette at bottom */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(to top, rgba(15,13,10,0.75) 0%, transparent 50%)',
+                  }}
+                />
+                {/* Corner decoration — top-left */}
+                <div className="absolute top-0 left-0 w-16 h-16">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6, duration: 0.6, ease: 'easeOut' }}
+                    className="absolute top-0 left-0 h-px bg-gold/60 origin-left"
+                    style={{ width: '100%' }}
+                  />
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.8, duration: 0.6, ease: 'easeOut' }}
+                    className="absolute top-0 left-0 w-px bg-gold/60 origin-top"
+                    style={{ height: '100%' }}
+                  />
                 </div>
-                <div className="absolute bottom-0 right-0 w-14 h-14">
-                  <div className="absolute bottom-0 right-0 w-full h-px bg-gold/50" />
-                  <div className="absolute bottom-0 right-0 w-px h-full bg-gold/50" />
+                {/* Corner decoration — bottom-right */}
+                <div className="absolute bottom-0 right-0 w-16 h-16">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.7, duration: 0.6, ease: 'easeOut' }}
+                    className="absolute bottom-0 right-0 h-px bg-gold/60 origin-right"
+                    style={{ width: '100%' }}
+                  />
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.9, duration: 0.6, ease: 'easeOut' }}
+                    className="absolute bottom-0 right-0 w-px bg-gold/60 origin-bottom"
+                    style={{ height: '100%' }}
+                  />
                 </div>
+
+                {/* Stats overlay — bottom */}
+                <motion.div
+                  variants={fadeIn}
+                  className="absolute bottom-5 left-5 right-5"
+                >
+                  {/* Route label — liquid glass pill */}
+                  <div
+                    className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 mb-3"
+                    style={{
+                      background:
+                        'linear-gradient(160deg, rgba(255,255,255,0.18) 0%, rgba(10,8,6,0.52) 100%)',
+                      backdropFilter: 'blur(24px) saturate(1.8)',
+                      WebkitBackdropFilter: 'blur(24px) saturate(1.8)',
+                      border: '1px solid rgba(200,160,80,0.38)',
+                      boxShadow:
+                        'inset 0 1.5px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(0,0,0,0.15), 0 4px 24px rgba(0,0,0,0.35), 0 0 0 0.5px rgba(200,160,80,0.12)',
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full flex-none"
+                      style={{
+                        background: '#c8a050',
+                        boxShadow:
+                          '0 0 6px 1px rgba(200,160,80,1), 0 0 12px rgba(200,160,80,0.6)',
+                      }}
+                    />
+                    <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-white/85 font-medium">
+                      Samarkand · Boukhara · Shahrisabz
+                    </span>
+                  </div>
+
+                  {/* Micro stats row — liquid glass card */}
+                  <div
+                    className="grid grid-cols-3 rounded-2xl overflow-hidden"
+                    style={{
+                      background:
+                        'linear-gradient(170deg, rgba(255,255,255,0.16) 0%, rgba(8,6,4,0.55) 100%)',
+                      backdropFilter: 'blur(28px) saturate(2)',
+                      WebkitBackdropFilter: 'blur(28px) saturate(2)',
+                      border: '1px solid rgba(200,160,80,0.32)',
+                      boxShadow:
+                        'inset 0 1.5px 0 rgba(255,255,255,0.20), inset 0 -1px 0 rgba(0,0,0,0.18), 0 8px 32px rgba(0,0,0,0.40), 0 0 0 0.5px rgba(200,160,80,0.10)',
+                    }}
+                  >
+                    {[
+                      { v: '3', l: 'Villes' },
+                      { v: '7', l: 'Jours' },
+                      { v: '5', l: 'UNESCO' },
+                    ].map((s, i) => (
+                      <div
+                        key={s.l}
+                        className="flex flex-col items-center py-3"
+                        style={{
+                          borderRight:
+                            i < 2 ? '1px solid rgba(255,255,255,0.10)' : 'none',
+                        }}
+                      >
+                        <span
+                          className="font-serif text-[1.1rem] leading-none"
+                          style={{
+                            color: '#e8c070',
+                            textShadow: '0 0 12px rgba(200,160,80,0.6)',
+                          }}
+                        >
+                          {s.v}
+                        </span>
+                        <span className="font-sans text-[8px] tracking-[0.14em] uppercase text-white/50 mt-1">
+                          {s.l}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
               </div>
+
+              {/* Small accent rectangle below on desktop */}
+              <motion.div
+                variants={fadeIn}
+                className="hidden lg:block mt-4"
+                style={{
+                  height: '3px',
+                  background: 'linear-gradient(to right, #c8a050, transparent)',
+                }}
+              />
             </motion.div>
 
-            {/* Right: text */}
-            <motion.div variants={slideLeft} className="lg:col-span-7">
-              <div className="divider-gold mb-8" />
-              <p className="font-serif text-display-md text-charcoal-700 font-light leading-snug">
-                {t('samarkand_boukhara_intro')}
-              </p>
-              <p className="font-sans text-body-md text-charcoal-400 mt-6 leading-relaxed">
-                {t('samarkand_boukhara_intro2')}
-              </p>
-              <p className="font-sans text-body-md text-charcoal-500 mt-4 font-medium">
-                {t('samarkand_boukhara_intro3')}
-              </p>
-              <ul className="mt-3 space-y-2">
-                {(
-                  [
-                    'samarkand_boukhara_intro_bullet1',
-                    'samarkand_boukhara_intro_bullet2',
-                  ] as const
-                ).map((key) => (
-                  <li
-                    key={key}
-                    className="flex items-start gap-3 font-sans text-body-md text-charcoal-400"
-                  >
-                    <span className="mt-1 w-1.5 h-1.5 rounded-full bg-gold flex-none" />
-                    {t(key)}
-                  </li>
-                ))}
-              </ul>
+            {/* ── CENTRE DIVIDER ── */}
+            <div className="hidden lg:flex flex-col items-center px-8">
+              <motion.div
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 1.0, ease: 'easeOut' }}
+                className="flex-1 w-px origin-top"
+                style={{
+                  background:
+                    'linear-gradient(to bottom, transparent, rgba(200,160,80,0.35) 20%, rgba(200,160,80,0.35) 80%, transparent)',
+                }}
+              />
+              {/* Ornamental diamond cluster */}
+              <div className="my-4 flex flex-col items-center gap-1.5">
+                <span className="w-1 h-1 bg-gold/35 rotate-45 block" />
+                <span className="w-3 h-3 border border-gold/50 rotate-45 block" />
+                <span className="w-1 h-1 bg-gold/35 rotate-45 block" />
+              </div>
+              <motion.div
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 1.0, ease: 'easeOut' }}
+                className="flex-1 w-px origin-bottom"
+                style={{
+                  background:
+                    'linear-gradient(to top, transparent, rgba(200,160,80,0.35) 20%, rgba(200,160,80,0.35) 80%, transparent)',
+                }}
+              />
+            </div>
 
-              {/* CTA buttons */}
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            {/* ── RIGHT COLUMN: content ── */}
+            <motion.div
+              variants={slideLeft}
+              className="flex flex-col justify-center lg:pl-14 pt-10 lg:pt-0"
+            >
+              {/* Eyebrow — premium badge */}
+              <motion.div variants={fadeUp} className="mb-7">
+                <div
+                  className="inline-flex items-center gap-2.5 rounded-full px-4 py-2"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, rgba(200,160,80,0.18) 0%, rgba(200,160,80,0.08) 100%)',
+                    border: '1px solid rgba(200,160,80,0.30)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
+                  }}
+                >
+                  {/* Route icon */}
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="2.5"
+                      cy="7"
+                      r="2"
+                      stroke="#C8A050"
+                      strokeWidth="1.3"
+                    />
+                    <circle
+                      cx="11.5"
+                      cy="7"
+                      r="2"
+                      stroke="#C8A050"
+                      strokeWidth="1.3"
+                    />
+                    <path
+                      d="M4.5 7h5"
+                      stroke="#C8A050"
+                      strokeWidth="1.3"
+                      strokeLinecap="round"
+                      strokeDasharray="1.5 1.5"
+                    />
+                  </svg>
+                  <span className="font-sans text-[10px] tracking-[0.18em] uppercase text-gold/90 font-medium">
+                    {t('samarkand_boukhara_intro_eyebrow') ||
+                      'Circuit Signature'}
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Oversized serif pull quote */}
+              <motion.p
+                variants={fadeUp}
+                className="font-serif leading-[1.12] text-charcoal-700"
+                style={{
+                  fontSize: 'clamp(1.7rem, 3.2vw, 3rem)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                {t('samarkand_boukhara_intro')}
+              </motion.p>
+
+              {/* Gold rule */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.7, ease: 'easeOut' }}
+                className="mt-8 mb-8 h-px w-16 origin-left"
+                style={{
+                  background:
+                    'linear-gradient(to right, #c8a050, rgba(200,160,80,0.2))',
+                }}
+              />
+
+              {/* Body text */}
+              <motion.p
+                variants={fadeUp}
+                className="font-sans text-[0.95rem] text-charcoal-500 leading-relaxed"
+              >
+                {t('samarkand_boukhara_intro2')}
+              </motion.p>
+
+              {/* Highlight glass card */}
+              <motion.div
+                variants={fadeUp}
+                className="mt-8 rounded-xl p-5"
+                style={{
+                  background: 'rgba(255,255,255,0.80)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(200,160,80,0.25)',
+                  boxShadow:
+                    '0 2px 16px rgba(200,160,80,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
+                }}
+              >
+                <p className="font-sans text-[0.85rem] text-charcoal-500 font-medium uppercase tracking-[0.1em] mb-3">
+                  {t('samarkand_boukhara_intro3')}
+                </p>
+                <ul className="space-y-2.5">
+                  {(
+                    [
+                      'samarkand_boukhara_intro_bullet1',
+                      'samarkand_boukhara_intro_bullet2',
+                    ] as const
+                  ).map((key) => (
+                    <li
+                      key={key}
+                      className="flex items-start gap-3 font-sans text-[0.88rem] text-charcoal-500 leading-snug"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[3px] flex-none w-5 h-5 rounded-full flex items-center justify-center"
+                        style={{
+                          background: 'rgba(200,160,80,0.14)',
+                          border: '1px solid rgba(200,160,80,0.28)',
+                        }}
+                      >
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                          <path
+                            d="M1.5 4.5l2 2 4-4"
+                            stroke="#C8A050"
+                            strokeWidth="1.4"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      {t(key)}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="mt-10">
                 <Link
                   href={`/${locale}/contact`}
-                  className="group inline-flex items-center justify-center gap-3 bg-primary-600 text-white rounded-pill px-8 py-3.5 text-label-lg uppercase tracking-[0.08em] font-medium hover:bg-primary-700 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2"
+                  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-8 py-3.5 text-[0.78rem] uppercase tracking-[0.12em] font-semibold text-white transition-all duration-300 bg-primary-400 hover:bg-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f4]"
                 >
                   {t('samarkand_boukhara_cta_contact')}
                   <span
@@ -425,7 +705,7 @@ export default function SamarkandBukharaPage() {
                     →
                   </span>
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
