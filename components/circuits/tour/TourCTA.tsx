@@ -34,7 +34,7 @@ export default function TourCTA({ prefix }: TourCTAProps) {
             </p>
             <Link
               href={`/${locale}/contact`}
-              className="group inline-flex items-center gap-3 rounded-full bg-gold px-8 py-3.5 text-[0.78rem] uppercase tracking-[0.12em] font-semibold text-charcoal-800 transition-all duration-300 hover:bg-gold/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-800"
+              className="group inline-flex items-center gap-3 rounded-pill bg-primary-400 px-8 py-3.5 text-label-lg uppercase tracking-[0.08em] font-medium text-white transition-all duration-300 hover:bg-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-800"
             >
               {t(`${prefix}_cta_contact` as Parameters<typeof t>[0])}
               <span

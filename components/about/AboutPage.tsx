@@ -600,7 +600,7 @@ export function AboutPage() {
             <motion.div variants={fadeUp}>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 border border-gold text-gold hover:bg-gold hover:text-charcoal-800 px-10 py-4 rounded-pill text-label uppercase tracking-[0.1em] font-medium transition-all duration-300"
+                className="inline-flex items-center gap-3 bg-primary-400 text-white hover:bg-primary-500 px-10 py-4 rounded-pill text-label uppercase tracking-[0.1em] font-medium transition-all duration-300"
               >
                 {t('cta_button')}
                 <svg
