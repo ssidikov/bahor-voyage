@@ -3,7 +3,7 @@ import type { TourData } from '../types';
 export const grandCircuit18j: TourData = {
   prefix: 'grand_circuit_18j',
 
-  heroImage: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+  heroImage: '/images/tours/khiva-hero.jpg',
 
   introImage: '/images/tours/Registan.jpg',
   introImageAlt: 'Place du Régistan — Samarcande',
