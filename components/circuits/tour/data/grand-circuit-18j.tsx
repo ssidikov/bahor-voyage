@@ -1,19 +1,20 @@
 import type { TourData } from '../types';
 
-export const voyageSolidaire11j: TourData = {
-  prefix: 'voyage_solidaire_11j',
+export const grandCircuit18j: TourData = {
+  prefix: 'grand_circuit_18j',
 
-  heroImage: '/images/tours/samarkand-2.jpg',
+  heroImage: '/images/tours/Bibi-Khanu-Samarkand.jpg',
 
-  introImage: '/images/tours/Bukhara-Old-Sity.jpg',
-  introImageAlt: 'Campagne ouzbèke — Khorezm',
+  introImage: '/images/tours/Registan.jpg',
+  introImageAlt: 'Place du Régistan — Samarcande',
 
-  routeLabel: 'Urgench · Nukus · Khiva · Boukhara · Samarcande · Tachkent',
+  routeLabel:
+    'Tachkent · Nukus · Khiva · Boukhara · Samarcande · Ferghana · Andijan · Tachkent',
 
   stats: [
-    { v: '6', l: 'Villes' },
-    { v: '11', l: 'Jours' },
-    { v: '4', l: 'Régions' },
+    { v: '8', l: 'Villes' },
+    { v: '18', l: 'Jours' },
+    { v: '6', l: 'Régions' },
   ],
 
   days: [
@@ -24,52 +25,87 @@ export const voyageSolidaire11j: TourData = {
     },
     {
       key: 'day2',
-      image: '/images/tours/Bukhara-minaret.jpg',
-      imageAlt: 'Musée de Nukus, Savitksy',
+      image: '/images/tours/Samarkand-2.jpg',
+      imageAlt: 'Vieille ville de Tachkent',
     },
     {
       key: 'day3',
-      image: '/images/tours/Chor-Bakr.jpg',
-      imageAlt: 'Forteresse de Chilpik Kala',
+      image: '/images/tours/Bukhara-minaret.jpg',
+      imageAlt: 'Musée Savitsky, Nukus',
     },
     {
       key: 'day4',
-      image: '/images/tours/Samarkand-2.jpg',
-      imageAlt: 'Khiva, Ichan Kala',
+      image: '/images/tours/Chor-Bakr.jpg',
+      imageAlt: 'Forteresses du désert, Karakalpakstan',
     },
     {
       key: 'day5',
-      image: '/images/tours/Bukhara-Old-Sity.jpg',
-      imageAlt: 'Route vers Boukhara, soierie ouzbèke',
+      image: '/images/tours/Samarkand-2.jpg',
+      imageAlt: 'Khiva, Ichan Kala depuis les remparts',
     },
     {
       key: 'day6',
-      image: '/images/tours/Bukhara-Ark.jpg',
-      imageAlt: 'Boukhara la Divine',
+      image: '/images/tours/Bukhara-Old-Sity.jpg',
+      imageAlt: 'Projet AFOR, Gurlan',
     },
     {
       key: 'day7',
       image: '/images/tours/Chor-Bakr.jpg',
-      imageAlt: 'Médersas et coupoles de Boukhara',
+      imageAlt: 'Soierie ikat, campagne ouzbèke',
     },
     {
       key: 'day8',
-      image: '/images/tours/Registan.jpg',
-      imageAlt: 'Samarcande — Place du Régistan',
+      image: '/images/tours/Bukhara-Ark.jpg',
+      imageAlt: 'Boukhara — Citadelle Ark',
     },
     {
       key: 'day9',
-      image: '/images/tours/Mausole-Gur-Emir.jpg',
-      imageAlt: 'Chakhrissabz, Palais Blanc Ak Saray',
+      image: '/images/tours/Bukhara-minaret.jpg',
+      imageAlt: 'Médersas de Boukhara',
     },
     {
       key: 'day10',
-      image: '/images/tours/shohizinda.jpg',
-      imageAlt: 'Tachkent, vieille ville',
+      image: '/images/tours/Chor-Bakr.jpg',
+      imageAlt: 'Chor-Bakr, Sitorai Mohi-Hosa',
     },
     {
       key: 'day11',
+      image: '/images/tours/Registan.jpg',
+      imageAlt: 'Samarcande — Régistan au crépuscule',
+    },
+    {
+      key: 'day12',
+      image: '/images/tours/Mausole-Gur-Emir.jpg',
+      imageAlt: 'Gur-e-Amir, mausolée de Tamerlan',
+    },
+    {
+      key: 'day13',
+      image: '/images/tours/shohizinda.jpg',
+      imageAlt: 'Shah-i-Zinda, nécropole sacrée',
+    },
+    {
+      key: 'day14',
       image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+      imageAlt: 'Mosquée Bibi-Khanym',
+    },
+    {
+      key: 'day15',
+      image: '/images/tours/Samarkand.jpg',
+      imageAlt: 'Vallée de Ferghana, Margilan',
+    },
+    {
+      key: 'day16',
+      image: '/images/tours/Samarkand-2.jpg',
+      imageAlt: 'Ferghana — ateliers de soie Atlas',
+    },
+    {
+      key: 'day17',
+      image: '/images/tours/Bukhara-Old-Sity.jpg',
+      imageAlt: 'Andijan et retour à Tachkent',
+    },
+    {
+      key: 'day18',
+      image: '/images/tours/Bukhara-minaret.jpg',
       imageAlt: 'Départ depuis Tachkent',
     },
   ],
@@ -82,13 +118,15 @@ export const voyageSolidaire11j: TourData = {
     'include5',
     'include6',
     'include7',
+    'include8',
+    'include9',
   ],
 
   excludes: ['exclude1', 'exclude2', 'exclude3', 'exclude4'],
 
   facts: [
     {
-      key: 'voyage_solidaire_11j_fact_group',
+      key: 'grand_circuit_18j_fact_group',
       icon: (
         <svg
           width="20"
@@ -108,7 +146,7 @@ export const voyageSolidaire11j: TourData = {
       ),
     },
     {
-      key: 'voyage_solidaire_11j_fact_guide',
+      key: 'grand_circuit_18j_fact_guide',
       icon: (
         <svg
           width="20"
@@ -135,7 +173,7 @@ export const voyageSolidaire11j: TourData = {
       ),
     },
     {
-      key: 'voyage_solidaire_11j_fact_homestay',
+      key: 'grand_circuit_18j_fact_comfort',
       icon: (
         <svg
           width="20"
@@ -154,7 +192,7 @@ export const voyageSolidaire11j: TourData = {
       ),
     },
     {
-      key: 'voyage_solidaire_11j_fact_custom',
+      key: 'grand_circuit_18j_fact_custom',
       icon: (
         <svg
           width="20"
@@ -182,7 +220,7 @@ export const voyageSolidaire11j: TourData = {
 
   practicals: [
     {
-      key: 'voyage_solidaire_11j_practical_visa',
+      key: 'grand_circuit_18j_practical_visa',
       icon: (
         <svg
           width="28"
@@ -204,7 +242,7 @@ export const voyageSolidaire11j: TourData = {
       ),
     },
     {
-      key: 'voyage_solidaire_11j_practical_flight',
+      key: 'grand_circuit_18j_practical_flight',
       icon: (
         <svg
           width="28"
@@ -225,7 +263,7 @@ export const voyageSolidaire11j: TourData = {
       ),
     },
     {
-      key: 'voyage_solidaire_11j_practical_season',
+      key: 'grand_circuit_18j_practical_season',
       icon: (
         <svg
           width="28"
@@ -252,7 +290,7 @@ export const voyageSolidaire11j: TourData = {
       ),
     },
     {
-      key: 'voyage_solidaire_11j_practical_currency',
+      key: 'grand_circuit_18j_practical_currency',
       icon: (
         <svg
           width="28"

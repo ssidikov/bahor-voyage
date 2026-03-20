@@ -33,7 +33,7 @@ const CIRCUITS: readonly Circuit[] = [
   {
     id: 'c3',
     image: '/images/afor-voyage-2.jpeg',
-    href: '/circuits/immersion-totale',
+    href: '/circuits/immersion-totale-14j',
   },
   {
     id: 'c4',
@@ -139,7 +139,7 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* HERO                                                          */}
       {/* ============================================================ */}
-      <section className="relative h-[72vh] min-h-[500px] overflow-hidden">
+      <section className="relative h-screen md:h-[85vh] min-h-[500px] overflow-hidden">
         {/* Parallax image */}
         <motion.div
           className="absolute inset-0 scale-110"
