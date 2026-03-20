@@ -20,38 +20,38 @@ import {
 const DAYS = [
   {
     key: 'day1',
-    image: '/images/samarkand.jpeg',
+    image: '/images/tours/registan-2.jpg',
     imageAlt: 'Registan, Samarkand',
   },
   {
     key: 'day2',
-    image: '/images/Boukhara.jpg',
-    imageAlt: 'Boukhara old town',
+    image: '/images/tours/Mosquee-Bibi-Khanum.jpg',
+    imageAlt: 'Mosquee Bibi Khanum',
   },
   {
     key: 'day3',
-    image: '/images/uzbekistan.jpeg',
-    imageAlt: 'Uzbekistan landscape',
+    image: '/images/tours/shohizinda.jpg',
+    imageAlt: 'Shohizinda',
   },
   {
     key: 'day4',
-    image: '/images/Boukhara.jpg',
-    imageAlt: 'Ark citadel, Boukhara',
+    image: '/images/tours/bukhara.jpg',
+    imageAlt: 'Boukhara',
   },
   {
     key: 'day5',
-    image: '/images/uzbekistan.jpeg',
-    imageAlt: 'Desert surroundings Boukhara',
+    image: '/images/tours/Bukhara-Ark.jpg',
+    imageAlt: 'Bukhara, Ark',
   },
   {
     key: 'day6',
-    image: '/images/samarkand.jpeg',
-    imageAlt: 'Market in Samarkand',
+    image: '/images/tours/Samarkand-2.jpg',
+    imageAlt: 'Samarkand',
   },
   {
     key: 'day7',
-    image: '/images/afor-voyage-2.jpeg',
-    imageAlt: 'Departure from Uzbekistan',
+    image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+    imageAlt: 'Bibi-Khanu-Samarkand',
   },
 ] as const;
 
@@ -332,7 +332,7 @@ export default function SamarkandBukharaPage() {
                   <span className="flex-none" aria-hidden="true">
                     {icon}
                   </span>
-                  <span className="font-sans text-[10px] sm:text-label text-white/90 uppercase tracking-[0.09em] leading-tight">
+                  <span className="font-sans text-[10px] sm:text-label sm:text-[12px] text-white/90 uppercase tracking-[0.09em] leading-tight">
                     {t(key)}
                   </span>
                 </motion.li>
@@ -750,27 +750,36 @@ export default function SamarkandBukharaPage() {
                     variants={isReversed ? slideLeft : slideRight}
                     className={`lg:col-span-5 ${isReversed ? 'lg:order-2' : ''}`}
                   >
+                    {/* Polaroid-style photo card */}
                     <div
-                      className="relative aspect-[4/3] overflow-hidden rounded-sm"
+                      className="bg-white"
                       style={{
-                        boxShadow: 'inset 0 0 0 1px rgba(200,169,110,0.20)',
+                        padding: '10px 10px 0 10px',
+                        boxShadow:
+                          '0 4px 24px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.08)',
                       }}
                     >
-                      <Image
-                        src={day.image}
-                        alt={day.imageAlt}
-                        fill
-                        className="object-cover transition-transform duration-700 hover:scale-105"
-                        placeholder="empty"
-                      />
-                      {/* Gold corner accents */}
-                      <div className="absolute top-0 left-0 w-10 h-10">
-                        <div className="absolute top-0 left-0 w-full h-px bg-gold/40" />
-                        <div className="absolute top-0 left-0 w-px h-full bg-gold/40" />
+                      {/* Photo */}
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={day.image}
+                          alt={day.imageAlt}
+                          fill
+                          className="object-cover transition-transform duration-700 hover:scale-105"
+                          placeholder="empty"
+                        />
                       </div>
-                      <div className="absolute bottom-0 right-0 w-10 h-10">
-                        <div className="absolute bottom-0 right-0 w-full h-px bg-gold/40" />
-                        <div className="absolute bottom-0 right-0 w-px h-full bg-gold/40" />
+                      {/* Caption strip */}
+                      <div className="py-5 px-2 text-center">
+                        <p
+                          className="font-serif text-charcoal-500 italic leading-snug"
+                          style={{
+                            fontSize: '0.92rem',
+                            letterSpacing: '0.01em',
+                          }}
+                        >
+                          {day.imageAlt}
+                        </p>
                       </div>
                     </div>
                   </motion.div>
