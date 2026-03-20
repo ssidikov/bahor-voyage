@@ -5,8 +5,8 @@ export const grandCircuit18j: TourData = {
 
   heroImage: '/images/tours/khiva-hero.jpg',
 
-  introImage: '/images/tours/Registan.jpg',
-  introImageAlt: 'Place du Régistan — Samarcande',
+  introImage: '/images/tours/khiva-3.jpg',
+  introImageAlt: 'Khiva, Ouzbékistan',
 
   routeLabel:
     'Tachkent · Nukus · Khiva · Boukhara · Samarcande · Ferghana · Andijan · Tachkent',
@@ -20,38 +20,38 @@ export const grandCircuit18j: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/Samarkand.jpg',
+      image: '/images/tours/Tashkent-3.jpg',
       imageAlt: 'Tachkent, Ouzbékistan',
     },
     {
       key: 'day2',
-      image: '/images/tours/Samarkand-2.jpg',
+      image: '/images/tours/Tashkent-6.jpg',
       imageAlt: 'Vieille ville de Tachkent',
     },
     {
       key: 'day3',
-      image: '/images/tours/Bukhara-minaret.jpg',
+      image: '/images/tours/Musee-Savitsky.jpg',
       imageAlt: 'Musée Savitsky, Nukus',
     },
     {
       key: 'day4',
-      image: '/images/tours/Chor-Bakr.jpg',
-      imageAlt: 'Forteresses du désert, Karakalpakstan',
+      image: '/images/tours/Aral.jpg',
+      imageAlt: 'Aral, Karakalpakstan',
     },
     {
       key: 'day5',
-      image: '/images/tours/Samarkand-2.jpg',
-      imageAlt: 'Khiva, Ichan Kala depuis les remparts',
+      image: '/images/tours/Khiva-2.jpg',
+      imageAlt: 'Khiva',
     },
     {
       key: 'day6',
-      image: '/images/tours/Bukhara-Old-Sity.jpg',
+      image: '/images/tours/Projet-AFOR.jpg',
       imageAlt: 'Projet AFOR, Gurlan',
     },
     {
       key: 'day7',
-      image: '/images/tours/Chor-Bakr.jpg',
-      imageAlt: 'Soierie ikat, campagne ouzbèke',
+      image: '/images/tours/Bukhara-Old-Sity.jpg',
+      imageAlt: 'Boukhara',
     },
     {
       key: 'day8',
@@ -60,23 +60,23 @@ export const grandCircuit18j: TourData = {
     },
     {
       key: 'day9',
-      image: '/images/tours/Bukhara-minaret.jpg',
+      image: '/images/tours/Bukhara.jpg',
       imageAlt: 'Médersas de Boukhara',
     },
     {
       key: 'day10',
-      image: '/images/tours/Chor-Bakr.jpg',
-      imageAlt: 'Chor-Bakr, Sitorai Mohi-Hosa',
+      image: '/images/tours/Bukhara-3.jpg',
+      imageAlt: 'Boukhara',
     },
     {
       key: 'day11',
       image: '/images/tours/Registan.jpg',
-      imageAlt: 'Samarcande — Régistan au crépuscule',
+      imageAlt: 'Samarcande — Régistan',
     },
     {
       key: 'day12',
-      image: '/images/tours/Mausole-Gur-Emir.jpg',
-      imageAlt: 'Gur-e-Amir, mausolée de Tamerlan',
+      image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+      imageAlt: 'Mosquée Bibi-Khanym',
     },
     {
       key: 'day13',
@@ -85,28 +85,28 @@ export const grandCircuit18j: TourData = {
     },
     {
       key: 'day14',
-      image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
-      imageAlt: 'Mosquée Bibi-Khanym',
+      image: '/images/tours/Samarkand-2.jpg',
+      imageAlt: 'Samarcande',
     },
     {
       key: 'day15',
-      image: '/images/tours/Samarkand.jpg',
+      image: '/images/tours/Margilan.jpg',
       imageAlt: 'Vallée de Ferghana, Margilan',
     },
     {
       key: 'day16',
-      image: '/images/tours/Samarkand-2.jpg',
-      imageAlt: 'Ferghana — ateliers de soie Atlas',
+      image: '/images/tours/Kokand.jpg',
+      imageAlt: 'Kokand',
     },
     {
       key: 'day17',
-      image: '/images/tours/Bukhara-Old-Sity.jpg',
-      imageAlt: 'Andijan et retour à Tachkent',
+      image: '/images/tours/Andijan.jpg',
+      imageAlt: 'Andijan. Photo: Carpodacus / Wikimedia Commons / CC BY-SA 4.0',
     },
     {
       key: 'day18',
-      image: '/images/tours/Bukhara-minaret.jpg',
-      imageAlt: 'Départ depuis Tachkent',
+      image: '/images/tours/tashkent-5.jpg',
+      imageAlt: 'Tachkent',
     },
   ],
 

@@ -473,5 +473,72 @@
     "cta_title": "Participez à nos actions",
     "cta_body": "Chaque voyage avec AFOR contribue directement à ces projets. Contactez-nous pour en savoir plus.",
     "cta_button": "Nous contacter"
+  },
+  "about": {
+    "meta_title": "À propos — AFOR & Bahor-Voyage",
+    "meta_description": "Découvrez l'histoire de l'AFOR, association franco-ouzbèke fondée à Lyon en 2012, et l'équipe passionnée derrière Bahor-Voyage. Un tourisme solidaire au service de l'humain.",
+
+    "hero_kicker": "Qui sommes-nous",
+    "hero_title": "Association France Ouzbékistan Racines",
+    "hero_subtitle": "Bâtir des ponts depuis 2012.",
+
+    "quote": "Nous croyons que voyager, c'est s'engager — pour les peuples que l'on rencontre, pour les terres que l'on traverse, pour un futur plus juste.",
+    "quote_attribution": "Navbakhor Boudot, fondatrice",
+
+    "history_kicker": "Notre histoire",
+    "history_title": "Née d'un désir de rapprochement.",
+    "history_intro": "L'AFOR naît de la conviction qu'échanger, c'est comprendre. Depuis 2012, nous construisons des passerelles durables entre la France et l'Ouzbékistan par le voyage solidaire et le développement humain.",
+
+    "h1_label": "2012",
+    "h1_title": "La fondation à Lyon",
+    "h1_body": "Navbakhor Boudot fonde l'AFOR à Lyon avec une ambition claire : rapprocher deux cultures que tout sépare en apparence, mais qu'unit une même soif de rencontre. L'association s'appuie d'emblée sur un réseau de familles d'accueil et de guides locaux en Ouzbékistan.",
+
+    "h2_label": "2013 – 2017",
+    "h2_title": "Les premiers voyages solidaires",
+    "h2_body": "Les premières délégations de voyageurs français posent le pied sur la Route de la Soie. Chaque circuit est pensé pour bénéficier directement aux communautés locales : hébergement chez l'habitant, repas préparés par des familles, guides ouzbeks formés et rémunérés équitablement.",
+
+    "h3_label": "2018 → aujourd'hui",
+    "h3_title": "L'engagement territorial à Khorezm",
+    "h3_body": "L'AFOR développe ses projets solidaires dans la région de Khorezm : réhabilitation agricole à Vazir, plantation d'arbres à Gurlan, soutien à l'éducation et à l'entrepreneuriat féminin. Bahor-Voyage devient le levier économique qui finance ces actions sur le terrain.",
+
+    "team_kicker": "L'équipe",
+    "team_title": "Des passionnés au service de chaque voyage.",
+
+    "t1_name": "Navbakhor Boudot",
+    "t1_role": "Présidente & Fondatrice",
+    "t1_bio": "Franco-ouzbèke, Navbakhor a grandi entre deux cultures. Après des études à Lyon, elle crée l'AFOR pour offrir aux voyageurs la même richesse qu'elle porte en elle : la rencontre vraie, sans filtres.",
+
+    "t2_name": "Ramilya",
+    "t2_role": "Coordinatrice Ouzbékistan",
+    "t2_bio": "Basée à Urgentch, Ramilya est le cœur opérationnel de l'AFOR sur place. Elle tisse les liens avec les familles, les guides et les autorités locales pour garantir des séjours sereins et authentiques.",
+
+    "t3_name": "Nicolas Boudot",
+    "t3_role": "Co-fondateur & Logistique",
+    "t3_bio": "Partenaire de la première heure, Nicolas gère la logistique française et s'assure que chaque voyageur parte avec toutes les informations et la sérénité nécessaires pour vivre une expérience inoubliable.",
+
+    "commitments_kicker": "Nos engagements",
+    "commitments_title": "Un tourisme aux valeurs concrètes.",
+
+    "e1_title": "Tourisme solidaire",
+    "e1_body": "Chaque euro dépensé chez Bahor-Voyage contribue directement aux projets de développement de l'AFOR sur le terrain. Pas de communication vague : des actions mesurables, des bénéficiaires identifiés.",
+
+    "e2_title": "Rencontres authentiques",
+    "e2_body": "Nos circuits privilégient les immersions chez l'habitant, les repas partagés, les artisans dans leurs ateliers. Vous ne visitez pas l'Ouzbékistan — vous le vivez, avec ses habitants.",
+
+    "e3_title": "Retombées locales",
+    "e3_body": "Guides formés et rémunérés équitablement, familles d'accueil, petits restaurants locaux : l'argent du tourisme reste en Ouzbékistan et profite à ceux qui font vivre la culture.",
+
+    "partners_kicker": "Soutiens & Partenaires",
+    "partners_title": "Ensemble, plus loin.",
+    "partners_body": "L'AFOR travaille en lien étroit avec des institutions et des acteurs de terrain qui partagent nos valeurs.",
+    "p1": "Ambassade de France à Tachkent",
+    "p2": "Administration régionale de Khorezm",
+    "p3": "Communauté franco-ouzbèke de Lyon",
+    "p4": "Guides locaux certifiés & familles d'accueil",
+    "p5": "Associations de femmes entrepreneures, Ouzbékistan",
+
+    "cta_title": "Voyageons ensemble.",
+    "cta_body": "Chaque voyage avec Bahor-Voyage est une façon concrète de soutenir nos projets humains. Contactez-nous pour construire votre circuit sur-mesure.",
+    "cta_button": "Nous contacter"
   }
 }

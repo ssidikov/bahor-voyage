@@ -473,5 +473,72 @@
     "cta_title": "Be part of our actions",
     "cta_body": "Every journey with AFOR directly contributes to these projects. Contact us to learn more.",
     "cta_button": "Contact us"
+  },
+  "about": {
+    "meta_title": "About — AFOR & Bahor-Voyage",
+    "meta_description": "Discover the story of AFOR, the Franco-Uzbek association founded in Lyon in 2012, and the passionate team behind Bahor-Voyage. Solidarity tourism in service of people.",
+
+    "hero_kicker": "Who we are",
+    "hero_title": "Association France Uzbekistan Roots",
+    "hero_subtitle": "Building bridges since 2012.",
+
+    "quote": "We believe that travelling means making a commitment — to the people you meet, to the lands you cross, to a more just future.",
+    "quote_attribution": "Navbakhor Boudot, founder",
+
+    "history_kicker": "Our story",
+    "history_title": "Born from a desire to connect.",
+    "history_intro": "AFOR was founded on the conviction that exchange leads to understanding. Since 2012, we have been building lasting bridges between France and Uzbekistan through solidarity travel and human development.",
+
+    "h1_label": "2012",
+    "h1_title": "Founded in Lyon",
+    "h1_body": "Navbakhor Boudot founds AFOR in Lyon with a clear ambition: to bring together two cultures that seem worlds apart, yet share the same thirst for genuine encounter. From the start, the association builds on a network of host families and local guides in Uzbekistan.",
+
+    "h2_label": "2013 – 2017",
+    "h2_title": "First solidarity tours",
+    "h2_body": "The first French traveller delegations set foot on the Silk Road. Each itinerary is designed to directly benefit local communities: homestays, meals prepared by host families, and Uzbek guides trained and paid fairly.",
+
+    "h3_label": "2018 → today",
+    "h3_title": "Community engagement in Khorezm",
+    "h3_body": "AFOR develops its solidarity projects in the Khorezm region: agricultural rehabilitation in Vazir, tree planting in Gurlan, education and female entrepreneurship support. Bahor-Voyage becomes the economic engine that funds these on-the-ground initiatives.",
+
+    "team_kicker": "The team",
+    "team_title": "Passionate people behind every journey.",
+
+    "t1_name": "Navbakhor Boudot",
+    "t1_role": "President & Founder",
+    "t1_bio": "Franco-Uzbek at heart, Navbakhor grew up between two cultures. After studying in Lyon, she created AFOR to offer travellers the same richness she carries within herself: the authentic encounter, unfiltered.",
+
+    "t2_name": "Ramilya",
+    "t2_role": "Uzbekistan Coordinator",
+    "t2_bio": "Based in Urgench, Ramilya is AFOR's operational heart on the ground. She builds and nurtures relationships with host families, local guides, and authorities to ensure smooth and authentic stays.",
+
+    "t3_name": "Nicolas Boudot",
+    "t3_role": "Co-founder & Logistics",
+    "t3_bio": "A partner from day one, Nicolas handles French logistics and ensures every traveller departs with all the information and peace of mind needed to live an unforgettable experience.",
+
+    "commitments_kicker": "Our commitments",
+    "commitments_title": "Tourism with concrete values.",
+
+    "e1_title": "Solidarity tourism",
+    "e1_body": "Every euro spent with Bahor-Voyage contributes directly to AFOR's development projects on the ground. No vague messaging: measurable actions, identified beneficiaries.",
+
+    "e2_title": "Authentic encounters",
+    "e2_body": "Our tours prioritise homestays, shared meals, and artisans in their workshops. You don't just visit Uzbekistan — you live it, alongside its people.",
+
+    "e3_title": "Local benefits",
+    "e3_body": "Fairly paid and trained guides, host families, local restaurants: tourism money stays in Uzbekistan and benefits those who keep the culture alive.",
+
+    "partners_kicker": "Partners & Supporters",
+    "partners_title": "Together, further.",
+    "partners_body": "AFOR works closely with institutions and local stakeholders who share our values.",
+    "p1": "French Embassy in Tashkent",
+    "p2": "Khorezm Regional Administration",
+    "p3": "Franco-Uzbek community in Lyon",
+    "p4": "Certified local guides & host families",
+    "p5": "Women entrepreneur associations, Uzbekistan",
+
+    "cta_title": "Let's travel together.",
+    "cta_body": "Every journey with Bahor-Voyage is a concrete way to support our human projects. Contact us to build your tailor-made itinerary.",
+    "cta_button": "Contact us"
   }
 }
