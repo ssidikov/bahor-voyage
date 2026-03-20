@@ -35,7 +35,7 @@ const CIRCUITS: readonly Circuit[] = [
   {
     id: 'c4',
     image: '/images/immersion-totale.jpeg',
-    href: '/circuits/voyage-solidaire-18j',
+    href: '/circuits/grand-circuit-18j',
   },
 ] as const;
 

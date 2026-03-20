@@ -41,7 +41,7 @@ export default function ProjectsPage() {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="relative h-[70vh] min-h-[480px] overflow-hidden">
+      <section className="relative h-screen min-h-[500px] overflow-hidden">
         {/* Parallax background image */}
         <motion.div
           className="absolute inset-0 scale-110"

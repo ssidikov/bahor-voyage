@@ -5,8 +5,8 @@ export const voyageSolidaire11j: TourData = {
 
   heroImage: '/images/tours/samarkand-2.jpg',
 
-  introImage: '/images/tours/Bukhara-Old-Sity.jpg',
-  introImageAlt: 'Campagne ouzbèke — Khorezm',
+  introImage: '/images/tours/Khiva.jpg',
+  introImageAlt: 'Khiva, Ouzbékistan',
 
   routeLabel: 'Urgench · Nukus · Khiva · Boukhara · Samarcande · Tachkent',
 
@@ -19,28 +19,28 @@ export const voyageSolidaire11j: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/Samarkand.jpg',
+      image: '/images/tours/Tashkent-3.jpg',
       imageAlt: 'Tachkent, Ouzbékistan',
     },
     {
       key: 'day2',
-      image: '/images/tours/Bukhara-minaret.jpg',
+      image: '/images/tours/Musee-Savitsky.jpg',
       imageAlt: 'Musée de Nukus, Savitksy',
     },
     {
       key: 'day3',
-      image: '/images/tours/Chor-Bakr.jpg',
-      imageAlt: 'Forteresse de Chilpik Kala',
+      image: '/images/tours/Aral.jpg',
+      imageAlt: "Mer d'Aral, Ouzbékistan",
     },
     {
       key: 'day4',
-      image: '/images/tours/Samarkand-2.jpg',
-      imageAlt: 'Khiva, Ichan Kala',
+      image: '/images/tours/Khiva-2.jpg',
+      imageAlt: 'Khiva, Ouzbékistan',
     },
     {
       key: 'day5',
-      image: '/images/tours/Bukhara-Old-Sity.jpg',
-      imageAlt: 'Route vers Boukhara, soierie ouzbèke',
+      image: '/images/tours/Khiva-silk-2.jpg',
+      imageAlt: 'Soierie ouzbèke',
     },
     {
       key: 'day6',
@@ -49,28 +49,28 @@ export const voyageSolidaire11j: TourData = {
     },
     {
       key: 'day7',
-      image: '/images/tours/Chor-Bakr.jpg',
-      imageAlt: 'Médersas et coupoles de Boukhara',
+      image: '/images/tours/boukhara-2.jpg',
+      imageAlt: 'Boukhara',
     },
     {
       key: 'day8',
-      image: '/images/tours/Registan.jpg',
-      imageAlt: 'Samarcande — Place du Régistan',
+      image: '/images/tours/Registan-2.jpg',
+      imageAlt: 'Samarcande — Régistan',
     },
     {
       key: 'day9',
-      image: '/images/tours/Mausole-Gur-Emir.jpg',
-      imageAlt: 'Chakhrissabz, Palais Blanc Ak Saray',
+      image: '/images/tours/Chakhrissabz.jpg',
+      imageAlt: 'Chakhrissabz',
     },
     {
       key: 'day10',
-      image: '/images/tours/shohizinda.jpg',
-      imageAlt: 'Tachkent, vieille ville',
+      image: '/images/tours/Tashkent-2.jpg',
+      imageAlt: 'Tachkent',
     },
     {
       key: 'day11',
-      image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
-      imageAlt: 'Départ depuis Tachkent',
+      image: '/images/tours/Tashkent-5.jpg',
+      imageAlt: 'Tachkent mosquée',
     },
   ],
 
