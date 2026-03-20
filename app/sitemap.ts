@@ -52,5 +52,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${BASE_URL}/projects/voyage-solidaire`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          fr: `${BASE_URL}/projects/voyage-solidaire`,
+          en: `${BASE_URL}/en/projects/voyage-solidaire`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/projects/voyage-solidaire`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          fr: `${BASE_URL}/projects/voyage-solidaire`,
+          en: `${BASE_URL}/en/projects/voyage-solidaire`,
+        },
+      },
+    },
   ];
 }

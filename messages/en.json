@@ -540,5 +540,51 @@
     "cta_title": "Let's travel together.",
     "cta_body": "Every journey with Bahor-Voyage is a concrete way to support our human projects. Contact us to build your tailor-made itinerary.",
     "cta_button": "Contact us"
+  },
+  "voyage_solidaire": {
+    "meta_title": "Solidarity Travel in Uzbekistan — AFOR & Bahor-Voyage",
+    "meta_description": "Discover solidarity travel in Uzbekistan with AFOR: human connection, local economy, and knowledge sharing. Tailor-made itineraries from Lyon.",
+
+    "hero_kicker": "Our projects",
+    "hero_title": "Solidarity travel",
+    "hero_subtitle": "Travel differently, by supporting local communities.",
+
+    "intro_quote": "AFOR creates solidarity travel in Uzbekistan.",
+
+    "definition_kicker": "What is solidarity travel?",
+    "definition_title": "Tourism that changes lives",
+    "definition_body1": "Solidarity travel is a form of responsible tourism that places people at the heart of the experience. Unlike mass tourism, it aims to create lasting connections between travellers and local communities, while contributing to the economic and social development of the regions visited.",
+    "definition_body2": "With AFOR, every stay in Uzbekistan is designed so that your presence directly benefits the people: homestays, meals prepared by local families, fairly trained and paid guides, and direct craft purchases from artisans.",
+
+    "why_kicker": "Why AFOR?",
+    "why_title": "Born from a story, driven by a conviction",
+    "why_body1": "AFOR was born from Navbakhor Boudot's personal story. Originally from the Khorezm region, on the shores of the Aral Sea, she grew up in an area devastated by one of the worst ecological disasters of the 20th century. When she left Uzbekistan for France, she carried with her the desire to build bridges between the two cultures.",
+    "why_body2": "By founding AFOR in Lyon in 2012, she turned that desire into concrete action. Solidarity travel became the lever through which the association funds its field projects: tree planting in Gurlan, support for youth education, and backing for female entrepreneurship.",
+
+    "principles_kicker": "Our three pillars",
+    "principles_title": "What guides every journey",
+
+    "p1_icon": "people",
+    "p1_title": "Human connection",
+    "p1_body": "Every itinerary is built around authentic exchanges with Uzbek families, artisans, and local guides. You don't observe Uzbekistan — you become part of it.",
+
+    "p2_icon": "economy",
+    "p2_title": "Local economy",
+    "p2_body": "Almost all of your budget stays in the region visited: homestays, family restaurants, local transport, direct craft purchases. No foreign intermediary siphons away the value created.",
+
+    "p3_icon": "knowledge",
+    "p3_title": "Knowledge sharing",
+    "p3_body": "Guides and host families share their culture, traditions, and know-how. You bring your curiosity and perspective — an exchange that enriches both sides.",
+
+    "custom_kicker": "Tailor-made",
+    "custom_title": "Adapting solidarity travel to your wishes",
+    "custom_body": "Every traveller is different. Whether you want a full homestay immersion, an itinerary centred on AFOR projects, or a blend of culture and solidarity, we build the journey that suits you. Our circuits range from 11 to 18 days and can be adapted in length, pace, and theme.",
+    "custom_cta": "View our circuits",
+    "custom_cta_sub": "Or contact us for a personalised quote",
+
+    "cta_title": "Ready to travel differently?",
+    "cta_body": "Join the travellers who have chosen solidarity Uzbekistan. Contact us to build your tailor-made itinerary.",
+    "cta_button": "Contact us",
+    "cta_link": "Discover our projects"
   }
 }

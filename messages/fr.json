@@ -540,5 +540,51 @@
     "cta_title": "Voyageons ensemble.",
     "cta_body": "Chaque voyage avec Bahor-Voyage est une façon concrète de soutenir nos projets humains. Contactez-nous pour construire votre circuit sur-mesure.",
     "cta_button": "Nous contacter"
+  },
+  "voyage_solidaire": {
+    "meta_title": "Voyage Solidaire en Ouzbékistan — AFOR & Bahor-Voyage",
+    "meta_description": "Découvrez le voyage solidaire en Ouzbékistan avec AFOR : rencontre humaine, économie locale et transmission du savoir. Circuits sur-mesure depuis Lyon.",
+
+    "hero_kicker": "Nos projets",
+    "hero_title": "Le voyage solidaire",
+    "hero_subtitle": "Voyager autrement, en soutenant les communautés locales.",
+
+    "intro_quote": "L'AFOR crée le voyage solidaire en Ouzbékistan.",
+
+    "definition_kicker": "Qu'est-ce que le voyage solidaire ?",
+    "definition_title": "Un tourisme qui change les vies",
+    "definition_body1": "Le voyage solidaire est une forme de tourisme responsable qui place l'humain au cœur de l'expérience. Contrairement au tourisme de masse, il vise à créer des liens durables entre les voyageurs et les communautés locales, tout en contribuant au développement économique et social des régions visitées.",
+    "definition_body2": "Avec l'AFOR, chaque séjour en Ouzbékistan est conçu pour que votre présence profite directement aux habitants : hébergement chez l'habitant, repas préparés par des familles locales, guides formés et rémunérés équitablement, achats d'artisanat en circuit court.",
+
+    "why_kicker": "Pourquoi l'AFOR ?",
+    "why_title": "Née d'une histoire, portée par une conviction",
+    "why_body1": "L'AFOR est née de l'histoire personnelle de Navbakhor Boudot. Originaire de la région de Khorezm, au bord de la mer d'Aral, elle a grandi dans une région dévastée par l'une des pires catastrophes écologiques du XXe siècle. En quittant l'Ouzbékistan pour la France, elle a emporté avec elle le désir de tisser des ponts entre les deux cultures.",
+    "why_body2": "En fondant l'AFOR à Lyon en 2012, elle a transformé ce désir en action concrète. Le voyage solidaire est devenu le levier par lequel l'association finance ses projets de terrain : plantation d'arbres à Gurlan, soutien à l'éducation des jeunes, accompagnement de l'entrepreneuriat féminin.",
+
+    "principles_kicker": "Nos trois piliers",
+    "principles_title": "Ce qui guide chaque voyage",
+
+    "p1_icon": "people",
+    "p1_title": "Rencontre humaine",
+    "p1_body": "Chaque circuit est construit autour d'échanges authentiques avec les familles ouzbèkes, les artisans, les guides locaux. Vous n'observez pas l'Ouzbékistan — vous en faites partie.",
+
+    "p2_icon": "economy",
+    "p2_title": "Économie locale",
+    "p2_body": "La quasi-totalité de votre budget reste dans la région visitée : hébergement chez l'habitant, restaurants familiaux, transports locaux, artisanat direct. Aucun intermédiaire étranger ne capte la valeur créée.",
+
+    "p3_icon": "knowledge",
+    "p3_title": "Transmission du savoir",
+    "p3_body": "Les guides et familles d'accueil partagent leur culture, leurs traditions et leurs savoir-faire. De votre côté, vous apportez votre curiosité et votre regard — une mise en commun qui enrichit des deux côtés.",
+
+    "custom_kicker": "Sur-mesure",
+    "custom_title": "Adapter le voyage solidaire à vos envies",
+    "custom_body": "Chaque voyageur est différent. Que vous souhaitiez une immersion complète chez l'habitant, un circuit axé sur les projets AFOR ou une combinaison culture et solidarité, nous construisons avec vous l'itinéraire qui vous ressemble. Nos circuits vont de 11 à 18 jours et peuvent être adaptés en durée, rythme et thématiques.",
+    "custom_cta": "Voir nos circuits",
+    "custom_cta_sub": "Ou contactez-nous pour un devis personnalisé",
+
+    "cta_title": "Prêt à voyager autrement ?",
+    "cta_body": "Rejoignez les voyageurs qui ont choisi l'Ouzbékistan solidaire. Contactez-nous pour construire votre circuit sur-mesure.",
+    "cta_button": "Nous contacter",
+    "cta_link": "Découvrir nos projets"
   }
 }
