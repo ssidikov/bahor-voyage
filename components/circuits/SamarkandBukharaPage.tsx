@@ -918,24 +918,117 @@ export default function SamarkandBukharaPage() {
             >
               {(
                 [
-                  ['samarkand_boukhara_practical_visa', '🛂'],
-                  ['samarkand_boukhara_practical_flight', '✈️'],
-                  ['samarkand_boukhara_practical_season', '🌸'],
-                  ['samarkand_boukhara_practical_currency', '💱'],
+                  {
+                    key: 'samarkand_boukhara_practical_visa' as const,
+                    icon: (
+                      <svg
+                        width="28"
+                        height="28"
+                        viewBox="0 0 28 28"
+                        fill="none"
+                        stroke="#C8A050"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        {/* Passport book */}
+                        <rect x="5" y="3" width="18" height="22" rx="2" />
+                        <line x1="5" y1="9" x2="23" y2="9" />
+                        <circle cx="14" cy="16" r="3.5" />
+                        <line x1="10.5" y1="21.5" x2="17.5" y2="21.5" />
+                        {/* Stamp mark */}
+                        <path d="M8 5.5h4" strokeWidth="1.2" opacity="0.5" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    key: 'samarkand_boukhara_practical_flight' as const,
+                    icon: (
+                      <svg
+                        width="28"
+                        height="28"
+                        viewBox="0 0 28 28"
+                        fill="none"
+                        stroke="#C8A050"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        {/* Classic top-down airplane */}
+                        <path
+                          d="M14 3 C13 3 12 4 12 5.5 L11 13 L5 16 L5 18 L12 16.5 L12.5 21 L10.5 22 L10.5 23.5 L14 22.5 L17.5 23.5 L17.5 22 L15.5 21 L16 16.5 L23 18 L23 16 L17 13 L16 5.5 C16 4 15 3 14 3Z"
+                          fill="rgba(200,160,80,0.15)"
+                        />
+                      </svg>
+                    ),
+                  },
+                  {
+                    key: 'samarkand_boukhara_practical_season' as const,
+                    icon: (
+                      <svg
+                        width="28"
+                        height="28"
+                        viewBox="0 0 28 28"
+                        fill="none"
+                        stroke="#C8A050"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        {/* Sun core */}
+                        <circle
+                          cx="14"
+                          cy="14"
+                          r="4"
+                          fill="rgba(200,160,80,0.15)"
+                        />
+                        {/* Rays */}
+                        <line x1="14" y1="4" x2="14" y2="7" />
+                        <line x1="14" y1="21" x2="14" y2="24" />
+                        <line x1="4" y1="14" x2="7" y2="14" />
+                        <line x1="21" y1="14" x2="24" y2="14" />
+                        <line x1="7.05" y1="7.05" x2="9.17" y2="9.17" />
+                        <line x1="18.83" y1="18.83" x2="20.95" y2="20.95" />
+                        <line x1="20.95" y1="7.05" x2="18.83" y2="9.17" />
+                        <line x1="9.17" y1="18.83" x2="7.05" y2="20.95" />
+                        {/* Small blossom petal hint */}
+                        <circle cx="14" cy="14" r="4" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    key: 'samarkand_boukhara_practical_currency' as const,
+                    icon: (
+                      <svg
+                        width="28"
+                        height="28"
+                        viewBox="0 0 28 28"
+                        fill="none"
+                        stroke="#C8A050"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        {/* Euro arc */}
+                        <path d="M20 8.5a8 8 0 1 0 0 11" />
+                        {/* Two horizontal bars */}
+                        <line x1="7" y1="13" x2="16" y2="13" />
+                        <line x1="7" y1="16" x2="15" y2="16" />
+                      </svg>
+                    ),
+                  },
                 ] as const
-              ).map(([key, icon]) => (
+              ).map(({ key, icon }) => (
                 <motion.li
                   key={key}
                   variants={fadeUp}
                   className="flex items-start gap-4 p-5 border border-charcoal-100 rounded-sm bg-sand-50 hover:border-gold/40 transition-colors duration-300"
                 >
-                  <span
-                    className="text-2xl flex-none mt-0.5"
-                    role="img"
-                    aria-hidden="true"
-                  >
-                    {icon}
-                  </span>
+                  <span className="flex-none mt-0.5">{icon}</span>
                   <span className="font-sans text-body-md text-charcoal-500 leading-relaxed">
                     {t(key)}
                   </span>
