@@ -49,6 +49,20 @@
   --color-gold-light: #e8d5ad;
   --color-gold-dark: #a07840;
 
+  /* --- Semantic aliases (preferred in reusable components) ---- */
+  --color-surface-default: #ffffff;
+  --color-surface-soft: var(--color-sand-50);
+  --color-surface-emphasis: var(--color-primary-500);
+  --color-border-soft: var(--color-charcoal-100);
+  --color-text-default: var(--color-charcoal-600);
+  --color-text-strong: var(--color-charcoal-700);
+  --color-text-on-emphasis: #ffffff;
+  --color-action: var(--color-primary-400);
+  --color-action-hover: var(--color-primary-500);
+  --color-action-soft: var(--color-primary-50);
+  --color-action-soft-hover: var(--color-primary-100);
+  --color-focus-ring: var(--color-primary-300);
+
   /* --- Typography -------------------------------------------- */
   --font-sans:
     var(--font-inter), ui-sans-serif, system-ui, -apple-system,

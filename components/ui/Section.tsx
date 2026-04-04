@@ -11,8 +11,8 @@ export type SectionProps = {
 
 const bgClasses: Record<Background, string> = {
   white: 'bg-white',
-  light: 'bg-primary-light',
-  primary: 'bg-primary text-white',
+  light: 'bg-surface-soft',
+  primary: 'bg-action text-text-on-emphasis',
 };
 
 export function Section({
@@ -28,7 +28,9 @@ export function Section({
         .filter(Boolean)
         .join(' ')}
     >
-      <div className="max-w-6xl mx-auto px-container-pad">{children}</div>
+      <div className="max-w-6xl mx-auto px-container md:px-container-md">
+        {children}
+      </div>
     </section>
   );
 }

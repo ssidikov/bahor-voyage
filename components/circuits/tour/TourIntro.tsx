@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
+import { Button } from '@/components/ui';
 import {
   fadeIn,
   fadeUp,
@@ -33,7 +33,6 @@ export default function TourIntro({
   introBulletKeys,
 }: TourIntroProps) {
   const t = useTranslations('circuits');
-  const locale = useLocale();
 
   return (
     <section className="relative overflow-hidden bg-[#faf8f4] py-20 md:py-28 lg:py-36">
@@ -57,7 +56,7 @@ export default function TourIntro({
         }}
       />
 
-      <div className="relative max-w-[88rem] mx-auto px-6 md:px-10 lg:px-16">
+      <div className="relative max-w-352 mx-auto px-6 md:px-10 lg:px-16">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -71,14 +70,14 @@ export default function TourIntro({
             className="relative flex flex-col lg:pr-14"
           >
             <div
-              className="relative aspect-[3/4] overflow-hidden"
+              className="relative aspect-3/4 overflow-hidden"
               style={{ clipPath: 'inset(0 0 0 0)' }}
             >
               <Image
                 src={introImage}
                 alt={introImageAlt}
                 fill
-                className="object-cover scale-[1.03] hover:scale-[1.06] transition-transform duration-[1400ms] ease-out"
+                className="object-cover scale-[1.03] hover:scale-[1.06] transition-transform duration-1400 ease-out"
                 placeholder="empty"
               />
               {/* Gradient vignette */}
@@ -341,7 +340,7 @@ export default function TourIntro({
                     '0 2px 16px rgba(200,160,80,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
                 }}
               >
-                <p className="font-sans text-[0.85rem] text-charcoal-500 font-medium uppercase tracking-[0.1em] mb-3">
+                <p className="font-sans text-[0.85rem] text-charcoal-500 font-medium uppercase tracking-widest mb-3">
                   {t(`${prefix}_intro3` as Parameters<typeof t>[0])}
                 </p>
                 <ul className="space-y-2.5">
@@ -376,9 +375,11 @@ export default function TourIntro({
             )}
 
             <motion.div variants={fadeUp} className="mt-10">
-              <Link
-                href={`/${locale}/contact`}
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-8 py-3.5 text-[0.78rem] uppercase tracking-[0.12em] font-semibold text-white transition-all duration-300 bg-primary-400 hover:bg-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f4]"
+              <Button
+                href="/contact"
+                variant="primary"
+                size="lg"
+                className="group relative overflow-hidden text-[0.78rem] uppercase tracking-[0.12em] font-semibold"
               >
                 {t(`${prefix}_cta_contact` as Parameters<typeof t>[0])}
                 <span
@@ -387,7 +388,7 @@ export default function TourIntro({
                 >
                   →
                 </span>
-              </Link>
+              </Button>
             </motion.div>
           </motion.div>
         </motion.div>

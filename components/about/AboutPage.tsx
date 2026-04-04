@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import { Link } from '@/i18n/navigation';
+import { Button } from '@/components/ui';
 import {
   fadeUp,
   slideLeft,
@@ -101,7 +101,7 @@ function TimelineStep({
         variants={reverse ? slideLeft : slideRight}
         className={reverse ? 'lg:col-start-2' : ''}
       >
-        <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+        <div className="relative aspect-4/3 overflow-hidden rounded-sm">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
           {/* gold label overlay */}
           <div className="absolute bottom-0 left-0 px-5 py-3 bg-charcoal-800/80 backdrop-blur-sm">
@@ -140,7 +140,7 @@ function TeamCard({ name, role, bio, imageSrc }: TeamCardProps) {
     <motion.div variants={fadeUp} className="group flex flex-col">
       {/* portrait */}
       <div
-        className="relative aspect-[3/4] overflow-hidden mb-5"
+        className="relative aspect-3/4 overflow-hidden mb-5"
         style={{ boxShadow: 'inset 0 0 0 1px rgba(200,169,110,0.25)' }}
       >
         {imageSrc ? (
@@ -166,7 +166,7 @@ function TeamCard({ name, role, bio, imageSrc }: TeamCardProps) {
       </div>
       {/* info */}
       <p className="font-serif text-xl text-charcoal-700 mb-1">{name}</p>
-      <p className="text-label-lg uppercase tracking-[0.1em] text-gold mb-3">
+      <p className="text-label-lg uppercase tracking-widest text-gold mb-3">
         {role}
       </p>
       <p className="font-sans text-body-md text-charcoal-400 leading-relaxed">
@@ -234,7 +234,7 @@ export function AboutPage() {
       {/* ═══ HERO ══════════════════════════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative h-screen min-h-[600px] flex flex-col justify-end pb-16 md:pb-24 overflow-hidden"
+        className="relative h-screen min-h-150 flex flex-col justify-end pb-16 md:pb-24 overflow-hidden"
       >
         {/* parallax image */}
         <motion.div
@@ -249,7 +249,7 @@ export function AboutPage() {
             className="object-cover"
           />
           {/* gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-800/30 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/80 via-charcoal-800/30 to-transparent" />
         </motion.div>
 
         {/* arabesque decoration */}
@@ -274,7 +274,7 @@ export function AboutPage() {
         {/* headline */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative z-10 max-w-[75rem] mx-auto px-6 md:px-10 w-full"
+          className="relative z-10 max-w-content mx-auto px-6 md:px-10 w-full"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -309,13 +309,13 @@ export function AboutPage() {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
         >
-          <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/40" />
+          <div className="w-px h-10 bg-linear-to-b from-transparent to-white/40" />
         </motion.div>
       </section>
 
       {/* ═══ QUOTE ═════════════════════════════════════════════════════════ */}
       <section className="bg-sand-50 py-16 md:py-20">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -345,7 +345,7 @@ export function AboutPage() {
 
       {/* ═══ HISTORY ═══════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 lg:py-section bg-white">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           {/* section header */}
           <motion.div
             variants={staggerContainer}
@@ -404,7 +404,7 @@ export function AboutPage() {
 
       {/* ═══ TEAM ══════════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 lg:py-section bg-sand-50">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           {/* header */}
           <motion.div
             variants={staggerContainer}
@@ -457,7 +457,7 @@ export function AboutPage() {
 
       {/* ═══ COMMITMENTS ═══════════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 lg:py-section bg-white">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           {/* header */}
           <motion.div
             variants={staggerContainer}
@@ -509,7 +509,7 @@ export function AboutPage() {
 
       {/* ═══ PARTNERS ══════════════════════════════════════════════════════ */}
       <section className="py-14 md:py-20 bg-sand-100">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -577,7 +577,7 @@ export function AboutPage() {
           </svg>
         </div>
 
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -598,9 +598,11 @@ export function AboutPage() {
               {t('cta_body')}
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link
+              <Button
                 href="/contact"
-                className="inline-flex items-center gap-3 bg-primary-400 text-white hover:bg-primary-500 px-10 py-4 rounded-pill text-label uppercase tracking-[0.1em] font-medium transition-all duration-300"
+                variant="primary"
+                size="lg"
+                className="text-label uppercase tracking-widest px-10 py-4"
               >
                 {t('cta_button')}
                 <svg
@@ -616,7 +618,7 @@ export function AboutPage() {
                     d="M4.5 10h11m0 0l-4-4m4 4l-4 4"
                   />
                 </svg>
-              </Link>
+              </Button>
             </motion.div>
           </motion.div>
         </div>

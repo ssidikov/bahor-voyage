@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
+import { Button } from '@/components/ui';
 import { fadeUp, staggerContainer } from '@/lib/animations';
 
 interface TourCTAProps {
@@ -12,11 +12,10 @@ interface TourCTAProps {
 
 export default function TourCTA({ prefix }: TourCTAProps) {
   const t = useTranslations('circuits');
-  const locale = useLocale();
 
   return (
     <section className="bg-charcoal-800 py-20 md:py-28">
-      <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+      <div className="max-w-content mx-auto px-6 md:px-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -32,9 +31,11 @@ export default function TourCTA({ prefix }: TourCTAProps) {
             <p className="font-sans text-body-md text-white/60 mb-10 leading-relaxed">
               {t(`${prefix}_cta_body` as Parameters<typeof t>[0])}
             </p>
-            <Link
-              href={`/${locale}/contact`}
-              className="group inline-flex items-center gap-3 rounded-pill bg-primary-400 px-8 py-3.5 text-label-lg uppercase tracking-[0.08em] font-medium text-white transition-all duration-300 hover:bg-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-800"
+            <Button
+              href="/contact"
+              variant="primary"
+              size="lg"
+              className="group text-label-lg uppercase tracking-[0.08em]"
             >
               {t(`${prefix}_cta_contact` as Parameters<typeof t>[0])}
               <span
@@ -43,7 +44,7 @@ export default function TourCTA({ prefix }: TourCTAProps) {
               >
                 →
               </span>
-            </Link>
+            </Button>
           </motion.div>
         </motion.div>
       </div>

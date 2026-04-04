@@ -1,10 +1,10 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
+import { Button } from '@/components/ui';
 import {
   fadeIn,
   fadeUp,
@@ -34,14 +34,13 @@ const PROJECTS = [
 
 export default function ProjectsPage() {
   const t = useTranslations('projects');
-  const locale = useLocale();
   const { scrollY } = useScroll();
   const heroParallax = useTransform(scrollY, [0, 600], ['0%', '20%']);
 
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="relative h-screen min-h-[500px] overflow-hidden">
+      <section className="relative h-screen min-h-125 overflow-hidden">
         {/* Parallax background image */}
         <motion.div
           className="absolute inset-0 scale-110"
@@ -59,11 +58,11 @@ export default function ProjectsPage() {
 
         {/* Overlays */}
         <div className="absolute inset-0 bg-charcoal-900/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/70 via-charcoal-900/15 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/70 via-charcoal-900/15 to-transparent" />
 
         {/* Content */}
         <div className="absolute bottom-0 left-0 right-0 z-10 pb-16 md:pb-24">
-          <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+          <div className="max-w-content mx-auto px-6 md:px-10">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -131,7 +130,7 @@ export default function ProjectsPage() {
               idx % 2 === 0 ? 'bg-white' : 'bg-sand-100'
             }`}
           >
-            <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+            <div className="max-w-content mx-auto px-6 md:px-10">
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
@@ -145,7 +144,7 @@ export default function ProjectsPage() {
                   className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}
                 >
                   <div
-                    className="relative aspect-[4/3] overflow-hidden rounded-sm"
+                    className="relative aspect-4/3 overflow-hidden rounded-sm"
                     style={{
                       boxShadow: 'inset 0 0 0 1px rgba(200,169,110,0.25)',
                     }}
@@ -259,9 +258,11 @@ export default function ProjectsPage() {
             {t('cta_body')}
           </motion.p>
           <motion.div variants={fadeUp} className="mt-10">
-            <Link
-              href={`/${locale}/contact`}
-              className="group inline-flex items-center gap-3 border border-white/60 text-white rounded-pill px-8 py-3.5 text-label-lg uppercase tracking-[0.1em] font-medium hover:bg-white hover:text-primary-600 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            <Button
+              href="/contact"
+              variant="inverted"
+              size="lg"
+              className="group text-label-lg uppercase tracking-widest"
             >
               {t('cta_button')}
               <span
@@ -270,7 +271,7 @@ export default function ProjectsPage() {
               >
                 &rarr;
               </span>
-            </Link>
+            </Button>
           </motion.div>
         </motion.div>
       </section>

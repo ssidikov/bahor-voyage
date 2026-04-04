@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 
+import Button from '@/components/ui/Button';
 import { Link, usePathname } from '@/i18n/navigation';
 import { useRouter } from 'next/navigation';
 import type { routing } from '@/i18n/routing';
@@ -64,8 +65,8 @@ export function Header() {
       }`}
     >
       <div
-        className={`max-w-[75rem] mx-auto px-6 md:px-10 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? 'h-16 md:h-[72px]' : 'h-20 md:h-24'
+        className={`max-w-content mx-auto px-6 md:px-10 flex items-center justify-between transition-all duration-500 ${
+          scrolled ? 'h-16 md:h-18' : 'h-20 md:h-24'
         }`}
       >
         {/* Logo */}
@@ -80,7 +81,7 @@ export function Header() {
               scrolled ? 'h-8 md:h-9' : 'h-16 md:h-20'
             } ${
               scrolled
-                ? '[filter:brightness(0)_saturate(100%)_invert(60%)_sepia(16%)_saturate(2234%)_hue-rotate(136deg)_brightness(95%)_contrast(88%)]'
+                ? 'filter-[brightness(0)_saturate(100%)_invert(60%)_sepia(16%)_saturate(2234%)_hue-rotate(136deg)_brightness(95%)_contrast(88%)]'
                 : 'drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]'
             }`}
           />
@@ -92,7 +93,7 @@ export function Header() {
             <Link
               key={key}
               href={href}
-              className={`link-premium text-label-lg uppercase tracking-[0.1em] font-medium transition-colors duration-300 ${
+              className={`link-premium text-label-lg uppercase tracking-widest font-medium transition-colors duration-300 ${
                 scrolled
                   ? 'text-charcoal-500 hover:text-primary-400'
                   : 'text-white/80 hover:text-white'
@@ -139,20 +140,17 @@ export function Header() {
           </div>
 
           {/* CTA — desktop only */}
-          <Link
+          <Button
             href="/booking"
-            className={`hidden md:inline-flex items-center rounded-pill text-label-lg uppercase tracking-[0.08em] font-medium transition-all duration-300 px-6 py-2.5 ${
-              scrolled
-                ? 'bg-primary-400 text-white hover:bg-primary-500'
-                : 'border border-white/60 text-white hover:bg-white hover:text-primary-600'
-            }`}
+            variant={scrolled ? 'primary' : 'inverted'}
+            className="hidden md:inline-flex text-label-lg uppercase tracking-[0.08em] px-6 py-2.5"
           >
             {t('book_cta')}
-          </Link>
+          </Button>
 
           {/* Hamburger — mobile only */}
           <button
-            className="md:hidden flex flex-col justify-center gap-[5px] w-6 h-6"
+            className="md:hidden flex flex-col justify-center gap-1.25 w-6 h-6"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
@@ -222,13 +220,14 @@ export function Header() {
                 </Link>
               ))}
               <div className="divider-gold mt-4 mb-2" />
-              <Link
+              <Button
                 href="/booking"
-                className="inline-flex items-center justify-center bg-primary-400 text-white px-8 py-3.5 rounded-pill text-label-lg uppercase tracking-[0.08em] font-medium hover:bg-primary-500 transition-colors"
+                variant="primary"
+                className="inline-flex justify-center text-label-lg uppercase tracking-[0.08em] px-8 py-3.5"
                 onClick={() => setMenuOpen(false)}
               >
                 {t('book_cta')}
-              </Link>
+              </Button>
 
               {/* Language switcher in mobile */}
               <div className="flex items-center gap-3 mt-4">
@@ -236,7 +235,7 @@ export function Header() {
                   <button
                     key={locale}
                     onClick={() => switchLocale(locale)}
-                    className={`text-label-lg uppercase tracking-[0.1em] transition-colors ${
+                    className={`text-label-lg uppercase tracking-widest transition-colors ${
                       locale === currentLocale
                         ? 'text-primary-400 font-semibold'
                         : 'text-charcoal-300 hover:text-primary-400'

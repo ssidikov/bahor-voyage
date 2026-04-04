@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
+import Button from '@/components/ui/Button';
+
 export function HeroSection() {
   const t = useTranslations('home');
   const { scrollY } = useScroll();
@@ -11,7 +13,7 @@ export function HeroSection() {
   const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <section className="relative h-svh min-h-[600px] overflow-hidden">
+    <section className="relative h-svh min-h-150 overflow-hidden">
       {/* Parallax background */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -31,14 +33,14 @@ export function HeroSection() {
 
       {/* Dual overlay — cinematic depth */}
       <div className="absolute inset-0 bg-charcoal-900/25" />
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/70 via-charcoal-900/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/70 via-charcoal-900/20 to-transparent" />
 
       {/* Content — editorial bottom-left positioning */}
       <motion.div
         className="absolute bottom-0 left-0 right-0 z-10 pb-20 md:pb-28 lg:pb-32"
         style={{ opacity: contentOpacity }}
       >
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           {/* Eyebrow label */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -77,9 +79,11 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
           >
-            <a
-              href="#circuits"
-              className="group inline-flex items-center gap-3 border border-white/60 text-white rounded-pill px-8 py-3.5 text-label-lg uppercase tracking-[0.1em] font-medium hover:bg-white hover:text-primary-600 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            <Button
+              href="/#circuits"
+              variant="inverted"
+              size="lg"
+              className="group text-label-lg uppercase tracking-widest"
             >
               {t('hero_cta')}
               <span
@@ -88,7 +92,7 @@ export function HeroSection() {
               >
                 &rarr;
               </span>
-            </a>
+            </Button>
           </motion.div>
         </div>
       </motion.div>

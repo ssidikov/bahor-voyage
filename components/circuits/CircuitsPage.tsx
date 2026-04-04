@@ -61,12 +61,12 @@ function CircuitCard({
       href={href}
       className={`group relative block overflow-hidden rounded-[1.75rem] border border-charcoal-900/10 shadow-[0_10px_30px_rgba(20,20,20,0.12)] transition-transform duration-500 hover:-translate-y-1 ${
         large
-          ? 'aspect-[4/5] md:aspect-[3/2] lg:aspect-auto lg:h-[28rem]'
-          : 'aspect-[4/5] md:aspect-square lg:aspect-auto lg:h-[28rem]'
+          ? 'aspect-4/5 md:aspect-3/2 lg:aspect-auto lg:h-112'
+          : 'aspect-4/5 md:aspect-square lg:aspect-auto lg:h-112'
       }`}
     >
       {/* Image layer */}
-      <div className="absolute inset-0 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105">
+      <div className="absolute inset-0 transition-transform duration-800 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105">
         <Image
           src={image}
           alt={t(tagKey)}
@@ -78,7 +78,7 @@ function CircuitCard({
       </div>
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/95 via-charcoal-900/50 to-charcoal-900/5 transition-colors duration-500 group-hover:from-charcoal-900/90" />
+      <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/95 via-charcoal-900/50 to-charcoal-900/5 transition-colors duration-500 group-hover:from-charcoal-900/90" />
 
       {/* Duration badge */}
       <div className="absolute left-5 top-5 z-10 rounded-full border border-white/30 bg-charcoal-900/40 px-3 py-1.5 backdrop-blur">
@@ -139,7 +139,7 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* HERO                                                          */}
       {/* ============================================================ */}
-      <section className="relative h-screen md:h-[85vh] min-h-[500px] overflow-hidden">
+      <section className="relative h-screen md:h-[85vh] min-h-125 overflow-hidden">
         {/* Parallax image */}
         <motion.div
           className="absolute inset-0 scale-110"
@@ -157,11 +157,11 @@ export default function CircuitsPage() {
 
         {/* Overlays */}
         <div className="absolute inset-0 bg-charcoal-900/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/75 via-charcoal-900/15 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/75 via-charcoal-900/15 to-transparent" />
 
         {/* Content */}
         <div className="absolute bottom-0 left-0 right-0 z-10 pb-16 md:pb-24">
-          <div className="max-w-[78rem] mx-auto px-6 md:px-10">
+          <div className="max-w-312 mx-auto px-6 md:px-10">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -212,7 +212,7 @@ export default function CircuitsPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="max-w-[78rem] mx-auto px-6 md:px-10"
+          className="max-w-312 mx-auto px-6 md:px-10"
         >
           <div className="flex flex-col sm:flex-row items-center justify-center divide-y sm:divide-y-0 sm:divide-x divide-sand-200">
             <motion.div variants={fadeUp}>
@@ -241,7 +241,7 @@ export default function CircuitsPage() {
       {/* INTRO                                                         */}
       {/* ============================================================ */}
       <section className="bg-sand-50 py-16 md:py-20 lg:py-section">
-        <div className="max-w-[52rem] mx-auto px-6 md:px-10 text-center">
+        <div className="max-w-208 mx-auto px-6 md:px-10 text-center">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -262,7 +262,7 @@ export default function CircuitsPage() {
       {/* CIRCUITS GRID                                                 */}
       {/* ============================================================ */}
       <section className="bg-white py-16 md:py-20 lg:py-section">
-        <div className="max-w-[78rem] mx-auto px-6 md:px-10">
+        <div className="max-w-312 mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -296,15 +296,15 @@ export default function CircuitsPage() {
       {/* SUR MESURE CALLOUT                                            */}
       {/* ============================================================ */}
       <section className="bg-sand-100 py-14 md:py-16">
-        <div className="max-w-[78rem] mx-auto px-6 md:px-10">
+        <div className="max-w-312 mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="rounded-3xl border border-primary-200 bg-white/90 px-6 py-8 md:px-10 md:py-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+            className="rounded-3xl border border-border-soft bg-surface-default px-6 py-8 md:px-10 md:py-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
           >
-            <div className="max-w-[44rem]">
+            <div className="max-w-176">
               <motion.p
                 variants={fadeUp}
                 className="font-sans text-label uppercase tracking-[0.14em] text-primary-400 mb-3"
@@ -330,7 +330,7 @@ export default function CircuitsPage() {
                 href="/contact"
                 variant="primary"
                 size="md"
-                className="w-full lg:w-auto lg:min-w-[14rem]"
+                className="w-full lg:w-auto lg:min-w-56"
               >
                 {t('page_tailor_cta')}
               </Button>
@@ -363,7 +363,7 @@ export default function CircuitsPage() {
         </div>
 
         {/* Gold glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40rem] h-48 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-160 h-48 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
 
         <motion.div
           variants={staggerContainer}
@@ -387,9 +387,11 @@ export default function CircuitsPage() {
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-10">
-            <Link
+            <Button
               href="/contact"
-              className="group inline-flex items-center gap-3 border border-white/60 text-white rounded-pill px-8 py-3.5 text-label-lg uppercase tracking-[0.1em] font-medium hover:bg-white hover:text-primary-600 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+              variant="inverted"
+              size="lg"
+              className="group text-label-lg uppercase tracking-widest"
             >
               {t('page_cta_button')}
               <span
@@ -398,7 +400,7 @@ export default function CircuitsPage() {
               >
                 &rarr;
               </span>
-            </Link>
+            </Button>
           </motion.div>
         </motion.div>
       </section>

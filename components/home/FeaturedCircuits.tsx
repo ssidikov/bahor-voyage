@@ -30,7 +30,7 @@ const CIRCUITS: readonly Circuit[] = [
   {
     id: 'c3',
     image: '/images/afor-voyage-2.jpeg',
-    href: '/circuits/immersion-totale',
+    href: '/circuits/immersion-totale-14j',
   },
   {
     id: 'c4',
@@ -55,11 +55,11 @@ function CircuitCard({
       href={href}
       className={`group relative block overflow-hidden rounded-[1.75rem] border border-charcoal-900/10 shadow-[0_10px_30px_rgba(20,20,20,0.12)] transition-transform duration-500 hover:-translate-y-1 ${
         large
-          ? 'aspect-[4/5] md:aspect-[3/2] lg:aspect-auto lg:h-[24rem]'
-          : 'aspect-[4/5] md:aspect-square lg:aspect-auto lg:h-[24rem]'
+          ? 'aspect-4/5 md:aspect-3/2 lg:aspect-auto lg:h-96'
+          : 'aspect-4/5 md:aspect-square lg:aspect-auto lg:h-96'
       }`}
     >
-      <div className="absolute inset-0 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105">
+      <div className="absolute inset-0 transition-transform duration-800 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105">
         <Image
           src={image}
           alt={t(tagKey)}
@@ -69,7 +69,7 @@ function CircuitCard({
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/95 via-charcoal-900/55 to-charcoal-900/10 transition-colors duration-500 group-hover:from-charcoal-900/90" />
+      <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/95 via-charcoal-900/55 to-charcoal-900/10 transition-colors duration-500 group-hover:from-charcoal-900/90" />
 
       <div className="absolute left-5 top-5 z-10 rounded-full border border-white/30 bg-charcoal-900/40 px-3 py-1.5 backdrop-blur">
         <span className="text-[0.68rem] font-medium uppercase tracking-[0.12em] text-white/85">
@@ -108,7 +108,7 @@ export function FeaturedCircuits() {
       id="circuits"
       className="bg-[linear-gradient(180deg,#fff_0%,#f8f4ed_50%,#fff_100%)] py-16 md:py-20 lg:py-section"
     >
-      <div className="max-w-[78rem] mx-auto px-6 md:px-10">
+      <div className="max-w-312 mx-auto px-6 md:px-10">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -124,7 +124,7 @@ export function FeaturedCircuits() {
           </motion.p>
 
           <div className="flex flex-col gap-6 md:gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-[42rem]">
+            <div className="max-w-2xl">
               <motion.h2
                 variants={fadeUp}
                 className="font-serif text-display-xl text-charcoal-700 font-light text-left"
@@ -144,7 +144,7 @@ export function FeaturedCircuits() {
                 href="/contact"
                 variant="primary"
                 size="md"
-                className="w-full lg:w-auto lg:min-w-[12rem]"
+                className="w-full lg:w-auto lg:min-w-48"
               >
                 {tHome('cta_reserve')}
               </Button>
@@ -184,16 +184,16 @@ export function FeaturedCircuits() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="mt-10 rounded-3xl border border-primary-200 bg-white/90 px-6 py-5 md:px-8 md:py-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"
+          className="mt-10 rounded-3xl border border-border-soft bg-surface-default px-6 py-5 md:px-8 md:py-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"
         >
-          <p className="max-w-[50rem] text-body-md text-charcoal-500">
+          <p className="max-w-200 text-body-md text-charcoal-500">
             {t('section_conversion_note')}
           </p>
           <Button
             href="/contact"
             variant="outline"
             size="md"
-            className="w-full lg:w-auto lg:min-w-[14rem]"
+            className="w-full lg:w-auto lg:min-w-56"
           >
             {t('section_cta')}
           </Button>

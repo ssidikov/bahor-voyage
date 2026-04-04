@@ -1,10 +1,11 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
+import { Button } from '@/components/ui';
+import { Link } from '@/i18n/navigation';
 import {
   fadeUp,
   slideLeft,
@@ -74,17 +75,20 @@ function IconKnowledge() {
   );
 }
 
-const ICONS = [IconPeople, IconEconomy, IconKnowledge] as const;
+const PRINCIPLES_CONFIG = [
+  { key: 'p1', Icon: IconPeople },
+  { key: 'p2', Icon: IconEconomy },
+  { key: 'p3', Icon: IconKnowledge },
+] as const;
 
 export default function VoyageSolidairePage() {
   const t = useTranslations('voyage_solidaire');
-  const locale = useLocale();
   const { scrollY } = useScroll();
   const heroParallax = useTransform(scrollY, [0, 600], ['0%', '20%']);
 
-  const principles = (['p1', 'p2', 'p3'] as const).map((key, i) => ({
+  const principles = PRINCIPLES_CONFIG.map(({ key, Icon }) => ({
     key,
-    Icon: ICONS[i],
+    Icon,
     title: t(`${key}_title` as 'p1_title'),
     body: t(`${key}_body` as 'p1_body'),
   }));
@@ -92,7 +96,7 @@ export default function VoyageSolidairePage() {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="relative h-screen min-h-[500px] overflow-hidden">
+      <section className="relative h-screen min-h-125 overflow-hidden">
         <motion.div
           className="absolute inset-0 scale-110"
           style={{ y: heroParallax }}
@@ -109,11 +113,11 @@ export default function VoyageSolidairePage() {
 
         {/* Overlays */}
         <div className="absolute inset-0 bg-charcoal-900/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/75 via-charcoal-900/15 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/75 via-charcoal-900/15 to-transparent" />
 
         {/* Content */}
         <div className="absolute bottom-0 left-0 right-0 z-10 pb-16 md:pb-24">
-          <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+          <div className="max-w-content mx-auto px-6 md:px-10">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -173,7 +177,7 @@ export default function VoyageSolidairePage() {
 
       {/* ===================== WHAT IS SOLIDARITY TRAVEL ===================== */}
       <section className="bg-white py-16 md:py-20 lg:py-section overflow-hidden">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -201,7 +205,7 @@ export default function VoyageSolidairePage() {
             {/* Image column */}
             <motion.div variants={slideRight} className="lg:col-span-6">
               <div
-                className="relative aspect-[4/3] overflow-hidden rounded-sm"
+                className="relative aspect-4/3 overflow-hidden rounded-sm"
                 style={{
                   boxShadow: 'inset 0 0 0 1px rgba(200,169,110,0.25)',
                 }}
@@ -230,7 +234,7 @@ export default function VoyageSolidairePage() {
 
       {/* ===================== WHY AFOR ===================== */}
       <section className="bg-sand-100 py-16 md:py-20 lg:py-section overflow-hidden">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -244,7 +248,7 @@ export default function VoyageSolidairePage() {
               className="lg:col-span-6 lg:order-2"
             >
               <div
-                className="relative aspect-[4/3] overflow-hidden rounded-sm"
+                className="relative aspect-4/3 overflow-hidden rounded-sm"
                 style={{
                   boxShadow: 'inset 0 0 0 1px rgba(200,169,110,0.25)',
                 }}
@@ -292,7 +296,7 @@ export default function VoyageSolidairePage() {
 
       {/* ===================== THREE PRINCIPLES ===================== */}
       <section className="bg-white py-16 md:py-20 lg:py-section">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           {/* Header */}
           <motion.div
             initial="hidden"
@@ -344,7 +348,7 @@ export default function VoyageSolidairePage() {
 
       {/* ===================== CUSTOMISE YOUR JOURNEY ===================== */}
       <section className="bg-sand-100 py-16 md:py-20 lg:py-section overflow-hidden">
-        <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -377,9 +381,10 @@ export default function VoyageSolidairePage() {
                   className="object-cover rounded-sm w-full aspect-video mb-6"
                   placeholder="empty"
                 />
-                <Link
-                  href={`/${locale}/circuits`}
-                  className="group inline-flex items-center gap-3 bg-primary-400 text-white rounded-pill px-7 py-3 text-label-lg uppercase tracking-[0.1em] font-medium hover:bg-primary-500 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 w-full justify-center mb-3"
+                <Button
+                  href="/circuits"
+                  variant="primary"
+                  className="group w-full mb-3 text-label-lg uppercase tracking-widest px-7 py-3"
                 >
                   {t('custom_cta')}
                   <span
@@ -388,7 +393,7 @@ export default function VoyageSolidairePage() {
                   >
                     &rarr;
                   </span>
-                </Link>
+                </Button>
                 <p className="font-sans text-body-sm text-charcoal-400 text-center">
                   {t('custom_cta_sub')}
                 </p>
@@ -442,9 +447,11 @@ export default function VoyageSolidairePage() {
             variants={fadeUp}
             className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center"
           >
-            <Link
-              href={`/${locale}/contact`}
-              className="group inline-flex items-center gap-3 border border-white/60 text-white rounded-pill px-8 py-3.5 text-label-lg uppercase tracking-[0.1em] font-medium hover:bg-white hover:text-primary-600 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            <Button
+              href="/contact"
+              variant="inverted"
+              size="lg"
+              className="group text-label-lg uppercase tracking-widest"
             >
               {t('cta_button')}
               <span
@@ -453,9 +460,9 @@ export default function VoyageSolidairePage() {
               >
                 &rarr;
               </span>
-            </Link>
+            </Button>
             <Link
-              href={`/${locale}/projects`}
+              href="/projects"
               className="font-sans text-body-md text-charcoal-300 hover:text-white underline underline-offset-4 transition-colors duration-200"
             >
               {t('cta_link')}

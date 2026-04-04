@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
+import { Link } from '@/i18n/navigation';
 import { fadeUp, staggerContainer } from '@/lib/animations';
 
 const COMMITMENTS = [
@@ -15,11 +15,10 @@ const COMMITMENTS = [
 export function CommitmentsSection() {
   const tHome = useTranslations('home');
   const t = useTranslations('commitments');
-  const locale = useLocale();
 
   return (
     <section className="bg-sand-100 py-16 md:py-20 lg:py-section">
-      <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+      <div className="max-w-content mx-auto px-6 md:px-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -31,7 +30,7 @@ export function CommitmentsSection() {
             {tHome('commitments_title')}
           </h2>
           <Link
-            href={`/${locale}/projects`}
+            href="/projects"
             className="inline-flex items-center gap-2 mt-6 font-sans text-sm tracking-widest uppercase text-gold hover:text-gold/80 transition-colors group"
           >
             <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all group-hover:after:w-full">
