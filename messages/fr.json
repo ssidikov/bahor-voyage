@@ -498,57 +498,42 @@
   "about": {
     "meta_title": "À propos — AFOR & Bahor-Voyage",
     "meta_description": "Découvrez l'histoire de l'AFOR, association franco-ouzbèke fondée à Lyon en 2012, et l'équipe passionnée derrière Bahor-Voyage. Un tourisme solidaire au service de l'humain.",
-
     "hero_kicker": "Qui sommes-nous",
     "hero_title": "Association France Ouzbékistan Racines",
     "hero_subtitle": "Bâtir des ponts depuis 2012.",
-
     "quote": "Nous croyons que voyager, c'est s'engager — pour les peuples que l'on rencontre, pour les terres que l'on traverse, pour un futur plus juste.",
     "quote_attribution": "Navbakhor Boudot, fondatrice",
-
     "history_kicker": "Notre histoire",
     "history_title": "Née d'un désir de rapprochement.",
     "history_intro": "L'AFOR naît de la conviction qu'échanger, c'est comprendre. Depuis 2012, nous construisons des passerelles durables entre la France et l'Ouzbékistan par le voyage solidaire et le développement humain.",
-
     "h1_label": "2012",
     "h1_title": "La fondation à Lyon",
     "h1_body": "Navbakhor Boudot fonde l'AFOR à Lyon avec une ambition claire : rapprocher deux cultures que tout sépare en apparence, mais qu'unit une même soif de rencontre. L'association s'appuie d'emblée sur un réseau de familles d'accueil et de guides locaux en Ouzbékistan.",
-
     "h2_label": "2013 – 2017",
     "h2_title": "Les premiers voyages solidaires",
     "h2_body": "Les premières délégations de voyageurs français posent le pied sur la Route de la Soie. Chaque circuit est pensé pour bénéficier directement aux communautés locales : hébergement chez l'habitant, repas préparés par des familles, guides ouzbeks formés et rémunérés équitablement.",
-
     "h3_label": "2018 → aujourd'hui",
     "h3_title": "L'engagement territorial à Khorezm",
     "h3_body": "L'AFOR développe ses projets solidaires dans la région de Khorezm : réhabilitation agricole à Vazir, plantation d'arbres à Gurlan, soutien à l'éducation et à l'entrepreneuriat féminin. Bahor-Voyage devient le levier économique qui finance ces actions sur le terrain.",
-
     "team_kicker": "L'équipe",
     "team_title": "Des passionnés au service de chaque voyage.",
-
     "t1_name": "Navbakhor Boudot",
     "t1_role": "Présidente & Fondatrice",
     "t1_bio": "Franco-ouzbèke, Navbakhor a grandi entre deux cultures. Après des études à Lyon, elle crée l'AFOR pour offrir aux voyageurs la même richesse qu'elle porte en elle : la rencontre vraie, sans filtres.",
-
     "t2_name": "Ramilya",
     "t2_role": "Coordinatrice Ouzbékistan",
     "t2_bio": "Basée à Urgentch, Ramilya est le cœur opérationnel de l'AFOR sur place. Elle tisse les liens avec les familles, les guides et les autorités locales pour garantir des séjours sereins et authentiques.",
-
     "t3_name": "Nicolas Boudot",
     "t3_role": "Co-fondateur & Logistique",
     "t3_bio": "Partenaire de la première heure, Nicolas gère la logistique française et s'assure que chaque voyageur parte avec toutes les informations et la sérénité nécessaires pour vivre une expérience inoubliable.",
-
     "commitments_kicker": "Nos engagements",
     "commitments_title": "Un tourisme aux valeurs concrètes.",
-
     "e1_title": "Tourisme solidaire",
     "e1_body": "Chaque euro dépensé chez Bahor-Voyage contribue directement aux projets de développement de l'AFOR sur le terrain. Pas de communication vague : des actions mesurables, des bénéficiaires identifiés.",
-
     "e2_title": "Rencontres authentiques",
     "e2_body": "Nos circuits privilégient les immersions chez l'habitant, les repas partagés, les artisans dans leurs ateliers. Vous ne visitez pas l'Ouzbékistan — vous le vivez, avec ses habitants.",
-
     "e3_title": "Retombées locales",
     "e3_body": "Guides formés et rémunérés équitablement, familles d'accueil, petits restaurants locaux : l'argent du tourisme reste en Ouzbékistan et profite à ceux qui font vivre la culture.",
-
     "partners_kicker": "Soutiens & Partenaires",
     "partners_title": "Ensemble, plus loin.",
     "partners_body": "L'AFOR travaille en lien étroit avec des institutions et des acteurs de terrain qui partagent nos valeurs.",
@@ -557,7 +542,6 @@
     "p3": "Communauté franco-ouzbèke de Lyon",
     "p4": "Guides locaux certifiés & familles d'accueil",
     "p5": "Associations de femmes entrepreneures, Ouzbékistan",
-
     "cta_title": "Voyageons ensemble.",
     "cta_body": "Chaque voyage avec Bahor-Voyage est une façon concrète de soutenir nos projets humains. Contactez-nous pour construire votre circuit sur-mesure.",
     "cta_button": "Nous contacter"
@@ -565,44 +549,34 @@
   "voyage_solidaire": {
     "meta_title": "Voyage Solidaire en Ouzbékistan — AFOR & Bahor-Voyage",
     "meta_description": "Découvrez le voyage solidaire en Ouzbékistan avec AFOR : rencontre humaine, économie locale et transmission du savoir. Circuits sur-mesure depuis Lyon.",
-
     "hero_kicker": "Nos projets",
     "hero_title": "Le voyage solidaire",
     "hero_subtitle": "Voyager autrement, en soutenant les communautés locales.",
-
     "intro_quote": "L'AFOR crée le voyage solidaire en Ouzbékistan.",
-
     "definition_kicker": "Qu'est-ce que le voyage solidaire ?",
     "definition_title": "Un tourisme qui change les vies",
     "definition_body1": "Le voyage solidaire est une forme de tourisme responsable qui place l'humain au cœur de l'expérience. Contrairement au tourisme de masse, il vise à créer des liens durables entre les voyageurs et les communautés locales, tout en contribuant au développement économique et social des régions visitées.",
     "definition_body2": "Avec l'AFOR, chaque séjour en Ouzbékistan est conçu pour que votre présence profite directement aux habitants : hébergement chez l'habitant, repas préparés par des familles locales, guides formés et rémunérés équitablement, achats d'artisanat en circuit court.",
-
     "why_kicker": "Pourquoi l'AFOR ?",
     "why_title": "Née d'une histoire, portée par une conviction",
     "why_body1": "L'AFOR est née de l'histoire personnelle de Navbakhor Boudot. Originaire de la région de Khorezm, au bord de la mer d'Aral, elle a grandi dans une région dévastée par l'une des pires catastrophes écologiques du XXe siècle. En quittant l'Ouzbékistan pour la France, elle a emporté avec elle le désir de tisser des ponts entre les deux cultures.",
     "why_body2": "En fondant l'AFOR à Lyon en 2012, elle a transformé ce désir en action concrète. Le voyage solidaire est devenu le levier par lequel l'association finance ses projets de terrain : plantation d'arbres à Gurlan, soutien à l'éducation des jeunes, accompagnement de l'entrepreneuriat féminin.",
-
     "principles_kicker": "Nos trois piliers",
     "principles_title": "Ce qui guide chaque voyage",
-
     "p1_icon": "people",
     "p1_title": "Rencontre humaine",
     "p1_body": "Chaque circuit est construit autour d'échanges authentiques avec les familles ouzbèkes, les artisans, les guides locaux. Vous n'observez pas l'Ouzbékistan — vous en faites partie.",
-
     "p2_icon": "economy",
     "p2_title": "Économie locale",
     "p2_body": "La quasi-totalité de votre budget reste dans la région visitée : hébergement chez l'habitant, restaurants familiaux, transports locaux, artisanat direct. Aucun intermédiaire étranger ne capte la valeur créée.",
-
     "p3_icon": "knowledge",
     "p3_title": "Transmission du savoir",
     "p3_body": "Les guides et familles d'accueil partagent leur culture, leurs traditions et leurs savoir-faire. De votre côté, vous apportez votre curiosité et votre regard — une mise en commun qui enrichit des deux côtés.",
-
     "custom_kicker": "Sur-mesure",
     "custom_title": "Adapter le voyage solidaire à vos envies",
     "custom_body": "Chaque voyageur est différent. Que vous souhaitiez une immersion complète chez l'habitant, un circuit axé sur les projets AFOR ou une combinaison culture et solidarité, nous construisons avec vous l'itinéraire qui vous ressemble. Nos circuits vont de 11 à 18 jours et peuvent être adaptés en durée, rythme et thématiques.",
     "custom_cta": "Voir nos circuits",
     "custom_cta_sub": "Ou contactez-nous pour un devis personnalisé",
-
     "cta_title": "Prêt à voyager autrement ?",
     "cta_body": "Rejoignez les voyageurs qui ont choisi l'Ouzbékistan solidaire. Contactez-nous pour construire votre circuit sur-mesure.",
     "cta_button": "Nous contacter",
