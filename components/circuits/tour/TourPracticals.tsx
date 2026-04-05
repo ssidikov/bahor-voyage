@@ -41,7 +41,7 @@ export default function TourPracticals({
               <motion.li
                 key={key}
                 variants={fadeUp}
-                className="flex items-start gap-5 rounded-xl p-6"
+                className="flex items-center gap-5 rounded-xl p-6"
                 style={{
                   background: 'rgba(200,160,80,0.04)',
                   border: '1px solid rgba(200,160,80,0.15)',
