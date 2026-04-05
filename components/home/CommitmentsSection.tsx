@@ -10,6 +10,9 @@ const COMMITMENTS = [
   { roman: 'I', titleKey: 'c1_title', descKey: 'c1_desc' },
   { roman: 'II', titleKey: 'c2_title', descKey: 'c2_desc' },
   { roman: 'III', titleKey: 'c3_title', descKey: 'c3_desc' },
+  { roman: 'IV', titleKey: 'c4_title', descKey: 'c4_desc' },
+  { roman: 'V', titleKey: 'c5_title', descKey: 'c5_desc' },
+  { roman: 'VI', titleKey: 'c6_title', descKey: 'c6_desc' },
 ] as const;
 
 export function CommitmentsSection() {
@@ -29,6 +32,9 @@ export function CommitmentsSection() {
           <h2 className="font-serif text-display-lg text-charcoal-700 font-light">
             {tHome('commitments_title')}
           </h2>
+          <p className="max-w-3xl mx-auto mt-5 font-sans text-body-md text-charcoal-400 leading-relaxed">
+            {t('section_subtitle')}
+          </p>
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 mt-6 font-sans text-sm tracking-widest uppercase text-gold hover:text-gold/80 transition-colors group"
@@ -47,7 +53,7 @@ export function CommitmentsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12"
         >
           {COMMITMENTS.map(({ roman, titleKey, descKey }) => (
             <motion.div key={roman} variants={fadeUp}>

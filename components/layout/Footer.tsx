@@ -8,7 +8,7 @@ export function Footer() {
 
   return (
     <footer className="bg-charcoal-900 text-charcoal-100">
-      <div className="max-w-[75rem] mx-auto px-6 md:px-10 pt-20 pb-10">
+      <div className="max-w-content mx-auto px-6 md:px-10 pt-20 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Column 1 — Brand */}
           <div className="lg:col-span-1">
@@ -19,29 +19,13 @@ export function Footer() {
             <div className="w-12 h-px bg-gold mt-6 mb-6" />
             {/* Social icons */}
             <div className="flex items-center gap-4">
-              {/* Instagram */}
-              <a
-                href="#"
-                className="text-charcoal-200 hover:text-gold transition-colors duration-300"
-                aria-label="Instagram"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  className="w-5 h-5"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" />
-                  <circle cx="12" cy="12" r="5" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-                </svg>
-              </a>
               {/* Facebook */}
               <a
-                href="#"
+                href="https://www.facebook.com/bahorcouture.bahorcouture"
                 className="text-charcoal-200 hover:text-gold transition-colors duration-300"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -106,7 +90,7 @@ export function Footer() {
                 Voyage Solidaire
               </Link>
               <Link
-                href="/circuits/immersion-totale"
+                href="/circuits/immersion-totale-14j"
                 className="text-sm text-charcoal-200 hover:text-white transition-colors duration-300 leading-loose"
               >
                 Immersion Totale

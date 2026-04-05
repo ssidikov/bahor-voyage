@@ -13,11 +13,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const isFr = locale === 'fr';
 
   const title = isFr
-    ? 'Nos projects — Actions solidaires en Ouzbékistan'
+    ? 'Nos projets — Actions solidaires en Ouzbékistan'
     : 'Our Projects — Solidarity Actions in Uzbekistan';
 
   const description = isFr
-    ? "Découvrez les projects de l'Association France Ouzbékistan Racines : plantation d'arbres, soutien à l'éducation et entrepreneuriat féminin en Ouzbékistan."
+    ? "Découvrez les projets de l'Association France Ouzbékistan Racines : plantation d'arbres, soutien à l'éducation et entrepreneuriat féminin en Ouzbékistan."
     : 'Discover the projects of the France–Uzbekistan Roots Association: tree planting, education support and female entrepreneurship in Uzbekistan.';
 
   return {

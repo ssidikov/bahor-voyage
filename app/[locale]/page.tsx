@@ -7,6 +7,8 @@ import CommitmentsSection from '@/components/home/CommitmentsSection';
 import FeaturedCircuits from '@/components/home/FeaturedCircuits';
 import FounderSection from '@/components/home/FounderSection';
 import HeroSection from '@/components/home/HeroSection';
+import PhotoHighlightsSection from '@/components/home/PhotoHighlightsSection';
+import ProjectsPreviewSection from '@/components/home/ProjectsPreviewSection';
 import UzbekistanIntro from '@/components/home/UzbekistanIntro';
 
 type Props = {
@@ -68,6 +70,8 @@ export default async function HomePage({ params }: Props) {
       <FeaturedCircuits />
       <FounderSection />
       <CommitmentsSection />
+      <ProjectsPreviewSection />
+      <PhotoHighlightsSection />
       <CTAContact />
     </>
   );
