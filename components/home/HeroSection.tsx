@@ -96,29 +96,6 @@ export function HeroSection() {
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Scroll indicator — static mouse icon */}
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
-        aria-hidden="true"
-      >
-        <svg
-          width="22"
-          height="34"
-          viewBox="0 0 22 34"
-          fill="none"
-          stroke="rgba(255,255,255,0.45)"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="1" y="1" width="20" height="32" rx="10" />
-          <line x1="11" y1="8" x2="11" y2="13" stroke="rgba(255,255,255,0.7)" />
-        </svg>
-        <span className="text-label text-white/40 uppercase tracking-[0.15em]">
-          {t.raw('hero_cta') === 'Découvrir' ? 'Défiler' : 'Scroll'}
-        </span>
-      </div>
     </section>
   );
 }
