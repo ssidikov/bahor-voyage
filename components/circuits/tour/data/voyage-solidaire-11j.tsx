@@ -3,7 +3,7 @@ import type { TourData } from '../types';
 export const voyageSolidaire11j: TourData = {
   prefix: 'voyage_solidaire_11j',
 
-  heroImage: '/images/tours/samarkand-2.jpg',
+  heroImage: '/images/tours/Samarkand-2.jpg',
 
   introImage: '/images/tours/Khiva.jpg',
   introImageAlt: 'Khiva, Ouzbékistan',
@@ -19,7 +19,7 @@ export const voyageSolidaire11j: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/Tashkent-3.jpg',
+      image: '/images/tours/tashkent-3.jpg',
       imageAlt: 'Tachkent, Ouzbékistan',
     },
     {
@@ -69,7 +69,7 @@ export const voyageSolidaire11j: TourData = {
     },
     {
       key: 'day11',
-      image: '/images/tours/Tashkent-5.jpg',
+      image: '/images/tours/tashkent-5.jpg',
       imageAlt: 'Tachkent mosquée',
     },
   ],

@@ -5,7 +5,7 @@ export const grandCircuit18j: TourData = {
 
   heroImage: '/images/tours/khiva-hero.jpg',
 
-  introImage: '/images/tours/khiva-3.jpg',
+  introImage: '/images/tours/Khiva-3.jpg',
   introImageAlt: 'Khiva, Ouzbékistan',
 
   routeLabel:
@@ -20,12 +20,12 @@ export const grandCircuit18j: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/Tashkent-3.jpg',
+      image: '/images/tours/tashkent-3.jpg',
       imageAlt: 'Tachkent, Ouzbékistan',
     },
     {
       key: 'day2',
-      image: '/images/tours/Tashkent-6.jpg',
+      image: '/images/tours/tashkent-6.jpg',
       imageAlt: 'Vieille ville de Tachkent',
     },
     {
