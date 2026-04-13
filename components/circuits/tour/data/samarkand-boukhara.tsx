@@ -19,7 +19,7 @@ export const samarkandBoukhara: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/registan-2.jpg',
+      image: '/images/tours/Registan-2.jpg',
       imageAlt: 'Registan, Samarkand',
     },
     {
@@ -34,7 +34,7 @@ export const samarkandBoukhara: TourData = {
     },
     {
       key: 'day4',
-      image: '/images/tours/bukhara.jpg',
+      image: '/images/tours/Bukhara.jpg',
       imageAlt: 'Boukhara',
     },
     {
