@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Tour {
+  id           String     @id @default(cuid())
+  slug         String     @unique
+  titleFr      String
+  titleEn      String
+  durationDays Int        @default(1)
+  isActive     Boolean    @default(true)
+  dates        TourDate[]
+  options      TourOption[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model TourDate {
+  id           String    @id @default(cuid())
+  tourId       String
+  tour         Tour      @relation(fields: [tourId], references: [id])
+  startDate    DateTime
+  endDate      DateTime
+  price        Float
+  maxSeats     Int       @default(12)
+  bookedSeats  Int       @default(0)
+  isGuaranteed Boolean   @default(false)
+  isActive     Boolean   @default(true)
+  bookings     Booking[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model TourOption {
+  id        String          @id @default(cuid())
+  tourId    String
+  tour      Tour            @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  nameFr    String
+  nameEn    String
+  price     Float
+  type      String          @default("SUPPLEMENT") // SUPPLEMENT, EXCURSION, UPGRADE
+  isActive  Boolean         @default(true)
+  bookings  BookingOption[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+model BookingOption {
+  id             String     @id @default(cuid())
+  bookingId      String
+  booking        Booking    @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  tourOptionId   String
+  tourOption     TourOption @relation(fields: [tourOptionId], references: [id])
+  quantity       Int        @default(1)
+  priceAtBooking Float
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Booking {
+  id              String   @id @default(cuid())
+  tourDateId      String
+  tourDate        TourDate @relation(fields: [tourDateId], references: [id])
+  firstName       String
+  lastName        String
+  email           String
+  phone           String
+  passengers      Int      @default(1)
+  message         String?  @db.Text
+  totalAmount     Float
+  paymentIntentId String?
+  paymentStatus   String   @default("PENDING") // PENDING, PAID, FAILED, REFUNDED
+  status          String          @default("CONFIRMED") // CONFIRMED, CANCELLED
+  notes           String?
+  options         BookingOption[]
+  travelers       Traveler[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model Traveler {
+  id        String   @id @default(cuid())
+  bookingId String
+  booking   Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  firstName String
+  lastName  String
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactRequest {
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  phone        String?
+  tourInterest String?
+  message      String   @db.Text
+  status       String   @default("NOUVEAU") // NOUVEAU, CONTACTE, QUALIFIE, CONVERTI
+  notes        String?  @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  role         String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

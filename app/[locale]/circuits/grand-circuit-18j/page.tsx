@@ -65,9 +65,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import prisma from '@/lib/prisma';
+
 export default async function GrandCircuit18JRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <GrandCircuit18JPage />;
+  const availableDatesCount = await prisma.tourDate.count({
+    where: {
+      tour: { slug: 'grand-circuit-18j' },
+      isActive: true,
+      startDate: { gte: new Date() },
+    },
+  });
+
+  return <GrandCircuit18JPage availableDatesCount={availableDatesCount} />;
 }

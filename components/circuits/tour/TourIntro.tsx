@@ -16,6 +16,8 @@ import type { TourStat } from './types';
 
 interface TourIntroProps {
   prefix: string;
+  slug: string;
+  availableDatesCount: number;
   introImage: string;
   introImageAlt: string;
   routeLabel: string;
@@ -26,6 +28,8 @@ interface TourIntroProps {
 
 export default function TourIntro({
   prefix,
+  slug,
+  availableDatesCount,
   introImage,
   introImageAlt,
   routeLabel,
@@ -376,12 +380,16 @@ export default function TourIntro({
 
             <motion.div variants={fadeUp} className="mt-10">
               <Button
-                href="/contact"
+                href={
+                  availableDatesCount > 0 ? `/booking?tour=${slug}` : '/contact'
+                }
                 variant="primary"
                 size="lg"
                 className="group relative overflow-hidden text-[0.78rem] uppercase tracking-[0.12em] font-semibold"
               >
-                {t(`${prefix}_cta_contact` as Parameters<typeof t>[0])}
+                {availableDatesCount > 0
+                  ? t('page_cta_button_book')
+                  : t(`${prefix}_cta_contact` as Parameters<typeof t>[0])}
                 <span
                   aria-hidden="true"
                   className="inline-block transition-transform duration-300 group-hover:translate-x-1"

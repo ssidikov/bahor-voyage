@@ -141,7 +141,7 @@ export function FeaturedCircuits() {
 
             <motion.div variants={fadeUp} className="shrink-0 lg:pb-1">
               <Button
-                href="/contact"
+                href="/booking"
                 variant="primary"
                 size="md"
                 className="w-full lg:w-auto lg:min-w-48"

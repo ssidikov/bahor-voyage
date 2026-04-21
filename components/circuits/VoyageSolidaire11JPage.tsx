@@ -7,6 +7,17 @@ const INTRO_BULLETS = [
   'voyage_solidaire_11j_intro_bullet3',
 ] as const;
 
-export default function VoyageSolidaire11JPage() {
-  return <TourPage data={voyageSolidaire11j} introBulletKeys={INTRO_BULLETS} />;
+export default function VoyageSolidaire11JPage({
+  availableDatesCount,
+}: {
+  availableDatesCount: number;
+}) {
+  return (
+    <TourPage
+      data={voyageSolidaire11j}
+      introBulletKeys={INTRO_BULLETS}
+      slug="voyage-solidaire-11j"
+      availableDatesCount={availableDatesCount}
+    />
+  );
 }

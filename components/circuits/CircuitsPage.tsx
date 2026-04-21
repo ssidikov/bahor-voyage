@@ -388,7 +388,7 @@ export default function CircuitsPage() {
 
           <motion.div variants={fadeUp} className="mt-10">
             <Button
-              href="/contact"
+              href="/booking"
               variant="inverted"
               size="lg"
               className="group text-label-lg uppercase tracking-widest"

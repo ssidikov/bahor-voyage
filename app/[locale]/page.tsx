@@ -63,8 +63,36 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TravelAgency',
+    name: 'Bahor-Voyage',
+    image: 'https://www.bahor-voyage.com/logo.png',
+    '@id': 'https://www.bahor-voyage.com',
+    url: 'https://www.bahor-voyage.com',
+    telephone: '+33611555763',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '12 Place Ambroise Courtois',
+      addressLocality: 'Lyon',
+      postalCode: '69008',
+      addressCountry: 'FR',
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+    sameAs: [],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection />
       <UzbekistanIntro />
       <FeaturedCircuits />

@@ -12,6 +12,8 @@ export default defineConfig([
     'build/**',
     'node_modules/**',
     'next-env.d.ts',
+    'scratch/**',
+    'scripts/**',
   ]),
   ...nextVitals,
   ...nextTs,

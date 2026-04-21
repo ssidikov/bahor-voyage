@@ -65,9 +65,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import prisma from '@/lib/prisma';
+
 export default async function SamarkandBukharaRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <SamarkandBukharaPage />;
+  const availableDatesCount = await prisma.tourDate.count({
+    where: {
+      tour: { slug: 'samarcande-boukhara' },
+      isActive: true,
+      startDate: { gte: new Date() },
+    },
+  });
+
+  return <SamarkandBukharaPage availableDatesCount={availableDatesCount} />;
 }

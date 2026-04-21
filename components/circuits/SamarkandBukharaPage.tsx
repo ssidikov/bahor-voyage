@@ -6,6 +6,17 @@ const INTRO_BULLETS = [
   'samarkand_boukhara_intro_bullet2',
 ] as const;
 
-export default function SamarkandBukharaPage() {
-  return <TourPage data={samarkandBoukhara} introBulletKeys={INTRO_BULLETS} />;
+export default function SamarkandBukharaPage({
+  availableDatesCount,
+}: {
+  availableDatesCount: number;
+}) {
+  return (
+    <TourPage
+      data={samarkandBoukhara}
+      introBulletKeys={INTRO_BULLETS}
+      slug="samarcande-boukhara"
+      availableDatesCount={availableDatesCount}
+    />
+  );
 }

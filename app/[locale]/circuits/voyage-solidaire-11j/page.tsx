@@ -65,9 +65,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import prisma from '@/lib/prisma';
+
 export default async function VoyageSolidaire11JRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <VoyageSolidaire11JPage />;
+  const availableDatesCount = await prisma.tourDate.count({
+    where: {
+      tour: { slug: 'voyage-solidaire-11j' },
+      isActive: true,
+      startDate: { gte: new Date() },
+    },
+  });
+
+  return <VoyageSolidaire11JPage availableDatesCount={availableDatesCount} />;
 }

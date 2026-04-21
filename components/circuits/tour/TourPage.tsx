@@ -15,6 +15,10 @@ interface TourPageProps {
   data: TourData;
   /** Optional bullet-point keys to show inside the intro highlight card */
   introBulletKeys?: readonly string[];
+  /** DB slug for fetching dynamic dates and options */
+  slug: string;
+  /** Number of active dates found in the database */
+  availableDatesCount: number;
 }
 
 /**
@@ -30,7 +34,12 @@ interface TourPageProps {
  * }
  * ```
  */
-export default function TourPage({ data, introBulletKeys }: TourPageProps) {
+export default function TourPage({
+  data,
+  introBulletKeys,
+  slug,
+  availableDatesCount,
+}: TourPageProps) {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -53,6 +62,8 @@ export default function TourPage({ data, introBulletKeys }: TourPageProps) {
       {/* 2. Intro / overview */}
       <TourIntro
         prefix={data.prefix}
+        slug={slug}
+        availableDatesCount={availableDatesCount}
         introImage={data.introImage}
         introImageAlt={data.introImageAlt}
         routeLabel={data.routeLabel}
@@ -73,8 +84,12 @@ export default function TourPage({ data, introBulletKeys }: TourPageProps) {
       {/* 5. Practical info */}
       <TourPracticals prefix={data.prefix} practicals={data.practicals} />
 
-      {/* 6. CTA */}
-      <TourCTA prefix={data.prefix} />
+      {/* 6. CTA / Booking */}
+      <TourCTA
+        prefix={data.prefix}
+        slug={slug}
+        availableDatesCount={availableDatesCount}
+      />
     </main>
   );
 }

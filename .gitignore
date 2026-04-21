@@ -42,3 +42,6 @@ next-env.d.ts
 
 # skills
 /graphify-out
+
+/temp
+/lib/generated/prisma

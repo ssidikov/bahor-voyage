@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { Button } from '@/components/ui';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import ContactForm from '@/components/contact/ContactForm';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -123,7 +124,13 @@ export default async function ContactPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-sand-50 py-12 md:py-16">
+      <section className="bg-sand-50 py-16">
+        <div className="max-w-narrow mx-auto px-6 md:px-10">
+          <ContactForm />
+        </div>
+      </section>
+
+      <section className="bg-white py-12 md:py-16">
         <div className="max-w-content mx-auto px-6 md:px-10">
           <p className="text-body-md text-charcoal-500">{t('availability')}</p>
         </div>

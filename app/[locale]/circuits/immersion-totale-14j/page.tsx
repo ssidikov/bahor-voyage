@@ -65,9 +65,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import prisma from '@/lib/prisma';
+
 export default async function ImmersionTotale14JRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <ImmersionTotale14JPage />;
+  const availableDatesCount = await prisma.tourDate.count({
+    where: {
+      tour: { slug: 'immersion-totale-14j' },
+      isActive: true,
+      startDate: { gte: new Date() },
+    },
+  });
+
+  return <ImmersionTotale14JPage availableDatesCount={availableDatesCount} />;
 }

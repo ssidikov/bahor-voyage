@@ -8,10 +8,17 @@ import { fadeUp, staggerContainer } from '@/lib/animations';
 
 interface TourCTAProps {
   prefix: string;
+  slug: string;
+  availableDatesCount: number;
 }
 
-export default function TourCTA({ prefix }: TourCTAProps) {
+export default function TourCTA({
+  prefix,
+  slug,
+  availableDatesCount,
+}: TourCTAProps) {
   const t = useTranslations('circuits');
+  const isAvailable = availableDatesCount > 0;
 
   return (
     <section className="bg-charcoal-800 py-20 md:py-28">
@@ -26,23 +33,31 @@ export default function TourCTA({ prefix }: TourCTAProps) {
           <motion.div variants={fadeUp}>
             <div className="divider-gold-center mb-8" />
             <h2 className="font-serif text-display-lg text-white font-light mb-6">
-              {t(`${prefix}_cta_title` as Parameters<typeof t>[0])}
+              {t(
+                (isAvailable
+                  ? `${prefix}_cta_title`
+                  : 'page_cta_title_soon') as Parameters<typeof t>[0],
+              )}
             </h2>
             <p className="font-sans text-body-md text-white/60 mb-10 leading-relaxed">
-              {t(`${prefix}_cta_body` as Parameters<typeof t>[0])}
+              {t(
+                (isAvailable
+                  ? `${prefix}_cta_body`
+                  : 'page_cta_body_soon') as Parameters<typeof t>[0],
+              )}
             </p>
             <Button
-              href="/contact"
-              variant="primary"
+              href={isAvailable ? `/booking?tour=${slug}` : '/contact'}
+              variant="inverted"
               size="lg"
-              className="group text-label-lg uppercase tracking-[0.08em]"
+              className="group text-label-lg uppercase tracking-widest"
             >
-              {t(`${prefix}_cta_contact` as Parameters<typeof t>[0])}
+              {t(isAvailable ? 'page_cta_button_book' : 'page_cta_button_soon')}
               <span
                 aria-hidden="true"
                 className="inline-block transition-transform duration-300 group-hover:translate-x-1"
               >
-                →
+                &rarr;
               </span>
             </Button>
           </motion.div>

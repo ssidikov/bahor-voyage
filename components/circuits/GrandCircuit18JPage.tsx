@@ -7,6 +7,17 @@ const INTRO_BULLETS = [
   'grand_circuit_18j_intro_bullet3',
 ] as const;
 
-export default function GrandCircuit18JPage() {
-  return <TourPage data={grandCircuit18j} introBulletKeys={INTRO_BULLETS} />;
+export default function GrandCircuit18JPage({
+  availableDatesCount,
+}: {
+  availableDatesCount: number;
+}) {
+  return (
+    <TourPage
+      data={grandCircuit18j}
+      introBulletKeys={INTRO_BULLETS}
+      slug="grand-circuit-18j"
+      availableDatesCount={availableDatesCount}
+    />
+  );
 }
