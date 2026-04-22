@@ -1,11 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import Stripe from 'stripe';
-import nodemailer from 'nodemailer';
-import {
-  customerConfirmationEmail,
-  adminBookingAlert,
-} from '@/lib/email-templates';
+import { sendBookingConfirmationEmails } from '@/lib/booking-email';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -59,56 +55,13 @@ export async function POST(req: Request) {
         });
       }
 
-      // 3. Send HTML emails
-      if (process.env.SMTP_USER && process.env.SMTP_PASSWORD) {
-        const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASSWORD,
-          },
-        });
-
-        const fmt = (d: Date) =>
-          d.toLocaleDateString('fr-FR', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          });
-
-        const emailData = {
-          firstName: booking.firstName,
-          lastName: booking.lastName,
-          email: booking.email,
-          phone: booking.phone,
-          tourTitle: booking.tourDate.tour.titleFr,
-          startDate: fmt(new Date(booking.tourDate.startDate)),
-          endDate: fmt(new Date(booking.tourDate.endDate)),
-          passengers: booking.passengers,
-          totalAmount: booking.totalAmount,
-          bookingRef: booking.id.slice(-10).toUpperCase(),
-          travelers:
-            booking.travelers.length > 0
-              ? booking.travelers
-                  .map((t) => `${t.firstName} ${t.lastName}`)
-                  .join(', ')
-              : undefined,
-        };
-
-        // Email to customer
-        await transporter.sendMail({
-          from: `"Bahor-Voyage" <${process.env.SMTP_USER}>`,
-          to: booking.email,
-          subject: `Confirmation de votre réservation — ${emailData.tourTitle}`,
-          html: customerConfirmationEmail(emailData),
-        });
-
-        // Email to agency
-        await transporter.sendMail({
-          from: `"Bahor-Voyage" <${process.env.SMTP_USER}>`,
-          to: process.env.SMTP_USER,
-          subject: `🎉 NOUVELLE RÉSERVATION — ${emailData.tourTitle}`,
-          html: adminBookingAlert(emailData),
+      // 3. Send booking emails, but do not fail the webhook if SMTP has an issue.
+      try {
+        await sendBookingConfirmationEmails(booking);
+      } catch (error) {
+        console.error('Failed to send booking emails from Stripe webhook:', {
+          bookingId: booking.id,
+          error,
         });
       }
     }

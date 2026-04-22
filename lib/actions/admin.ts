@@ -3,21 +3,20 @@
 import { revalidatePath } from 'next/cache';
 import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 // Helper to check admin access
 async function checkAdmin() {
-  // Bypassing checkAdmin in development to allow dashboard usage without pre-seeded admin records
-  if (process.env.NODE_ENV === 'development') {
-    return;
-  }
-
-  const session = await getServerSession();
-  if (!session?.user?.email) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.email || session.user.role !== 'ADMIN') {
     throw new Error('Unauthorized');
   }
+
   const adminUser = await prisma.adminUser.findUnique({
-    where: { email: session.user.email },
+    where: { email: session.user.email.trim().toLowerCase() },
+    select: { role: true },
   });
+
   if (!adminUser || adminUser.role !== 'ADMIN') {
     throw new Error('Forbidden');
   }

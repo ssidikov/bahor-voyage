@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { sendBookingConfirmationEmails } from '@/lib/booking-email';
 
 interface TravelerData {
   firstName: string;
@@ -84,6 +85,14 @@ export async function POST(req: Request) {
             : [],
         },
       },
+      include: {
+        tourDate: {
+          include: {
+            tour: true,
+          },
+        },
+        travelers: true,
+      },
     });
 
     // 4. Update seats
@@ -96,7 +105,21 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ success: true, bookingId: booking.id });
+    let emailSent = false;
+    try {
+      emailSent = await sendBookingConfirmationEmails(booking);
+    } catch (error) {
+      console.error('Test checkout booking email failed:', {
+        bookingId: booking.id,
+        error,
+      });
+    }
+
+    return NextResponse.json({
+      success: true,
+      bookingId: booking.id,
+      emailSent,
+    });
   } catch (err: unknown) {
     console.error('Test booking error:', err);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });

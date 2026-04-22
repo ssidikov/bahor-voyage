@@ -38,6 +38,36 @@ npm run build
 npm run start
 ```
 
+## Admin Auth Setup
+
+1. Ensure your database schema is synced:
+
+```bash
+npm run db:push
+```
+
+2. Set admin bootstrap environment variables (for one-time account creation):
+
+```bash
+ADMIN_EMAIL=admin@bahor-voyage.com
+ADMIN_PASSWORD=change-this-to-a-strong-password
+ADMIN_NAME="Bahor Voyage Admin"
+```
+
+3. Create or update the admin account:
+
+```bash
+npm run admin:create
+```
+
+4. Sign in from `/login` (or `/en/login`), then access `/admin` (or `/en/admin`).
+
+Security notes:
+
+- Passwords are hashed with bcrypt before storage.
+- Keep `NEXTAUTH_SECRET` strong and unique in each environment.
+- Remove `ADMIN_PASSWORD` from shell history / env files after bootstrap.
+
 ## Routing and Localization
 
 - Locale routes are under app/[locale]

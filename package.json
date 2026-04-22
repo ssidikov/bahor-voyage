@@ -14,13 +14,15 @@
     "prepare": "husky",
     "db:push": "prisma db push",
     "db:studio": "NODE_NO_WARNINGS=1 prisma studio --port 5555",
-    "db:generate": "prisma generate"
+    "db:generate": "prisma generate",
+    "admin:create": "node scripts/create-admin-user.js"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.7.0",
     "@prisma/client": "^7.7.0",
     "@stripe/stripe-js": "^5.5.0",
     "@types/pg": "^8.20.0",
+    "bcryptjs": "^3.0.3",
     "framer-motion": "^12.38.0",
     "next": "16.1.6",
     "next-auth": "^4.24.13",

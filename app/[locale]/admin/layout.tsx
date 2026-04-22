@@ -1,19 +1,43 @@
+import type { ReactNode } from 'react';
+
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { authOptions } from '@/lib/auth';
+import prisma from '@/lib/prisma';
 
-// Basic admin layout that checks auth
-export default async function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const session = await getServerSession();
+type Props = {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+};
 
-  if (!session) {
-    // Redirect to login if not authenticated
-    // Note: In production the actual login page path should match your NextAuth config
-    redirect('/api/auth/signin');
+function loginPathForLocale(locale: string) {
+  return locale === 'en' ? '/en/login' : '/login';
+}
+
+function adminPathForLocale(locale: string) {
+  return locale === 'en' ? '/en/admin' : '/admin';
+}
+
+export default async function AdminLayout({ children, params }: Props) {
+  const { locale } = await params;
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.email || session.user.role !== 'ADMIN') {
+    const loginPath = loginPathForLocale(locale);
+    const adminPath = adminPathForLocale(locale);
+    redirect(`${loginPath}?next=${encodeURIComponent(adminPath)}`);
+  }
+
+  const adminUser = await prisma.adminUser.findUnique({
+    where: { email: session.user.email.trim().toLowerCase() },
+    select: { role: true },
+  });
+
+  if (!adminUser || adminUser.role !== 'ADMIN') {
+    const loginPath = loginPathForLocale(locale);
+    const adminPath = adminPathForLocale(locale);
+    redirect(`${loginPath}?next=${encodeURIComponent(adminPath)}`);
   }
 
   return (
