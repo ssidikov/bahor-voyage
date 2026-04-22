@@ -59,7 +59,9 @@ export default async function BookingPage({ params }: Props) {
           <Suspense fallback={null}>
             <BookingCancelBanner />
           </Suspense>
-          <BookingWizard />
+          <Suspense fallback={null}>
+            <BookingWizard />
+          </Suspense>
         </div>
       </section>
     </>

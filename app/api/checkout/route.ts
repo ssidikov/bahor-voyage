@@ -1,10 +1,6 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  apiVersion: '2023-10-16' as any, // Using an older version specifically if the installed Stripe package requires it or typing works
-});
 
 interface TravelerData {
   firstName: string;
@@ -146,12 +142,18 @@ export async function POST(req: Request) {
       'http://localhost:3000';
 
     // Only works if Stripe key is present
-    if (!process.env.STRIPE_SECRET_KEY) {
+    const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+    if (!stripeSecretKey) {
       return NextResponse.json(
         { error: 'Stripe is not configured in environment' },
         { status: 500 },
       );
     }
+
+    const stripe = new Stripe(stripeSecretKey, {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      apiVersion: '2023-10-16' as any, // Using an older version specifically if the installed Stripe package requires it or typing works
+    });
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
