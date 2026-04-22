@@ -17,7 +17,7 @@ if (!connectionString) {
 
 if (!adminEmail || !adminPassword) {
   console.error(
-    'Set ADMIN_EMAIL and ADMIN_PASSWORD before running npm run admin:create.'
+    'Set ADMIN_EMAIL and ADMIN_PASSWORD before running npm run admin:create.',
   );
   process.exit(1);
 }
