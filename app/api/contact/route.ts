@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import nodemailer from 'nodemailer';
+import { contactFormEmail } from '@/lib/email-templates';
 
 export async function POST(req: Request) {
   try {
@@ -27,35 +28,22 @@ export async function POST(req: Request) {
     });
 
     // 2. Préparer l'envoi de l'email via Nodemailer
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    });
-
-    const mailOptions = {
-      from: process.env.SMTP_USER,
-      to: process.env.SMTP_USER, // Envoyer à l'agence Bahor-Voyage
-      replyTo: email,
-      subject: `Nouveau Message Bahor-Voyage de ${name}`,
-      text: `Vous avez reçu un nouveau message via le site web.
-
-Détails du contact :
-Nom : ${name}
-Email : ${email}
-Téléphone : ${phone || 'Non renseigné'}
-Circuit souhaité : ${tourInterest || 'Non renseigné'}
-
-Message :
-${message}
-      `,
-    };
-
-    // N'envoyer l'email que si SMTP_USER est configuré, pour ne pas crasher en dev local
     if (process.env.SMTP_USER && process.env.SMTP_PASSWORD) {
-      await transporter.sendMail(mailOptions);
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `"Bahor-Voyage" <${process.env.SMTP_USER}>`,
+        to: process.env.SMTP_USER,
+        replyTo: email,
+        subject: `Nouveau message de ${name} — Bahor-Voyage`,
+        html: contactFormEmail({ name, email, phone, tourInterest, message }),
+      });
     } else {
       console.warn('SMTP_USER ou SMTP_PASSWORD non configuré. Email ignoré.');
     }

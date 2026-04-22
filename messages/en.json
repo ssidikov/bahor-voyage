@@ -612,7 +612,31 @@
     "step3_title": "Confirm and travel",
     "step3_body": "Once adjustments are validated, we confirm your departure and full trip guidance.",
     "cta_primary": "Request my booking",
-    "cta_secondary": "View tours"
+    "cta_secondary": "View tours",
+    "cancel_banner": "Your payment was cancelled. You can try again below.",
+    "cancel_banner_dismiss": "Dismiss"
+  },
+  "booking_success": {
+    "meta_title": "Booking Confirmed — Bahor-Voyage",
+    "meta_description": "Your Bahor-Voyage booking is confirmed. We will contact you soon to finalise your trip details.",
+    "kicker": "Confirmation",
+    "title": "Your trip is booked!",
+    "subtitle": "Thank you for your booking. A confirmation email has been sent to you.",
+    "detail_tour": "Tour",
+    "detail_dates": "Dates",
+    "detail_passengers": "Travelers",
+    "detail_total": "Total amount",
+    "detail_ref": "Booking reference",
+    "next_steps_title": "Next steps",
+    "next_step_1": "You will receive a confirmation email with all the details.",
+    "next_step_2": "Our team will contact you within 48 hours to finalise the logistics.",
+    "next_step_3": "Practical travel information will be sent before your departure.",
+    "cta_tours": "View our tours",
+    "cta_contact": "Contact us",
+    "test_badge": "Test payment — Development mode",
+    "loading": "Loading your confirmation...",
+    "error_title": "Booking not found",
+    "error_body": "We could not retrieve your booking details. Please contact us if you think this is an error."
   },
   "legal_page": {
     "meta_title": "Legal Notice — Bahor-Voyage",

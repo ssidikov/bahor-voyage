@@ -612,7 +612,31 @@
     "step3_title": "Validez et partez",
     "step3_body": "Une fois les ajustements faits, nous confirmons votre depart et votre accompagnement complet.",
     "cta_primary": "Demander ma reservation",
-    "cta_secondary": "Voir les circuits"
+    "cta_secondary": "Voir les circuits",
+    "cancel_banner": "Votre paiement a été annulé. Vous pouvez réessayer ci-dessous.",
+    "cancel_banner_dismiss": "Fermer"
+  },
+  "booking_success": {
+    "meta_title": "Réservation confirmée — Bahor-Voyage",
+    "meta_description": "Votre réservation Bahor-Voyage est confirmée. Nous vous contacterons prochainement pour finaliser les détails de votre voyage.",
+    "kicker": "Confirmation",
+    "title": "Votre voyage est réservé !",
+    "subtitle": "Merci pour votre réservation. Un email de confirmation vous a été envoyé.",
+    "detail_tour": "Circuit",
+    "detail_dates": "Dates",
+    "detail_passengers": "Voyageurs",
+    "detail_total": "Montant total",
+    "detail_ref": "Référence de réservation",
+    "next_steps_title": "Prochaines étapes",
+    "next_step_1": "Vous recevrez un email de confirmation avec tous les détails.",
+    "next_step_2": "Notre équipe vous contactera dans les 48h pour finaliser la logistique.",
+    "next_step_3": "Des informations pratiques vous seront envoyées avant votre départ.",
+    "cta_tours": "Voir nos circuits",
+    "cta_contact": "Nous contacter",
+    "test_badge": "Paiement de test — Mode développement",
+    "loading": "Chargement de votre confirmation...",
+    "error_title": "Réservation introuvable",
+    "error_body": "Nous n'avons pas pu retrouver les détails de votre réservation. Contactez-nous si vous pensez qu'il s'agit d'une erreur."
   },
   "legal_page": {
     "meta_title": "Mentions legales — Bahor-Voyage",

@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 import BookingWizard from '@/components/booking/BookingWizard';
 import BookingHero from '@/components/booking/BookingHero';
+import BookingCancelBanner from '@/components/booking/BookingCancelBanner';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -54,6 +56,9 @@ export default async function BookingPage({ params }: Props) {
 
       <section className="bg-sand-50 py-16 md:py-20">
         <div className="max-w-content mx-auto px-6 md:px-10">
+          <Suspense fallback={null}>
+            <BookingCancelBanner />
+          </Suspense>
           <BookingWizard />
         </div>
       </section>
