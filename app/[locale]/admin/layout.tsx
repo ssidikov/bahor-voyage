@@ -41,9 +41,9 @@ export default async function AdminLayout({ children, params }: Props) {
   }
 
   return (
-    <div className="flex h-screen bg-sand-50">
+    <div className="flex h-screen bg-sand-50 print:bg-white print:h-auto">
       {/* Sidebar */}
-      <aside className="w-64 bg-charcoal-900 text-white p-6 hidden md:block">
+      <aside className="w-64 bg-charcoal-900 text-white p-6 hidden md:block print:hidden">
         <div className="font-serif text-2xl text-primary-400 mb-10">
           Bahor-Voyage
         </div>
@@ -76,8 +76,8 @@ export default async function AdminLayout({ children, params }: Props) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto">
-        <header className="flex justify-between items-center mb-8 pb-4 border-b border-border-soft">
+      <main className="flex-1 p-8 overflow-y-auto print:p-0 print:overflow-visible">
+        <header className="flex justify-between items-center mb-8 pb-4 border-b border-border-soft print:hidden">
           <h1 className="text-2xl font-serif text-charcoal-700">
             Dashboard de Gestion
           </h1>

@@ -40,12 +40,6 @@
   --text-label-sm--line-height: 1.4;
   --text-label-sm--letter-spacing: 0.08em;
 
-  --spacing-xs: 8px;
-  --spacing-sm: 12px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 40px;
-
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-pill: 9999px;
@@ -225,5 +219,24 @@
     background: var(--color-gold);
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* ============================================================
+   Print styles
+   ============================================================ */
+@media print {
+  body.printing-table * {
+    visibility: hidden;
+  }
+  body.printing-table table,
+  body.printing-table table * {
+    visibility: visible;
+  }
+  body.printing-table table {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 }

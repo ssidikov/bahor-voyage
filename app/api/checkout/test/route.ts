@@ -92,6 +92,7 @@ export async function POST(req: Request) {
           },
         },
         travelers: true,
+        options: { include: { tourOption: true } },
       },
     });
 

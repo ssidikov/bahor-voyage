@@ -368,7 +368,7 @@ export function AboutPage() {
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-5 font-sans text-body-md text-charcoal-400 max-w-xl leading-relaxed"
+              className="mt-5 font-sans text-body-md text-charcoal-400 max-w-2xl leading-relaxed"
             >
               {t('history_intro')}
             </motion.p>
@@ -531,7 +531,7 @@ export function AboutPage() {
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="font-sans text-body-md text-charcoal-400 max-w-xl mx-auto mb-12"
+              className="font-sans text-body-md text-charcoal-400 max-w-2xl mx-auto mb-12"
             >
               {t('partners_body')}
             </motion.p>

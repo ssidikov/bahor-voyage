@@ -7,13 +7,13 @@ export function Footer() {
   const tNav = useTranslations('nav');
 
   return (
-    <footer className="bg-charcoal-900 text-charcoal-100">
+    <footer className="bg-charcoal-900 text-charcoal-100 print:hidden">
       <div className="max-w-content mx-auto px-6 md:px-10 pt-20 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Column 1 — Brand */}
           <div className="lg:col-span-1">
             <p className="font-serif text-2xl text-white">Bahor-Voyage</p>
-            <p className="font-sans text-body-md text-charcoal-100 italic mt-3 max-w-xs">
+            <p className="font-sans text-body-md text-charcoal-100 italic mt-3">
               {t('tagline')}
             </p>
             <div className="w-12 h-px bg-gold mt-6 mb-6" />

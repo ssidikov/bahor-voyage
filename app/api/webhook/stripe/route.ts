@@ -56,6 +56,7 @@ export async function POST(req: Request) {
         include: {
           tourDate: { include: { tour: true } },
           travelers: true,
+          options: { include: { tourOption: true } },
         },
       });
 

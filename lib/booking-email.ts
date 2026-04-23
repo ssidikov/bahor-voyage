@@ -17,6 +17,8 @@ type BookingForEmail = {
   phone: string;
   passengers: number;
   totalAmount: number;
+  paymentStatus: string;
+  createdAt: Date;
   tourDate: {
     startDate: Date;
     endDate: Date;
@@ -25,6 +27,7 @@ type BookingForEmail = {
     };
   };
   travelers: BookingTravelerForEmail[];
+  options: Array<{ tourOption: { nameFr: string } }>;
 };
 
 const formatBookingDate = (date: Date) =>

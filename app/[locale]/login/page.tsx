@@ -76,7 +76,7 @@ export default async function LoginPage({ params, searchParams }: Props) {
 
   return (
     <section className="bg-sand-50 px-6 pb-20 pt-36 md:px-10 md:pt-40">
-      <div className="mx-auto w-full max-w-md rounded-3xl border border-border-soft bg-white p-8 shadow-sm md:p-10">
+      <div className="mx-auto w-full max-w-lg rounded-3xl border border-border-soft bg-white p-8 shadow-sm md:p-10">
         <AdminLoginForm callbackUrl={callbackUrl} locale={locale} />
       </div>
     </section>
