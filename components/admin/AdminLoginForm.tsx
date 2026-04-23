@@ -67,12 +67,14 @@ export default function AdminLoginForm({ callbackUrl, locale }: Props) {
   }
 
   return (
-    <form className="space-y-5" onSubmit={handleSubmit}>
+    <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
       <div>
-        <h1 className="font-serif text-3xl text-charcoal-700 md:text-4xl">
+        <h1 className="font-serif text-2xl text-charcoal-700 sm:text-3xl md:text-4xl">
           {copy.title}
         </h1>
-        <p className="mt-3 max-w-md text-charcoal-500">{copy.subtitle}</p>
+        <p className="mt-2 max-w-md text-sm text-charcoal-500 sm:mt-3 sm:text-base">
+          {copy.subtitle}
+        </p>
       </div>
 
       <label className="block">

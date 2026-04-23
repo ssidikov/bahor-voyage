@@ -17,8 +17,8 @@ export default async function AdminDashboard() {
 
   return (
     <div className="space-y-8">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-2xl p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg glass-panel frozen-border">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        <div className="rounded-2xl p-5 sm:p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg glass-panel frozen-border">
           <div className="mb-2 text-sm font-medium text-charcoal-500">
             Nouvelles demandes
           </div>
@@ -28,7 +28,7 @@ export default async function AdminDashboard() {
           <div className="mt-4 h-1.5 w-16 rounded-full bg-primary-200" />
         </div>
 
-        <div className="rounded-2xl p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg glass-panel frozen-border">
+        <div className="rounded-2xl p-5 sm:p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg glass-panel frozen-border">
           <div className="mb-2 text-sm font-medium text-charcoal-500">
             Réservations Payées
           </div>
@@ -39,7 +39,7 @@ export default async function AdminDashboard() {
         </div>
       </div>
 
-      <div className="rounded-2xl p-6 md:p-8 glass-panel frozen-border">
+      <div className="rounded-2xl p-5 sm:p-6 md:p-8 glass-panel frozen-border">
         <h2 className="mb-4 text-xl font-serif text-charcoal-700 md:text-2xl">
           Bienvenue sur votre Dashboard
         </h2>
