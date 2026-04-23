@@ -42,34 +42,34 @@ export default async function AdminLayout({ children, params }: Props) {
   }
 
   return (
-    <div className="flex h-screen bg-sand-50 print:bg-white print:h-auto">
+    <div className="admin-aurora-bg flex h-screen print:bg-white print:h-auto">
       {/* Sidebar */}
-      <aside className="w-64 bg-charcoal-900 text-white p-6 hidden md:block print:hidden">
-        <div className="font-serif text-2xl text-primary-400 mb-10">
+      <aside className="m-4 hidden w-72 rounded-3xl p-6 text-charcoal-700 md:block print:hidden glass-panel frozen-border">
+        <div className="mb-10 font-serif text-2xl text-primary-700">
           Bahor-Voyage
         </div>
-        <nav className="space-y-4">
+        <nav className="space-y-2">
           <Link
             href="/admin"
-            className="block text-white/80 hover:text-white pb-2 border-b border-white/10"
+            className="block cursor-pointer rounded-xl px-3 py-2 text-charcoal-600 transition duration-200 hover:bg-white/75 hover:text-charcoal-800"
           >
             Vue d&apos;ensemble
           </Link>
           <Link
             href="/admin/contacts"
-            className="block text-white/80 hover:text-white pb-2 border-b border-white/10"
+            className="block cursor-pointer rounded-xl px-3 py-2 text-charcoal-600 transition duration-200 hover:bg-white/75 hover:text-charcoal-800"
           >
             Demandes (CRM)
           </Link>
           <Link
             href="/admin/bookings"
-            className="block text-white/80 hover:text-white pb-2 border-b border-white/10"
+            className="block cursor-pointer rounded-xl px-3 py-2 text-charcoal-600 transition duration-200 hover:bg-white/75 hover:text-charcoal-800"
           >
             Réservations
           </Link>
           <Link
             href="/admin/circuits"
-            className="block text-white/80 hover:text-white pb-2 border-b border-white/10"
+            className="block cursor-pointer rounded-xl px-3 py-2 text-charcoal-600 transition duration-200 hover:bg-white/75 hover:text-charcoal-800"
           >
             Circuits &amp; Dates
           </Link>
@@ -77,30 +77,30 @@ export default async function AdminLayout({ children, params }: Props) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto print:p-0 print:overflow-visible">
-        <aside className="mb-6 rounded-2xl border border-border-soft bg-white p-4 md:hidden print:hidden">
+      <main className="flex-1 overflow-y-auto p-6 md:p-8 print:overflow-visible print:p-0">
+        <aside className="mb-6 rounded-2xl p-4 md:hidden print:hidden glass-panel frozen-border">
           <nav className="space-y-2">
             <Link
               href="/admin"
-              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+              className="block cursor-pointer rounded-lg px-3 py-2 text-sm text-charcoal-600 transition duration-200 hover:bg-white/85 hover:text-charcoal-700"
             >
               Vue d&apos;ensemble
             </Link>
             <Link
               href="/admin/contacts"
-              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+              className="block cursor-pointer rounded-lg px-3 py-2 text-sm text-charcoal-600 transition duration-200 hover:bg-white/85 hover:text-charcoal-700"
             >
               Demandes (CRM)
             </Link>
             <Link
               href="/admin/bookings"
-              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+              className="block cursor-pointer rounded-lg px-3 py-2 text-sm text-charcoal-600 transition duration-200 hover:bg-white/85 hover:text-charcoal-700"
             >
               Réservations
             </Link>
             <Link
               href="/admin/circuits"
-              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+              className="block cursor-pointer rounded-lg px-3 py-2 text-sm text-charcoal-600 transition duration-200 hover:bg-white/85 hover:text-charcoal-700"
             >
               Circuits &amp; Dates
             </Link>
@@ -113,7 +113,7 @@ export default async function AdminLayout({ children, params }: Props) {
           </div>
         </aside>
 
-        <header className="flex justify-between items-center mb-8 pb-4 border-b border-border-soft print:hidden">
+        <header className="mb-8 flex items-center justify-between rounded-2xl px-4 py-4 md:px-6 print:hidden glass-panel frozen-border">
           <h1 className="text-2xl font-serif text-charcoal-700">
             Dashboard de Gestion
           </h1>

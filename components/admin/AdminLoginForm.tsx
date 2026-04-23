@@ -69,8 +69,10 @@ export default function AdminLoginForm({ callbackUrl, locale }: Props) {
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
       <div>
-        <h1 className="font-serif text-3xl text-charcoal-700">{copy.title}</h1>
-        <p className="mt-3 text-charcoal-500">{copy.subtitle}</p>
+        <h1 className="font-serif text-3xl text-charcoal-700 md:text-4xl">
+          {copy.title}
+        </h1>
+        <p className="mt-3 max-w-md text-charcoal-500">{copy.subtitle}</p>
       </div>
 
       <label className="block">
@@ -81,7 +83,7 @@ export default function AdminLoginForm({ callbackUrl, locale }: Props) {
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="w-full rounded-xl border border-border-soft bg-white px-4 py-3 text-charcoal-700 outline-none transition focus:border-primary-400"
+          className="w-full rounded-xl px-4 py-3 text-charcoal-700 outline-none transition duration-200 glass-panel frozen-border focus:border-primary-400 focus:ring-2 focus:ring-primary-200"
           autoComplete="email"
           required
         />
@@ -95,7 +97,7 @@ export default function AdminLoginForm({ callbackUrl, locale }: Props) {
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="w-full rounded-xl border border-border-soft bg-white px-4 py-3 text-charcoal-700 outline-none transition focus:border-primary-400"
+          className="w-full rounded-xl px-4 py-3 text-charcoal-700 outline-none transition duration-200 glass-panel frozen-border focus:border-primary-400 focus:ring-2 focus:ring-primary-200"
           autoComplete="current-password"
           minLength={12}
           required
@@ -110,7 +112,7 @@ export default function AdminLoginForm({ callbackUrl, locale }: Props) {
 
       <button
         type="submit"
-        className="w-full rounded-xl bg-charcoal-700 px-4 py-3 font-medium text-white transition hover:bg-charcoal-600 disabled:cursor-not-allowed disabled:opacity-70"
+        className="w-full cursor-pointer rounded-xl bg-primary-600 px-4 py-3 font-medium text-white shadow-lg shadow-primary-900/20 transition duration-200 hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-200 disabled:cursor-not-allowed disabled:opacity-70"
         disabled={isSubmitting}
       >
         {isSubmitting ? '...' : copy.submitLabel}

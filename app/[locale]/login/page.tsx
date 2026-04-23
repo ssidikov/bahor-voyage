@@ -75,8 +75,13 @@ export default async function LoginPage({ params, searchParams }: Props) {
   }
 
   return (
-    <section className="bg-sand-50 px-6 pb-20 pt-36 md:px-10 md:pt-40">
-      <div className="mx-auto w-full max-w-lg rounded-3xl border border-border-soft bg-white p-8 shadow-sm md:p-10">
+    <section className="admin-aurora-bg min-h-screen px-6 pb-20 pt-28 md:px-10 md:pt-32">
+      <div className="mx-auto w-full max-w-xl">
+        <div className="mb-6 inline-flex rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-charcoal-600 glass-panel frozen-border">
+          Bahor Voyage Admin
+        </div>
+      </div>
+      <div className="mx-auto w-full max-w-xl rounded-3xl p-8 md:p-10 glass-panel frozen-border">
         <AdminLoginForm callbackUrl={callbackUrl} locale={locale} />
       </div>
     </section>

@@ -26,7 +26,7 @@ export default function AdminLogoutButton({ locale, callbackUrl }: Props) {
       type="button"
       onClick={handleLogout}
       disabled={isSubmitting}
-      className="rounded-lg border border-border-soft bg-white px-3 py-2 text-sm font-medium text-charcoal-700 transition hover:bg-sand-50 disabled:cursor-not-allowed disabled:opacity-70"
+      className="glass-button frozen-border cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-charcoal-700 transition duration-200 hover:text-charcoal-800 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-70"
     >
       {isSubmitting ? '...' : label}
     </button>
