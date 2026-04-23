@@ -78,6 +78,41 @@ export default async function AdminLayout({ children, params }: Props) {
 
       {/* Main Content */}
       <main className="flex-1 p-8 overflow-y-auto print:p-0 print:overflow-visible">
+        <aside className="mb-6 rounded-2xl border border-border-soft bg-white p-4 md:hidden print:hidden">
+          <nav className="space-y-2">
+            <Link
+              href="/admin"
+              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+            >
+              Vue d&apos;ensemble
+            </Link>
+            <Link
+              href="/admin/contacts"
+              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+            >
+              Demandes (CRM)
+            </Link>
+            <Link
+              href="/admin/bookings"
+              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+            >
+              Réservations
+            </Link>
+            <Link
+              href="/admin/circuits"
+              className="block rounded-lg px-3 py-2 text-sm text-charcoal-600 transition hover:bg-sand-50 hover:text-charcoal-700"
+            >
+              Circuits &amp; Dates
+            </Link>
+          </nav>
+          <div className="mt-4 pt-4 border-t border-border-soft">
+            <AdminLogoutButton
+              locale={locale}
+              callbackUrl={loginPathForLocale(locale)}
+            />
+          </div>
+        </aside>
+
         <header className="flex justify-between items-center mb-8 pb-4 border-b border-border-soft print:hidden">
           <h1 className="text-2xl font-serif text-charcoal-700">
             Dashboard de Gestion
