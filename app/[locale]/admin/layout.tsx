@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import { Link } from '@/i18n/navigation';
+import AdminLogoutButton from '@/components/admin/AdminLogoutButton';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 
@@ -81,8 +82,14 @@ export default async function AdminLayout({ children, params }: Props) {
           <h1 className="text-2xl font-serif text-charcoal-700">
             Dashboard de Gestion
           </h1>
-          <div className="text-sm text-charcoal-500">
-            Connecté en tant que {session?.user?.email}
+          <div className="flex items-center gap-4">
+            <div className="text-sm text-charcoal-500">
+              Connecté en tant que {session?.user?.email}
+            </div>
+            <AdminLogoutButton
+              locale={locale}
+              callbackUrl={loginPathForLocale(locale)}
+            />
           </div>
         </header>
 

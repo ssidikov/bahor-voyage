@@ -6,8 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
+import SiteShell from '@/components/layout/SiteShell';
 import { routing } from '@/i18n/routing';
 
 import './globals.css';
@@ -76,9 +75,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} className={`${inter.variable} ${cormorant.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <SiteShell>{children}</SiteShell>
         </NextIntlClientProvider>
       </body>
     </html>
