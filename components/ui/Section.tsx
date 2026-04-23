@@ -11,8 +11,8 @@ export type SectionProps = {
 
 const bgClasses: Record<Background, string> = {
   white: 'bg-white',
-  light: 'bg-surface-soft',
-  primary: 'bg-action text-text-on-emphasis',
+  light: 'bg-sand',
+  primary: 'bg-primary text-on-action',
 };
 
 export function Section({

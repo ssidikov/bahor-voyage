@@ -11,59 +11,46 @@
    Premium design tokens
    ============================================================ */
 @theme {
-  /* --- Primary — Bahor teal (brand) -------------------------- */
-  --color-primary-50: #f0fafa;
-  --color-primary-100: #e8f6f7;
-  --color-primary-200: #b8e0e2;
-  --color-primary-300: #7fc9cc;
-  --color-primary-400: #51acb1;
-  --color-primary-500: #3d8a8f;
-  --color-primary-600: #2f6e73;
-  --color-primary-700: #225254;
-  --color-primary-800: #163536;
-  --color-primary-900: #0b1a1b;
-
-  /* --- Warm sand — backgrounds, cards, editorial sections ---- */
-  --color-sand-50: #fdfbf7;
-  --color-sand-100: #f9f5ec;
-  --color-sand-200: #f0e8d4;
-  --color-sand-300: #e2d0b0;
-  --color-sand-400: #cdb483;
-  --color-sand-500: #b8955a;
-  --color-sand-600: #9a7840;
-
-  /* --- Deep charcoal — headings, premium text ---------------- */
-  --color-charcoal-50: #f4f4f4;
-  --color-charcoal-100: #e8e8e8;
-  --color-charcoal-200: #d0d0d0;
-  --color-charcoal-300: #a8a8a8;
-  --color-charcoal-400: #808080;
-  --color-charcoal-500: #4a4a4a;
-  --color-charcoal-600: #2c2c2c;
-  --color-charcoal-700: #1a1a1a;
-  --color-charcoal-800: #0f0f0f;
-  --color-charcoal-900: #050505;
-
-  /* --- Gold accent — decorative, sparingly ------------------- */
+  /* --- DESIGN.md canonical tokens (1:1 names) ---------------- */
+  --color-primary: #2f6e73;
+  --color-primary-hover: #225254;
+  --color-primary-soft: #f0fafa;
+  --color-sand: #fdfbf7;
+  --color-charcoal: #2c2c2c;
   --color-gold: #c8a96e;
-  --color-gold-light: #e8d5ad;
-  --color-gold-dark: #a07840;
+  --color-on-action: #ffffff;
 
-  /* --- Semantic aliases (preferred in reusable components) ---- */
-  --color-surface-default: #ffffff;
-  --color-surface-soft: var(--color-sand-50);
-  --color-surface-emphasis: var(--color-primary-500);
-  --color-border-soft: var(--color-charcoal-100);
-  --color-text-default: var(--color-charcoal-600);
-  --color-text-strong: var(--color-charcoal-700);
-  --color-text-on-emphasis: #ffffff;
-  --color-action: var(--color-primary-400);
-  --color-action-hover: var(--color-primary-500);
-  --color-action-soft: var(--color-primary-50);
-  --color-action-soft-hover: var(--color-primary-100);
-  --color-focus-ring: var(--color-primary-300);
+  --text-display-xl: 3.5rem;
+  --text-display-xl--line-height: 1.1;
+  --text-display-xl--letter-spacing: -0.02em;
 
-  /* --- Typography -------------------------------------------- */
+  --text-heading-lg: 2.5rem;
+  --text-heading-lg--line-height: 1.15;
+  --text-heading-lg--letter-spacing: -0.015em;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.75;
+  --text-body-md--letter-spacing: 0.005em;
+
+  --text-label-md: 0.875rem;
+  --text-label-md--line-height: 1.5;
+  --text-label-md--letter-spacing: 0.1em;
+
+  --text-label-sm: 0.75rem;
+  --text-label-sm--line-height: 1.4;
+  --text-label-sm--letter-spacing: 0.08em;
+
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-pill: 9999px;
+
+  /* --- Typography families used by shared primitives --------- */
   --font-sans:
     var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -74,14 +61,75 @@
     var(--font-cormorant), ui-serif, Georgia, Cambria, 'Times New Roman', Times,
     serif;
 
-  /* --- Font sizes (display scale) ---- */
+  /* --- Existing project layout/system tokens ----------------- */
+  --spacing-section: 7rem;
+  --spacing-section-sm: 4rem;
+  --spacing-container: 1.5rem;
+  --spacing-container-md: 2.5rem;
+  --spacing-container-xl: 4rem;
+
+  --container-content: 75rem;
+  --container-narrow: 48rem;
+  --container-wide: 90rem;
+
+  --radius-card: var(--radius-md);
+
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 8px 30px rgb(0 0 0 / 0.08);
+
+  --transition-timing-premium: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-timing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Compatibility aliases (legacy utility classes) -------- */
+  --color-primary-50: var(--color-primary-soft);
+  --color-primary-100: #e8f6f7;
+  --color-primary-200: #b8e0e2;
+  --color-primary-300: #7fc9cc;
+  --color-primary-400: #51acb1;
+  --color-primary-500: #3d8a8f;
+  --color-primary-600: var(--color-primary);
+  --color-primary-700: var(--color-primary-hover);
+  --color-primary-800: #163536;
+  --color-primary-900: #0b1a1b;
+
+  --color-sand-50: var(--color-sand);
+  --color-sand-100: #f9f5ec;
+  --color-sand-200: #f0e8d4;
+  --color-sand-300: #e2d0b0;
+  --color-sand-400: #cdb483;
+  --color-sand-500: #b8955a;
+  --color-sand-600: #9a7840;
+
+  --color-charcoal-50: #f4f4f4;
+  --color-charcoal-100: #e8e8e8;
+  --color-charcoal-200: #d0d0d0;
+  --color-charcoal-300: #a8a8a8;
+  --color-charcoal-400: #808080;
+  --color-charcoal-500: #4a4a4a;
+  --color-charcoal-600: var(--color-charcoal);
+  --color-charcoal-700: #1a1a1a;
+  --color-charcoal-800: #0f0f0f;
+  --color-charcoal-900: #050505;
+
+  --color-gold-light: #e8d5ad;
+  --color-gold-dark: #a07840;
+
+  --color-surface-default: #ffffff;
+  --color-surface-soft: var(--color-sand);
+  --color-surface-emphasis: var(--color-primary);
+  --color-border-soft: #e8e8e8;
+  --color-text-default: var(--color-charcoal);
+  --color-text-strong: #1a1a1a;
+  --color-text-on-emphasis: var(--color-on-action);
+  --color-action: var(--color-primary);
+  --color-action-hover: var(--color-primary-hover);
+  --color-action-soft: var(--color-primary-soft);
+  --color-action-soft-hover: #e8f6f7;
+  --color-focus-ring: #7fc9cc;
+
   --text-display-2xl: clamp(3rem, 8vw, 7rem);
   --text-display-2xl--line-height: 1.05;
   --text-display-2xl--letter-spacing: -0.03em;
-
-  --text-display-xl: clamp(2.5rem, 6vw, 5rem);
-  --text-display-xl--line-height: 1.1;
-  --text-display-xl--letter-spacing: -0.025em;
 
   --text-display-lg: clamp(2rem, 4vw, 3.5rem);
   --text-display-lg--line-height: 1.15;
@@ -95,41 +143,13 @@
   --text-body-lg--line-height: 1.8;
   --text-body-lg--letter-spacing: 0.01em;
 
-  --text-body-md: 1rem;
-  --text-body-md--line-height: 1.75;
-  --text-body-md--letter-spacing: 0.005em;
-
   --text-label: 1rem;
   --text-label--line-height: 1.5;
   --text-label--letter-spacing: 0.12em;
 
-  --text-label-lg: 0.875rem;
-  --text-label-lg--line-height: 1.5;
-  --text-label-lg--letter-spacing: 0.1em;
-
-  /* --- Spacing ----------------------------------------------- */
-  --spacing-section: 7rem;
-  --spacing-section-sm: 4rem;
-  --spacing-container: 1.5rem;
-  --spacing-container-md: 2.5rem;
-  --spacing-container-xl: 4rem;
-
-  /* --- Max widths -------------------------------------------- */
-  --container-content: 75rem;
-  --container-narrow: 48rem;
-  --container-wide: 90rem;
-
-  /* --- Border radius ----------------------------------------- */
-  --radius-card: 12px;
-  --radius-pill: 9999px;
-
-  /* --- Box shadows ------------------------------------------- */
-  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06);
-  --shadow-card-hover: 0 8px 30px rgb(0 0 0 / 0.08);
-
-  /* --- Transitions ------------------------------------------- */
-  --transition-timing-premium: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --transition-timing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --text-label-lg: var(--text-label-md);
+  --text-label-lg--line-height: var(--text-label-md--line-height);
+  --text-label-lg--letter-spacing: var(--text-label-md--letter-spacing);
 }
 
 /* ============================================================
@@ -142,7 +162,7 @@
 
   body {
     @apply font-sans antialiased;
-    color: var(--color-charcoal-600);
+    color: var(--color-charcoal);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -158,12 +178,12 @@
   h4 {
     font-family: var(--font-cormorant), ui-serif, Georgia, serif;
     font-weight: 400;
-    color: var(--color-charcoal-700);
+    color: var(--color-charcoal);
   }
 
   ::selection {
-    background: var(--color-primary-100);
-    color: var(--color-primary-700);
+    background: var(--color-primary-soft);
+    color: var(--color-primary-hover);
   }
 }
 

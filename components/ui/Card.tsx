@@ -11,7 +11,7 @@ export function Card({ children, className = '', hover = false }: CardProps) {
   return (
     <div
       className={[
-        'bg-surface-default rounded-card border border-border-soft shadow-card overflow-hidden',
+        'bg-white rounded-md border border-border-soft shadow-card overflow-hidden',
         hover
           ? 'hover:shadow-card hover:-translate-y-0.5 transition-all duration-200'
           : '',

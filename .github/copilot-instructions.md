@@ -40,6 +40,7 @@
   - English routes use `/en`
 - Prefer server components by default; add `'use client'` only when interactivity/browser APIs are needed.
 - For metadata and SEO, follow the localized metadata pattern used in `app/[locale]/layout.tsx` and `app/[locale]/page.tsx`.
+- Treat `DESIGN.md` as the source of truth for visual tokens and rationale; keep UI styling changes aligned with it and validate with `npm run design:lint`.
 
 ## Common Pitfalls
 

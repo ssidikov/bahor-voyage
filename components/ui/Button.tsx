@@ -30,16 +30,16 @@ export type ButtonProps = {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'bg-action text-text-on-emphasis hover:bg-action-hover focus-visible:ring-focus-ring',
+    'bg-primary text-on-action hover:bg-primary-hover focus-visible:ring-primary',
   secondary:
-    'bg-action-soft text-primary-700 hover:bg-action-soft-hover focus-visible:ring-focus-ring',
+    'bg-primary-soft text-primary-hover hover:bg-primary-soft focus-visible:ring-primary',
   outline:
-    'border border-primary-300 text-primary-700 hover:bg-action-soft focus-visible:ring-focus-ring',
-  ghost: 'text-primary-700 hover:bg-action-soft focus-visible:ring-focus-ring',
+    'border border-primary text-primary-hover hover:bg-primary-soft focus-visible:ring-primary',
+  ghost: 'text-primary-hover hover:bg-primary-soft focus-visible:ring-primary',
   inverted:
-    'border border-white/60 text-white hover:bg-white hover:text-primary-600 focus-visible:ring-white',
+    'border border-white/60 text-white hover:bg-white hover:text-primary focus-visible:ring-white',
   glass:
-    'bg-white/15 border border-white/30 text-white backdrop-blur-sm hover:bg-white hover:text-primary-600 focus-visible:ring-white',
+    'bg-white/15 border border-white/30 text-white backdrop-blur-sm hover:bg-white hover:text-primary focus-visible:ring-white',
 };
 
 const sizeClasses: Record<Size, string> = {

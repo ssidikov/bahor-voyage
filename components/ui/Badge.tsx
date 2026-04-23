@@ -9,8 +9,8 @@ export type BadgeProps = {
 };
 
 const variantClasses: Record<Variant, string> = {
-  default: 'bg-surface-soft text-text-default',
-  primary: 'bg-action-soft text-primary-700',
+  default: 'bg-sand text-charcoal',
+  primary: 'bg-primary-soft text-primary-hover',
   success: 'bg-green-100 text-green-700',
   warning: 'bg-amber-100 text-amber-700',
 };
