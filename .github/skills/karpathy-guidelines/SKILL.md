@@ -1,16 +1,12 @@
-## graphify
+---
+name: karpathy-guidelines
+description: 'Behavioral guidelines to reduce common LLM coding mistakes. Use whenever the user asks to write, review, or refactor code and you need to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.'
+argument-hint: 'What coding task should be guided by these principles?'
+---
 
-This project has a graphify knowledge graph at graphify-out/.
+# Karpathy Guidelines
 
-Rules:
-
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- After modifying code files in this session, run `python3 -c "from graphify.watch import _rebuild_code; from pathlib import Path; _rebuild_code(Path('.'))"` to keep the graph current
-
-## karpathy-guidelines
-
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy's observations on LLM coding pitfalls.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
@@ -74,7 +70,3 @@ For multi-step tasks, state a brief plan:
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
-
----
-
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
