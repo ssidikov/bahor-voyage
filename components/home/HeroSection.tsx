@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import Button from '@/components/ui/Button';
+import HeroSearchBar from '@/components/home/HeroSearchBar';
 
 export function HeroSection() {
   const t = useTranslations('home');
@@ -37,7 +38,7 @@ export function HeroSection() {
 
       {/* Content — editorial bottom-left positioning */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 z-10 pb-20 md:pb-28 lg:pb-32"
+        className="absolute bottom-0 left-0 right-0 z-10 pb-12 md:pb-16 lg:pb-20"
         style={{ opacity: contentOpacity }}
       >
         <div className="max-w-content mx-auto px-6 md:px-10">
@@ -94,6 +95,9 @@ export function HeroSection() {
               </span>
             </Button>
           </motion.div>
+
+          {/* Circuit finder search bar */}
+          <HeroSearchBar />
         </div>
       </motion.div>
     </section>

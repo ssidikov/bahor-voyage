@@ -3,10 +3,13 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
 import { Link } from '@/i18n/navigation';
 import { fadeUp, staggerContainer } from '@/lib/animations';
 import { Button } from '@/components/ui';
+import { CIRCUIT_META, matchesDuration } from '@/lib/circuit-meta';
+import type { CircuitTheme, DurationBucket, Season } from '@/lib/circuit-meta';
 
 /* ------------------------------------------------------------------ */
 /*  Circuit card data (same as FeaturedCircuits)                        */
@@ -133,6 +136,27 @@ export default function CircuitsPage() {
   const t = useTranslations('circuits');
   const { scrollY } = useScroll();
   const heroParallax = useTransform(scrollY, [0, 600], ['0%', '20%']);
+
+  /* ---------- search filter from hero search bar ---------- */
+  const searchParams = useSearchParams();
+  const filterTheme = (searchParams.get('theme') ?? '') as CircuitTheme | '';
+  const filterDuration = (searchParams.get('duration') ?? '') as
+    | DurationBucket
+    | '';
+  const filterSeason = (searchParams.get('season') ?? '') as Season | '';
+  const hasFilters = !!(filterTheme || filterDuration || filterSeason);
+
+  const matchedIds = hasFilters
+    ? new Set(
+        CIRCUIT_META.filter((c) => {
+          if (filterTheme && c.theme !== filterTheme) return false;
+          if (filterDuration && !matchesDuration(c.days, filterDuration))
+            return false;
+          if (filterSeason && !c.seasons.includes(filterSeason)) return false;
+          return true;
+        }).map((c) => c.id),
+      )
+    : null;
 
   return (
     <>
@@ -270,24 +294,35 @@ export default function CircuitsPage() {
             viewport={{ once: true, margin: '-80px' }}
             className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-12 lg:gap-6"
           >
-            {CIRCUITS.map((circuit, idx) => (
-              <motion.div
-                key={circuit.id}
-                variants={fadeUp}
-                className={
-                  idx === 0 || idx === 3
-                    ? 'md:col-span-2 lg:col-span-8'
-                    : 'md:col-span-1 lg:col-span-4'
-                }
-              >
-                <CircuitCard
-                  id={circuit.id}
-                  image={circuit.image}
-                  href={circuit.href}
-                  large={idx === 0 || idx === 3}
-                />
-              </motion.div>
-            ))}
+            {CIRCUITS.map((circuit, idx) => {
+              const isMatch = matchedIds === null || matchedIds.has(circuit.id);
+              const dimmed = matchedIds !== null && !isMatch;
+              return (
+                <motion.div
+                  key={circuit.id}
+                  variants={fadeUp}
+                  className={
+                    (idx === 0 || idx === 3
+                      ? 'md:col-span-2 lg:col-span-8'
+                      : 'md:col-span-1 lg:col-span-4') +
+                    (isMatch && matchedIds !== null
+                      ? ' ring-2 ring-gold rounded-[1.75rem] shadow-[0_0_24px_rgba(200,169,110,0.25)]'
+                      : '') +
+                    (dimmed ? ' opacity-40' : '')
+                  }
+                  style={{
+                    transition: 'opacity 0.5s ease, box-shadow 0.5s ease',
+                  }}
+                >
+                  <CircuitCard
+                    id={circuit.id}
+                    image={circuit.image}
+                    href={circuit.href}
+                    large={idx === 0 || idx === 3}
+                  />
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
