@@ -10,6 +10,19 @@ type Props = {
   options: string[];
 };
 
+const STATUS_LABELS: Record<string, string> = {
+  // Booking statuses
+  PENDING: 'En attente',
+  CONFIRMED: 'Confirmé',
+  CANCELLED: 'Annulé',
+  COMPLETED: 'Terminé',
+  // Contact statuses
+  NOUVEAU: 'Nouveau',
+  CONTACTE: 'Contacté',
+  QUALIFIE: 'Qualifié',
+  CONVERTI: 'Converti',
+};
+
 export default function StatusUpdater({
   id,
   currentStatus,
@@ -42,7 +55,7 @@ export default function StatusUpdater({
     >
       {options.map((opt) => (
         <option key={opt} value={opt}>
-          {opt}
+          {STATUS_LABELS[opt] || opt}
         </option>
       ))}
     </select>

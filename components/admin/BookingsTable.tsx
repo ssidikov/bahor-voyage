@@ -52,6 +52,16 @@ const BOOKING_STATUS_OPTIONS = [
   'CANCELLED',
   'COMPLETED',
 ];
+
+const STATUS_LABELS: Record<string, string> = {
+  PENDING: 'En attente',
+  PAID: 'Payé',
+  FAILED: 'Échoué',
+  REFUNDED: 'Remboursé',
+  CONFIRMED: 'Confirmé',
+  CANCELLED: 'Annulé',
+  COMPLETED: 'Terminé',
+};
 const PAGE_SIZE = 20;
 
 const paymentBadge = (status: string) => {
@@ -143,8 +153,8 @@ export default function BookingsTable({ bookings }: { bookings: Booking[] }) {
       .map((t) => `${t.firstName} ${t.lastName}`)
       .join(' | '),
     'Montant (€)': b.totalAmount,
-    'Statut paiement': b.paymentStatus,
-    'Statut réservation': b.status,
+    'Statut paiement': STATUS_LABELS[b.paymentStatus] || b.paymentStatus,
+    'Statut réservation': STATUS_LABELS[b.status] || b.status,
     Options: b.options.map((o) => o.tourOption.nameFr).join(' | '),
   }));
 
@@ -192,7 +202,7 @@ export default function BookingsTable({ bookings }: { bookings: Booking[] }) {
             <option value="">Tous les paiements</option>
             {PAYMENT_STATUS_OPTIONS.filter(Boolean).map((s) => (
               <option key={s} value={s}>
-                {s}
+                {STATUS_LABELS[s] || s}
               </option>
             ))}
           </select>
@@ -206,7 +216,7 @@ export default function BookingsTable({ bookings }: { bookings: Booking[] }) {
             <option value="">Tous les statuts</option>
             {BOOKING_STATUS_OPTIONS.filter(Boolean).map((s) => (
               <option key={s} value={s}>
-                {s}
+                {STATUS_LABELS[s] || s}
               </option>
             ))}
           </select>

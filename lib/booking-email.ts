@@ -3,6 +3,7 @@ import {
   adminBookingAlert,
   customerConfirmationEmail,
 } from '@/lib/email-templates';
+import { generateBookingPdf } from '@/lib/pdf-generator';
 
 type BookingTravelerForEmail = {
   firstName: string;
@@ -74,11 +75,19 @@ export async function sendBookingConfirmationEmails(
         : undefined,
   };
 
+  const pdfBuffer = await generateBookingPdf(booking);
+
   await transporter.sendMail({
     from: `"Bahor-Voyage" <${process.env.SMTP_USER}>`,
     to: booking.email,
     subject: `Confirmation de votre réservation — ${emailData.tourTitle}`,
     html: customerConfirmationEmail(emailData),
+    attachments: [
+      {
+        filename: `reservation-${emailData.bookingRef}.pdf`,
+        content: pdfBuffer,
+      },
+    ],
   });
 
   await transporter.sendMail({
