@@ -26,6 +26,7 @@ export function HeroSection() {
             alt=""
             fill
             priority
+            quality={100}
             className="object-cover"
             placeholder="empty"
           />

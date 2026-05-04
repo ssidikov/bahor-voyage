@@ -74,6 +74,7 @@ export default function TourProgramme({ prefix, days }: TourProgrammeProps) {
                         src={day.image}
                         alt={day.imageAlt}
                         fill
+                        quality={100}
                         className="object-cover transition-transform duration-700 hover:scale-105"
                         placeholder="empty"
                       />

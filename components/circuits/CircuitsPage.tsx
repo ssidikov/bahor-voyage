@@ -74,6 +74,7 @@ function CircuitCard({
           src={image}
           alt={t(tagKey)}
           fill
+          quality={100}
           className="object-cover"
           placeholder="empty"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 66vw"
@@ -174,6 +175,7 @@ export default function CircuitsPage() {
             alt="Circuits en Ouzbékistan"
             fill
             priority
+            quality={100}
             className="object-cover"
             placeholder="empty"
           />

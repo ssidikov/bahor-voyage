@@ -77,6 +77,7 @@ export function Header() {
             width={375}
             height={375}
             priority
+            quality={100}
             className={`w-auto transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
               scrolled ? 'h-8 md:h-9' : 'h-16 md:h-20'
             } ${

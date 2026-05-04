@@ -64,6 +64,7 @@ function CircuitCard({
           src={image}
           alt={t(tagKey)}
           fill
+          quality={100}
           className="object-cover"
           placeholder="empty"
         />

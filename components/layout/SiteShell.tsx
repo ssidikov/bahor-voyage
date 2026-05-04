@@ -13,7 +13,7 @@ type Props = {
 
 export default function SiteShell({ children }: Props) {
   const segments = useSelectedLayoutSegments();
-  const isAdminRoute = segments[0] === 'admin';
+  const isAdminRoute = segments[0] === 'admin' || segments[0] === 'login';
 
   if (isAdminRoute) {
     return <>{children}</>;

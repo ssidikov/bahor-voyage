@@ -90,6 +90,7 @@ export function ProjectsPreviewSection() {
                   src={project.image}
                   alt={tHome(project.imageAltKey)}
                   fill
+                  quality={100}
                   className="object-cover"
                   placeholder="empty"
                 />

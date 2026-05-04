@@ -51,6 +51,7 @@ export default function ProjectsPage() {
             alt=""
             fill
             priority
+            quality={100}
             className="object-cover"
             placeholder="empty"
           />
@@ -153,6 +154,7 @@ export default function ProjectsPage() {
                       src={project.image}
                       alt={project.imageAlt}
                       fill
+                      quality={100}
                       className="object-cover transition-transform duration-700 hover:scale-105"
                       placeholder="empty"
                     />

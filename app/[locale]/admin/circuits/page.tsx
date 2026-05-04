@@ -1,6 +1,5 @@
 import prisma from '@/lib/prisma';
 import Link from 'next/link';
-import SyncToursButton from '@/components/admin/SyncToursButton';
 import AddTourButton from '@/components/admin/AddTourButton';
 
 export default async function AdminCircuitsPage() {
@@ -18,7 +17,6 @@ export default async function AdminCircuitsPage() {
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-serif text-charcoal-700">Circuits</h2>
         <div className="flex gap-3">
-          <SyncToursButton />
           <AddTourButton />
         </div>
       </div>

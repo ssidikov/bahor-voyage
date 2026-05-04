@@ -3,23 +3,23 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
-interface BookingHeroProps {
+interface ContactHeroProps {
   kicker: string;
   title: string;
   intro: string;
 }
 
-export default function BookingHero({
+export default function ContactHero({
   kicker,
   title,
   intro,
-}: BookingHeroProps) {
+}: ContactHeroProps) {
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 800], ['0%', '25%']);
   const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <section className="relative h-[65vh] min-h-[500px] overflow-hidden">
+    <section className="relative h-[65vh] overflow-hidden">
       {/* Parallax background */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -27,12 +27,13 @@ export default function BookingHero({
           style={{ y: backgroundY }}
         >
           <Image
-            src="/images/tours/Khiva-2.jpg"
-            alt="Samarkand, Uzbekistan"
+            src="/images/khiva-old-city.jpg"
+            alt="Uzbek craftsmanship - Bahor Voyage"
             fill
             priority
             quality={100}
             className="object-cover"
+            sizes="100vw"
           />
         </motion.div>
       </div>

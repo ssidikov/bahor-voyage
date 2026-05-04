@@ -67,6 +67,7 @@ export function PhotoHighlightsSection() {
               src={HIGHLIGHTS[0].image}
               alt={t(HIGHLIGHTS[0].altKey)}
               fill
+              quality={100}
               className="object-cover"
               placeholder="empty"
             />
@@ -83,6 +84,7 @@ export function PhotoHighlightsSection() {
                   src={item.image}
                   alt={t(item.altKey)}
                   fill
+                  quality={100}
                   className="object-cover"
                   placeholder="empty"
                 />

@@ -102,7 +102,13 @@ function TimelineStep({
         className={reverse ? 'lg:col-start-2' : ''}
       >
         <div className="relative aspect-4/3 overflow-hidden rounded-sm">
-          <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            quality={100}
+            className="object-cover"
+          />
           {/* gold label overlay */}
           <div className="absolute bottom-0 left-0 px-5 py-3 bg-charcoal-800/80 backdrop-blur-sm">
             <span className="font-serif italic text-gold text-xl">{label}</span>
@@ -148,6 +154,7 @@ function TeamCard({ name, role, bio, imageSrc }: TeamCardProps) {
             src={imageSrc}
             alt={name}
             fill
+            quality={100}
             className="object-cover group-hover:scale-105 transition-transform duration-700"
           />
         ) : (
@@ -246,6 +253,7 @@ export function AboutPage() {
             alt="AFOR – Association France Ouzbékistan Racines"
             fill
             priority
+            quality={100}
             className="object-cover"
           />
           {/* gradient overlay */}

@@ -4,6 +4,8 @@ import { Button } from '@/components/ui';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import ContactForm from '@/components/contact/ContactForm';
 
+import ContactHero from '@/components/contact/ContactHero';
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -46,19 +48,11 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-sand-100 pt-36 pb-16 md:pt-40 md:pb-20">
-        <div className="max-w-content mx-auto px-6 md:px-10 text-center">
-          <p className="text-label uppercase tracking-[0.15em] text-primary-400 mb-4">
-            {t('hero_kicker')}
-          </p>
-          <h1 className="font-serif text-display-xl text-charcoal-700 font-light">
-            {t('title')}
-          </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-body-lg text-charcoal-400 leading-relaxed">
-            {t('intro')}
-          </p>
-        </div>
-      </section>
+      <ContactHero
+        kicker={t('hero_kicker')}
+        title={t('title')}
+        intro={t('intro')}
+      />
 
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-content mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

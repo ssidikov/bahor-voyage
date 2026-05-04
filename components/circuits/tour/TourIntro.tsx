@@ -81,6 +81,7 @@ export default function TourIntro({
                 src={introImage}
                 alt={introImageAlt}
                 fill
+                quality={100}
                 className="object-cover scale-[1.03] hover:scale-[1.06] transition-transform duration-1400 ease-out"
                 placeholder="empty"
               />

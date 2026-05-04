@@ -55,6 +55,7 @@ export function FounderSection() {
                 src="/images/Navbakhor-BUDOT.jpg"
                 alt="Navbakhor Boudot — Fondatrice Bahor-Voyage"
                 fill
+                quality={100}
                 className="object-cover"
                 placeholder="empty"
               />

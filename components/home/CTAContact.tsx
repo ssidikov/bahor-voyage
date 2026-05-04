@@ -24,6 +24,7 @@ export function CTAContact() {
           src="/images/uzbekistan.jpeg"
           alt=""
           fill
+          quality={100}
           className="object-cover"
           placeholder="empty"
         />

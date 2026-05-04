@@ -106,6 +106,7 @@ export default function VoyageSolidairePage() {
             alt=""
             fill
             priority
+            quality={100}
             className="object-cover"
             placeholder="empty"
           />
@@ -214,6 +215,7 @@ export default function VoyageSolidairePage() {
                   src="/images/projects/project-trees.jpg"
                   alt="Tree planting in Gurlan, Khorezm"
                   fill
+                  quality={100}
                   className="object-cover transition-transform duration-700 hover:scale-105"
                   placeholder="empty"
                 />
@@ -257,6 +259,7 @@ export default function VoyageSolidairePage() {
                   src="/images/projects/project-education-AFOR.jpg"
                   alt="Youth education support"
                   fill
+                  quality={100}
                   className="object-cover transition-transform duration-700 hover:scale-105"
                   placeholder="empty"
                 />
@@ -378,6 +381,7 @@ export default function VoyageSolidairePage() {
                   alt=""
                   width={480}
                   height={270}
+                  quality={100}
                   className="object-cover rounded-sm w-full aspect-video mb-6"
                   placeholder="empty"
                 />
