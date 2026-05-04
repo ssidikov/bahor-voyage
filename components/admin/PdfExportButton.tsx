@@ -1,17 +1,44 @@
-'use client';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 type PdfExportButtonProps = {
-  data: Record<string, string | number>[];
+  data: Record<string, string | number | null>[];
   filename: string;
   label: string;
 };
 
-export default function PdfExportButton({ label }: PdfExportButtonProps) {
+export default function PdfExportButton({
+  data,
+  filename,
+  label,
+}: PdfExportButtonProps) {
   const handleExport = () => {
-    // Add a class to body to hide non-table elements during print
-    document.body.classList.add('printing-table');
-    window.print();
-    document.body.classList.remove('printing-table');
+    if (data.length === 0) return;
+
+    const doc = new jsPDF({ orientation: 'landscape' });
+
+    // Title
+    doc.setFontSize(18);
+    doc.text('Liste des Réservations — Bahor Voyage', 14, 15);
+    doc.setFontSize(10);
+    doc.setTextColor(100);
+    doc.text(`Exporté le : ${new Date().toLocaleString('fr-FR')}`, 14, 22);
+
+    // Prepare table data
+    const columns = Object.keys(data[0] || {});
+    const rows = data.map((item) => columns.map((col) => item[col] || ''));
+
+    autoTable(doc, {
+      startY: 30,
+      head: [columns],
+      body: rows,
+      theme: 'grid',
+      headStyles: { fillColor: [0, 102, 102] }, // Primary color
+      styles: { fontSize: 8 },
+      margin: { top: 30 },
+    });
+
+    doc.save(filename);
   };
 
   return (

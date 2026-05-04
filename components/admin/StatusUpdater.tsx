@@ -2,6 +2,7 @@
 
 import { useTransition } from 'react';
 import { updateContactStatus, updateBookingStatus } from '@/lib/actions/admin';
+import { ChevronDown } from '@/components/ui/Icons';
 
 type Props = {
   id: string;
@@ -47,17 +48,20 @@ export default function StatusUpdater({
   }
 
   return (
-    <select
-      value={currentStatus}
-      onChange={handleChange}
-      disabled={isPending}
-      className={`text-xs font-medium rounded-full px-2.5 py-1 ${isPending ? 'opacity-50' : ''}`}
-    >
-      {options.map((opt) => (
-        <option key={opt} value={opt}>
-          {STATUS_LABELS[opt] || opt}
-        </option>
-      ))}
-    </select>
+    <div className="relative inline-block">
+      <select
+        value={currentStatus}
+        onChange={handleChange}
+        disabled={isPending}
+        className={`text-xs font-medium rounded-full pl-2.5 pr-7 py-1 appearance-none bg-white border border-border-soft focus:outline-none focus:ring-1 focus:ring-primary-300 ${isPending ? 'opacity-50' : ''}`}
+      >
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {STATUS_LABELS[opt] || opt}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-charcoal-400 w-3 h-3" />
+    </div>
   );
 }

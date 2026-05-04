@@ -7,6 +7,7 @@ import {
   updateTourOption,
   type TourOptionInput,
 } from '@/lib/actions/admin';
+import { ChevronDown } from '@/components/ui/Icons';
 
 interface TourOption {
   id: string;
@@ -120,19 +121,17 @@ export default function OptionsManager({
               className="w-full border border-border-soft rounded p-2 text-sm"
             />
           </div>
-          <div>
-            <label className="block text-xs text-charcoal-500 mb-1">
-              Type d&apos;option
-            </label>
+          <div className="relative">
             <select
               name="type"
               defaultValue={editingOption?.type || 'SUPPLEMENT'}
-              className="w-full border border-border-soft rounded p-2 text-sm bg-white"
+              className="w-full border border-border-soft rounded pl-3 pr-10 py-2 text-sm bg-white appearance-none"
             >
               <option value="SUPPLEMENT">Supplément (ex: Single)</option>
               <option value="EXCURSION">Excursion optionnelle</option>
               <option value="UPGRADE">Surclassement (ex: Hôtel 4*)</option>
             </select>
+            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-charcoal-400" />
           </div>
           <div className="col-span-2 flex items-center justify-between">
             <label className="flex items-center space-x-2 text-sm">

@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import StatusUpdater from './StatusUpdater';
 import CsvExportButton from './CsvExportButton';
 import PdfExportButton from './PdfExportButton';
+import { ChevronDown } from '@/components/ui/Icons';
 
 type Traveler = {
   firstName: string;
@@ -194,32 +195,38 @@ export default function BookingsTable({ bookings }: { bookings: Booking[] }) {
           </div>
 
           {/* Payment filter */}
-          <select
-            value={paymentFilter}
-            onChange={(e) => handlePayment(e.target.value)}
-            className="px-3 py-2 text-sm border border-border-soft rounded-xl bg-white focus:outline-none focus:ring-1 focus:ring-primary-300 text-charcoal-600"
-          >
-            <option value="">Tous les paiements</option>
-            {PAYMENT_STATUS_OPTIONS.filter(Boolean).map((s) => (
-              <option key={s} value={s}>
-                {STATUS_LABELS[s] || s}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={paymentFilter}
+              onChange={(e) => handlePayment(e.target.value)}
+              className="pl-3 pr-10 py-2 text-sm border border-border-soft rounded-xl bg-white focus:outline-none focus:ring-1 focus:ring-primary-300 text-charcoal-600 appearance-none w-full sm:w-auto"
+            >
+              <option value="">Tous les paiements</option>
+              {PAYMENT_STATUS_OPTIONS.filter(Boolean).map((s) => (
+                <option key={s} value={s}>
+                  {STATUS_LABELS[s] || s}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-charcoal-400" />
+          </div>
 
           {/* Status filter */}
-          <select
-            value={statusFilter}
-            onChange={(e) => handleStatus(e.target.value)}
-            className="px-3 py-2 text-sm border border-border-soft rounded-xl bg-white focus:outline-none focus:ring-1 focus:ring-primary-300 text-charcoal-600"
-          >
-            <option value="">Tous les statuts</option>
-            {BOOKING_STATUS_OPTIONS.filter(Boolean).map((s) => (
-              <option key={s} value={s}>
-                {STATUS_LABELS[s] || s}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={statusFilter}
+              onChange={(e) => handleStatus(e.target.value)}
+              className="pl-3 pr-10 py-2 text-sm border border-border-soft rounded-xl bg-white focus:outline-none focus:ring-1 focus:ring-primary-300 text-charcoal-600 appearance-none w-full sm:w-auto"
+            >
+              <option value="">Tous les statuts</option>
+              {BOOKING_STATUS_OPTIONS.filter(Boolean).map((s) => (
+                <option key={s} value={s}>
+                  {STATUS_LABELS[s] || s}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-charcoal-400" />
+          </div>
         </div>
 
         {/* Export */}
@@ -332,7 +339,7 @@ export default function BookingsTable({ bookings }: { bookings: Booking[] }) {
                     />
                     <div className="mt-3">
                       <a
-                        href={`/admin/bookings/${booking.id}/pdf`}
+                        href={`/api/bookings/${booking.id}/pdf`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-charcoal-600 bg-white border border-border-soft rounded-lg hover:bg-sand-50 transition-colors shadow-sm"

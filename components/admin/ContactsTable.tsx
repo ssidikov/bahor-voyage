@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import StatusUpdater from './StatusUpdater';
 import CsvExportButton from './CsvExportButton';
+import { ChevronDown } from '@/components/ui/Icons';
 
 type Contact = {
   id: string;
@@ -112,18 +113,21 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
           </div>
 
           {/* Status filter */}
-          <select
-            value={statusFilter}
-            onChange={(e) => handleStatus(e.target.value)}
-            className="px-3 py-2 text-sm border border-border-soft rounded-xl bg-white focus:outline-none focus:ring-1 focus:ring-primary-300 text-charcoal-600"
-          >
-            <option value="">Tous les statuts</option>
-            {STATUS_OPTIONS.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={statusFilter}
+              onChange={(e) => handleStatus(e.target.value)}
+              className="pl-3 pr-10 py-2 text-sm border border-border-soft rounded-xl bg-white focus:outline-none focus:ring-1 focus:ring-primary-300 text-charcoal-600 appearance-none w-full sm:w-auto"
+            >
+              <option value="">Tous les statuts</option>
+              {STATUS_OPTIONS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-charcoal-400" />
+          </div>
         </div>
 
         {/* Export */}

@@ -50,9 +50,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import { Suspense } from 'react';
+
 export default async function CircuitsRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <CircuitsPage />;
+  return (
+    <Suspense>
+      <CircuitsPage />
+    </Suspense>
+  );
 }

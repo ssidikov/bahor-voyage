@@ -12,23 +12,7 @@ import type { CircuitTheme, DurationBucket, Season } from '@/lib/circuit-meta';
 /* ------------------------------------------------------------------ */
 /*  Chevron icon for select inputs                                      */
 /* ------------------------------------------------------------------ */
-function ChevronDown({ className }: { className?: string }) {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <path d="M3 4.5L6 7.5L9 4.5" />
-    </svg>
-  );
-}
+import { ChevronDown } from '@/components/ui/Icons';
 
 /* ------------------------------------------------------------------ */
 /*  Search icon for CTA button                                          */
@@ -74,7 +58,7 @@ export default function HeroSearchBar() {
 
   const selectBase =
     'appearance-none bg-white/10 border border-white/20 text-white rounded-xl ' +
-    'pl-4 pr-8 py-3 text-sm font-medium tracking-wide ' +
+    'pl-4 pr-10 py-3 text-sm font-medium tracking-wide ' +
     'backdrop-blur-sm transition-all duration-300 cursor-pointer ' +
     'hover:bg-white/15 hover:border-white/35 ' +
     'focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/15 ' +
@@ -116,7 +100,7 @@ export default function HeroSearchBar() {
             </option>
             <option value="grand">{t('hero_search_theme_grand')}</option>
           </select>
-          <ChevronDown className="pointer-events-none absolute right-3 text-white/60" />
+          <ChevronDown className="pointer-events-none absolute right-4 text-white/60" />
         </div>
 
         {/* Duration select */}
@@ -132,7 +116,7 @@ export default function HeroSearchBar() {
             <option value="medium">{t('hero_search_duration_medium')}</option>
             <option value="long">{t('hero_search_duration_long')}</option>
           </select>
-          <ChevronDown className="pointer-events-none absolute right-3 text-white/60" />
+          <ChevronDown className="pointer-events-none absolute right-4 text-white/60" />
         </div>
 
         {/* Season select */}
@@ -149,7 +133,7 @@ export default function HeroSearchBar() {
             <option value="automne">{t('hero_search_season_autumn')}</option>
             <option value="hiver">{t('hero_search_season_winter')}</option>
           </select>
-          <ChevronDown className="pointer-events-none absolute right-3 text-white/60" />
+          <ChevronDown className="pointer-events-none absolute right-4 text-white/60" />
         </div>
 
         {/* Divider (desktop only) */}

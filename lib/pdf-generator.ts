@@ -1,11 +1,11 @@
 import { jsPDF } from 'jspdf';
 
-type BookingTravelerForEmail = {
+export type BookingTravelerForEmail = {
   firstName: string;
   lastName: string;
 };
 
-type BookingForEmail = {
+export type BookingForEmail = {
   id: string;
   firstName: string;
   lastName: string;
