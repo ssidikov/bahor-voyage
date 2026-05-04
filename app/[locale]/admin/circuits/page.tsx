@@ -1,6 +1,7 @@
 import prisma from '@/lib/prisma';
 import Link from 'next/link';
 import AddTourButton from '@/components/admin/AddTourButton';
+import DeleteTourButton from '@/components/admin/DeleteTourButton';
 
 export default async function AdminCircuitsPage() {
   const tours = await prisma.tour.findMany({
@@ -56,13 +57,14 @@ export default async function AdminCircuitsPage() {
                     {tour._count.options} options
                   </span>
                 </td>
-                <td className="px-6 py-4 text-right">
+                <td className="px-6 py-4 text-right flex items-center justify-end">
                   <Link
                     href={`/admin/circuits/${tour.id}`}
                     className="text-primary-600 hover:text-primary-800 font-medium"
                   >
                     Gérer &rarr;
                   </Link>
+                  <DeleteTourButton tourId={tour.id} tourTitle={tour.titleFr} />
                 </td>
               </tr>
             ))}

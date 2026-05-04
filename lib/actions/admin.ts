@@ -89,6 +89,20 @@ export async function updateTour(id: string, data: TourInput) {
   return tour;
 }
 
+export async function deleteTour(id: string) {
+  await checkAdmin();
+
+  // First delete related options if they don't have cascade (schema says they do, but let's be safe or just rely on cascade)
+  // Actually, we should check if there are bookings before allowing deletion,
+  // or just let Prisma fail if there are restricted relations.
+
+  await prisma.tour.delete({
+    where: { id },
+  });
+
+  revalidatePath('/admin/circuits');
+}
+
 // ---------------------------
 // TOUR DATES
 // ---------------------------
