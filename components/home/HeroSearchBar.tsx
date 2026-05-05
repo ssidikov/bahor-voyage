@@ -9,14 +9,8 @@ import { fadeUp } from '@/lib/animations';
 
 import type { CircuitTheme, DurationBucket, Season } from '@/lib/circuit-meta';
 
-/* ------------------------------------------------------------------ */
-/*  Chevron icon for select inputs                                      */
-/* ------------------------------------------------------------------ */
 import { ChevronDown } from '@/components/ui/Icons';
 
-/* ------------------------------------------------------------------ */
-/*  Search icon for CTA button                                          */
-/* ------------------------------------------------------------------ */
 function SearchIcon() {
   return (
     <svg
@@ -35,9 +29,6 @@ function SearchIcon() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Component                                                           */
-/* ------------------------------------------------------------------ */
 export default function HeroSearchBar() {
   const t = useTranslations('home');
   const router = useRouter();
@@ -57,12 +48,11 @@ export default function HeroSearchBar() {
   }
 
   const selectBase =
-    'appearance-none bg-white/10 border border-white/20 text-white rounded-xl ' +
-    'pl-4 pr-10 py-3 text-sm font-medium tracking-wide ' +
-    'backdrop-blur-sm transition-all duration-300 cursor-pointer ' +
-    'hover:bg-white/15 hover:border-white/35 ' +
-    'focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/15 ' +
-    'w-full lg:w-auto lg:min-w-44';
+    'appearance-none rounded-xl border border-white/60 bg-white/90 pl-4 pr-10 py-3.5 text-sm font-medium tracking-wide text-charcoal-700 ' +
+    'shadow-[0_4px_12px_rgba(21,20,18,0.04)] backdrop-blur-sm transition-all duration-300 cursor-pointer ' +
+    'hover:border-primary/30 hover:bg-white hover:shadow-[0_8px_24px_rgba(21,20,18,0.08)] ' +
+    'focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 ' +
+    'w-full';
 
   const wrapperBase = 'relative flex items-center';
 
@@ -71,93 +61,89 @@ export default function HeroSearchBar() {
       variants={fadeUp}
       initial="hidden"
       animate="visible"
-      transition={{ duration: 0.7, delay: 1.1, ease: 'easeOut' }}
+      transition={{ duration: 0.7, delay: 1.6, ease: 'easeOut' }}
       className="mt-8"
     >
-      <div
-        className={
-          'rounded-2xl border border-white/15 bg-white/8 backdrop-blur-md ' +
-          'shadow-[0_8px_32px_rgba(0,0,0,0.25)] ' +
-          'p-4 md:p-5 ' +
-          'flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4'
-        }
+      <motion.div
+        whileHover={{ y: -2 }}
+        transition={{ duration: 0.3 }}
+        className="rounded-2xl border border-white/50 bg-white/75 p-4 shadow-[0_16px_48px_rgba(21,20,18,0.12),0_4px_12px_rgba(21,20,18,0.06)] backdrop-blur-2xl md:p-5"
       >
-        {/* Theme select */}
-        <div className={wrapperBase}>
-          <select
-            id="hero-search-theme"
-            value={theme}
-            onChange={(e) => setTheme(e.target.value as CircuitTheme | '')}
-            className={selectBase}
+        <div className="grid gap-3 lg:grid-cols-[1fr_1fr_1fr_auto] lg:items-end">
+          <div className={wrapperBase}>
+            <select
+              id="hero-search-theme"
+              value={theme}
+              onChange={(e) => setTheme(e.target.value as CircuitTheme | '')}
+              className={selectBase}
+            >
+              <option value="">{t('hero_search_placeholder_theme')}</option>
+              <option value="culturel">
+                {t('hero_search_theme_cultural')}
+              </option>
+              <option value="solidaire">
+                {t('hero_search_theme_solidarity')}
+              </option>
+              <option value="immersion">
+                {t('hero_search_theme_immersion')}
+              </option>
+              <option value="grand">{t('hero_search_theme_grand')}</option>
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 text-charcoal-400" />
+          </div>
+
+          <div className={wrapperBase}>
+            <select
+              id="hero-search-duration"
+              value={duration}
+              onChange={(e) =>
+                setDuration(e.target.value as DurationBucket | '')
+              }
+              className={selectBase}
+            >
+              <option value="">{t('hero_search_placeholder_duration')}</option>
+              <option value="week">{t('hero_search_duration_week')}</option>
+              <option value="medium">{t('hero_search_duration_medium')}</option>
+              <option value="long">{t('hero_search_duration_long')}</option>
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 text-charcoal-400" />
+          </div>
+
+          <div className={wrapperBase}>
+            <select
+              id="hero-search-season"
+              value={season}
+              onChange={(e) => setSeason(e.target.value as Season | '')}
+              className={selectBase}
+            >
+              <option value="">{t('hero_search_placeholder_season')}</option>
+              <option value="printemps">
+                {t('hero_search_season_spring')}
+              </option>
+              <option value="ete">{t('hero_search_season_summer')}</option>
+              <option value="automne">{t('hero_search_season_autumn')}</option>
+              <option value="hiver">{t('hero_search_season_winter')}</option>
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 text-charcoal-400" />
+          </div>
+
+          <motion.button
+            id="hero-search-submit"
+            type="button"
+            onClick={handleSubmit}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className={
+              'inline-flex items-center justify-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold tracking-wide text-white ' +
+              'shadow-[0_8px_24px_rgba(47,110,115,0.25)] transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_12px_32px_rgba(47,110,115,0.35)] ' +
+              'focus:outline-none focus:ring-2 focus:ring-primary/25 cursor-pointer'
+            }
           >
-            <option value="">{t('hero_search_placeholder_theme')}</option>
-            <option value="culturel">{t('hero_search_theme_cultural')}</option>
-            <option value="solidaire">
-              {t('hero_search_theme_solidarity')}
-            </option>
-            <option value="immersion">
-              {t('hero_search_theme_immersion')}
-            </option>
-            <option value="grand">{t('hero_search_theme_grand')}</option>
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-4 text-white/60" />
+            <SearchIcon />
+            {t('hero_search_cta')}
+          </motion.button>
         </div>
-
-        {/* Duration select */}
-        <div className={wrapperBase}>
-          <select
-            id="hero-search-duration"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value as DurationBucket | '')}
-            className={selectBase}
-          >
-            <option value="">{t('hero_search_placeholder_duration')}</option>
-            <option value="week">{t('hero_search_duration_week')}</option>
-            <option value="medium">{t('hero_search_duration_medium')}</option>
-            <option value="long">{t('hero_search_duration_long')}</option>
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-4 text-white/60" />
-        </div>
-
-        {/* Season select */}
-        <div className={wrapperBase}>
-          <select
-            id="hero-search-season"
-            value={season}
-            onChange={(e) => setSeason(e.target.value as Season | '')}
-            className={selectBase}
-          >
-            <option value="">{t('hero_search_placeholder_season')}</option>
-            <option value="printemps">{t('hero_search_season_spring')}</option>
-            <option value="ete">{t('hero_search_season_summer')}</option>
-            <option value="automne">{t('hero_search_season_autumn')}</option>
-            <option value="hiver">{t('hero_search_season_winter')}</option>
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-4 text-white/60" />
-        </div>
-
-        {/* Divider (desktop only) */}
-        <div className="hidden lg:block w-px h-8 bg-white/15" />
-
-        {/* Submit CTA */}
-        <button
-          id="hero-search-submit"
-          type="button"
-          onClick={handleSubmit}
-          className={
-            'inline-flex items-center justify-center gap-2.5 ' +
-            'bg-primary hover:bg-primary-hover text-on-action ' +
-            'rounded-xl px-6 py-3 text-sm font-semibold tracking-wide ' +
-            'transition-all duration-300 ' +
-            'hover:shadow-[0_4px_20px_rgba(47,110,115,0.4)] ' +
-            'focus:outline-none focus:ring-2 focus:ring-white/40 ' +
-            'w-full lg:w-auto lg:min-w-48 cursor-pointer'
-          }
-        >
-          <SearchIcon />
-          {t('hero_search_cta')}
-        </button>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

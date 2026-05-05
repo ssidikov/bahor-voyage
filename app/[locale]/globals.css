@@ -75,38 +75,38 @@
   --transition-timing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* --- Compatibility aliases (legacy utility classes) -------- */
-  --color-primary-50: var(--color-primary-soft);
-  --color-primary-100: #e8f6f7;
-  --color-primary-200: #b8e0e2;
-  --color-primary-300: #7fc9cc;
-  --color-primary-400: #51acb1;
-  --color-primary-500: #3d8a8f;
+  --color-primary-50: #f0fafa;
+  --color-primary-100: #d8ecee;
+  --color-primary-200: #b2d8db;
+  --color-primary-300: #86c0c4;
+  --color-primary-400: #5aa3a8;
+  --color-primary-500: var(--color-primary);
   --color-primary-600: var(--color-primary);
   --color-primary-700: var(--color-primary-hover);
-  --color-primary-800: #163536;
-  --color-primary-900: #0b1a1b;
+  --color-primary-800: #17393b;
+  --color-primary-900: #102728;
 
   --color-sand-50: var(--color-sand);
-  --color-sand-100: #f9f5ec;
-  --color-sand-200: #f0e8d4;
-  --color-sand-300: #e2d0b0;
-  --color-sand-400: #cdb483;
-  --color-sand-500: #b8955a;
-  --color-sand-600: #9a7840;
+  --color-sand-100: #f7f2ea;
+  --color-sand-200: #efe3d2;
+  --color-sand-300: #e1ceb0;
+  --color-sand-400: #d4b98d;
+  --color-sand-500: #c7a56d;
+  --color-sand-600: #a77d48;
 
-  --color-charcoal-50: #f4f4f4;
-  --color-charcoal-100: #e8e8e8;
-  --color-charcoal-200: #d0d0d0;
-  --color-charcoal-300: #a8a8a8;
-  --color-charcoal-400: #808080;
-  --color-charcoal-500: #4a4a4a;
+  --color-charcoal-50: #f8f6f2;
+  --color-charcoal-100: #ebe5dc;
+  --color-charcoal-200: #d7cdc0;
+  --color-charcoal-300: #b8aa99;
+  --color-charcoal-400: #968572;
+  --color-charcoal-500: #6f6154;
   --color-charcoal-600: var(--color-charcoal);
-  --color-charcoal-700: #1a1a1a;
-  --color-charcoal-800: #0f0f0f;
-  --color-charcoal-900: #050505;
+  --color-charcoal-700: #2c2c2c;
+  --color-charcoal-800: #1f1d1b;
+  --color-charcoal-900: #151412;
 
-  --color-gold-light: #e8d5ad;
-  --color-gold-dark: #a07840;
+  --color-gold-light: #fdba74;
+  --color-gold-dark: #c2410c;
 
   --color-surface-default: #ffffff;
   --color-surface-soft: var(--color-sand);
@@ -157,6 +157,18 @@
   body {
     @apply font-sans antialiased;
     color: var(--color-charcoal);
+    background:
+      radial-gradient(
+        circle at 12% 10%,
+        rgb(47 110 115 / 0.05),
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 86% 18%,
+        rgb(200 169 110 / 0.08),
+        transparent 32%
+      ),
+      linear-gradient(180deg, #fdfbf7 0%, #fbf8f2 42%, #fdfbf7 100%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -225,48 +237,48 @@
     background:
       radial-gradient(
         circle at 12% 12%,
-        rgb(61 138 143 / 0.22) 0%,
+        rgb(47 110 115 / 0.2) 0%,
         transparent 42%
       ),
       radial-gradient(
         circle at 88% 20%,
-        rgb(127 201 204 / 0.2) 0%,
+        rgb(200 169 110 / 0.18) 0%,
         transparent 40%
       ),
       radial-gradient(
         circle at 50% 100%,
-        rgb(47 110 115 / 0.16) 0%,
+        rgb(47 110 115 / 0.08) 0%,
         transparent 42%
       ),
-      linear-gradient(160deg, #f8fcfc 0%, #f4f8fb 48%, #eef4f9 100%);
+      linear-gradient(160deg, #fdfbf7 0%, #f8f2e8 48%, #fffdfa 100%);
   }
 
   .glass-panel {
-    background: rgb(255 255 255 / 0.68);
+    background: rgb(255 255 255 / 0.76);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow:
-      0 20px 48px rgb(15 23 42 / 0.08),
-      inset 0 1px 0 rgb(255 255 255 / 0.65);
+      0 20px 48px rgb(21 20 18 / 0.08),
+      inset 0 1px 0 rgb(255 255 255 / 0.75);
   }
 
   .frozen-border {
-    border: 1px solid rgb(255 255 255 / 0.72);
+    border: 1px solid rgb(255 255 255 / 0.78);
     box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.85),
-      inset 0 -1px 0 rgb(148 163 184 / 0.18);
+      inset 0 1px 0 rgb(255 255 255 / 0.9),
+      inset 0 -1px 0 rgb(200 169 110 / 0.15);
   }
 
   .glass-button {
     background: linear-gradient(
       140deg,
-      rgb(255 255 255 / 0.8) 0%,
-      rgb(236 248 251 / 0.88) 100%
+      rgb(255 255 255 / 0.82) 0%,
+      rgb(248 242 232 / 0.9) 100%
     );
-    border: 1px solid rgb(255 255 255 / 0.78);
+    border: 1px solid rgb(255 255 255 / 0.82);
     box-shadow:
-      0 10px 24px rgb(15 23 42 / 0.1),
-      inset 0 1px 0 rgb(255 255 255 / 0.85);
+      0 10px 24px rgb(21 20 18 / 0.1),
+      inset 0 1px 0 rgb(255 255 255 / 0.88);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }

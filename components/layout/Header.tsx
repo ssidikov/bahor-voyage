@@ -22,6 +22,30 @@ const NAV_LINKS = [
 
 const LOCALES: Locale[] = ['fr', 'en'];
 
+function MagneticLink({
+  children,
+  href,
+  className,
+  onClick,
+}: {
+  children: React.ReactNode;
+  href: string;
+  className: string;
+  onClick?: () => void;
+}) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+    >
+      <Link href={href} className={className} onClick={onClick}>
+        {children}
+      </Link>
+    </motion.div>
+  );
+}
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -38,140 +62,136 @@ export function Header() {
   }, []);
 
   const switchLocale = (locale: Locale) => {
-    // pathname might contain the locale prefix if middleware is absent, so we clean it
     const cleanPath = LOCALES.reduce<string>((p, loc) => {
       if (p === `/${loc}`) return '/';
       if (p.startsWith(`/${loc}/`)) return p.slice(loc.length + 1);
       return p;
     }, pathname);
 
-    // Construct the new path natively to guarantee no /fr prefix
     const newPath =
       locale === 'fr'
         ? cleanPath
         : `/${locale}${cleanPath === '/' ? '' : cleanPath}`;
 
-    // Use the native Next.js router to navigate clean path without forcing /fr
     router.push(newPath);
     setMenuOpen(false);
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 print:hidden ${
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-4 left-4 right-4 z-50 transition-all duration-700 print:hidden ${
         scrolled
-          ? 'bg-sand-50/95 backdrop-blur-md border-b border-sand-200'
-          : 'bg-transparent border-b border-transparent'
+          ? 'bg-white/90 backdrop-blur-2xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] rounded-2xl'
+          : 'bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_4px_24px_rgba(0,0,0,0.04)] rounded-2xl'
       }`}
     >
       <div
-        className={`max-w-content mx-auto px-6 md:px-10 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? 'h-16 md:h-18' : 'h-20 md:h-24'
+        className={`max-w-content mx-auto px-5 md:px-8 flex items-center justify-between transition-all duration-500 ${
+          scrolled ? 'h-16 md:h-18' : 'h-18 md:h-22'
         }`}
       >
         {/* Logo */}
-        <Link href="/" aria-label="Bahor-Voyage — Accueil">
-          <Image
-            src="/logo/bahor-voyage-logo-header.svg"
-            alt="Bahor-Voyage"
-            width={375}
-            height={375}
-            priority
-            quality={100}
-            className={`w-auto transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
-              scrolled ? 'h-8 md:h-9' : 'h-16 md:h-20'
-            } ${
-              scrolled
-                ? 'filter-[brightness(0)_saturate(100%)_invert(60%)_sepia(16%)_saturate(2234%)_hue-rotate(136deg)_brightness(95%)_contrast(88%)]'
-                : 'drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]'
-            }`}
-          />
-        </Link>
+        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          <Link href="/" aria-label="Bahor-Voyage — Accueil">
+            <Image
+              src="/logo/bahor-voyage.svg"
+              alt="Bahor-Voyage"
+              width={375}
+              height={375}
+              priority
+              quality={100}
+              className={`w-auto transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
+                scrolled ? 'h-8 md:h-9' : 'h-14 md:h-18'
+              }`}
+            />
+          </Link>
+        </motion.div>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop nav — pill style */}
+        <nav className="hidden md:flex items-center gap-1 px-2 py-1.5">
           {NAV_LINKS.map(({ key, href }) => (
-            <Link
+            <MagneticLink
               key={key}
               href={href}
-              className={`link-premium text-label-lg uppercase tracking-widest font-medium transition-colors duration-300 ${
-                scrolled
-                  ? 'text-charcoal-500 hover:text-primary-400'
-                  : 'text-white/80 hover:text-white'
-              }`}
+              className="relative rounded-full px-4 py-2 text-[0.8rem] uppercase tracking-[0.14em] font-medium text-charcoal-600 hover:text-primary transition-colors duration-300"
             >
               {t(key)}
-            </Link>
+            </MagneticLink>
           ))}
         </nav>
 
         {/* Right side */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 md:gap-4">
           {/* Language switcher */}
-          <div className="flex items-center gap-1.5 text-label-lg select-none tracking-[0.05em]">
+          <div className="flex items-center gap-1.5 rounded-full border border-charcoal-100/70 px-3 py-2 text-[0.75rem] select-none tracking-[0.06em]">
             {LOCALES.map((locale, idx) => (
               <Fragment key={locale}>
                 {idx > 0 && (
-                  <span
-                    className={`transition-colors duration-300 ${
-                      scrolled ? 'text-charcoal-200' : 'text-white/30'
-                    }`}
-                    aria-hidden
-                  >
+                  <span className="text-charcoal-200" aria-hidden>
                     |
                   </span>
                 )}
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => switchLocale(locale)}
-                  className={`transition-colors duration-300 ${
+                  className={`transition-colors duration-300 cursor-pointer ${
                     locale === currentLocale
-                      ? scrolled
-                        ? 'text-primary-400 font-semibold'
-                        : 'text-white font-semibold'
-                      : scrolled
-                        ? 'text-charcoal-300 hover:text-primary-400'
-                        : 'text-white/50 hover:text-white'
+                      ? 'text-primary font-semibold'
+                      : 'text-charcoal-400 hover:text-primary'
                   }`}
                   aria-label={`Switch to ${locale.toUpperCase()}`}
                 >
                   {locale.toUpperCase()}
-                </button>
+                </motion.button>
               </Fragment>
             ))}
           </div>
 
           {/* CTA — desktop only */}
-          <Button
-            href="/booking"
-            variant={scrolled ? 'primary' : 'inverted'}
-            className="hidden md:inline-flex text-label-lg uppercase tracking-[0.08em] px-6 py-2.5"
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="hidden md:block"
           >
-            {t('book_cta')}
-          </Button>
+            <Button
+              href="/booking"
+              variant="primary"
+              className="text-[0.75rem] uppercase tracking-widest px-5 py-2.5 shadow-[0_8px_24px_rgba(47,110,115,0.2)]"
+            >
+              {t('book_cta')}
+            </Button>
+          </motion.div>
 
           {/* Hamburger — mobile only */}
-          <button
-            className="md:hidden flex flex-col justify-center gap-1.25 w-6 h-6"
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="md:hidden flex flex-col justify-center gap-1.5 w-7 h-7 cursor-pointer"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
-            <span
-              className={`block h-[1.5px] w-full transition-all origin-center duration-300 ${
-                scrolled ? 'bg-charcoal-700' : 'bg-white'
-              } ${menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`}
+            <motion.span
+              animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="block h-[1.5px] w-full bg-charcoal-700 origin-center"
             />
-            <span
-              className={`block h-[1.5px] w-full transition-all duration-300 ${
-                scrolled ? 'bg-charcoal-700' : 'bg-white'
-              } ${menuOpen ? 'opacity-0' : ''}`}
+            <motion.span
+              animate={
+                menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }
+              }
+              transition={{ duration: 0.2 }}
+              className="block h-[1.5px] w-full bg-charcoal-700"
             />
-            <span
-              className={`block h-[1.5px] w-full transition-all origin-center duration-300 ${
-                scrolled ? 'bg-charcoal-700' : 'bg-white'
-              } ${menuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`}
+            <motion.span
+              animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="block h-[1.5px] w-full bg-charcoal-700 origin-center"
             />
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -179,16 +199,19 @@ export function Header() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-0 top-0 z-40 bg-sand-50 md:hidden"
+            initial={{ clipPath: 'circle(0% at calc(100% - 2rem) 2rem)' }}
+            animate={{ clipPath: 'circle(150% at calc(100% - 2rem) 2rem)' }}
+            exit={{ clipPath: 'circle(0% at calc(100% - 2rem) 2rem)' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 top-0 z-40 bg-[radial-gradient(circle_at_20%_10%,rgba(47,110,115,0.08),transparent_30%),radial-gradient(circle_at_85%_20%,rgba(200,169,110,0.12),transparent_28%),linear-gradient(180deg,#fffdfa_0%,#fdfbf7_55%,#f7f2ea_100%)] md:hidden"
           >
             {/* Close button */}
-            <button
+            <motion.button
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
               onClick={() => setMenuOpen(false)}
-              className="absolute top-5 right-6 w-8 h-8 flex items-center justify-center text-charcoal-600"
+              className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-charcoal-100 bg-white/90 text-charcoal-600 shadow-sm cursor-pointer"
               aria-label="Close menu"
             >
               <svg
@@ -196,61 +219,85 @@ export function Header() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={1.5}
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
-            </button>
+            </motion.button>
 
-            <nav className="flex flex-col justify-center h-full px-10 gap-6">
-              <Link
-                href="/"
-                className="font-serif text-display-md text-charcoal-700 hover:text-primary-400 transition-colors"
-                onClick={() => setMenuOpen(false)}
+            <nav className="flex h-full flex-col justify-center gap-6 px-8">
+              {[{ key: 'home', href: '/' }, ...NAV_LINKS].map(
+                ({ key, href }, idx) => (
+                  <motion.div
+                    key={key}
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: 0.2 + idx * 0.08,
+                      duration: 0.5,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    <Link
+                      href={href}
+                      className="font-serif text-display-md text-charcoal-700 transition-colors hover:text-primary block"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {t(key)}
+                    </Link>
+                  </motion.div>
+                ),
+              )}
+
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="divider-gold mt-4 mb-2 origin-left"
+              />
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
               >
-                {t('home')}
-              </Link>
-              {NAV_LINKS.map(({ key, href }) => (
-                <Link
-                  key={key}
-                  href={href}
-                  className="font-serif text-display-md text-charcoal-700 hover:text-primary-400 transition-colors"
+                <Button
+                  href="/booking"
+                  variant="primary"
+                  className="inline-flex justify-center text-label-lg uppercase tracking-[0.08em] px-8 py-3.5 shadow-[0_14px_32px_rgba(47,110,115,0.22)]"
                   onClick={() => setMenuOpen(false)}
                 >
-                  {t(key)}
-                </Link>
-              ))}
-              <div className="divider-gold mt-4 mb-2" />
-              <Button
-                href="/booking"
-                variant="primary"
-                className="inline-flex justify-center text-label-lg uppercase tracking-[0.08em] px-8 py-3.5"
-                onClick={() => setMenuOpen(false)}
-              >
-                {t('book_cta')}
-              </Button>
+                  {t('book_cta')}
+                </Button>
+              </motion.div>
 
               {/* Language switcher in mobile */}
-              <div className="flex items-center gap-3 mt-4">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="flex items-center gap-4 mt-4"
+              >
                 {LOCALES.map((locale) => (
-                  <button
+                  <motion.button
                     key={locale}
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => switchLocale(locale)}
-                    className={`text-label-lg uppercase tracking-widest transition-colors ${
+                    className={`text-label-lg uppercase tracking-widest transition-colors cursor-pointer ${
                       locale === currentLocale
-                        ? 'text-primary-400 font-semibold'
-                        : 'text-charcoal-300 hover:text-primary-400'
+                        ? 'text-primary font-semibold'
+                        : 'text-charcoal-400 hover:text-primary'
                     }`}
                   >
                     {locale.toUpperCase()}
-                  </button>
+                  </motion.button>
                 ))}
-              </div>
+              </motion.div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }
 
