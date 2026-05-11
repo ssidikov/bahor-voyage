@@ -1,4 +1,3 @@
-
 const { PrismaClient } = require('@prisma/client');
 const { PrismaPg } = require('@prisma/adapter-pg');
 const { Pool } = require('pg');
@@ -31,7 +30,7 @@ const tours = [
     titleFr: 'Voyage Solidaire',
     titleEn: 'Solidarity Journey',
     durationDays: 11,
-  }
+  },
 ];
 
 async function main() {
