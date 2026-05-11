@@ -135,6 +135,11 @@ export function HeroSection() {
         </div>
       </div>
 
+      {/* ── Search bar ── */}
+      <div className="px-2 pb-6">
+        <HeroSearchBar />
+      </div>
+
       {/* ── Mini destination cards row ── */}
       <div className="px-2 pt-3 pb-0">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
@@ -172,11 +177,6 @@ export function HeroSection() {
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* ── Search bar ── */}
-      <div className="px-2 pb-6">
-        <HeroSearchBar />
       </div>
     </section>
   );
