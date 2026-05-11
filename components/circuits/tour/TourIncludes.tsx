@@ -63,8 +63,8 @@ export default function TourIncludes({
   const t = useTranslations('circuits');
 
   return (
-    <section className="bg-sand-100 py-16 md:py-20 lg:py-section">
-      <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+    <section className="bg-[#fafafa] py-16 md:py-20 lg:py-section">
+      <div className="max-w-content mx-auto px-6 md:px-10">
         <motion.div
           initial="hidden"
           whileInView="visible"

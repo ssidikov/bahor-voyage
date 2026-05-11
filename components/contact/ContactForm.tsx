@@ -74,7 +74,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-white rounded-3xl border border-border-soft p-8 md:p-10 shadow-sm">
+    <div className="bg-white rounded-3xl border border-charcoal-100/60 p-8 md:p-10 shadow-sm">
       <h2 className="font-serif text-3xl text-charcoal-700 mb-6">
         {t.form_title}
       </h2>
@@ -105,7 +105,7 @@ export default function ContactForm() {
               type="text"
               id="name"
               name="name"
-              className="w-full px-4 py-3 rounded-xl border border-border-soft focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-sand-50"
+              className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-[#fafafa]"
             />
           </div>
           <div className="space-y-2">
@@ -120,7 +120,7 @@ export default function ContactForm() {
               type="email"
               id="email"
               name="email"
-              className="w-full px-4 py-3 rounded-xl border border-border-soft focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-sand-50"
+              className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-[#fafafa]"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function ContactForm() {
               type="tel"
               id="phone"
               name="phone"
-              className="w-full px-4 py-3 rounded-xl border border-border-soft focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-sand-50"
+              className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-[#fafafa]"
             />
           </div>
           <div className="space-y-2">
@@ -152,7 +152,7 @@ export default function ContactForm() {
               id="tourInterest"
               name="tourInterest"
               placeholder={t.interest_placeholder}
-              className="w-full px-4 py-3 rounded-xl border border-border-soft focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-sand-50"
+              className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-[#fafafa]"
             />
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function ContactForm() {
             name="message"
             rows={4}
             placeholder={t.message_placeholder}
-            className="w-full px-4 py-3 rounded-xl border border-border-soft focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-sand-50 resize-none"
+            className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 bg-[#fafafa] resize-none"
           ></textarea>
         </div>
 

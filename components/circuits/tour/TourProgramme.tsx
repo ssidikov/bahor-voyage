@@ -22,7 +22,7 @@ export default function TourProgramme({ prefix, days }: TourProgrammeProps) {
 
   return (
     <section className="bg-white py-16 md:py-20 lg:py-section overflow-hidden">
-      <div className="max-w-[75rem] mx-auto px-6 md:px-10">
+      <div className="max-w-content mx-auto px-6 md:px-10">
         {/* Section header */}
         <motion.div
           initial="hidden"
@@ -69,7 +69,7 @@ export default function TourProgramme({ prefix, days }: TourProgrammeProps) {
                     }}
                   >
                     {/* Photo */}
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-4/3 overflow-hidden">
                       <Image
                         src={day.image}
                         alt={day.imageAlt}
@@ -127,7 +127,7 @@ export default function TourProgramme({ prefix, days }: TourProgrammeProps) {
                     <span className="text-gold text-xs" aria-hidden="true">
                       ★
                     </span>
-                    <span className="font-sans text-label text-xs text-charcoal-500 uppercase tracking-[0.1em]">
+                    <span className="font-sans text-label text-xs text-charcoal-500 uppercase tracking-widest">
                       {t(
                         `${prefix}_${day.key}_highlight` as Parameters<
                           typeof t

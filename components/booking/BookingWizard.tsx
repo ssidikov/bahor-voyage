@@ -224,7 +224,7 @@ export default function BookingWizard() {
   };
 
   return (
-    <div className="bg-white rounded-3xl border border-border-soft p-8 md:p-10 shadow-sm max-w-3xl mx-auto">
+    <div className="bg-white rounded-3xl border border-charcoal-100/60 p-8 md:p-10 shadow-sm max-w-3xl mx-auto">
       {/* STEPS INDICATOR */}
       <div className="pb-6 mb-8">
         <div className="flex justify-between mb-3">
@@ -316,8 +316,8 @@ export default function BookingWizard() {
                         selectedDateId === date.id
                           ? 'border-primary-400 bg-primary-50 ring-1 ring-primary-400'
                           : isFull
-                            ? 'opacity-50 border-border-soft bg-sand-50 cursor-not-allowed'
-                            : 'border-border-soft hover:border-primary-300'
+                            ? 'opacity-50 border-charcoal-100/60 bg-[#fafafa] cursor-not-allowed'
+                            : 'border-charcoal-100/60 hover:border-primary-300'
                       }`}
                     >
                       <div className="flex justify-between items-start">
@@ -390,7 +390,7 @@ export default function BookingWizard() {
                 <select
                   value={passengers}
                   onChange={(e) => setPassengers(Number(e.target.value))}
-                  className="w-full px-4 py-3 rounded-xl border border-border-soft focus:outline-none bg-sand-50"
+                  className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 focus:outline-none bg-[#fafafa]"
                 >
                   {Array.from({ length: Math.min(availableSeats, 10) }).map(
                     (_, i) => (
@@ -412,7 +412,7 @@ export default function BookingWizard() {
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-border-soft bg-sand-50"
+                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
                   />
                 </div>
                 <div>
@@ -424,7 +424,7 @@ export default function BookingWizard() {
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-border-soft bg-sand-50"
+                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
                   />
                 </div>
               </div>
@@ -439,7 +439,7 @@ export default function BookingWizard() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-border-soft bg-sand-50"
+                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
                   />
                 </div>
                 <div>
@@ -451,21 +451,21 @@ export default function BookingWizard() {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-border-soft bg-sand-50"
+                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
                   />
                 </div>
               </div>
 
               {/* ADDITIONAL TRAVELERS */}
               {travelers.length > 0 && (
-                <div className="space-y-6 pt-4 border-t border-border-soft">
+                <div className="space-y-6 pt-4 border-t border-charcoal-100/60">
                   <h3 className="font-medium text-charcoal-700">
                     {locale === 'fr' ? 'Autres voyageurs' : 'Other travelers'}
                   </h3>
                   {travelers.map((traveler, idx) => (
                     <div
                       key={idx}
-                      className="space-y-4 p-4 rounded-2xl bg-sand-50/50 border border-border-soft"
+                      className="space-y-4 p-4 rounded-2xl bg-[#fafafa] border border-charcoal-100/60"
                     >
                       <p className="text-sm font-medium text-primary-500 uppercase tracking-wider">
                         {locale === 'fr'
@@ -490,7 +490,7 @@ export default function BookingWizard() {
                                 ),
                               );
                             }}
-                            className="w-full px-4 py-3 rounded-xl border border-border-soft bg-white"
+                            className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white"
                           />
                         </div>
                         <div>
@@ -510,7 +510,7 @@ export default function BookingWizard() {
                                 ),
                               );
                             }}
-                            className="w-full px-4 py-3 rounded-xl border border-border-soft bg-white"
+                            className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white"
                           />
                         </div>
                       </div>
@@ -528,7 +528,7 @@ export default function BookingWizard() {
                               ),
                             );
                           }}
-                          className="w-full px-4 py-3 rounded-xl border border-border-soft bg-white"
+                          className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white"
                         />
                       </div>
                     </div>
@@ -537,7 +537,7 @@ export default function BookingWizard() {
               )}
 
               {/* CUSTOM MESSAGE */}
-              <div className="pt-4 border-t border-border-soft">
+              <div className="pt-4 border-t border-charcoal-100/60">
                 <label className="block text-sm font-medium text-charcoal-600 mb-1">
                   {locale === 'fr'
                     ? 'Message ou demandes particulières'
@@ -546,7 +546,7 @@ export default function BookingWizard() {
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-border-soft bg-sand-50 h-32"
+                  className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa] h-32"
                   placeholder={
                     locale === 'fr'
                       ? 'Avez-vous des allergies, des besoins spécifiques...'
@@ -561,7 +561,7 @@ export default function BookingWizard() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setStep(1)}
-                className="px-6 py-3 border border-border-soft text-charcoal-600 rounded-full font-medium"
+                className="px-6 py-3 border border-charcoal-100/60 text-charcoal-600 rounded-full font-medium"
               >
                 Retour
               </motion.button>
@@ -612,7 +612,7 @@ export default function BookingWizard() {
                   {selectedDate.tour.options.map((opt) => (
                     <div
                       key={opt.id}
-                      className="flex items-center justify-between p-4 bg-white border border-border-soft rounded-xl"
+                      className="flex items-center justify-between p-4 bg-white border border-charcoal-100/60 rounded-xl"
                     >
                       <div>
                         <div className="font-medium">
@@ -625,7 +625,7 @@ export default function BookingWizard() {
                       <div className="flex items-center space-x-3">
                         <button
                           onClick={() => handleOptionChange(opt.id, -1)}
-                          className="w-8 h-8 rounded-full border border-border-soft flex items-center justify-center hover:bg-sand-50"
+                          className="w-8 h-8 rounded-full border border-charcoal-100/60 flex items-center justify-center hover:bg-[#fafafa]"
                         >
                           -
                         </button>
@@ -634,7 +634,7 @@ export default function BookingWizard() {
                         </span>
                         <button
                           onClick={() => handleOptionChange(opt.id, 1)}
-                          className="w-8 h-8 rounded-full border border-border-soft flex items-center justify-center hover:bg-sand-50"
+                          className="w-8 h-8 rounded-full border border-charcoal-100/60 flex items-center justify-center hover:bg-[#fafafa]"
                         >
                           +
                         </button>
@@ -644,7 +644,7 @@ export default function BookingWizard() {
                 </div>
               )}
 
-            <div className="p-6 bg-sand-50 rounded-2xl border border-border-soft space-y-4">
+            <div className="p-6 bg-[#fafafa] rounded-2xl border border-charcoal-100/60 space-y-4">
               <h3 className="font-medium text-lg text-charcoal-700">
                 {locale === 'fr'
                   ? selectedDate.tour.titleFr
@@ -671,7 +671,7 @@ export default function BookingWizard() {
                 </div>
               )}
 
-              <div className="border-t border-border-soft pt-4 mt-4 flex justify-between font-bold text-lg text-primary-600">
+              <div className="border-t border-charcoal-100/60 pt-4 mt-4 flex justify-between font-bold text-lg text-primary-600">
                 <span>Total</span>
                 <span>{grandTotal} €</span>
               </div>
@@ -682,7 +682,7 @@ export default function BookingWizard() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setStep(2)}
-                className="w-full md:w-auto px-6 py-3 border border-border-soft text-charcoal-600 rounded-full font-medium"
+                className="w-full md:w-auto px-6 py-3 border border-charcoal-100/60 text-charcoal-600 rounded-full font-medium"
               >
                 Retour
               </motion.button>
