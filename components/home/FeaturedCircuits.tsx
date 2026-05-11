@@ -17,7 +17,7 @@ type Circuit = {
   href: string;
 };
 
-const CIRCUITS: readonly Circuit[] = [
+const CIRCUITS: Circuit[] = [
   {
     id: 'c1',
     image: '/images/Boukhara.jpg',
@@ -38,7 +38,7 @@ const CIRCUITS: readonly Circuit[] = [
     image: '/images/immersion-totale.jpeg',
     href: '/circuits/grand-circuit-18j',
   },
-] as const;
+];
 
 function CircuitCard3D({
   id,
@@ -193,13 +193,12 @@ export function FeaturedCircuits() {
   return (
     <section
       id="circuits"
-      className="relative bg-[linear-gradient(180deg,#fff_0%,#f8f4ed_50%,#fff_100%)] py-20 md:py-28 lg:py-section overflow-hidden"
+      className="relative bg-[#fafafa] py-20 md:py-28 lg:py-section overflow-hidden"
     >
-      {/* Decorative background blobs */}
-      <div className="absolute top-20 left-0 w-125 h-125 bg-primary/3 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-100 h-100 bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-125 h-125 bg-primary/3 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-312 mx-auto px-6 md:px-10 relative">
+        {/* ── Section header ── */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -221,61 +220,62 @@ export function FeaturedCircuits() {
             <div className="max-w-2xl">
               <motion.h2
                 variants={fadeUp}
-                className="font-serif text-display-xl text-charcoal-700 font-light text-left"
+                className="font-serif text-display-xl text-charcoal-700 font-light"
               >
                 {t('section_title')}
               </motion.h2>
               <motion.p
                 variants={fadeUp}
-                className="font-sans text-body-lg text-charcoal-400 mt-4 text-left"
+                className="font-sans text-body-lg text-charcoal-400 mt-4"
               >
                 {t('section_subtitle')}
               </motion.p>
             </div>
-
             <motion.div variants={fadeUp} className="shrink-0 lg:pb-1">
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+              <Button
+                href="/booking"
+                variant="primary"
+                size="md"
+                className="w-full lg:w-auto lg:min-w-48"
               >
-                <Button
-                  href="/booking"
-                  variant="primary"
-                  size="md"
-                  className="w-full lg:w-auto lg:min-w-48"
-                >
-                  {tHome('cta_reserve')}
-                </Button>
-              </motion.div>
+                {tHome('cta_reserve')}
+              </Button>
             </motion.div>
           </div>
         </motion.div>
 
+        {/* ── Top Picks: left text column + right 2-col card grid (Figma style) ── */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-12 lg:gap-7"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 mb-6"
         >
-          {CIRCUITS.map((circuit, idx) => (
-            <motion.div
-              key={circuit.id}
-              variants={fadeUp}
-              className={
-                idx === 0 || idx === 3
-                  ? 'md:col-span-2 lg:col-span-8'
-                  : 'md:col-span-1 lg:col-span-4'
-              }
-            >
+          {/* Left: large feature card */}
+          <motion.div variants={fadeUp} className="lg:col-span-5">
+            <CircuitCard3D
+              id="c1"
+              image={CIRCUITS[0]!.image}
+              href={CIRCUITS[0]!.href}
+              large
+            />
+          </motion.div>
+
+          {/* Right: 2×2 small cards grid */}
+          <motion.div
+            variants={fadeUp}
+            className="lg:col-span-7 grid grid-cols-2 gap-6"
+          >
+            {CIRCUITS.slice(1).map((circuit) => (
               <CircuitCard3D
+                key={circuit.id}
                 id={circuit.id}
                 image={circuit.image}
                 href={circuit.href}
-                large={idx === 0 || idx === 3}
               />
-            </motion.div>
-          ))}
+            ))}
+          </motion.div>
         </motion.div>
 
         {/* Bottom CTA bar */}
@@ -284,21 +284,19 @@ export function FeaturedCircuits() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="mt-12 rounded-3xl border border-charcoal-100/50 bg-white/80 backdrop-blur-sm px-6 py-6 md:px-8 md:py-7 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between shadow-[0_4px_24px_rgba(0,0,0,0.03)]"
+          className="mt-8 rounded-3xl border border-charcoal-100/60 bg-white/70 backdrop-blur-sm px-6 py-6 md:px-8 md:py-7 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between shadow-[0_4px_24px_rgba(0,0,0,0.03)]"
         >
           <p className="max-w-200 text-body-md text-charcoal-500">
             {t('section_conversion_note')}
           </p>
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              href="/contact"
-              variant="outline"
-              size="md"
-              className="w-full lg:w-auto lg:min-w-56"
-            >
-              {t('section_cta')}
-            </Button>
-          </motion.div>
+          <Button
+            href="/contact"
+            variant="outline"
+            size="md"
+            className="w-full lg:w-auto lg:min-w-56"
+          >
+            {t('section_cta')}
+          </Button>
         </motion.div>
       </div>
     </section>
