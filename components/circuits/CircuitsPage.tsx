@@ -48,12 +48,7 @@ const CIRCUITS: readonly Circuit[] = [
 /* ------------------------------------------------------------------ */
 /*  Reusable circuit card                                               */
 /* ------------------------------------------------------------------ */
-function CircuitCard({
-  id,
-  image,
-  href,
-  large,
-}: Circuit & { large?: boolean }) {
+function CircuitCard({ id, image, href }: Circuit) {
   const t = useTranslations('circuits');
   const durationKey = `${id}_duration` as const;
   const tagKey = `${id}_tag` as const;
@@ -62,11 +57,7 @@ function CircuitCard({
   return (
     <Link
       href={href}
-      className={`group relative block overflow-hidden rounded-[1.75rem] border border-charcoal-900/10 shadow-[0_10px_30px_rgba(20,20,20,0.12)] transition-transform duration-500 hover:-translate-y-1 ${
-        large
-          ? 'aspect-4/5 md:aspect-3/2 lg:aspect-auto lg:h-112'
-          : 'aspect-4/5 md:aspect-square lg:aspect-auto lg:h-112'
-      }`}
+      className="group relative block overflow-hidden rounded-[1.75rem] shadow-[0_10px_30px_rgba(20,20,20,0.12)] transition-transform duration-500 hover:-translate-y-1 aspect-4/5 md:aspect-square lg:aspect-auto lg:h-120"
     >
       {/* Image layer */}
       <div className="absolute inset-0 transition-transform duration-800 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105">
@@ -82,33 +73,33 @@ function CircuitCard({
       </div>
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/95 via-charcoal-900/50 to-charcoal-900/5 transition-colors duration-500 group-hover:from-charcoal-900/90" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/35 to-transparent transition-colors duration-500" />
 
-      {/* Duration badge */}
-      <div className="absolute left-5 top-5 z-10 rounded-full border border-white/30 bg-charcoal-900/40 px-3 py-1.5 backdrop-blur">
-        <span className="text-[0.68rem] font-medium uppercase tracking-[0.12em] text-white/85">
+      {/* Top badge */}
+      <div className="absolute left-5 top-5 z-10">
+        <span className="rounded-full border border-white bg-white/15 px-3.5 py-2 text-[0.8rem] font-medium text-white backdrop-blur-sm">
           {t(durationKey)}
         </span>
       </div>
 
       {/* Card body */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-7 lg:p-8">
-        <h3 className="font-serif text-2xl leading-tight text-white md:text-[1.9rem] lg:text-[2.2rem] font-light">
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6 lg:p-7">
+        <h3 className="font-serif text-[1.8rem] leading-tight text-white md:text-[2rem] lg:text-[2.3rem] font-light">
           {t(tagKey)}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-white/80 md:text-body-md line-clamp-3 md:line-clamp-2">
+        <p className="mt-2.5 text-sm leading-relaxed text-white/80 md:text-[0.9rem] line-clamp-2">
           {t(descKey)}
         </p>
 
-        <span className="mt-5 inline-flex items-center gap-2 text-label uppercase tracking-[0.12em] text-white/90">
+        <div className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-3.5 text-[0.875rem] font-semibold text-charcoal-800 transition-opacity duration-300 group-hover:opacity-90">
           {t('learn_more')}
           <span
             aria-hidden="true"
-            className="inline-block transition-transform duration-300 group-hover:translate-x-2"
+            className="inline-block transition-transform duration-300 group-hover:translate-x-1"
           >
             &rarr;
           </span>
-        </span>
+        </div>
       </div>
     </Link>
   );
@@ -297,9 +288,9 @@ export default function CircuitsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
-            className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-12 lg:gap-6"
+            className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-2 lg:gap-6"
           >
-            {CIRCUITS.map((circuit, idx) => {
+            {CIRCUITS.map((circuit) => {
               const isMatch = matchedIds === null || matchedIds.has(circuit.id);
               const dimmed = matchedIds !== null && !isMatch;
               return (
@@ -307,13 +298,9 @@ export default function CircuitsPage() {
                   key={circuit.id}
                   variants={fadeUp}
                   className={
-                    (idx === 0 || idx === 3
-                      ? 'md:col-span-2 lg:col-span-8'
-                      : 'md:col-span-1 lg:col-span-4') +
                     (isMatch && matchedIds !== null
                       ? ' ring-2 ring-gold rounded-[1.75rem] shadow-[0_0_24px_rgba(200,169,110,0.25)]'
-                      : '') +
-                    (dimmed ? ' opacity-40' : '')
+                      : '') + (dimmed ? ' opacity-40' : '')
                   }
                   style={{
                     transition: 'opacity 0.5s ease, box-shadow 0.5s ease',
@@ -323,7 +310,6 @@ export default function CircuitsPage() {
                     id={circuit.id}
                     image={circuit.image}
                     href={circuit.href}
-                    large={idx === 0 || idx === 3}
                   />
                 </motion.div>
               );

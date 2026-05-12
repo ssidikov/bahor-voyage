@@ -40,12 +40,7 @@ const CIRCUITS: Circuit[] = [
   },
 ];
 
-function CircuitCard3D({
-  id,
-  image,
-  href,
-  large,
-}: Circuit & { large?: boolean }) {
+function CircuitCard3D({ id, image, href }: Circuit) {
   const t = useTranslations('circuits');
   const durationKey = `${id}_duration` as const;
   const tagKey = `${id}_tag` as const;
@@ -82,11 +77,7 @@ function CircuitCard3D({
   return (
     <motion.div
       style={{ perspective: 800 }}
-      className={
-        large
-          ? 'aspect-4/5 md:aspect-3/2 lg:aspect-auto lg:h-104'
-          : 'aspect-4/5 md:aspect-square lg:aspect-auto lg:h-104'
-      }
+      className="aspect-4/5 md:aspect-square lg:aspect-auto lg:h-120"
     >
       <div
         ref={cardRef}
@@ -97,7 +88,7 @@ function CircuitCard3D({
       >
         <Link
           href={href}
-          className="group relative block h-full w-full overflow-hidden rounded-3xl border border-white/20 shadow-[0_10px_40px_rgba(20,20,20,0.15)]"
+          className="group relative block h-full w-full overflow-hidden rounded-[1.75rem] shadow-[0_10px_30px_rgba(20,20,20,0.12)]"
         >
           <motion.div
             className="relative h-full w-full"
@@ -121,7 +112,7 @@ function CircuitCard3D({
 
             {/* Gradient overlay */}
             <motion.div
-              className="absolute inset-0 bg-linear-to-t from-charcoal-900/90 via-charcoal-900/40 to-transparent"
+              className="absolute inset-0 bg-linear-to-t from-black/85 via-black/35 to-transparent"
               animate={{ opacity: isHovered ? 1 : 0.85 }}
               transition={{ duration: 0.4 }}
             />
@@ -133,13 +124,13 @@ function CircuitCard3D({
               transition={{ duration: 0.4 }}
             />
 
-            {/* Duration badge */}
+            {/* Top badge */}
             <motion.div
-              className="absolute left-5 top-5 z-10 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 backdrop-blur-md"
+              className="absolute left-5 top-5 z-10"
               animate={{ y: isHovered ? -2 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="text-[0.7rem] font-medium uppercase tracking-[0.12em] text-white/90">
+              <span className="rounded-full border border-white bg-white/15 px-3.5 py-2 text-[0.8rem] font-medium text-white backdrop-blur-sm">
                 {t(durationKey)}
               </span>
             </motion.div>
@@ -147,14 +138,14 @@ function CircuitCard3D({
             {/* Content */}
             <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-7 lg:p-8">
               <motion.h3
-                className="font-serif text-2xl leading-tight text-white md:text-[1.9rem] lg:text-[2.2rem] font-light"
+                className="font-serif text-[1.8rem] leading-tight text-white md:text-[2rem] lg:text-[2.3rem] font-light"
                 animate={{ y: isHovered ? -4 : 0 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
               >
                 {t(tagKey)}
               </motion.h3>
               <motion.p
-                className="mt-2 text-sm leading-relaxed text-white/75 md:text-body-md line-clamp-2"
+                className="mt-2.5 text-sm leading-relaxed text-white/80 md:text-[0.9rem] line-clamp-2"
                 animate={{
                   y: isHovered ? -2 : 0,
                   opacity: isHovered ? 1 : 0.8,
@@ -164,20 +155,20 @@ function CircuitCard3D({
                 {t(descKey)}
               </motion.p>
 
-              <motion.span
-                className="mt-5 inline-flex items-center gap-2 text-[0.75rem] uppercase tracking-[0.14em] text-white/90 font-medium"
-                animate={{ x: isHovered ? 4 : 0 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
+              <motion.div
+                className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-3.5 text-[0.875rem] font-semibold text-charcoal-800"
+                animate={{ opacity: isHovered ? 0.9 : 1 }}
+                transition={{ duration: 0.3 }}
               >
                 {t('learn_more')}
                 <motion.span
                   aria-hidden="true"
-                  animate={{ x: isHovered ? 6 : 0 }}
+                  animate={{ x: isHovered ? 4 : 0 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                 >
                   &rarr;
                 </motion.span>
-              </motion.span>
+              </motion.div>
             </div>
           </motion.div>
         </Link>
@@ -244,38 +235,23 @@ export function FeaturedCircuits() {
           </div>
         </motion.div>
 
-        {/* ── Top Picks: left text column + right 2-col card grid (Figma style) ── */}
+        {/* ── Cards grid ── */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 mb-6"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:gap-6 mb-6"
         >
-          {/* Left: large feature card */}
-          <motion.div variants={fadeUp} className="lg:col-span-5">
-            <CircuitCard3D
-              id="c1"
-              image={CIRCUITS[0]!.image}
-              href={CIRCUITS[0]!.href}
-              large
-            />
-          </motion.div>
-
-          {/* Right: 2×2 small cards grid */}
-          <motion.div
-            variants={fadeUp}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6"
-          >
-            {CIRCUITS.slice(1).map((circuit) => (
+          {CIRCUITS.map((circuit) => (
+            <motion.div key={circuit.id} variants={fadeUp}>
               <CircuitCard3D
-                key={circuit.id}
                 id={circuit.id}
                 image={circuit.image}
                 href={circuit.href}
               />
-            ))}
-          </motion.div>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Bottom CTA bar */}
