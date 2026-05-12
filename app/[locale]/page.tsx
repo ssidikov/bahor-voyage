@@ -7,6 +7,7 @@ import CommitmentsSection from '@/components/home/CommitmentsSection';
 import FeaturedCircuits from '@/components/home/FeaturedCircuits';
 import FounderSection from '@/components/home/FounderSection';
 import HeroSection from '@/components/home/HeroSection';
+import MarqueeSection from '@/components/home/MarqueeSection';
 import PhotoHighlightsSection from '@/components/home/PhotoHighlightsSection';
 import ProjectsPreviewSection from '@/components/home/ProjectsPreviewSection';
 import UzbekistanIntro from '@/components/home/UzbekistanIntro';
@@ -95,8 +96,13 @@ export default async function HomePage({ params }: Props) {
       />
       <HeroSection />
       <UzbekistanIntro />
+      <MarqueeSection />
       <FeaturedCircuits />
       <FounderSection />
+      <MarqueeSection
+        text="OUZBÉKISTAN · SAMARCANDE · BOUKHARA · KHIVA · TACHKENT ·"
+        dark
+      />
       <CommitmentsSection />
       <ProjectsPreviewSection />
       <PhotoHighlightsSection />

@@ -40,38 +40,41 @@ export default function ProjectsPage() {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="relative h-screen min-h-125 overflow-hidden">
-        {/* Parallax background image */}
-        <motion.div
-          className="absolute inset-0 scale-110"
-          style={{ y: heroParallax }}
-        >
-          <Image
-            src="/images/projects/projects-hero.jpg"
-            alt=""
-            fill
-            priority
-            quality={100}
-            className="object-cover"
-            placeholder="empty"
-          />
-        </motion.div>
+      <section className="relative bg-[#fafafa] pt-20 md:pt-22 pb-6">
+        <div className="mx-2 rounded-3xl overflow-hidden relative h-[72vh] min-h-125">
+          {/* Parallax background image */}
+          <motion.div
+            className="absolute inset-0 scale-110"
+            style={{ y: heroParallax }}
+          >
+            <Image
+              src="/images/projects/projects-hero.jpg"
+              alt=""
+              fill
+              priority
+              quality={100}
+              className="object-cover"
+              placeholder="empty"
+            />
+          </motion.div>
 
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-charcoal-900/30" />
-        <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/70 via-charcoal-900/15 to-transparent" />
+          {/* Overlays */}
+          <div className="absolute inset-0 bg-charcoal-900/30" />
+          <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/70 via-charcoal-900/15 to-transparent" />
 
-        {/* Content */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 pb-16 md:pb-24">
-          <div className="max-w-content mx-auto px-6 md:px-10">
-            <motion.p
+          {/* Content */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 pb-10 md:pb-14 px-8 md:px-12">
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
-              className="font-sans text-label uppercase tracking-[0.15em] text-white/70 mb-4"
+              className="flex items-center gap-3 mb-4"
             >
-              {t('hero_subtitle')}
-            </motion.p>
+              <div className="h-px w-8 bg-primary/40" />
+              <p className="font-sans text-label uppercase tracking-[0.15em] text-white/70">
+                {t('hero_subtitle')}
+              </p>
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -88,14 +91,14 @@ export default function ProjectsPage() {
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.6, delay: 0.7, ease: 'easeOut' }}
-              className="w-16 h-px bg-gold mt-8 origin-left"
+              className="w-14 h-px bg-gold mt-8 origin-left"
             />
           </div>
         </div>
       </section>
 
       {/* ===================== INTRO ===================== */}
-      <section className="bg-sand-50 py-16 md:py-20 lg:py-section">
+      <section className="bg-[#fafafa] py-16 md:py-20 lg:py-section">
         <div className="max-w-[48rem] mx-auto px-6 md:px-10 text-center">
           <motion.div
             initial="hidden"
@@ -128,7 +131,7 @@ export default function ProjectsPage() {
           <section
             key={project.key}
             className={`py-16 md:py-20 lg:py-section overflow-hidden ${
-              idx % 2 === 0 ? 'bg-white' : 'bg-sand-100'
+              idx % 2 === 0 ? 'bg-white' : 'bg-[#fafafa]'
             }`}
           >
             <div className="max-w-content mx-auto px-6 md:px-10">
@@ -220,62 +223,45 @@ export default function ProjectsPage() {
       })}
 
       {/* ===================== CTA ===================== */}
-      <section className="bg-charcoal-800 py-16 md:py-20 lg:py-section relative overflow-hidden">
-        {/* Decorative geometric element */}
-        <div className="absolute top-8 right-8 md:top-12 md:right-16 opacity-5 pointer-events-none">
-          <svg
-            width="280"
-            height="280"
-            viewBox="0 0 280 280"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.5"
-            className="w-48 h-48 md:w-72 md:h-72"
+      <section className="bg-[#fafafa] py-6">
+        <div className="mx-2 rounded-3xl overflow-hidden bg-charcoal-800">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={staggerContainer}
+            className="max-w-[48rem] mx-auto px-6 md:px-10 py-16 md:py-20 lg:py-section text-center"
           >
-            <polygon points="140,10 170,100 260,100 185,150 210,240 140,190 70,240 95,150 20,100 110,100" />
-            <polygon
-              points="140,40 160,110 230,110 175,145 195,220 140,180 85,220 105,145 50,110 120,110"
-              strokeDasharray="4 4"
-            />
-          </svg>
-        </div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={staggerContainer}
-          className="max-w-[48rem] mx-auto px-6 md:px-10 text-center relative z-10"
-        >
-          <motion.div variants={fadeUp}>
-            <div className="divider-gold-center mb-8" />
-            <h2 className="font-serif text-display-lg text-white font-light">
-              {t('cta_title')}
-            </h2>
-          </motion.div>
-          <motion.p
-            variants={fadeUp}
-            className="font-sans text-body-lg text-charcoal-200 mt-6 leading-relaxed"
-          >
-            {t('cta_body')}
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-10">
-            <Button
-              href="/contact"
-              variant="inverted"
-              size="lg"
-              className="group text-label-lg uppercase tracking-widest"
+            <motion.div variants={fadeUp}>
+              <div className="divider-gold-center mb-8" />
+              <h2 className="font-serif text-display-lg text-white font-light">
+                {t('cta_title')}
+              </h2>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="font-sans text-body-lg text-charcoal-200 mt-6 leading-relaxed"
             >
-              {t('cta_button')}
-              <span
-                aria-hidden="true"
-                className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+              {t('cta_body')}
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-10">
+              <Button
+                href="/contact"
+                variant="inverted"
+                size="lg"
+                className="group text-label-lg uppercase tracking-widest"
               >
-                &rarr;
-              </span>
-            </Button>
+                {t('cta_button')}
+                <span
+                  aria-hidden="true"
+                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  &rarr;
+                </span>
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
     </>
   );

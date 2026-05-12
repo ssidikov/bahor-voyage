@@ -241,88 +241,67 @@ export function AboutPage() {
       {/* ═══ HERO ══════════════════════════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative h-screen min-h-150 flex flex-col justify-end pb-16 md:pb-24 overflow-hidden"
+        className="relative bg-[#fafafa] pt-20 md:pt-22 pb-6"
       >
-        {/* parallax image */}
-        <motion.div
-          style={{ y: heroY }}
-          className="absolute inset-0 -top-[15%]"
-        >
-          <Image
-            src="/images/afor-voyage.jpg"
-            alt="AFOR – Association France Ouzbékistan Racines"
-            fill
-            priority
-            quality={100}
-            className="object-cover"
-          />
-          {/* gradient overlay */}
-          <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/80 via-charcoal-800/30 to-transparent" />
-        </motion.div>
-
-        {/* arabesque decoration */}
-        <div className="absolute top-1/2 right-8 md:right-16 -translate-y-1/2 opacity-[0.06] pointer-events-none">
-          <svg
-            width="320"
-            height="320"
-            viewBox="0 0 320 320"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.5"
-          >
-            <polygon points="160,12 195,115 298,115 215,175 245,278 160,218 75,278 105,175 22,115 125,115" />
-            <polygon
-              points="160,45 188,128 272,128 205,168 230,252 160,200 90,252 115,168 48,128 132,128"
-              strokeDasharray="5 5"
+        <div className="mx-2 rounded-3xl overflow-hidden relative h-[72vh] min-h-125">
+          {/* parallax image */}
+          <motion.div style={{ y: heroY }} className="absolute inset-0">
+            <Image
+              src="/images/afor-voyage.jpg"
+              alt="AFOR – Association France Ouzbékistan Racines"
+              fill
+              priority
+              quality={100}
+              className="object-cover"
             />
-            <circle cx="160" cy="160" r="110" strokeDasharray="2 8" />
-          </svg>
+            {/* gradient overlay */}
+            <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/80 via-charcoal-800/30 to-transparent" />
+          </motion.div>
+
+          {/* headline */}
+          <motion.div
+            style={{ opacity: heroOpacity }}
+            className="absolute bottom-0 left-0 right-0 z-10 pb-10 md:pb-14 px-8 md:px-12"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="flex items-center gap-3 mb-4"
+            >
+              <div className="h-px w-8 bg-primary/40" />
+              <p className="text-label uppercase tracking-[0.18em] text-white/70">
+                {t('hero_kicker')}
+              </p>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.35 }}
+              className="font-serif text-display-xl text-white font-light leading-tight max-w-3xl"
+            >
+              {t('hero_title')}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="font-sans text-body-lg text-white/70 mt-4 max-w-xl"
+            >
+              {t('hero_subtitle')}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.75 }}
+              className="w-14 h-px bg-gold mt-8 origin-left"
+            />
+          </motion.div>
         </div>
-
-        {/* headline */}
-        <motion.div
-          style={{ opacity: heroOpacity }}
-          className="relative z-10 max-w-content mx-auto px-6 md:px-10 w-full"
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-label uppercase tracking-[0.18em] text-gold mb-4"
-          >
-            {t('hero_kicker')}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.35 }}
-            className="font-serif text-display-xl text-white font-light leading-tight max-w-3xl"
-          >
-            {t('hero_title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-sans text-body-lg text-white/70 mt-4"
-          >
-            {t('hero_subtitle')}
-          </motion.p>
-        </motion.div>
-
-        {/* scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
-        >
-          <div className="w-px h-10 bg-linear-to-b from-transparent to-white/40" />
-        </motion.div>
       </section>
 
       {/* ═══ QUOTE ═════════════════════════════════════════════════════════ */}
-      <section className="bg-sand-50 py-16 md:py-20">
+      <section className="bg-[#fafafa] py-16 md:py-20">
         <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
@@ -411,7 +390,7 @@ export function AboutPage() {
       </section>
 
       {/* ═══ TEAM ══════════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 lg:py-section bg-sand-50">
+      <section className="py-16 md:py-20 lg:py-section bg-[#fafafa]">
         <div className="max-w-content mx-auto px-6 md:px-10">
           {/* header */}
           <motion.div
@@ -516,7 +495,7 @@ export function AboutPage() {
       </section>
 
       {/* ═══ PARTNERS ══════════════════════════════════════════════════════ */}
-      <section className="py-14 md:py-20 bg-sand-100">
+      <section className="py-14 md:py-20 bg-[#fafafa]">
         <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
@@ -566,69 +545,46 @@ export function AboutPage() {
       </section>
 
       {/* ═══ CTA ═══════════════════════════════════════════════════════════ */}
-      <section className="relative bg-charcoal-800 py-16 md:py-20 lg:py-section overflow-hidden">
-        {/* decorative arabesque */}
-        <div className="absolute top-8 right-8 md:top-12 md:right-16 opacity-[0.05] pointer-events-none">
-          <svg
-            width="280"
-            height="280"
-            viewBox="0 0 280 280"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.5"
-          >
-            <polygon points="140,10 170,100 260,100 185,150 210,240 140,190 70,240 95,150 20,100 110,100" />
-            <polygon
-              points="140,40 160,110 230,110 175,145 195,220 140,180 85,220 105,145 50,110 120,110"
-              strokeDasharray="4 4"
-            />
-          </svg>
-        </div>
-
-        <div className="max-w-content mx-auto px-6 md:px-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            className="text-center max-w-2xl mx-auto"
-          >
-            <motion.h2
-              variants={fadeUp}
-              className="font-serif text-display-lg text-white font-light mb-5"
+      <section className="bg-[#fafafa] py-6">
+        <div className="mx-2 rounded-3xl overflow-hidden bg-charcoal-800">
+          <div className="max-w-content mx-auto px-6 md:px-10 py-16 md:py-20 lg:py-section">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+              className="text-center max-w-2xl mx-auto"
             >
-              {t('cta_title')}
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="font-sans text-body-md text-charcoal-200 leading-relaxed mb-10"
-            >
-              {t('cta_body')}
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <Button
-                href="/contact"
-                variant="primary"
-                size="lg"
-                className="text-label uppercase tracking-widest px-10 py-4"
+              <motion.h2
+                variants={fadeUp}
+                className="font-serif text-display-lg text-white font-light mb-5"
               >
-                {t('cta_button')}
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  className="w-4 h-4"
+                {t('cta_title')}
+              </motion.h2>
+              <motion.p
+                variants={fadeUp}
+                className="font-sans text-body-md text-charcoal-200 leading-relaxed mb-10"
+              >
+                {t('cta_body')}
+              </motion.p>
+              <motion.div variants={fadeUp}>
+                <Button
+                  href="/contact"
+                  variant="inverted"
+                  size="lg"
+                  className="group text-label uppercase tracking-widest"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 10h11m0 0l-4-4m4 4l-4 4"
-                  />
-                </svg>
-              </Button>
+                  {t('cta_button')}
+                  <span
+                    aria-hidden="true"
+                    className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    &rarr;
+                  </span>
+                </Button>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </>

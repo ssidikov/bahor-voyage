@@ -8,7 +8,8 @@
     "book_cta": "Réserver"
   },
   "home": {
-    "hero_title": "Voyager à travers le passé, protéger l'avenir.",
+    "hero_title_line1": "Voyager à travers le passé,",
+    "hero_title_line2": "protéger l'avenir.",
     "hero_subtitle": "Des voyages authentiques au cœur de la Route de la Soie",
     "hero_cta": "Découvrir",
     "hero_search_placeholder_theme": "Type de voyage",
@@ -26,6 +27,13 @@
     "hero_search_season_summer": "Été",
     "hero_search_season_autumn": "Automne",
     "hero_search_season_winter": "Hiver",
+    "hero_search_title": "Trouvez votre circuit",
+    "hero_search_travelers_label": "Voyageurs",
+    "hero_search_travelers_placeholder": "2 adultes",
+    "hero_search_travelers_singular": "voyageur",
+    "hero_search_travelers_plural": "voyageurs",
+    "hero_search_travelers_minus": "Retirer un voyageur",
+    "hero_search_travelers_plus": "Ajouter un voyageur",
     "hero_search_cta": "Trouver mon circuit",
     "cta_reserve": "Réserver un circuit",
     "cta_contact": "Nous contacter",

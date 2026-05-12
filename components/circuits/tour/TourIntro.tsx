@@ -39,7 +39,7 @@ export default function TourIntro({
   const t = useTranslations('circuits');
 
   return (
-    <section className="relative overflow-hidden bg-[#faf8f4] py-20 md:py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-[#fafafa] py-20 md:py-28 lg:py-36">
       {/* Atmospheric background */}
       <div
         aria-hidden="true"

@@ -8,7 +8,8 @@
     "book_cta": "Book now"
   },
   "home": {
-    "hero_title": "Travel through the past, protect the future.",
+    "hero_title_line1": "Travel through the past,",
+    "hero_title_line2": "protect the future.",
     "hero_subtitle": "Authentic journeys along the Silk Road",
     "hero_cta": "Discover",
     "hero_search_placeholder_theme": "Travel style",
@@ -26,6 +27,13 @@
     "hero_search_season_summer": "Summer",
     "hero_search_season_autumn": "Autumn",
     "hero_search_season_winter": "Winter",
+    "hero_search_title": "Find your tour",
+    "hero_search_travelers_label": "Travelers",
+    "hero_search_travelers_placeholder": "2 adults",
+    "hero_search_travelers_singular": "traveler",
+    "hero_search_travelers_plural": "travelers",
+    "hero_search_travelers_minus": "Remove a traveler",
+    "hero_search_travelers_plus": "Add a traveler",
     "hero_search_cta": "Find my tour",
     "cta_reserve": "Book a tour",
     "cta_contact": "Contact us",

@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 import { useRouter } from '@/i18n/navigation';
-import { fadeUp } from '@/lib/animations';
 
 import type { CircuitTheme, DurationBucket, Season } from '@/lib/circuit-meta';
 
@@ -14,17 +13,73 @@ import { ChevronDown } from '@/components/ui/Icons';
 function SearchIcon() {
   return (
     <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <circle cx="7.5" cy="7.5" r="5.5" />
-      <path d="M11.5 11.5L16 16" />
+      <circle cx="8.5" cy="8.5" r="6" />
+      <path d="M13 13L17.5 17.5" />
+    </svg>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="4" width="14" height="14" rx="2" />
+      <path d="M7 2v4M13 2v4M3 9h14" />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="10" cy="10" r="7.5" />
+      <path d="M10 6v4l2.5 2.5" />
+    </svg>
+  );
+}
+
+function UsersIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="7" cy="7" r="3" />
+      <path d="M2 17c0-3 2.5-5 5-5s5 2 5 5" />
+      <circle cx="14" cy="7" r="2.5" />
+      <path d="M14 12c2 0 4 1.5 4 4" />
     </svg>
   );
 }
@@ -36,82 +91,80 @@ export default function HeroSearchBar() {
   const [theme, setTheme] = useState<CircuitTheme | ''>('');
   const [duration, setDuration] = useState<DurationBucket | ''>('');
   const [season, setSeason] = useState<Season | ''>('');
+  const [travelers, setTravelers] = useState(1);
 
   function handleSubmit() {
     const params = new URLSearchParams();
     if (theme) params.set('theme', theme);
     if (duration) params.set('duration', duration);
     if (season) params.set('season', season);
+    if (travelers > 1) params.set('travelers', String(travelers));
 
     const qs = params.toString();
     router.push(`/circuits${qs ? `?${qs}` : ''}`);
   }
 
   const selectBase =
-    'appearance-none rounded-xl border border-white/60 bg-white/90 pl-4 pr-10 py-3.5 text-sm font-medium tracking-wide text-charcoal-700 ' +
-    'shadow-[0_4px_12px_rgba(21,20,18,0.04)] backdrop-blur-sm transition-all duration-300 cursor-pointer ' +
-    'hover:border-primary/30 hover:bg-white hover:shadow-[0_8px_24px_rgba(21,20,18,0.08)] ' +
-    'focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 ' +
-    'w-full';
-
-  const wrapperBase = 'relative flex items-center';
+    'appearance-none w-full bg-[#f5f7fe] rounded-lg px-4 py-4 pl-11 pr-10 text-sm font-medium text-charcoal-700 ' +
+    'transition-all duration-200 cursor-pointer ' +
+    'focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white';
 
   return (
     <motion.div
-      variants={fadeUp}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.7, delay: 1.6, ease: 'easeOut' }}
-      className="mt-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="w-full lg:max-w-[405px] bg-white rounded-3xl p-4 sm:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] border border-charcoal-100/50"
     >
-      <motion.div
-        whileHover={{ y: -2 }}
-        transition={{ duration: 0.3 }}
-        className="rounded-2xl border border-white/50 bg-white/75 p-4 shadow-[0_16px_48px_rgba(21,20,18,0.12),0_4px_12px_rgba(21,20,18,0.06)] backdrop-blur-2xl md:p-5"
-      >
-        <div className="grid gap-3 lg:grid-cols-[1fr_1fr_1fr_auto] lg:items-end">
-          <div className={wrapperBase}>
-            <select
-              id="hero-search-theme"
-              value={theme}
-              onChange={(e) => setTheme(e.target.value as CircuitTheme | '')}
-              className={selectBase}
-            >
-              <option value="">{t('hero_search_placeholder_theme')}</option>
-              <option value="culturel">
-                {t('hero_search_theme_cultural')}
-              </option>
-              <option value="solidaire">
-                {t('hero_search_theme_solidarity')}
-              </option>
-              <option value="immersion">
-                {t('hero_search_theme_immersion')}
-              </option>
-              <option value="grand">{t('hero_search_theme_grand')}</option>
-            </select>
-            <ChevronDown className="pointer-events-none absolute right-4 text-charcoal-400" />
-          </div>
+      {/* Header */}
+      <div className="flex items-center gap-4 mb-6">
+        <div className="w-10 h-10 rounded-full border border-charcoal-100 flex items-center justify-center text-charcoal-600">
+          <SearchIcon />
+        </div>
+        <h3 className="font-sans text-xl font-medium text-charcoal-800 tracking-tight">
+          {t('hero_search_title')}
+        </h3>
+      </div>
 
-          <div className={wrapperBase}>
-            <select
-              id="hero-search-duration"
-              value={duration}
-              onChange={(e) =>
-                setDuration(e.target.value as DurationBucket | '')
-              }
-              className={selectBase}
-            >
-              <option value="">{t('hero_search_placeholder_duration')}</option>
-              <option value="week">{t('hero_search_duration_week')}</option>
-              <option value="medium">{t('hero_search_duration_medium')}</option>
-              <option value="long">{t('hero_search_duration_long')}</option>
-            </select>
-            <ChevronDown className="pointer-events-none absolute right-4 text-charcoal-400" />
-          </div>
+      {/* Theme field */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+          {t('hero_search_placeholder_theme')}
+        </label>
+        <div className="relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-400">
+            <SearchIcon />
+          </span>
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value as CircuitTheme | '')}
+            className={selectBase}
+          >
+            <option value="">{t('hero_search_placeholder_theme')}</option>
+            <option value="culturel">{t('hero_search_theme_cultural')}</option>
+            <option value="solidaire">
+              {t('hero_search_theme_solidarity')}
+            </option>
+            <option value="immersion">
+              {t('hero_search_theme_immersion')}
+            </option>
+            <option value="grand">{t('hero_search_theme_grand')}</option>
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-400" />
+        </div>
+      </div>
 
-          <div className={wrapperBase}>
+      {/* Season & Duration row */}
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        <div>
+          <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+            {t('hero_search_placeholder_season')}
+          </label>
+          <div className="relative">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-400">
+              <CalendarIcon />
+            </span>
             <select
-              id="hero-search-season"
               value={season}
               onChange={(e) => setSeason(e.target.value as Season | '')}
               className={selectBase}
@@ -124,26 +177,88 @@ export default function HeroSearchBar() {
               <option value="automne">{t('hero_search_season_autumn')}</option>
               <option value="hiver">{t('hero_search_season_winter')}</option>
             </select>
-            <ChevronDown className="pointer-events-none absolute right-4 text-charcoal-400" />
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-400" />
           </div>
-
-          <motion.button
-            id="hero-search-submit"
-            type="button"
-            onClick={handleSubmit}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className={
-              'inline-flex items-center justify-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold tracking-wide text-white ' +
-              'shadow-[0_8px_24px_rgba(47,110,115,0.25)] transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_12px_32px_rgba(47,110,115,0.35)] ' +
-              'focus:outline-none focus:ring-2 focus:ring-primary/25 cursor-pointer'
-            }
-          >
-            <SearchIcon />
-            {t('hero_search_cta')}
-          </motion.button>
         </div>
-      </motion.div>
+
+        <div>
+          <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+            {t('hero_search_placeholder_duration')}
+          </label>
+          <div className="relative">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-400">
+              <ClockIcon />
+            </span>
+            <select
+              value={duration}
+              onChange={(e) =>
+                setDuration(e.target.value as DurationBucket | '')
+              }
+              className={selectBase}
+            >
+              <option value="">{t('hero_search_placeholder_duration')}</option>
+              <option value="week">{t('hero_search_duration_week')}</option>
+              <option value="medium">{t('hero_search_duration_medium')}</option>
+              <option value="long">{t('hero_search_duration_long')}</option>
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-400" />
+          </div>
+        </div>
+      </div>
+
+      {/* Travelers field */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+          {t('hero_search_travelers_label')}
+        </label>
+        <div className="relative flex items-center bg-[#f5f7fe] rounded-lg px-4 py-3">
+          <span className="text-charcoal-400 mr-3">
+            <UsersIcon />
+          </span>
+          <span className="flex-1 text-sm font-medium text-charcoal-700">
+            {travelers}{' '}
+            {travelers > 1
+              ? t('hero_search_travelers_plural')
+              : t('hero_search_travelers_singular')}
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setTravelers((v) => Math.max(1, v - 1))}
+              disabled={travelers <= 1}
+              className="w-8 h-8 flex items-center justify-center rounded-full border border-charcoal-200 text-charcoal-600 transition-colors hover:bg-charcoal-100 disabled:opacity-30 disabled:cursor-not-allowed"
+              aria-label={t('hero_search_travelers_minus')}
+            >
+              −
+            </button>
+            <button
+              type="button"
+              onClick={() => setTravelers((v) => Math.min(20, v + 1))}
+              disabled={travelers >= 20}
+              className="w-8 h-8 flex items-center justify-center rounded-full border border-charcoal-200 text-charcoal-600 transition-colors hover:bg-charcoal-100 disabled:opacity-30 disabled:cursor-not-allowed"
+              aria-label={t('hero_search_travelers_plus')}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Submit button */}
+      <motion.button
+        type="button"
+        onClick={handleSubmit}
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.98 }}
+        className={
+          'w-full bg-charcoal-800 text-white font-semibold text-base py-[18px] rounded-full ' +
+          'shadow-[0_8px_24px_rgba(21,20,18,0.2)] transition-all duration-300 ' +
+          'hover:bg-charcoal-900 hover:shadow-[0_12px_32px_rgba(21,20,18,0.3)] ' +
+          'focus:outline-none focus:ring-2 focus:ring-charcoal-400/30 cursor-pointer'
+        }
+      >
+        {t('hero_search_cta')}
+      </motion.button>
     </motion.div>
   );
 }

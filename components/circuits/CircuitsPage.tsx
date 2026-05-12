@@ -164,38 +164,41 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* HERO                                                          */}
       {/* ============================================================ */}
-      <section className="relative h-screen md:h-[85vh] min-h-125 overflow-hidden">
-        {/* Parallax image */}
-        <motion.div
-          className="absolute inset-0 scale-110"
-          style={{ y: heroParallax }}
-        >
-          <Image
-            src="/images/Boukhara.jpg"
-            alt="Circuits en Ouzbékistan"
-            fill
-            priority
-            quality={100}
-            className="object-cover"
-            placeholder="empty"
-          />
-        </motion.div>
+      <section className="relative bg-[#fafafa] pt-20 md:pt-22 pb-6">
+        <div className="mx-2 rounded-3xl overflow-hidden relative h-[72vh] min-h-125">
+          {/* Parallax image */}
+          <motion.div
+            className="absolute inset-0 scale-110"
+            style={{ y: heroParallax }}
+          >
+            <Image
+              src="/images/Boukhara.jpg"
+              alt="Circuits en Ouzbékistan"
+              fill
+              priority
+              quality={100}
+              className="object-cover"
+              placeholder="empty"
+            />
+          </motion.div>
 
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-charcoal-900/25" />
-        <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/75 via-charcoal-900/15 to-transparent" />
+          {/* Overlays */}
+          <div className="absolute inset-0 bg-charcoal-900/25" />
+          <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/75 via-charcoal-900/15 to-transparent" />
 
-        {/* Content */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 pb-16 md:pb-24">
-          <div className="max-w-312 mx-auto px-6 md:px-10">
-            <motion.p
+          {/* Content */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 pb-10 md:pb-14 px-8 md:px-12">
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
-              className="font-sans text-label uppercase tracking-[0.15em] text-white/70 mb-4"
+              className="flex items-center gap-3 mb-4"
             >
-              {t('page_hero_kicker')}
-            </motion.p>
+              <div className="h-px w-8 bg-primary/40" />
+              <p className="font-sans text-label uppercase tracking-[0.15em] text-white/70">
+                {t('page_hero_kicker')}
+              </p>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -223,7 +226,7 @@ export default function CircuitsPage() {
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.6, delay: 0.75, ease: 'easeOut' }}
-              className="w-16 h-px bg-gold mt-8 origin-left"
+              className="w-14 h-px bg-gold mt-8 origin-left"
             />
           </div>
         </div>
@@ -266,7 +269,7 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* INTRO                                                         */}
       {/* ============================================================ */}
-      <section className="bg-sand-50 py-16 md:py-20 lg:py-section">
+      <section className="bg-[#fafafa] py-16 md:py-20 lg:py-section">
         <div className="max-w-208 mx-auto px-6 md:px-10 text-center">
           <motion.div
             variants={staggerContainer}
@@ -332,14 +335,14 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* SUR MESURE CALLOUT                                            */}
       {/* ============================================================ */}
-      <section className="bg-sand-100 py-14 md:py-16">
+      <section className="bg-[#fafafa] py-14 md:py-16">
         <div className="max-w-312 mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="rounded-3xl border border-border-soft bg-surface-default px-6 py-8 md:px-10 md:py-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+            className="rounded-2xl border border-charcoal-100/70 bg-white px-6 py-8 md:px-10 md:py-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
           >
             <div className="max-w-176">
               <motion.p
@@ -379,67 +382,47 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* DARK CTA                                                      */}
       {/* ============================================================ */}
-      <section className="bg-charcoal-800 py-16 md:py-20 lg:py-section relative overflow-hidden">
-        {/* Decorative SVG */}
-        <div className="absolute top-8 right-8 md:top-12 md:right-16 opacity-5 pointer-events-none">
-          <svg
-            width="280"
-            height="280"
-            viewBox="0 0 280 280"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.5"
-            className="w-48 h-48 md:w-72 md:h-72"
+      <section className="bg-[#fafafa] py-6">
+        <div className="mx-2 rounded-3xl overflow-hidden bg-charcoal-800 relative">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            className="max-w-[48rem] mx-auto px-6 md:px-10 py-20 md:py-28 text-center relative z-10"
           >
-            <polygon points="140,10 170,100 260,100 185,150 210,240 140,190 70,240 95,150 20,100 110,100" />
-            <polygon
-              points="140,40 160,110 230,110 175,145 195,220 140,180 85,220 105,145 50,110 120,110"
-              strokeDasharray="4 4"
-            />
-          </svg>
-        </div>
+            <motion.div variants={fadeUp}>
+              <div className="divider-gold-center mb-8" />
+              <h2 className="font-serif text-display-lg text-white font-light">
+                {t('page_cta_title')}
+              </h2>
+            </motion.div>
 
-        {/* Gold glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-160 h-48 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
-
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          className="max-w-[48rem] mx-auto px-6 md:px-10 text-center relative z-10"
-        >
-          <motion.div variants={fadeUp}>
-            <div className="divider-gold-center mb-8" />
-            <h2 className="font-serif text-display-lg text-white font-light">
-              {t('page_cta_title')}
-            </h2>
-          </motion.div>
-
-          <motion.p
-            variants={fadeUp}
-            className="font-sans text-body-lg text-charcoal-200 mt-6 leading-relaxed"
-          >
-            {t('page_cta_body')}
-          </motion.p>
-
-          <motion.div variants={fadeUp} className="mt-10">
-            <Button
-              href="/booking"
-              variant="inverted"
-              size="lg"
-              className="group text-label-lg uppercase tracking-widest"
+            <motion.p
+              variants={fadeUp}
+              className="font-sans text-body-lg text-charcoal-200 mt-6 leading-relaxed"
             >
-              {t('page_cta_button')}
-              <span
-                aria-hidden="true"
-                className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+              {t('page_cta_body')}
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="mt-10">
+              <Button
+                href="/booking"
+                variant="inverted"
+                size="lg"
+                className="group text-label-lg uppercase tracking-widest"
               >
-                &rarr;
-              </span>
-            </Button>
+                {t('page_cta_button')}
+                <span
+                  aria-hidden="true"
+                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  &rarr;
+                </span>
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
     </>
   );
