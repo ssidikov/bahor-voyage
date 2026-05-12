@@ -77,7 +77,7 @@ export function HeroSection() {
         {/* Hero image card — ends above form midpoint */}
         <div className="mx-2 mt-4 rounded-3xl overflow-hidden relative h-[44vh] min-h-[400px]">
           <Image
-            src="/images/afor-voyage.jpg"
+            src="/images/khiva-old-city.jpg"
             alt=""
             fill
             priority
@@ -150,7 +150,7 @@ export function HeroSection() {
       {/* ── DESKTOP layout (lg+) ── */}
       <div className="hidden lg:block mx-2 rounded-3xl overflow-hidden relative h-[90vh] min-h-[600px]">
         <Image
-          src="/images/afor-voyage.jpg"
+          src="/images/khiva-old-city.jpg"
           alt=""
           fill
           priority
