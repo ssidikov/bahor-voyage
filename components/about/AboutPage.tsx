@@ -239,7 +239,10 @@ export function AboutPage() {
   return (
     <>
       {/* ═══ HERO ══════════════════════════════════════════════════════════ */}
-      <section ref={heroRef} className="relative bg-[#fafafa] py-6">
+      <section
+        ref={heroRef}
+        className="relative bg-[#fafafa] pt-20 md:pt-22 pb-6"
+      >
         <div className="mx-2 rounded-3xl overflow-hidden relative h-[72vh] min-h-125">
           {/* parallax image */}
           <motion.div style={{ y: heroY }} className="absolute inset-0">

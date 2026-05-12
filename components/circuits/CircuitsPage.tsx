@@ -164,7 +164,7 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* HERO                                                          */}
       {/* ============================================================ */}
-      <section className="relative bg-[#fafafa] py-6">
+      <section className="relative bg-[#fafafa] pt-20 md:pt-22 pb-6">
         <div className="mx-2 rounded-3xl overflow-hidden relative h-[72vh] min-h-125">
           {/* Parallax image */}
           <motion.div
