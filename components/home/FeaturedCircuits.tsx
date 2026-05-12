@@ -265,7 +265,7 @@ export function FeaturedCircuits() {
           {/* Right: 2×2 small cards grid */}
           <motion.div
             variants={fadeUp}
-            className="lg:col-span-7 grid grid-cols-2 gap-6"
+            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
             {CIRCUITS.slice(1).map((circuit) => (
               <CircuitCard3D
