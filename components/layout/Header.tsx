@@ -51,7 +51,7 @@ export function Header() {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="bg-[#fafafa] print:hidden"
+        className="fixed top-0 left-0 right-0 z-40 bg-[#fafafa]/95 backdrop-blur-sm border-b border-charcoal-100/40 print:hidden"
       >
         <div className="max-w-content mx-auto px-5 md:px-8 flex items-center justify-between h-16 md:h-18">
           {/* ── Logo ── */}
@@ -111,21 +111,23 @@ export function Header() {
             </div>
 
             {/* CTAs — desktop */}
-            <Button
-              href="/circuits"
-              variant="outline"
-              className="hidden md:inline-flex text-[0.75rem] font-medium tracking-[0.05em] px-4 py-2"
-            >
-              {t('circuits')}
-            </Button>
+            <div className="hidden md:contents">
+              <Button
+                href="/circuits"
+                variant="outline"
+                className="text-[0.75rem] font-medium tracking-[0.05em] px-4 py-2"
+              >
+                {t('circuits')}
+              </Button>
 
-            <Button
-              href="/booking"
-              variant="primary"
-              className="hidden md:inline-flex text-[0.75rem] font-medium tracking-[0.05em] px-5 py-2.5"
-            >
-              {t('book_cta')}
-            </Button>
+              <Button
+                href="/booking"
+                variant="primary"
+                className="text-[0.75rem] font-medium tracking-[0.05em] px-5 py-2.5"
+              >
+                {t('book_cta')}
+              </Button>
+            </div>
 
             {/* Hamburger — mobile */}
             <button

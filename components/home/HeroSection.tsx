@@ -71,9 +71,84 @@ export function HeroSection() {
   const t = useTranslations('home');
 
   return (
-    <section className="bg-[#fafafa]">
-      {/* ── Large rounded hero card ── */}
-      <div className="mx-2 rounded-3xl overflow-hidden relative h-[82vh] min-h-140">
+    <section className="bg-[#fafafa] pt-20 md:pt-22">
+      {/* ── MOBILE layout (< lg) ── */}
+      <div className="lg:hidden">
+        {/* Hero image card — ends above form midpoint */}
+        <div className="mx-2 mt-4 rounded-3xl overflow-hidden relative h-[44vh] min-h-[400px]">
+          <Image
+            src="/images/afor-voyage.jpg"
+            alt=""
+            fill
+            priority
+            quality={100}
+            className="object-cover"
+            placeholder="empty"
+          />
+          <div className="absolute inset-0 bg-charcoal-900/20" />
+          <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/85 via-charcoal-900/20 to-transparent" />
+
+          {/* Text content — centered vertically */}
+          <div className="absolute inset-0 z-10 flex flex-col justify-center px-5">
+            <h1 className="font-serif text-white font-light whitespace-nowrap">
+              <span className="block text-[clamp(1.8rem,6vw,2.8rem)] leading-tight">
+                <AnimatedText
+                  text={t('hero_title_line1')}
+                  className=""
+                  delay={0.4}
+                />
+              </span>
+              <span className="block text-[clamp(1.8rem,6vw,2.8rem)] leading-tight">
+                <AnimatedText
+                  text={t('hero_title_line2')}
+                  className=""
+                  delay={0.7}
+                />
+              </span>
+            </h1>
+
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="w-14 h-px bg-linear-to-r from-gold via-gold to-transparent mt-5 mb-4 origin-left"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{
+                duration: 0.8,
+                delay: 1.4,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <Button
+                href="/#circuits"
+                variant="inverted"
+                size="md"
+                className="group text-xs uppercase tracking-widest"
+              >
+                <span>{t('hero_cta')}</span>
+                <span
+                  aria-hidden="true"
+                  className="inline-block transition-transform duration-300 group-hover:translate-x-1.5"
+                >
+                  &rarr;
+                </span>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Search form — pulled up by half its approximate height to straddle the card edge */}
+        <div className="px-4 -mt-[88px] relative z-20">
+          <HeroSearchBar />
+        </div>
+      </div>
+
+      {/* ── DESKTOP layout (lg+) ── */}
+      <div className="hidden lg:block mx-2 rounded-3xl overflow-hidden relative h-[90vh] min-h-[600px]">
         <Image
           src="/images/afor-voyage.jpg"
           alt=""
@@ -86,62 +161,69 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-charcoal-900/25" />
         <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/85 via-charcoal-900/25 to-transparent" />
 
-        {/* Location pill */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="absolute top-8 left-8 inline-flex items-center gap-2 border border-white/30 rounded-full px-4 py-1.5 backdrop-blur-sm bg-black/10"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-          <span className="text-white/85 text-sm font-medium tracking-wide">
-            {t('hero_subtitle')}
-          </span>
-        </motion.div>
-
-        {/* Bottom content */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 px-8 md:px-12 pb-10 md:pb-14">
-          <h1 className="font-serif text-display-2xl text-white font-light max-w-5xl perspective-[1000px]">
-            <AnimatedText text={t('hero_title')} className="" delay={0.4} />
-          </h1>
-
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-20 h-px bg-linear-to-r from-gold via-gold to-transparent mt-7 mb-6 origin-left"
-          />
-
-          <motion.div
-            initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Button
-              href="/#circuits"
-              variant="inverted"
-              size="lg"
-              className="group text-label-lg uppercase tracking-widest relative overflow-hidden"
-            >
-              <span className="relative z-10">{t('hero_cta')}</span>
-              <span
-                aria-hidden="true"
-                className="relative z-10 inline-block transition-transform duration-300 group-hover:translate-x-2"
-              >
-                &rarr;
+        {/* Content: headline left, form right — aligned to bottom */}
+        <div className="absolute inset-0 z-10 flex flex-row items-center justify-between px-12 pb-14 pt-24 gap-8">
+          {/* Left: headline + CTA */}
+          <div className="flex flex-col flex-1 max-w-2xl">
+            <h1 className="font-serif text-white font-light whitespace-nowrap">
+              <span className="block text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
+                <AnimatedText
+                  text={t('hero_title_line1')}
+                  className=""
+                  delay={0.4}
+                />
               </span>
-            </Button>
-          </motion.div>
+              <span className="block text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
+                <AnimatedText
+                  text={t('hero_title_line2')}
+                  className=""
+                  delay={0.7}
+                />
+              </span>
+            </h1>
+
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="w-20 h-px bg-linear-to-r from-gold via-gold to-transparent mt-7 mb-6 origin-left"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{
+                duration: 0.8,
+                delay: 1.4,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <Button
+                href="/#circuits"
+                variant="inverted"
+                size="lg"
+                className="group text-label-lg uppercase tracking-widest relative overflow-hidden"
+              >
+                <span className="relative z-10">{t('hero_cta')}</span>
+                <span
+                  aria-hidden="true"
+                  className="relative z-10 inline-block transition-transform duration-300 group-hover:translate-x-2"
+                >
+                  &rarr;
+                </span>
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Right: search form */}
+          <div className="shrink-0">
+            <HeroSearchBar />
+          </div>
         </div>
       </div>
 
-      {/* ── Search bar ── */}
-      <div className="px-2 pb-6">
-        <HeroSearchBar />
-      </div>
-
       {/* ── Mini destination cards row ── */}
-      <div className="px-2 pt-3 pb-0">
+      <div className="px-2 pt-5 pb-0 lg:pt-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
           {MINI_DESTINATIONS.map((dest, i) => (
             <motion.div
