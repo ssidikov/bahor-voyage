@@ -8,7 +8,7 @@ type MarqueeSectionProps = {
 
 export function MarqueeSection({
   text = 'SAMARCANDE · BOUKHARA · KHIVA · TACHKENT · ROUTE DE LA SOIE ·',
-  speed = 30,
+  speed = 100,
 }: MarqueeSectionProps) {
   const repeated = [text, text, text];
 

@@ -1,15 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui';
+import ContactForm from '@/components/contact/ContactForm';
 import { fadeUp, staggerContainer } from '@/lib/animations';
 
 export function CTAContact() {
   const t = useTranslations('home');
-  const [email, setEmail] = useState('');
 
   return (
     <section className="relative bg-[#fafafa] py-20 md:py-28 overflow-hidden">
@@ -110,44 +109,7 @@ export function CTAContact() {
             variants={fadeUp}
             className="flex flex-col justify-center gap-8"
           >
-            {/* Newsletter */}
-            <div className="rounded-3xl border border-charcoal-100/70 bg-white p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
-              <h3 className="font-serif text-2xl text-charcoal-700 font-light mb-2">
-                Restez informé
-              </h3>
-              <p className="font-sans text-body-md text-charcoal-400 mb-6">
-                Recevez nos actualités et nouvelles destinations en Ouzbékistan.
-              </p>
-              <div className="flex gap-2">
-                <div className="flex-1 flex items-center gap-3 rounded-full border border-charcoal-100 bg-[#efefef] pl-5 pr-2 py-2">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                    className="w-4 h-4 text-charcoal-400 shrink-0"
-                    aria-hidden="true"
-                  >
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Adresse e-mail"
-                    className="flex-1 bg-transparent text-sm text-charcoal-700 placeholder:text-charcoal-400 outline-none min-w-0"
-                  />
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setEmail('')}
-                  className="bg-primary hover:bg-primary-hover text-white rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-200 shrink-0"
-                >
-                  S&rsquo;inscrire
-                </button>
-              </div>
-            </div>
+            <ContactForm />
 
             {/* Address + social */}
             <div className="flex flex-col sm:flex-row gap-6">
