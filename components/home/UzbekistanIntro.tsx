@@ -30,8 +30,8 @@ export function UzbekistanIntro() {
           <motion.div variants={fadeUp} className="relative h-120 md:h-140">
             {/* Primary image */}
             <motion.div
-              initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
-              whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+              initial={{ clipPath: 'inset(100% 0% 0% 0% round 24px)' }}
+              whileInView={{ clipPath: 'inset(0% 0% 0% 0% round 24px)' }}
               viewport={{ once: true }}
               transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="absolute top-0 left-0 w-[65%] h-[72%] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
@@ -47,8 +47,8 @@ export function UzbekistanIntro() {
 
             {/* Secondary image — offset bottom-right */}
             <motion.div
-              initial={{ clipPath: 'inset(0% 0% 100% 0%)' }}
-              whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+              initial={{ clipPath: 'inset(0% 0% 100% 0% round 24px)' }}
+              whileInView={{ clipPath: 'inset(0% 0% 0% 0% round 24px)' }}
               viewport={{ once: true }}
               transition={{
                 duration: 1.1,
