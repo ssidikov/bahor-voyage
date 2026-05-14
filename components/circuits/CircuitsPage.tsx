@@ -91,14 +91,27 @@ function CircuitCard({ id, image, href }: Circuit) {
           {t(descKey)}
         </p>
 
-        <div className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-3.5 text-[0.875rem] font-semibold text-charcoal-800 transition-opacity duration-300 group-hover:opacity-90">
-          {t('learn_more')}
-          <span
-            aria-hidden="true"
-            className="inline-block transition-transform duration-300 group-hover:translate-x-1"
-          >
-            &rarr;
+        <div className="mt-5 flex w-full items-center gap-2.5 rounded-full bg-white px-3 py-4 transition-opacity duration-300 group-hover:opacity-90">
+          <span className="flex-1 text-center text-[1rem] font-bold text-[#181717]">
+            {t('learn_more')}
           </span>
+          <svg
+            aria-hidden="true"
+            className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 18L15 12L9 6"
+              stroke="#181717"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
       </div>
     </Link>
