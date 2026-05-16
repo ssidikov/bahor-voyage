@@ -15,6 +15,7 @@ import type { routing } from '@/i18n/routing';
 type Locale = (typeof routing.locales)[number];
 
 const NAV_LINKS = [
+  { key: 'home', href: '/' },
   { key: 'circuits', href: '/circuits' },
   { key: 'projects', href: '/projects' },
   { key: 'contact', href: '/contact' },
@@ -280,34 +281,32 @@ export function Header() {
             </motion.button>
 
             <nav className="flex h-full flex-col justify-center gap-5 px-8">
-              {[{ key: 'home', href: '/' }, ...NAV_LINKS].map(
-                ({ key, href }, idx) => {
-                  const isActive = isActiveHref(href);
-                  return (
-                    <motion.div
-                      key={key}
-                      initial={{ opacity: 0, x: -32 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        delay: 0.15 + idx * 0.07,
-                        duration: 0.45,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
+              {NAV_LINKS.map(({ key, href }, idx) => {
+                const isActive = isActiveHref(href);
+                return (
+                  <motion.div
+                    key={key}
+                    initial={{ opacity: 0, x: -32 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: 0.15 + idx * 0.07,
+                      duration: 0.45,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    <Link
+                      href={href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`font-serif text-display-md hover:text-primary transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 rounded-lg ${
+                        isActive ? 'text-primary' : 'text-charcoal-700'
+                      }`}
+                      onClick={() => closeMenu()}
                     >
-                      <Link
-                        href={href}
-                        aria-current={isActive ? 'page' : undefined}
-                        className={`font-serif text-display-md hover:text-primary transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 rounded-lg ${
-                          isActive ? 'text-primary' : 'text-charcoal-700'
-                        }`}
-                        onClick={() => closeMenu()}
-                      >
-                        {t(key)}
-                      </Link>
-                    </motion.div>
-                  );
-                },
-              )}
+                      {t(key)}
+                    </Link>
+                  </motion.div>
+                );
+              })}
 
               <motion.div
                 initial={{ opacity: 0, scaleX: 0 }}
