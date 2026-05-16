@@ -148,7 +148,7 @@ export function HeroSection() {
       </div>
 
       {/* ── DESKTOP layout (lg+) ── */}
-      <div className="hidden lg:block mx-2 rounded-3xl overflow-hidden relative h-[90vh] min-h-[600px]">
+      <div className="hidden lg:block mx-2 rounded-3xl overflow-hidden relative h-[88vh] min-h-[600px]">
         <Image
           src="/images/khiva-old-city.jpg"
           alt=""

@@ -29,10 +29,15 @@ export default function DatesManager({
   const [isAdding, setIsAdding] = useState(false);
   const [editingDate, setEditingDate] = useState<TourDate | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [datePendingDeleteId, setDatePendingDeleteId] = useState<string | null>(
+    null,
+  );
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+    setError(null);
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(
       formData.entries(),
@@ -47,18 +52,24 @@ export default function DatesManager({
         setIsAdding(false);
       }
     } catch {
-      alert('Error saving date');
+      setError("Impossible d'enregistrer cette date.");
     } finally {
       setLoading(false);
     }
   }
 
   async function handleDelete(id: string) {
-    if (!confirm('Are you sure?')) return;
+    if (datePendingDeleteId !== id) {
+      setDatePendingDeleteId(id);
+      return;
+    }
+
+    setError(null);
     try {
       await deleteTourDate(id, tourId);
+      setDatePendingDeleteId(null);
     } catch {
-      alert('Error deleting');
+      setError('Impossible de supprimer cette date.');
     }
   }
 
@@ -73,16 +84,25 @@ export default function DatesManager({
             setIsAdding(!isAdding);
             setEditingDate(null);
           }}
-          className="px-3 py-1.5 bg-primary-600 text-white rounded-md text-sm hover:bg-primary-700"
+          className="min-h-11 px-3 py-2 bg-primary-600 text-white rounded-md text-sm hover:bg-primary-700"
         >
           {isAdding || editingDate ? 'Annuler' : '+ Ajouter une date'}
         </button>
       </div>
 
+      {error ? (
+        <p
+          className="rounded-lg border border-red-100 bg-red-50 p-3 text-sm text-red-700"
+          role="alert"
+        >
+          {error}
+        </p>
+      ) : null}
+
       {(isAdding || editingDate) && (
         <form
           onSubmit={handleSubmit}
-          className="bg-sand-50 p-4 rounded-lg border border-border-soft grid grid-cols-2 gap-4"
+          className="bg-sand-50 p-4 rounded-lg border border-border-soft grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           <div>
             <label className="block text-xs text-charcoal-500 mb-1">
@@ -97,7 +117,7 @@ export default function DatesManager({
                   : ''
               }
               required
-              className="w-full border border-border-soft rounded p-2 text-sm"
+              className="min-h-11 w-full border border-border-soft rounded p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary-300"
             />
           </div>
           <div>
@@ -113,7 +133,7 @@ export default function DatesManager({
                   : ''
               }
               required
-              className="w-full border border-border-soft rounded p-2 text-sm"
+              className="min-h-11 w-full border border-border-soft rounded p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary-300"
             />
           </div>
           <div>
@@ -125,7 +145,7 @@ export default function DatesManager({
               name="price"
               defaultValue={editingDate?.price}
               required
-              className="w-full border border-border-soft rounded p-2 text-sm"
+              className="min-h-11 w-full border border-border-soft rounded p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary-300"
             />
           </div>
           <div>
@@ -137,10 +157,10 @@ export default function DatesManager({
               name="maxSeats"
               defaultValue={editingDate?.maxSeats || 12}
               required
-              className="w-full border border-border-soft rounded p-2 text-sm"
+              className="min-h-11 w-full border border-border-soft rounded p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary-300"
             />
           </div>
-          <div className="col-span-2 flex items-center space-x-6">
+          <div className="sm:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:space-x-6">
             <label className="flex items-center space-x-2 text-sm">
               <input
                 type="checkbox"
@@ -160,7 +180,7 @@ export default function DatesManager({
             <div className="flex-1 text-right">
               <button
                 disabled={loading}
-                className="px-4 py-2 bg-charcoal-800 text-white rounded text-sm disabled:opacity-50"
+                className="min-h-11 px-4 py-2 bg-charcoal-800 text-white rounded text-sm disabled:opacity-50"
               >
                 {loading ? 'Enregistrement...' : 'Enregistrer'}
               </button>
@@ -204,15 +224,17 @@ export default function DatesManager({
                 <td className="px-4 py-3 text-right space-x-3">
                   <button
                     onClick={() => setEditingDate(date)}
-                    className="text-primary-600 hover:underline text-xs"
+                    className="min-h-11 px-2 text-primary-600 hover:underline text-xs"
                   >
                     Modifier
                   </button>
                   <button
                     onClick={() => handleDelete(date.id)}
-                    className="text-red-500 hover:underline text-xs"
+                    className="min-h-11 px-2 text-red-500 hover:underline text-xs"
                   >
-                    Supprimer
+                    {datePendingDeleteId === date.id
+                      ? 'Confirmer'
+                      : 'Supprimer'}
                   </button>
                 </td>
               </tr>

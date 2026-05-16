@@ -80,13 +80,20 @@ export default function ContactForm() {
       </h2>
 
       {submitStatus === 'success' && (
-        <div className="mb-6 p-4 bg-primary-50 text-primary-700 rounded-xl border border-primary-100">
+        <div
+          className="mb-6 p-4 bg-primary-50 text-primary-700 rounded-xl border border-primary-100"
+          role="status"
+          aria-live="polite"
+        >
           {t.success}
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-xl border border-red-100">
+        <div
+          className="mb-6 p-4 bg-red-50 text-red-700 rounded-xl border border-red-100"
+          role="alert"
+        >
           {t.error}
         </div>
       )}

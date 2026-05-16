@@ -1,6 +1,7 @@
 'use client';
 
-import { Fragment, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import type { KeyboardEvent as ReactKeyboardEvent } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
@@ -24,10 +25,76 @@ const LOCALES: Locale[] = ['fr', 'en'];
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('nav');
   const currentLocale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
+
+  const menuLabels =
+    currentLocale === 'fr'
+      ? {
+          open: 'Ouvrir le menu de navigation',
+          close: 'Fermer le menu de navigation',
+          dialog: 'Menu de navigation',
+        }
+      : {
+          open: 'Open navigation menu',
+          close: 'Close navigation menu',
+          dialog: 'Navigation menu',
+        };
+
+  const closeMenu = useCallback((restoreFocus = true) => {
+    setMenuOpen(false);
+    if (restoreFocus) {
+      window.setTimeout(() => menuButtonRef.current?.focus(), 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [closeMenu, menuOpen]);
+
+  const handleMenuKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Tab' || !menuPanelRef.current) return;
+
+    const focusable = Array.from(
+      menuPanelRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])',
+      ),
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (!first || !last) return;
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
 
   const switchLocale = (locale: Locale) => {
     const cleanPath = LOCALES.reduce<string>((p, loc) => {
@@ -42,8 +109,13 @@ export function Header() {
         : `/${locale}${cleanPath === '/' ? '' : cleanPath}`;
 
     router.push(newPath);
-    setMenuOpen(false);
+    closeMenu(false);
   };
+
+  const isActiveHref = (href: string) =>
+    href === '/'
+      ? pathname === '/'
+      : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <>
@@ -73,15 +145,23 @@ export function Header() {
 
           {/* ── Desktop nav ── */}
           <nav className="hidden md:flex items-center gap-0.5">
-            {NAV_LINKS.map(({ key, href }) => (
-              <Link
-                key={key}
-                href={href}
-                className="px-4 py-2 rounded-full text-[0.8rem] font-medium tracking-[0.06em] text-charcoal-500 hover:text-primary hover:bg-primary/5 transition-colors duration-200"
-              >
-                {t(key)}
-              </Link>
-            ))}
+            {NAV_LINKS.map(({ key, href }) => {
+              const isActive = isActiveHref(href);
+              return (
+                <Link
+                  key={key}
+                  href={href}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`px-4 py-2 rounded-full text-[0.8rem] font-medium tracking-[0.06em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 ${
+                    isActive
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-charcoal-500 hover:text-primary hover:bg-primary/5'
+                  }`}
+                >
+                  {t(key)}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* ── Right actions ── */}
@@ -131,9 +211,10 @@ export function Header() {
 
             {/* Hamburger — mobile */}
             <button
-              className="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 cursor-pointer rounded-full hover:bg-charcoal-50 transition-colors p-1.5"
+              ref={menuButtonRef}
+              className="md:hidden flex flex-col justify-center gap-1.5 w-11 h-11 cursor-pointer rounded-full hover:bg-charcoal-50 transition-colors p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
               onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label="Toggle menu"
+              aria-label={menuOpen ? menuLabels.close : menuLabels.open}
               aria-expanded={menuOpen}
             >
               <motion.span
@@ -171,15 +252,21 @@ export function Header() {
             exit={{ clipPath: 'circle(0% at calc(100% - 2.5rem) 2rem)' }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-50 bg-[linear-gradient(160deg,#fdfcfa_0%,#f7f2ea_100%)] md:hidden"
+            ref={menuPanelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={menuLabels.dialog}
+            onKeyDown={handleMenuKeyDown}
           >
             {/* Close */}
             <motion.button
+              ref={closeButtonRef}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
-              onClick={() => setMenuOpen(false)}
-              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-charcoal-100 bg-white text-charcoal-600 cursor-pointer"
-              aria-label="Close menu"
+              onClick={() => closeMenu()}
+              className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-charcoal-100 bg-white text-charcoal-600 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
+              aria-label={menuLabels.close}
             >
               <svg
                 viewBox="0 0 24 24"
@@ -194,26 +281,32 @@ export function Header() {
 
             <nav className="flex h-full flex-col justify-center gap-5 px-8">
               {[{ key: 'home', href: '/' }, ...NAV_LINKS].map(
-                ({ key, href }, idx) => (
-                  <motion.div
-                    key={key}
-                    initial={{ opacity: 0, x: -32 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.15 + idx * 0.07,
-                      duration: 0.45,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                  >
-                    <Link
-                      href={href}
-                      className="font-serif text-display-md text-charcoal-700 hover:text-primary transition-colors block"
-                      onClick={() => setMenuOpen(false)}
+                ({ key, href }, idx) => {
+                  const isActive = isActiveHref(href);
+                  return (
+                    <motion.div
+                      key={key}
+                      initial={{ opacity: 0, x: -32 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.15 + idx * 0.07,
+                        duration: 0.45,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                     >
-                      {t(key)}
-                    </Link>
-                  </motion.div>
-                ),
+                      <Link
+                        href={href}
+                        aria-current={isActive ? 'page' : undefined}
+                        className={`font-serif text-display-md hover:text-primary transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 rounded-lg ${
+                          isActive ? 'text-primary' : 'text-charcoal-700'
+                        }`}
+                        onClick={() => closeMenu()}
+                      >
+                        {t(key)}
+                      </Link>
+                    </motion.div>
+                  );
+                },
               )}
 
               <motion.div
@@ -232,7 +325,7 @@ export function Header() {
                   href="/booking"
                   variant="primary"
                   className="text-sm px-8 py-3"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => closeMenu()}
                 >
                   {t('book_cta')}
                 </Button>
@@ -248,7 +341,7 @@ export function Header() {
                   <button
                     key={locale}
                     onClick={() => switchLocale(locale)}
-                    className={`text-sm uppercase tracking-widest transition-colors cursor-pointer ${
+                    className={`min-h-11 min-w-11 rounded-full text-sm uppercase tracking-widest transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 ${
                       locale === currentLocale
                         ? 'text-primary font-semibold'
                         : 'text-charcoal-400 hover:text-primary'

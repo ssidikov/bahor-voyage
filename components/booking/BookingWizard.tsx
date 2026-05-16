@@ -223,6 +223,9 @@ export default function BookingWizard() {
     exit: { opacity: 0, x: -24 },
   };
 
+  const fieldClassName =
+    'w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa] focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400';
+
   return (
     <div className="bg-white rounded-3xl border border-charcoal-100/60 p-8 md:p-10 shadow-sm max-w-3xl mx-auto">
       {/* STEPS INDICATOR */}
@@ -256,7 +259,10 @@ export default function BookingWizard() {
       </div>
 
       {error && (
-        <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-xl border border-red-100">
+        <div
+          className="mb-6 p-4 bg-red-50 text-red-700 rounded-xl border border-red-100"
+          role="alert"
+        >
           {error}
         </div>
       )}
@@ -312,7 +318,7 @@ export default function BookingWizard() {
                       key={date.id}
                       onClick={() => !isFull && setSelectedDateId(date.id)}
                       disabled={isFull}
-                      className={`text-left p-5 rounded-2xl border transition-all ${
+                      className={`text-left p-5 rounded-2xl border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 ${
                         selectedDateId === date.id
                           ? 'border-primary-400 bg-primary-50 ring-1 ring-primary-400'
                           : isFull
@@ -390,7 +396,7 @@ export default function BookingWizard() {
                 <select
                   value={passengers}
                   onChange={(e) => setPassengers(Number(e.target.value))}
-                  className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 focus:outline-none bg-[#fafafa]"
+                  className={fieldClassName}
                 >
                   {Array.from({ length: Math.min(availableSeats, 10) }).map(
                     (_, i) => (
@@ -402,7 +408,7 @@ export default function BookingWizard() {
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-charcoal-600 mb-1">
                     {locale === 'fr' ? 'Prénom' : 'First Name'}
@@ -412,7 +418,7 @@ export default function BookingWizard() {
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
+                    className={fieldClassName}
                   />
                 </div>
                 <div>
@@ -424,12 +430,12 @@ export default function BookingWizard() {
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
+                    className={fieldClassName}
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-charcoal-600 mb-1">
                     Email
@@ -439,7 +445,7 @@ export default function BookingWizard() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
+                    className={fieldClassName}
                   />
                 </div>
                 <div>
@@ -451,7 +457,7 @@ export default function BookingWizard() {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa]"
+                    className={fieldClassName}
                   />
                 </div>
               </div>
@@ -472,7 +478,7 @@ export default function BookingWizard() {
                           ? `Voyageur ${idx + 2}`
                           : `Traveler ${idx + 2}`}
                       </p>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-charcoal-600 mb-1">
                             {locale === 'fr' ? 'Prénom' : 'First Name'}
@@ -490,7 +496,7 @@ export default function BookingWizard() {
                                 ),
                               );
                             }}
-                            className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white"
+                            className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400"
                           />
                         </div>
                         <div>
@@ -510,7 +516,7 @@ export default function BookingWizard() {
                                 ),
                               );
                             }}
-                            className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white"
+                            className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400"
                           />
                         </div>
                       </div>
@@ -528,7 +534,7 @@ export default function BookingWizard() {
                               ),
                             );
                           }}
-                          className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white"
+                          className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-white focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400"
                         />
                       </div>
                     </div>
@@ -546,7 +552,7 @@ export default function BookingWizard() {
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-charcoal-100/60 bg-[#fafafa] h-32"
+                  className={`${fieldClassName} h-32`}
                   placeholder={
                     locale === 'fr'
                       ? 'Avez-vous des allergies, des besoins spécifiques...'
@@ -625,7 +631,12 @@ export default function BookingWizard() {
                       <div className="flex items-center space-x-3">
                         <button
                           onClick={() => handleOptionChange(opt.id, -1)}
-                          className="w-8 h-8 rounded-full border border-charcoal-100/60 flex items-center justify-center hover:bg-[#fafafa]"
+                          className="w-11 h-11 rounded-full border border-charcoal-100/60 flex items-center justify-center hover:bg-[#fafafa] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
+                          aria-label={
+                            locale === 'fr'
+                              ? `Réduire ${opt.nameFr}`
+                              : `Decrease ${opt.nameEn}`
+                          }
                         >
                           -
                         </button>
@@ -634,7 +645,12 @@ export default function BookingWizard() {
                         </span>
                         <button
                           onClick={() => handleOptionChange(opt.id, 1)}
-                          className="w-8 h-8 rounded-full border border-charcoal-100/60 flex items-center justify-center hover:bg-[#fafafa]"
+                          className="w-11 h-11 rounded-full border border-charcoal-100/60 flex items-center justify-center hover:bg-[#fafafa] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
+                          aria-label={
+                            locale === 'fr'
+                              ? `Ajouter ${opt.nameFr}`
+                              : `Increase ${opt.nameEn}`
+                          }
                         >
                           +
                         </button>

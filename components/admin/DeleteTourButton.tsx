@@ -15,17 +15,19 @@ export default function DeleteTourButton({
 }: DeleteTourButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleDelete = async () => {
     setIsDeleting(true);
+    setError(null);
     try {
       await deleteTour(tourId);
       setIsOpen(false);
       router.refresh();
     } catch (error) {
       console.error('Failed to delete tour:', error);
-      alert(
+      setError(
         'Impossible de supprimer ce circuit. Il est probablement lié à des réservations existantes.',
       );
     } finally {
@@ -56,6 +58,14 @@ export default function DeleteTourButton({
               ? Cette action est irréversible et supprimera toutes les dates et
               options associées.
             </p>
+            {error ? (
+              <p
+                className="mb-6 rounded-lg border border-red-100 bg-red-50 p-3 text-sm text-red-700"
+                role="alert"
+              >
+                {error}
+              </p>
+            ) : null}
             <div className="flex justify-end gap-4">
               <button
                 onClick={() => setIsOpen(false)}

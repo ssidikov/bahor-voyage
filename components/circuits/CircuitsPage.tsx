@@ -162,6 +162,32 @@ export default function CircuitsPage() {
         }).map((c) => c.id),
       )
     : null;
+  const matchedCount =
+    matchedIds === null
+      ? CIRCUITS.length
+      : CIRCUITS.filter((circuit) => matchedIds.has(circuit.id)).length;
+  const activeFilters = [
+    filterTheme
+      ? {
+          label: t('filter_theme_label'),
+          value: t(`filter_theme_${filterTheme}`),
+        }
+      : null,
+    filterDuration
+      ? {
+          label: t('filter_duration_label'),
+          value: t(`filter_duration_${filterDuration}`),
+        }
+      : null,
+    filterSeason
+      ? {
+          label: t('filter_season_label'),
+          value: t(`filter_season_${filterSeason}`),
+        }
+      : null,
+  ].filter((filter): filter is { label: string; value: string } =>
+    Boolean(filter),
+  );
 
   return (
     <>
@@ -296,6 +322,60 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       <section className="bg-white py-16 md:py-20 lg:py-section">
         <div className="max-w-312 mx-auto px-6 md:px-10">
+          {hasFilters ? (
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="mb-8 rounded-3xl border border-border-soft bg-sand-50 p-5 md:p-6"
+              role="status"
+              aria-live="polite"
+            >
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div>
+                  <p className="text-label-sm uppercase tracking-[0.14em] text-primary-500">
+                    {t('filter_active_title')}
+                  </p>
+                  <p className="mt-2 text-sm text-charcoal-500">
+                    {t('filter_result_count', { count: matchedCount })}
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {activeFilters.map((filter) => (
+                    <span
+                      key={`${filter.label}-${filter.value}`}
+                      className="rounded-full border border-primary-100 bg-white px-3 py-2 text-sm text-charcoal-600"
+                    >
+                      <span className="text-charcoal-400">
+                        {filter.label}:{' '}
+                      </span>
+                      {filter.value}
+                    </span>
+                  ))}
+                  <Button href="/circuits" variant="outline" size="sm">
+                    {t('filter_reset')}
+                  </Button>
+                </div>
+              </div>
+              {matchedCount === 0 ? (
+                <div className="mt-5 rounded-2xl border border-gold/30 bg-white p-5">
+                  <h2 className="font-serif text-2xl text-charcoal-700">
+                    {t('filter_no_match_title')}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal-500">
+                    {t('filter_no_match_body')}
+                  </p>
+                  <div className="mt-4">
+                    <Button href="/contact" variant="primary" size="sm">
+                      {t('filter_no_match_cta')}
+                    </Button>
+                  </div>
+                </div>
+              ) : null}
+            </motion.div>
+          ) : null}
+
           <motion.div
             variants={staggerContainer}
             initial="hidden"

@@ -28,10 +28,15 @@ export default function OptionsManager({
   const [isAdding, setIsAdding] = useState(false);
   const [editingOption, setEditingOption] = useState<TourOption | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [optionPendingDeleteId, setOptionPendingDeleteId] = useState<
+    string | null
+  >(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+    setError(null);
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(
       formData.entries(),
@@ -46,18 +51,24 @@ export default function OptionsManager({
         setIsAdding(false);
       }
     } catch {
-      alert('Error saving option');
+      setError("Impossible d'enregistrer cette option.");
     } finally {
       setLoading(false);
     }
   }
 
   async function handleDelete(id: string) {
-    if (!confirm('Are you sure?')) return;
+    if (optionPendingDeleteId !== id) {
+      setOptionPendingDeleteId(id);
+      return;
+    }
+
+    setError(null);
     try {
       await deleteTourOption(id, tourId);
+      setOptionPendingDeleteId(null);
     } catch {
-      alert('Error deleting');
+      setError('Impossible de supprimer cette option.');
     }
   }
 
@@ -72,16 +83,25 @@ export default function OptionsManager({
             setIsAdding(!isAdding);
             setEditingOption(null);
           }}
-          className="px-3 py-1.5 bg-primary-600 text-white rounded-md text-sm hover:bg-primary-700"
+          className="min-h-11 px-3 py-2 bg-primary-600 text-white rounded-md text-sm hover:bg-primary-700"
         >
           {isAdding || editingOption ? 'Annuler' : '+ Ajouter une option'}
         </button>
       </div>
 
+      {error ? (
+        <p
+          className="rounded-lg border border-red-100 bg-red-50 p-3 text-sm text-red-700"
+          role="alert"
+        >
+          {error}
+        </p>
+      ) : null}
+
       {(isAdding || editingOption) && (
         <form
           onSubmit={handleSubmit}
-          className="bg-sand-50 p-4 rounded-lg border border-border-soft grid grid-cols-2 gap-4"
+          className="bg-sand-50 p-4 rounded-lg border border-border-soft grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           <div>
             <label className="block text-xs text-charcoal-500 mb-1">
@@ -92,7 +112,7 @@ export default function OptionsManager({
               name="nameFr"
               defaultValue={editingOption?.nameFr}
               required
-              className="w-full border border-border-soft rounded p-2 text-sm"
+              className="min-h-11 w-full border border-border-soft rounded p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary-300"
               placeholder="ex: Supplément single"
             />
           </div>
@@ -105,7 +125,7 @@ export default function OptionsManager({
               name="nameEn"
               defaultValue={editingOption?.nameEn}
               required
-              className="w-full border border-border-soft rounded p-2 text-sm"
+              className="min-h-11 w-full border border-border-soft rounded p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary-300"
               placeholder="ex: Single supplement"
             />
           </div>
@@ -118,14 +138,14 @@ export default function OptionsManager({
               name="price"
               defaultValue={editingOption?.price}
               required
-              className="w-full border border-border-soft rounded p-2 text-sm"
+              className="min-h-11 w-full border border-border-soft rounded p-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary-300"
             />
           </div>
           <div className="relative">
             <select
               name="type"
               defaultValue={editingOption?.type || 'SUPPLEMENT'}
-              className="w-full border border-border-soft rounded pl-3 pr-10 py-2 text-sm bg-white appearance-none"
+              className="min-h-11 w-full border border-border-soft rounded pl-3 pr-10 py-2 text-sm bg-white appearance-none focus:outline-none focus:ring-1 focus:ring-primary-300"
             >
               <option value="SUPPLEMENT">Supplément (ex: Single)</option>
               <option value="EXCURSION">Excursion optionnelle</option>
@@ -133,7 +153,7 @@ export default function OptionsManager({
             </select>
             <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-charcoal-400" />
           </div>
-          <div className="col-span-2 flex items-center justify-between">
+          <div className="sm:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <label className="flex items-center space-x-2 text-sm">
               <input
                 type="checkbox"
@@ -144,7 +164,7 @@ export default function OptionsManager({
             </label>
             <button
               disabled={loading}
-              className="px-4 py-2 bg-charcoal-800 text-white rounded text-sm disabled:opacity-50"
+              className="min-h-11 px-4 py-2 bg-charcoal-800 text-white rounded text-sm disabled:opacity-50"
             >
               {loading ? 'Enregistrement...' : 'Enregistrer'}
             </button>
@@ -181,15 +201,17 @@ export default function OptionsManager({
                 <td className="px-4 py-3 text-right space-x-3">
                   <button
                     onClick={() => setEditingOption(opt)}
-                    className="text-primary-600 hover:underline text-xs"
+                    className="min-h-11 px-2 text-primary-600 hover:underline text-xs"
                   >
                     Modifier
                   </button>
                   <button
                     onClick={() => handleDelete(opt.id)}
-                    className="text-red-500 hover:underline text-xs"
+                    className="min-h-11 px-2 text-red-500 hover:underline text-xs"
                   >
-                    Supprimer
+                    {optionPendingDeleteId === opt.id
+                      ? 'Confirmer'
+                      : 'Supprimer'}
                   </button>
                 </td>
               </tr>
