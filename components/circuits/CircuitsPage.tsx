@@ -1,13 +1,13 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import { Link } from '@/i18n/navigation';
 import { fadeUp, staggerContainer } from '@/lib/animations';
-import { Button } from '@/components/ui';
+import { Button, PageHero } from '@/components/ui';
 import { CIRCUIT_META, matchesDuration } from '@/lib/circuit-meta';
 import type { CircuitTheme, DurationBucket, Season } from '@/lib/circuit-meta';
 
@@ -139,8 +139,6 @@ function StatItem({ value, label }: { value: string; label: string }) {
 /* ------------------------------------------------------------------ */
 export default function CircuitsPage() {
   const t = useTranslations('circuits');
-  const { scrollY } = useScroll();
-  const heroParallax = useTransform(scrollY, [0, 600], ['0%', '20%']);
 
   /* ---------- search filter from hero search bar ---------- */
   const searchParams = useSearchParams();
@@ -194,73 +192,13 @@ export default function CircuitsPage() {
       {/* ============================================================ */}
       {/* HERO                                                          */}
       {/* ============================================================ */}
-      <section className="relative bg-[#fafafa] pt-20 md:pt-22 pb-6">
-        <div className="mx-2 rounded-3xl overflow-hidden relative h-[72vh] min-h-125">
-          {/* Parallax image */}
-          <motion.div
-            className="absolute inset-0 scale-110"
-            style={{ y: heroParallax }}
-          >
-            <Image
-              src="/images/Boukhara.jpg"
-              alt="Circuits en Ouzbékistan"
-              fill
-              priority
-              quality={100}
-              className="object-cover"
-              placeholder="empty"
-            />
-          </motion.div>
-
-          {/* Overlays */}
-          <div className="absolute inset-0 bg-charcoal-900/25" />
-          <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/75 via-charcoal-900/15 to-transparent" />
-
-          {/* Content */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 pb-10 md:pb-14 px-8 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
-              className="flex items-center gap-3 mb-4"
-            >
-              <div className="h-px w-8 bg-primary/40" />
-              <p className="font-sans text-label uppercase tracking-[0.15em] text-white/70">
-                {t('page_hero_kicker')}
-              </p>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.3,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-              className="font-serif text-display-2xl text-white font-light max-w-3xl"
-            >
-              {t('page_hero_title')}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
-              className="mt-4 max-w-xl text-body-lg text-white/75 font-light"
-            >
-              {t('page_hero_subtitle')}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.75, ease: 'easeOut' }}
-              className="w-14 h-px bg-gold mt-8 origin-left"
-            />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        image={{ src: '/images/Boukhara.jpg', alt: 'Circuits en Ouzbékistan' }}
+        kicker={t('page_hero_kicker')}
+        title={t('page_hero_title')}
+        subtitle={t('page_hero_subtitle')}
+        containerClassName="h-[72vh] min-h-125"
+      />
 
       {/* ============================================================ */}
       {/* STATS STRIP                                                   */}

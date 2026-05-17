@@ -1,12 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
-
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import { Button } from '@/components/ui';
+import { Button, PageHero } from '@/components/ui';
 import {
   fadeUp,
   slideLeft,
@@ -214,15 +212,6 @@ function CommitCard({ icon, title, body }: CommitCardProps) {
 export function AboutPage() {
   const t = useTranslations('about');
 
-  /* parallax hero */
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
   /* history images – destructured so TS knows every element is defined */
   const [historyImg0, historyImg1, historyImg2] = [
     { src: '/images/afor-voyage.jpg', alt: 'Fondation AFOR Lyon 2012' },
@@ -239,66 +228,16 @@ export function AboutPage() {
   return (
     <>
       {/* ═══ HERO ══════════════════════════════════════════════════════════ */}
-      <section
-        ref={heroRef}
-        className="relative bg-[#fafafa] pt-20 md:pt-22 pb-6"
-      >
-        <div className="mx-2 rounded-3xl overflow-hidden relative h-[72vh] min-h-125">
-          {/* parallax image */}
-          <motion.div style={{ y: heroY }} className="absolute inset-0">
-            <Image
-              src="/images/afor-voyage.jpg"
-              alt="AFOR – Association France Ouzbékistan Racines"
-              fill
-              priority
-              quality={100}
-              className="object-cover"
-            />
-            {/* gradient overlay */}
-            <div className="absolute inset-0 bg-linear-to-t from-charcoal-900/80 via-charcoal-800/30 to-transparent" />
-          </motion.div>
-
-          {/* headline */}
-          <motion.div
-            style={{ opacity: heroOpacity }}
-            className="absolute bottom-0 left-0 right-0 z-10 pb-10 md:pb-14 px-8 md:px-12"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="flex items-center gap-3 mb-4"
-            >
-              <div className="h-px w-8 bg-primary/40" />
-              <p className="text-label uppercase tracking-[0.18em] text-white/70">
-                {t('hero_kicker')}
-              </p>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.35 }}
-              className="font-serif text-display-xl text-white font-light leading-tight max-w-3xl"
-            >
-              {t('hero_title')}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-sans text-body-lg text-white/70 mt-4 max-w-xl"
-            >
-              {t('hero_subtitle')}
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.75 }}
-              className="w-14 h-px bg-gold mt-8 origin-left"
-            />
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        image={{
+          src: '/images/afor-voyage.jpg',
+          alt: 'AFOR – Association France Ouzbékistan Racines',
+        }}
+        kicker={t('hero_kicker')}
+        title={t('hero_title')}
+        subtitle={t('hero_subtitle')}
+        containerClassName="h-[72vh] min-h-125"
+      />
 
       {/* ═══ QUOTE ═════════════════════════════════════════════════════════ */}
       <section className="bg-[#fafafa] py-16 md:py-20">

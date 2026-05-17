@@ -9,3 +9,6 @@ export type { CardProps } from './Card';
 
 export { Section } from './Section';
 export type { SectionProps } from './Section';
+
+export { default as PageHero } from './PageHero';
+export type { PageHeroProps } from './PageHero';

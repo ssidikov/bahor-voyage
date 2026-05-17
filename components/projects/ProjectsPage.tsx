@@ -70,7 +70,6 @@ export default function ProjectsPage() {
               transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
               className="flex items-center gap-3 mb-4"
             >
-              <div className="h-px w-8 bg-primary/40" />
               <p className="font-sans text-label uppercase tracking-[0.15em] text-white/70">
                 {t('hero_subtitle')}
               </p>
