@@ -1,0 +1,7 @@
+interface:
+  display_name: "Liquid Glass Design"
+  short_description: "iOS 26 Liquid Glass design system for SwiftUI, UIKit, and WidgetKit"
+  brand_color: "#007AFF"
+  default_prompt: "Apply Liquid Glass design patterns: glass effects, containers, morphing transitions, and widget rendering"
+policy:
+  allow_implicit_invocation: true
