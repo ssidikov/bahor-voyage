@@ -84,7 +84,7 @@ export default function TourHero({
           >
             {/* Duration */}
             <div
-              className="inline-flex items-center gap-3 rounded-2xl px-5 py-3.5"
+              className="inline-flex items-center gap-3 rounded-2xl px-6 py-4"
               style={{
                 background:
                   'linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 100%)',
@@ -96,8 +96,8 @@ export default function TourHero({
               }}
             >
               <svg
-                width="18"
-                height="18"
+                width="22"
+                height="22"
                 viewBox="0 0 18 18"
                 fill="none"
                 stroke="rgba(255,255,255,0.65)"
@@ -109,14 +109,14 @@ export default function TourHero({
                 <circle cx="9" cy="9" r="7" />
                 <polyline points="9 5 9 9 12 11" />
               </svg>
-              <span className="font-sans text-sm text-white/85 tracking-wide">
+              <span className="font-sans text-base text-white/85 tracking-wide">
                 {t(`${prefix}_duration` as Parameters<typeof t>[0])}
               </span>
             </div>
 
             {/* Price */}
             <div
-              className="inline-flex items-center gap-3 rounded-2xl px-5 py-3.5"
+              className="inline-flex items-center gap-3 rounded-2xl px-6 py-4"
               style={{
                 background:
                   'linear-gradient(135deg, rgba(200,160,80,0.20) 0%, rgba(200,160,80,0.08) 100%)',
@@ -128,8 +128,8 @@ export default function TourHero({
               }}
             >
               <svg
-                width="16"
-                height="16"
+                width="20"
+                height="20"
                 viewBox="0 0 16 16"
                 fill="none"
                 aria-hidden="true"
@@ -142,7 +142,7 @@ export default function TourHero({
                   fill="rgba(200,160,80,0.18)"
                 />
               </svg>
-              <span className="font-serif text-[1.05rem] leading-none text-gold">
+              <span className="font-serif text-xl leading-none text-gold">
                 {t(`${prefix}_price` as Parameters<typeof t>[0])}
               </span>
             </div>
