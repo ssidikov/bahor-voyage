@@ -41,7 +41,7 @@ export function CTAContact() {
             {/* Contact buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
-                href="mailto:contact@bahor-voyage.com"
+                href="mailto:bahorvoyage@gmail.com"
                 variant="primary"
                 size="md"
                 className="font-medium"

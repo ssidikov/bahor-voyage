@@ -145,6 +145,29 @@ export function adminBookingAlert(
   return wrapper(content);
 }
 
+// ─── Contact Form User Confirmation ─────────────────────────────────────────
+
+export function contactConfirmationEmail(data: {
+  name: string;
+  message: string;
+}): string {
+  const content = `
+    <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Confirmation</p>
+    <h1 style="margin:0 0 24px;font-size:28px;color:${brand.dark};font-weight:normal;">Merci pour votre message !</h1>
+    <p style="font-family:Arial,sans-serif;font-size:15px;color:#444;line-height:1.6;margin:0 0 28px;">
+      Bonjour <strong>${data.name}</strong>,<br /><br />
+      Nous avons bien reçu votre message et nous vous répondrons dans les <strong>24 à 48 heures</strong>.<br /><br />
+      En attendant, n'hésitez pas à explorer nos circuits sur notre site.
+    </p>
+
+    <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:13px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Votre message</p>
+    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:32px;white-space:pre-wrap;">${data.message}</div>
+
+    <a href="${brand.site}/circuits" style="display:inline-block;background-color:${brand.dark};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Découvrir nos circuits</a>
+  `;
+  return wrapper(content);
+}
+
 // ─── Contact Form Notification ───────────────────────────────────────────────
 
 interface ContactEmailData {

@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import nodemailer from 'nodemailer';
-import { contactFormEmail } from '@/lib/email-templates';
+import {
+  contactFormEmail,
+  contactConfirmationEmail,
+} from '@/lib/email-templates';
 
 export async function POST(req: Request) {
   try {
@@ -27,7 +30,7 @@ export async function POST(req: Request) {
       },
     });
 
-    // 2. Préparer l'envoi de l'email via Nodemailer
+    // 2. Envoyer les emails via Nodemailer
     if (process.env.SMTP_USER && process.env.SMTP_PASSWORD) {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -43,6 +46,13 @@ export async function POST(req: Request) {
         replyTo: email,
         subject: `Nouveau message de ${name} — Bahor-Voyage`,
         html: contactFormEmail({ name, email, phone, tourInterest, message }),
+      });
+
+      await transporter.sendMail({
+        from: `"Bahor-Voyage" <${process.env.SMTP_USER}>`,
+        to: email,
+        subject: 'Nous avons bien reçu votre message — Bahor-Voyage',
+        html: contactConfirmationEmail({ name, message }),
       });
     } else {
       console.warn('SMTP_USER ou SMTP_PASSWORD non configuré. Email ignoré.');

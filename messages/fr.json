@@ -691,7 +691,7 @@
     "publisher_title": "Editeur du site",
     "publisher_name": "Bahor-Voyage / AFOR (Association France Ouzbekistan Racines)",
     "publisher_address": "12 Place Ambroise Courtois, 69008 Lyon, France",
-    "publisher_contact": "Email : contact@bahor-voyage.com | Tel : +33 6 11 55 57 63",
+    "publisher_contact": "Email : bahorvoyage@gmail.com | Tel : +33 6 11 55 57 63",
     "host_title": "Hebergement",
     "host_name": "Le site est heberge sur une infrastructure cloud securisee pour Next.js.",
     "intellectual_title": "Propriete intellectuelle",
@@ -701,6 +701,6 @@
     "cookies_title": "Cookies",
     "cookies_body": "Le site peut utiliser des cookies techniques necessaires a son fonctionnement. Aucun cookie publicitaire n'est depose sans consentement explicite.",
     "contact_title": "Contact",
-    "contact_body": "Pour toute question juridique ou relative a vos donnees, ecrivez-nous a contact@bahor-voyage.com."
+    "contact_body": "Pour toute question juridique ou relative a vos donnees, ecrivez-nous a bahorvoyage@gmail.com."
   }
 }

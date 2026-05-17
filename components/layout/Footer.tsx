@@ -144,10 +144,10 @@ export function Footer() {
               <motion.a
                 whileHover={{ x: 3 }}
                 transition={{ duration: 0.2 }}
-                href="mailto:contact@bahor-voyage.com"
+                href="mailto:bahorvoyage@gmail.com"
                 className="block text-charcoal-500 hover:text-charcoal-700 transition-colors duration-300"
               >
-                contact@bahor-voyage.com
+                bahorvoyage@gmail.com
               </motion.a>
               <motion.a
                 whileHover={{ x: 3 }}
