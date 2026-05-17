@@ -4,6 +4,7 @@ import { useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 import TourCTA from './TourCTA';
+import TourFactsStrip from './TourFactsStrip';
 import TourHero from './TourHero';
 import TourIncludes from './TourIncludes';
 import TourIntro from './TourIntro';
@@ -55,11 +56,13 @@ export default function TourPage({
           prefix={data.prefix}
           heroImage={data.heroImage}
           heroParallax={heroParallax}
-          facts={data.facts}
         />
       </section>
 
-      {/* 2. Intro / overview */}
+      {/* 2. Facts strip */}
+      <TourFactsStrip facts={data.facts} />
+
+      {/* 3. Intro / overview */}
       <TourIntro
         prefix={data.prefix}
         slug={slug}
@@ -71,20 +74,20 @@ export default function TourPage({
         introBulletKeys={introBulletKeys}
       />
 
-      {/* 3. Day-by-day programme */}
+      {/* 4. Day-by-day programme */}
       <TourProgramme prefix={data.prefix} days={data.days} />
 
-      {/* 4. Includes / Excludes */}
+      {/* 5. Includes / Excludes */}
       <TourIncludes
         prefix={data.prefix}
         includes={data.includes}
         excludes={data.excludes}
       />
 
-      {/* 5. Practical info */}
+      {/* 6. Practical info */}
       <TourPracticals prefix={data.prefix} practicals={data.practicals} />
 
-      {/* 6. CTA / Booking */}
+      {/* 7. CTA / Booking */}
       <TourCTA
         prefix={data.prefix}
         slug={slug}
