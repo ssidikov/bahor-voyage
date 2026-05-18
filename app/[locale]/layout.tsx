@@ -11,6 +11,8 @@ import { routing } from '@/i18n/routing';
 
 import './globals.css';
 
+import { Analytics } from '@vercel/analytics/next';
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -74,6 +76,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className={`${inter.variable} ${cormorant.variable}`}>
       <body>
+        <Analytics />
         <NextIntlClientProvider messages={messages}>
           <SiteShell>{children}</SiteShell>
         </NextIntlClientProvider>
