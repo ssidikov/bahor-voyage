@@ -134,7 +134,7 @@ export function Header() {
             className="shrink-0"
           >
             <Image
-              src="/logo/bahor-voyage.svg"
+              src="/logo/bahor-voyage-2.svg"
               alt="Bahor-Voyage"
               width={375}
               height={375}
