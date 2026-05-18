@@ -9,9 +9,9 @@ interface TravelerData {
 }
 
 export async function POST(req: Request) {
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.ENABLE_TEST_CHECKOUT !== 'true') {
     return NextResponse.json(
-      { error: 'Not allowed in production' },
+      { error: 'Test checkout is not enabled' },
       { status: 403 },
     );
   }

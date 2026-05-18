@@ -703,7 +703,7 @@ export default function BookingWizard() {
                 Retour
               </motion.button>
               <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NEXT_PUBLIC_ENABLE_TEST_CHECKOUT === 'true' && (
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

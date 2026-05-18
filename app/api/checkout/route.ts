@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import Stripe from 'stripe';
+import { getStripeSecretKey } from '@/lib/stripe-config';
 
 interface TravelerData {
   firstName: string;
@@ -142,7 +143,7 @@ export async function POST(req: Request) {
       'http://localhost:3000';
 
     // Only works if Stripe key is present
-    const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+    const stripeSecretKey = getStripeSecretKey();
     if (!stripeSecretKey) {
       return NextResponse.json(
         { error: 'Stripe is not configured in environment' },

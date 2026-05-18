@@ -2,12 +2,16 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import Stripe from 'stripe';
 import { sendBookingConfirmationEmails } from '@/lib/booking-email';
+import {
+  getStripeSecretKey,
+  getStripeWebhookSecret,
+} from '@/lib/stripe-config';
 
 export async function POST(req: Request) {
   const body = await req.text();
   const signature = req.headers.get('stripe-signature') as string;
 
-  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  const stripeSecretKey = getStripeSecretKey();
   if (!stripeSecretKey) {
     return NextResponse.json(
       { error: 'Stripe is not configured in environment' },
@@ -15,7 +19,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  const webhookSecret = getStripeWebhookSecret();
   if (!webhookSecret) {
     return NextResponse.json(
       { error: 'Stripe webhook secret is missing' },

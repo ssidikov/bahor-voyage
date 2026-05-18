@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import Stripe from 'stripe';
+import { getStripeSecretKey } from '@/lib/stripe-config';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -13,14 +14,15 @@ export async function GET(req: Request) {
     if (sessionId) {
       // Look up booking via Stripe session's client_reference_id
       // First get the session from Stripe to get our booking ID
-      if (!process.env.STRIPE_SECRET_KEY) {
+      const stripeKey = getStripeSecretKey();
+      if (!stripeKey) {
         return NextResponse.json(
           { error: 'Stripe not configured' },
           { status: 500 },
         );
       }
 
-      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      const stripe = new Stripe(stripeKey, {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         apiVersion: '2023-10-16' as any,
       });
