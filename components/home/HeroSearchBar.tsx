@@ -105,34 +105,34 @@ export default function HeroSearchBar() {
   }
 
   const selectBase =
-    'appearance-none w-full bg-[#f5f7fe] rounded-lg px-4 py-4 pl-11 pr-10 text-sm font-medium text-charcoal-700 ' +
-    'transition-all duration-200 cursor-pointer ' +
-    'focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white';
+    'appearance-none w-full bg-white/75 backdrop-blur-sm rounded-xl px-4 py-4 pl-11 pr-10 text-sm font-medium text-charcoal-800 ' +
+    'transition-all duration-200 cursor-pointer border border-white/60 ' +
+    'focus:outline-none focus:ring-2 focus:ring-charcoal-300/40 focus:bg-white/90';
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full lg:max-w-[405px] bg-white rounded-3xl p-4 sm:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] border border-charcoal-100/50"
+      className="w-full lg:max-w-[405px] bg-white/60 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] border border-white/60"
     >
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-10 h-10 rounded-full border border-charcoal-100 flex items-center justify-center text-charcoal-600">
+        <div className="w-10 h-10 rounded-full border border-white/50 bg-white/50 flex items-center justify-center text-charcoal-700">
           <SearchIcon />
         </div>
-        <h3 className="font-sans text-xl font-medium text-charcoal-800 tracking-tight">
+        <h3 className="font-sans text-xl font-semibold text-charcoal-900 tracking-tight">
           {t('hero_search_title')}
         </h3>
       </div>
 
       {/* Theme field */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+        <label className="block text-sm font-medium text-charcoal-600 capitalize mb-2">
           {t('hero_search_placeholder_theme')}
         </label>
         <div className="relative">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-400">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-600 z-10 pointer-events-none">
             <SearchIcon />
           </span>
           <select
@@ -150,18 +150,18 @@ export default function HeroSearchBar() {
             </option>
             <option value="grand">{t('hero_search_theme_grand')}</option>
           </select>
-          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-400" />
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-600" />
         </div>
       </div>
 
       {/* Season & Duration row */}
       <div className="grid grid-cols-2 gap-3 mb-4">
         <div>
-          <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+          <label className="block text-sm font-medium text-charcoal-600 capitalize mb-2">
             {t('hero_search_placeholder_season')}
           </label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-400">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-600 z-10 pointer-events-none">
               <CalendarIcon />
             </span>
             <select
@@ -177,16 +177,16 @@ export default function HeroSearchBar() {
               <option value="automne">{t('hero_search_season_autumn')}</option>
               <option value="hiver">{t('hero_search_season_winter')}</option>
             </select>
-            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-400" />
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-600" />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+          <label className="block text-sm font-medium text-charcoal-600 capitalize mb-2">
             {t('hero_search_placeholder_duration')}
           </label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-400">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-600 z-10 pointer-events-none">
               <ClockIcon />
             </span>
             <select
@@ -201,21 +201,21 @@ export default function HeroSearchBar() {
               <option value="medium">{t('hero_search_duration_medium')}</option>
               <option value="long">{t('hero_search_duration_long')}</option>
             </select>
-            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-400" />
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-charcoal-600" />
           </div>
         </div>
       </div>
 
       {/* Travelers field */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-charcoal-400 capitalize mb-2">
+        <label className="block text-sm font-medium text-charcoal-600 capitalize mb-2">
           {t('hero_search_travelers_label')}
         </label>
-        <div className="relative flex items-center bg-[#f5f7fe] rounded-lg px-4 py-3">
-          <span className="text-charcoal-400 mr-3">
+        <div className="relative flex items-center bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/80">
+          <span className="text-charcoal-600 mr-3">
             <UsersIcon />
           </span>
-          <span className="flex-1 text-sm font-medium text-charcoal-700">
+          <span className="flex-1 text-sm font-medium text-charcoal-800">
             {travelers}{' '}
             {travelers > 1
               ? t('hero_search_travelers_plural')
