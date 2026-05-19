@@ -65,6 +65,7 @@
     "cta_email": "Email us",
     "cta_phone": "Call us",
     "cta_whatsapp": "WhatsApp",
+    "cta_office_text": "You are also welcome to visit us at our Lyon office to discuss your trip to Uzbekistan.",
     "gallery_view_more": "View more photos"
   },
   "booking": {
@@ -692,7 +693,7 @@
     "publisher_title": "Website publisher",
     "publisher_name": "Bahor-Voyage / AFOR (Association France Uzbekistan Roots)",
     "publisher_address": "12 Place Ambroise Courtois, 69008 Lyon, France",
-    "publisher_contact": "Email: bahorvoyage@gmail.com | Phone: +33 6 11 55 57 63",
+    "publisher_contact": "Email: contact@bahorvoyage.com | Phone: +33 6 11 55 57 63",
     "host_title": "Hosting",
     "host_name": "The site is hosted on secure cloud infrastructure for Next.js.",
     "intellectual_title": "Intellectual property",
@@ -702,6 +703,6 @@
     "cookies_title": "Cookies",
     "cookies_body": "The website may use technical cookies required for proper operation. No advertising cookies are set without explicit consent.",
     "contact_title": "Contact",
-    "contact_body": "For any legal or data-related request, please contact us at bahorvoyage@gmail.com."
+    "contact_body": "For any legal or data-related request, please contact us at contact@bahorvoyage.com."
   }
 }

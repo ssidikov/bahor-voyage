@@ -38,10 +38,17 @@ export function CTAContact() {
 
             <div className="w-14 h-px bg-gold my-8" />
 
+            <p className="text-sm text-charcoal-500 leading-relaxed mb-2">
+              {t('cta_office_text')}
+            </p>
+            <p className="text-sm text-charcoal-400 mb-8">
+              12 Place Ambroise Courtois, 69008 Lyon
+            </p>
+
             {/* Contact buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
-                href="mailto:bahorvoyage@gmail.com"
+                href="mailto:contact@bahorvoyage.com"
                 variant="primary"
                 size="md"
                 className="font-medium"
@@ -111,49 +118,72 @@ export function CTAContact() {
           >
             <ContactForm />
 
-            {/* Address + social */}
-            <div className="flex flex-col sm:flex-row gap-6">
-              <div className="flex-1">
-                <p className="text-[0.7rem] uppercase tracking-[0.14em] text-charcoal-400 font-medium mb-3">
-                  Adresse
-                </p>
-                <p className="text-sm text-charcoal-600 leading-relaxed">
-                  12 Place Ambroise Courtois
-                  <br />
-                  69008 Lyon, France
-                </p>
-              </div>
-              <div className="flex-1">
-                <p className="text-[0.7rem] uppercase tracking-[0.14em] text-charcoal-400 font-medium mb-3">
-                  Réseaux
-                </p>
-                <div className="flex gap-2">
-                  {[
-                    {
-                      href: 'https://www.facebook.com/bahorcouture.bahorcouture',
-                      label: 'Facebook',
-                      path: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z',
-                    },
-                  ].map(({ href, label, path }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="flex items-center justify-center w-10 h-10 rounded-full border border-charcoal-100 text-charcoal-400 hover:text-primary hover:border-primary/30 transition-colors duration-200"
+            {/* Social */}
+            <div className="flex gap-2">
+              {[
+                {
+                  href: 'https://www.facebook.com/bahorcouture.bahorcouture',
+                  label: 'Facebook',
+                  icon: (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-4 h-4"
                     >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-4 h-4"
-                      >
-                        <path d={path} />
-                      </svg>
-                    </a>
-                  ))}
-                </div>
-              </div>
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  ),
+                },
+                {
+                  href: 'https://www.instagram.com/esprit_ouzbekistan',
+                  label: 'Instagram',
+                  icon: (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-4 h-4"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  ),
+                },
+                {
+                  href: 'https://www.linkedin.com/company/association-france-ouzb%C3%A9kistan-racines/',
+                  label: 'LinkedIn',
+                  icon: (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-4 h-4"
+                    >
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                      <rect x="2" y="9" width="4" height="12" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  ),
+                },
+              ].map(({ href, label, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-charcoal-100 text-charcoal-400 hover:text-primary hover:border-primary/30 transition-colors duration-200"
+                >
+                  {icon}
+                </a>
+              ))}
             </div>
           </motion.div>
         </motion.div>

@@ -62,6 +62,52 @@ export function Footer() {
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://www.instagram.com/esprit_ouzbekistan"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-charcoal-100/70 bg-[#fafafa] text-charcoal-400 hover:text-charcoal-700 hover:border-charcoal-200 transition-colors duration-300"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-4.5 h-4.5"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://www.linkedin.com/company/association-france-ouzb%C3%A9kistan-racines/"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-charcoal-100/70 bg-[#fafafa] text-charcoal-400 hover:text-charcoal-700 hover:border-charcoal-200 transition-colors duration-300"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-4.5 h-4.5"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </motion.a>
             </div>
           </div>
         </motion.div>
@@ -144,10 +190,10 @@ export function Footer() {
               <motion.a
                 whileHover={{ x: 3 }}
                 transition={{ duration: 0.2 }}
-                href="mailto:bahorvoyage@gmail.com"
+                href="mailto:contact@bahorvoyage.com"
                 className="block text-charcoal-500 hover:text-charcoal-700 transition-colors duration-300"
               >
-                bahorvoyage@gmail.com
+                contact@bahorvoyage.com
               </motion.a>
               <motion.a
                 whileHover={{ x: 3 }}

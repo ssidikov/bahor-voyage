@@ -61,10 +61,10 @@ export default async function ContactPage({ params }: Props) {
               {t('email_label')}
             </h2>
             <p className="mt-3 text-body-md text-charcoal-400">
-              bahorvoyage@gmail.com
+              contact@bahorvoyage.com
             </p>
             <Button
-              href="mailto:bahorvoyage@gmail.com"
+              href="mailto:contact@bahorvoyage.com"
               variant="outline"
               className="mt-6"
             >

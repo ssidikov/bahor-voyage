@@ -267,7 +267,7 @@ export default async function BookingPdfPage({
           </p>
           <div className="mt-8 text-[10px] text-charcoal-300">
             Bahor-Voyage • 12 Place Ambroise Courtois, 69008 Lyon •
-            bahorvoyage@gmail.com
+            contact@bahorvoyage.com
           </div>
         </div>
       </div>
