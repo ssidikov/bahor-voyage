@@ -40,7 +40,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return {
-    metadataBase: new URL('https://www.bahor-voyage.com'),
+    metadataBase: new URL('https://www.bahorvoyage.com'),
     // Default title template — pages override the title, this wraps it
     title: {
       default: 'Bahor-Voyage',

@@ -49,7 +49,7 @@ npm run db:push
 2. Set admin bootstrap environment variables (for one-time account creation):
 
 ```bash
-ADMIN_EMAIL=admin@bahor-voyage.com
+ADMIN_EMAIL=admin@bahorvoyage.com
 ADMIN_PASSWORD=change-this-to-a-strong-password
 ADMIN_NAME="Bahor Voyage Admin"
 ```

@@ -38,8 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: isFr
-        ? 'https://www.bahor-voyage.com/projects/voyage-solidaire'
-        : 'https://www.bahor-voyage.com/en/projects/voyage-solidaire',
+        ? 'https://www.bahorvoyage.com/projects/voyage-solidaire'
+        : 'https://www.bahorvoyage.com/en/projects/voyage-solidaire',
       siteName: 'Bahor-Voyage',
       locale: isFr ? 'fr_FR' : 'en_US',
       alternateLocale: isFr ? 'en_US' : 'fr_FR',

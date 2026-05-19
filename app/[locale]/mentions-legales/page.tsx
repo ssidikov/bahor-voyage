@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('meta_description'),
       url:
         locale === 'fr'
-          ? 'https://www.bahor-voyage.com/mentions-legales'
-          : 'https://www.bahor-voyage.com/en/mentions-legales',
+          ? 'https://www.bahorvoyage.com/mentions-legales'
+          : 'https://www.bahorvoyage.com/en/mentions-legales',
       siteName: 'Bahor-Voyage',
       locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       alternateLocale: locale === 'fr' ? 'en_US' : 'fr_FR',

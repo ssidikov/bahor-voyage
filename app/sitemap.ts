@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = 'https://www.bahor-voyage.com';
+const BASE_URL = 'https://www.bahorvoyage.com';
 
 function localizedEntry(
   path: string,

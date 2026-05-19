@@ -4,4 +4,4 @@ Allow: /
 # Block Next.js internals
 Disallow: /_next/
 
-Sitemap: https://www.bahor-voyage.com/sitemap.xml
+Sitemap: https://www.bahorvoyage.com/sitemap.xml

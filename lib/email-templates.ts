@@ -9,7 +9,7 @@ const brand = {
   sand: '#FAF7F2',
   border: '#e8e0d6',
   logo: 'Bahor-Voyage',
-  site: 'https://www.bahor-voyage.com',
+  site: 'https://www.bahorvoyage.com',
 };
 
 const wrapper = (content: string) => `
@@ -42,7 +42,7 @@ const wrapper = (content: string) => `
             <td style="background-color:${brand.sand};padding:24px 40px;border-radius:0 0 12px 12px;border:1px solid ${brand.border};border-top:none;text-align:center;">
               <p style="margin:0;font-size:12px;color:#999;font-family:Arial,sans-serif;">
                 Bahor-Voyage / AFOR &bull; 12 Place Ambroise Courtois, 69008 Lyon &bull;
-                <a href="${brand.site}" style="color:${brand.primary};text-decoration:none;">bahor-voyage.com</a>
+                <a href="${brand.site}" style="color:${brand.primary};text-decoration:none;">bahorvoyage.com</a>
               </p>
             </td>
           </tr>

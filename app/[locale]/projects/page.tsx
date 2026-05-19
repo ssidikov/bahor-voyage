@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: isFr
-        ? 'https://www.bahor-voyage.com/projects'
-        : 'https://www.bahor-voyage.com/en/projects',
+        ? 'https://www.bahorvoyage.com/projects'
+        : 'https://www.bahorvoyage.com/en/projects',
       siteName: 'Bahor-Voyage',
       locale: isFr ? 'fr_FR' : 'en_US',
       alternateLocale: isFr ? 'en_US' : 'fr_FR',

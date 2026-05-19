@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : 'Discover authentic Uzbekistan with Bahor-Voyage — solidarity tours along the Silk Road, in small groups, from Lyon. Samarkand, Bukhara, meaningful encounters.';
 
   const url = isFr
-    ? 'https://www.bahor-voyage.com'
-    : 'https://www.bahor-voyage.com/en';
+    ? 'https://www.bahorvoyage.com'
+    : 'https://www.bahorvoyage.com/en';
 
   return {
     title,
@@ -68,9 +68,9 @@ export default async function HomePage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
     name: 'Bahor-Voyage',
-    image: 'https://www.bahor-voyage.com/logo.png',
-    '@id': 'https://www.bahor-voyage.com',
-    url: 'https://www.bahor-voyage.com',
+    image: 'https://www.bahorvoyage.com/logo.png',
+    '@id': 'https://www.bahorvoyage.com',
+    url: 'https://www.bahorvoyage.com',
     telephone: '+33611555763',
     address: {
       '@type': 'PostalAddress',

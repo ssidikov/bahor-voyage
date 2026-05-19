@@ -39,8 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: isFr
-        ? 'https://www.bahor-voyage.com/circuits/grand-circuit-18j'
-        : 'https://www.bahor-voyage.com/en/circuits/grand-circuit-18j',
+        ? 'https://www.bahorvoyage.com/circuits/grand-circuit-18j'
+        : 'https://www.bahorvoyage.com/en/circuits/grand-circuit-18j',
       siteName: 'Bahor-Voyage',
       locale: isFr ? 'fr_FR' : 'en_US',
       alternateLocale: isFr ? 'en_US' : 'fr_FR',
