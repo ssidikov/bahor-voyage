@@ -170,6 +170,41 @@ export function contactConfirmationEmail(data: {
 
 // ─── Contact Form Notification ───────────────────────────────────────────────
 
+// ─── GDPR Data Deletion Request ─────────────────────────────────────────────
+
+interface DataDeletionEmailData {
+  name: string;
+  email: string;
+  message?: string;
+}
+
+export function dataDeletionEmail(data: DataDeletionEmailData): string {
+  const content = `
+    <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Demande RGPD</p>
+    <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Demande de suppression de données</h1>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${brand.border};border-radius:8px;overflow:hidden;margin-bottom:28px;">
+      ${row('Nom', data.name)}
+      ${row('Email', `<a href="mailto:${data.email}" style="color:${brand.primary};">${data.email}</a>`)}
+    </table>
+
+    ${
+      data.message
+        ? `
+    <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:13px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Précisions</p>
+    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:28px;white-space:pre-wrap;">${data.message}</div>
+    `
+        : ''
+    }
+
+    <p style="font-family:Arial,sans-serif;font-size:13px;color:#888;line-height:1.6;">Cette demande doit être traitée dans un délai d'un mois conformément à l'article 12 du RGPD.</p>
+    <a href="mailto:${data.email}" style="display:inline-block;background-color:${brand.dark};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Répondre à ${data.name}</a>
+  `;
+  return wrapper(content);
+}
+
+// ─── Contact Form ────────────────────────────────────────────────────────────
+
 interface ContactEmailData {
   name: string;
   email: string;

@@ -8,17 +8,17 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'legal_page' });
+  const t = await getTranslations({ locale, namespace: 'cgv_page' });
 
   return {
     title: t('meta_title'),
     description: t('meta_description'),
     alternates: {
-      canonical: locale === 'fr' ? '/mentions-legales' : '/en/mentions-legales',
+      canonical: locale === 'fr' ? '/cgv' : '/en/cgv',
       languages: {
-        fr: '/mentions-legales',
-        en: '/en/mentions-legales',
-        'x-default': '/mentions-legales',
+        fr: '/cgv',
+        en: '/en/cgv',
+        'x-default': '/cgv',
       },
     },
     openGraph: {
@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('meta_description'),
       url:
         locale === 'fr'
-          ? 'https://www.bahorvoyage.com/mentions-legales'
-          : 'https://www.bahorvoyage.com/en/mentions-legales',
+          ? 'https://www.bahorvoyage.com/cgv'
+          : 'https://www.bahorvoyage.com/en/cgv',
       siteName: 'Bahor-Voyage',
       locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       alternateLocale: locale === 'fr' ? 'en_US' : 'fr_FR',
@@ -36,11 +36,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function LegalNoticePage({ params }: Props) {
+export default async function CGVPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations('legal_page');
+  const t = await getTranslations('cgv_page');
 
   return (
     <>
@@ -52,6 +52,9 @@ export default async function LegalNoticePage({ params }: Props) {
           <p className="mt-4 max-w-3xl text-body-lg text-charcoal-400 leading-relaxed">
             {t('intro')}
           </p>
+          <p className="mt-3 text-body-sm text-charcoal-300">
+            {t('last_updated')}
+          </p>
         </div>
       </section>
 
@@ -59,37 +62,73 @@ export default async function LegalNoticePage({ params }: Props) {
         <div className="max-w-content mx-auto px-6 md:px-10 space-y-10">
           <article className="rounded-3xl border border-border-soft p-7 md:p-8">
             <h2 className="font-serif text-2xl text-charcoal-700 font-light">
-              {t('publisher_title')}
-            </h2>
-            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed whitespace-pre-line">
-              {t('publisher_body')}
-            </p>
-          </article>
-
-          <article className="rounded-3xl border border-border-soft p-7 md:p-8">
-            <h2 className="font-serif text-2xl text-charcoal-700 font-light">
-              {t('director_title')}
+              {t('object_title')}
             </h2>
             <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
-              {t('director_body')}
+              {t('object_body')}
             </p>
           </article>
 
           <article className="rounded-3xl border border-border-soft p-7 md:p-8">
             <h2 className="font-serif text-2xl text-charcoal-700 font-light">
-              {t('host_title')}
+              {t('parties_title')}
             </h2>
             <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed whitespace-pre-line">
-              {t('host_body')}
+              {t('parties_body')}
             </p>
           </article>
 
           <article className="rounded-3xl border border-border-soft p-7 md:p-8">
             <h2 className="font-serif text-2xl text-charcoal-700 font-light">
-              {t('intellectual_title')}
+              {t('bookings_title')}
             </h2>
             <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
-              {t('intellectual_body')}
+              {t('bookings_body')}
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-border-soft p-7 md:p-8">
+            <h2 className="font-serif text-2xl text-charcoal-700 font-light">
+              {t('pricing_title')}
+            </h2>
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed whitespace-pre-line">
+              {t('pricing_body')}
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-border-soft p-7 md:p-8">
+            <h2 className="font-serif text-2xl text-charcoal-700 font-light">
+              {t('cancellation_title')}
+            </h2>
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed whitespace-pre-line">
+              {t('cancellation_body')}
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-border-soft p-7 md:p-8">
+            <h2 className="font-serif text-2xl text-charcoal-700 font-light">
+              {t('modification_title')}
+            </h2>
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
+              {t('modification_body')}
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-border-soft p-7 md:p-8">
+            <h2 className="font-serif text-2xl text-charcoal-700 font-light">
+              {t('documents_title')}
+            </h2>
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
+              {t('documents_body')}
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-border-soft p-7 md:p-8">
+            <h2 className="font-serif text-2xl text-charcoal-700 font-light">
+              {t('insurance_title')}
+            </h2>
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
+              {t('insurance_body')}
             </p>
           </article>
 
@@ -99,6 +138,15 @@ export default async function LegalNoticePage({ params }: Props) {
             </h2>
             <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
               {t('liability_body')}
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-border-soft p-7 md:p-8">
+            <h2 className="font-serif text-2xl text-charcoal-700 font-light">
+              {t('force_majeure_title')}
+            </h2>
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
+              {t('force_majeure_body')}
             </p>
           </article>
 
@@ -115,7 +163,7 @@ export default async function LegalNoticePage({ params }: Props) {
             <h2 className="font-serif text-2xl text-charcoal-700 font-light">
               {t('law_title')}
             </h2>
-            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed whitespace-pre-line">
               {t('law_body')}
             </p>
           </article>
@@ -124,7 +172,7 @@ export default async function LegalNoticePage({ params }: Props) {
             <h2 className="font-serif text-2xl text-charcoal-700 font-light">
               {t('contact_title')}
             </h2>
-            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed">
+            <p className="mt-4 text-body-md text-charcoal-400 leading-relaxed whitespace-pre-line">
               {t('contact_body')}
             </p>
           </article>

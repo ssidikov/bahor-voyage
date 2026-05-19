@@ -37,6 +37,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/contact', priority: 0.7 },
     { path: '/booking', priority: 0.7 },
     { path: '/mentions-legales', priority: 0.4 },
+    { path: '/politique-de-confidentialite', priority: 0.3 },
+    { path: '/cgv', priority: 0.3 },
+    { path: '/suppression-donnees', priority: 0.1 },
   ];
 
   return routeEntries.flatMap(({ path, priority }) => {

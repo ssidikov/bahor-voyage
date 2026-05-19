@@ -232,12 +232,32 @@ export function Footer() {
             SIDIKOFF DIGITAL
           </a>
         </p>
-        <Link
-          href="/mentions-legales"
-          className="hover:text-charcoal-600 transition-colors duration-300"
-        >
-          {t('legal')}
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/mentions-legales"
+            className="hover:text-charcoal-600 transition-colors duration-300"
+          >
+            {t('legal')}
+          </Link>
+          <span aria-hidden="true" className="text-charcoal-200">
+            ·
+          </span>
+          <Link
+            href="/politique-de-confidentialite"
+            className="hover:text-charcoal-600 transition-colors duration-300"
+          >
+            {t('privacy')}
+          </Link>
+          <span aria-hidden="true" className="text-charcoal-200">
+            ·
+          </span>
+          <Link
+            href="/cgv"
+            className="hover:text-charcoal-600 transition-colors duration-300"
+          >
+            {t('cgv')}
+          </Link>
+        </div>
       </motion.div>
     </footer>
   );
