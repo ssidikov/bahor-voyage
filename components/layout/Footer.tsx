@@ -174,6 +174,18 @@ export function Footer() {
         className="bg-[#fafafa] border-t border-charcoal-100/50 px-6 md:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-charcoal-400"
       >
         <p>&copy; 2026 Bahor-Voyage</p>
+        <p>
+          {t('developed_by')}{' '}
+          <a
+            href="https://www.sidikoff.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="SIDIKOFF DIGITAL — Web Design & Development Agency"
+            className="font-medium text-charcoal-500 hover:text-charcoal-700 transition-colors duration-300 tracking-wide"
+          >
+            SIDIKOFF DIGITAL
+          </a>
+        </p>
         <Link
           href="/mentions-legales"
           className="hover:text-charcoal-600 transition-colors duration-300"
