@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Accueil",
+    "about": "À propos",
     "circuits": "Nos circuits",
     "projects": "Nos projets",
+    "blog": "Blog",
     "contact": "Contact",
-    "about": "À propos",
     "book_cta": "Réserver"
   },
   "home": {
@@ -780,5 +781,31 @@
     "law_body": "Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut d'accord amiable, le litige sera soumis aux tribunaux compétents de Lyon, France.\n\nConformément aux articles L.611-1 et suivants du Code de la Consommation, le client consommateur peut recourir gratuitement à un médiateur de la consommation en vue de la résolution amiable du litige.",
     "contact_title": "Contact",
     "contact_body": "Pour toute question relative aux présentes CGV :\nEmail : contact@bahorvoyage.com\nTél : +33 6 11 55 57 63"
+  },
+  "blog": {
+    "nav_label": "Blog",
+    "meta_title": "Blog — Voyages en Ouzbékistan",
+    "meta_description": "Conseils, récits et inspirations pour préparer votre voyage en Ouzbékistan. Route de la Soie, culture, artisanat, hébergement chez l'habitant.",
+    "hero_kicker": "Le blog",
+    "hero_title": "Récits & Inspirations",
+    "hero_subtitle": "Conseils de voyage, culture ouzbèke et récits du terrain",
+    "all_posts": "Tous les articles",
+    "featured_label": "À la une",
+    "read_more": "Lire l'article",
+    "read_all": "Voir tous les articles",
+    "no_posts_title": "Aucun article pour l'instant",
+    "no_posts_body": "Revenez bientôt — de nouveaux articles sont en préparation.",
+    "by": "Par",
+    "published_on": "Publié le",
+    "updated_on": "Mis à jour le",
+    "related_tours_title": "Circuits en lien",
+    "related_posts_title": "Articles similaires",
+    "share_label": "Partager",
+    "back_to_blog": "Retour au blog",
+    "cta_title": "Prêt à partir en Ouzbékistan ?",
+    "cta_body": "Contactez-nous pour construire votre itinéraire sur la Route de la Soie.",
+    "cta_contact": "Nous contacter",
+    "cta_circuits": "Voir nos circuits",
+    "table_of_contents": "Sommaire"
   }
 }

@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Home",
+    "about": "About",
     "circuits": "Our tours",
     "projects": "Our projects",
+    "blog": "Blog",
     "contact": "Contact",
-    "about": "About",
     "book_cta": "Book now"
   },
   "home": {
@@ -780,5 +781,31 @@
     "law_body": "These T&C are governed by French law. In the event of a dispute, an amicable resolution will be sought first. Failing agreement, the dispute will be submitted to the competent courts of Lyon, France.\n\nIn accordance with the French Consumer Code (Articles L.611-1 et seq.), consumers may refer disputes free of charge to a consumer mediator.",
     "contact_title": "Contact",
     "contact_body": "For any question regarding these T&C:\nEmail: contact@bahorvoyage.com\nPhone: +33 6 11 55 57 63"
+  },
+  "blog": {
+    "nav_label": "Blog",
+    "meta_title": "Blog — Travel to Uzbekistan",
+    "meta_description": "Travel tips, stories and inspiration to prepare your trip to Uzbekistan. Silk Road, culture, crafts, and homestays.",
+    "hero_kicker": "The blog",
+    "hero_title": "Stories & Inspiration",
+    "hero_subtitle": "Travel advice, Uzbek culture and field reports",
+    "all_posts": "All articles",
+    "featured_label": "Featured",
+    "read_more": "Read article",
+    "read_all": "View all articles",
+    "no_posts_title": "No articles yet",
+    "no_posts_body": "Check back soon — new articles are in preparation.",
+    "by": "By",
+    "published_on": "Published on",
+    "updated_on": "Updated on",
+    "related_tours_title": "Related tours",
+    "related_posts_title": "Similar articles",
+    "share_label": "Share",
+    "back_to_blog": "Back to blog",
+    "cta_title": "Ready to travel to Uzbekistan?",
+    "cta_body": "Contact us to build your Silk Road itinerary.",
+    "cta_contact": "Contact us",
+    "cta_circuits": "View our tours",
+    "table_of_contents": "Contents"
   }
 }

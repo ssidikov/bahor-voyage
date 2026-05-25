@@ -9,6 +9,7 @@ const footerLinks = {
   nav: [
     { key: 'home', href: '/' },
     { key: 'circuits', href: '/circuits' },
+    { key: 'blog', href: '/blog' },
     { key: 'contact', href: '/contact' },
     { key: 'about', href: '/about' },
   ],
