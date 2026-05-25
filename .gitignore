@@ -45,3 +45,6 @@ next-env.d.ts
 
 /temp
 /lib/generated/prisma
+
+# blog publishing draft (temp file, regenerated per article)
+/scripts/article-draft.json
