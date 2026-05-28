@@ -22,17 +22,19 @@ type ProjectPreview = {
 const PROJECT_PREVIEWS: readonly ProjectPreview[] = [
   {
     key: 'p1',
-    image: '/images/projects/project-trees.jpg',
+    image: 'https://cdn.bahorvoyage.com/images/projects/project-trees.jpg',
     imageAltKey: 'projects_preview_alt_1',
   },
   {
     key: 'p2',
-    image: '/images/projects/project-education-AFOR.jpg',
+    image:
+      'https://cdn.bahorvoyage.com/images/projects/project-education-AFOR.jpg',
     imageAltKey: 'projects_preview_alt_2',
   },
   {
     key: 'p3',
-    image: '/images/projects/project-entrepreneurship.jpg',
+    image:
+      'https://cdn.bahorvoyage.com/images/projects/project-entrepreneurship.jpg',
     imageAltKey: 'projects_preview_alt_3',
   },
 ] as const;

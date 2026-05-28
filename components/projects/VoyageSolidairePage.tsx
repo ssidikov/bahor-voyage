@@ -102,7 +102,7 @@ export default function VoyageSolidairePage() {
           style={{ y: heroParallax }}
         >
           <Image
-            src="/images/projects/projects-hero.jpg"
+            src="https://cdn.bahorvoyage.com/images/projects/projects-hero.jpg"
             alt=""
             fill
             priority
@@ -212,7 +212,7 @@ export default function VoyageSolidairePage() {
                 }}
               >
                 <Image
-                  src="/images/projects/project-trees.jpg"
+                  src="https://cdn.bahorvoyage.com/images/projects/project-trees.jpg"
                   alt="Tree planting in Gurlan, Khorezm"
                   fill
                   quality={100}
@@ -256,7 +256,7 @@ export default function VoyageSolidairePage() {
                 }}
               >
                 <Image
-                  src="/images/projects/project-education-AFOR.jpg"
+                  src="https://cdn.bahorvoyage.com/images/projects/project-education-AFOR.jpg"
                   alt="Youth education support"
                   fill
                   quality={100}
@@ -377,7 +377,7 @@ export default function VoyageSolidairePage() {
             <motion.div variants={slideRight} className="lg:col-span-5">
               <div className="bg-white border border-sand-200 rounded-sm p-8 shadow-sm">
                 <Image
-                  src="/images/projects/project-entrepreneurship.jpg"
+                  src="https://cdn.bahorvoyage.com/images/projects/project-entrepreneurship.jpg"
                   alt=""
                   width={480}
                   height={270}

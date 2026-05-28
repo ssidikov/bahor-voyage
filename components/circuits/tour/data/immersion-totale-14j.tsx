@@ -3,9 +3,9 @@ import type { TourData } from '../types';
 export const immersionTotale14j: TourData = {
   prefix: 'immersion_totale_14j',
 
-  heroImage: '/images/tours/Registan.jpg',
+  heroImage: 'https://cdn.bahorvoyage.com/images/tours/Registan.jpg',
 
-  introImage: '/images/tours/shohizinda.jpg',
+  introImage: 'https://cdn.bahorvoyage.com/images/tours/shohizinda.jpg',
   introImageAlt: 'Shah-i-Zinda — Samarcande',
 
   routeLabel:
@@ -20,72 +20,73 @@ export const immersionTotale14j: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/Samarkand.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Samarkand.jpg',
       imageAlt: 'Tachkent, Ouzbékistan',
     },
     {
       key: 'day2',
-      image: '/images/tours/Bukhara-minaret.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-minaret.jpg',
       imageAlt: 'Musée Savitsky, Nukus',
     },
     {
       key: 'day3',
-      image: '/images/tours/Chor-Bakr.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Chor-Bakr.jpg',
       imageAlt: 'Forteresses du désert, Karakalpakstan',
     },
     {
       key: 'day4',
-      image: '/images/tours/Samarkand-2.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Samarkand-2.jpg',
       imageAlt: 'Khiva, Ichan Kala',
     },
     {
       key: 'day5',
-      image: '/images/tours/Bukhara-Old-Sity.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-Old-Sity.jpg',
       imageAlt: 'Campagne ouzbèke, soierie ikat',
     },
     {
       key: 'day6',
-      image: '/images/tours/Bukhara-Ark.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-Ark.jpg',
       imageAlt: 'Boukhara la Divine — Citadelle Ark',
     },
     {
       key: 'day7',
-      image: '/images/tours/Chor-Bakr.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Chor-Bakr.jpg',
       imageAlt: 'Chor-Bakr et Sitorai Mohi-Hosa',
     },
     {
       key: 'day8',
-      image: '/images/tours/Registan.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Registan.jpg',
       imageAlt: 'Samarcande — Place du Régistan',
     },
     {
       key: 'day9',
-      image: '/images/tours/Mausole-Gur-Emir.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Mausole-Gur-Emir.jpg',
       imageAlt: 'Gur-e-Amir, Samarcande',
     },
     {
       key: 'day10',
-      image: '/images/tours/shohizinda.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/shohizinda.jpg',
       imageAlt: 'Shah-i-Zinda, nécropole de Samarcande',
     },
     {
       key: 'day11',
-      image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+      image:
+        'https://cdn.bahorvoyage.com/images/tours/Bibi-Khanu-Samarkand.jpg',
       imageAlt: 'Mosquée Bibi-Khanym, Samarcande',
     },
     {
       key: 'day12',
-      image: '/images/tours/Samarkand.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Samarkand.jpg',
       imageAlt: 'Vallée de Ferghana, artisans',
     },
     {
       key: 'day13',
-      image: '/images/tours/Samarkand-2.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Samarkand-2.jpg',
       imageAlt: 'Ferghana — Margilan, soierie Atlas',
     },
     {
       key: 'day14',
-      image: '/images/tours/Bukhara-minaret.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-minaret.jpg',
       imageAlt: 'Retour à Tachkent, départ',
     },
   ],

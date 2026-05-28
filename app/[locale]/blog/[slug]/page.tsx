@@ -11,6 +11,8 @@ import {
 } from '@/lib/sanity-queries';
 import { urlFor } from '@/lib/sanity-image';
 
+export const revalidate = 60;
+
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };

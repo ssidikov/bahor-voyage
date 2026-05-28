@@ -17,17 +17,19 @@ import {
 const PROJECTS = [
   {
     key: 'p1',
-    image: '/images/projects/project-trees.jpg',
+    image: 'https://cdn.bahorvoyage.com/images/projects/project-trees.jpg',
     imageAlt: 'Tree planting in Gurlan, Khorezm',
   },
   {
     key: 'p2',
-    image: '/images/projects/project-education-AFOR.jpg',
+    image:
+      'https://cdn.bahorvoyage.com/images/projects/project-education-AFOR.jpg',
     imageAlt: 'Youth education support',
   },
   {
     key: 'p3',
-    image: '/images/projects/project-entrepreneurship.jpg',
+    image:
+      'https://cdn.bahorvoyage.com/images/projects/project-entrepreneurship.jpg',
     imageAlt: 'Female entrepreneurship in Uzbekistan',
   },
 ] as const;
@@ -48,7 +50,7 @@ export default function ProjectsPage() {
             style={{ y: heroParallax }}
           >
             <Image
-              src="/images/projects/projects-hero.jpg"
+              src="https://cdn.bahorvoyage.com/images/projects/projects-hero.jpg"
               alt=""
               fill
               priority

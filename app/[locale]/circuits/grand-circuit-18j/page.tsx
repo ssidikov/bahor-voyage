@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+          url: 'https://cdn.bahorvoyage.com/images/tours/Bibi-Khanu-Samarkand.jpg',
           width: 1200,
           height: 630,
           alt: isFr
@@ -60,7 +60,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/images/tours/Bibi-Khanu-Samarkand.jpg'],
+      images: [
+        'https://cdn.bahorvoyage.com/images/tours/Bibi-Khanu-Samarkand.jpg',
+      ],
     },
   };
 }

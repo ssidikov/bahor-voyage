@@ -31,7 +31,7 @@ export function FounderSection() {
           style={{ scale: backgroundScale }}
         >
           <Image
-            src="/images/afor-voyage.jpg"
+            src="https://cdn.bahorvoyage.com/images/afor-voyage.jpg"
             alt=""
             fill
             quality={90}
@@ -123,7 +123,7 @@ export function FounderSection() {
               }}
             >
               <Image
-                src="/images/Navbakhor-BUDOT.jpg"
+                src="https://cdn.bahorvoyage.com/images/Navbakhor-BUDOT.jpg"
                 alt="Navbakhor Boudot — Fondatrice Bahor-Voyage"
                 fill
                 quality={100}

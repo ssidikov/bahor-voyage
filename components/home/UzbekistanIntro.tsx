@@ -37,7 +37,7 @@ export function UzbekistanIntro() {
               className="absolute top-0 left-0 w-[65%] h-[72%] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
             >
               <Image
-                src="/images/uzbekistan.jpeg"
+                src="https://cdn.bahorvoyage.com/images/uzbekistan.jpeg"
                 alt="Uzbekistan"
                 fill
                 quality={90}
@@ -58,7 +58,7 @@ export function UzbekistanIntro() {
               className="absolute bottom-0 right-0 w-[62%] h-[60%] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.14)] border-4 border-[#fafafa]"
             >
               <Image
-                src="/images/afor-voyage-2.jpeg"
+                src="https://cdn.bahorvoyage.com/images/afor-voyage-2.jpeg"
                 alt="Voyage solidaire Ouzbékistan"
                 fill
                 quality={90}

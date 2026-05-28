@@ -13,7 +13,10 @@ export default function BookingHero({
 }: BookingHeroProps) {
   return (
     <PageHero
-      image={{ src: '/images/tours/Khiva-2.jpg', alt: 'Samarkand, Uzbekistan' }}
+      image={{
+        src: 'https://cdn.bahorvoyage.com/images/tours/Khiva-2.jpg',
+        alt: 'Samarkand, Uzbekistan',
+      }}
       kicker={kicker}
       title={title}
       subtitle={intro}

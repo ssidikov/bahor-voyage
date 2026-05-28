@@ -18,7 +18,7 @@ export const CIRCUIT_META: readonly CircuitMeta[] = [
     theme: 'culturel',
     days: 7,
     seasons: ['printemps', 'automne'],
-    image: '/images/Boukhara.jpg',
+    image: 'https://cdn.bahorvoyage.com/images/Boukhara.jpg',
     href: '/circuits/samarcande-boukhara',
   },
   {
@@ -27,7 +27,7 @@ export const CIRCUIT_META: readonly CircuitMeta[] = [
     theme: 'solidaire',
     days: 11,
     seasons: ['printemps', 'automne'],
-    image: '/images/voyage-solidaire.avif',
+    image: 'https://cdn.bahorvoyage.com/images/voyage-solidaire.avif',
     href: '/circuits/voyage-solidaire-11j',
   },
   {
@@ -36,7 +36,7 @@ export const CIRCUIT_META: readonly CircuitMeta[] = [
     theme: 'immersion',
     days: 14,
     seasons: ['printemps', 'automne', 'ete'],
-    image: '/images/afor-voyage-2.jpeg',
+    image: 'https://cdn.bahorvoyage.com/images/afor-voyage-2.jpeg',
     href: '/circuits/immersion-totale-14j',
   },
   {
@@ -45,7 +45,7 @@ export const CIRCUIT_META: readonly CircuitMeta[] = [
     theme: 'grand',
     days: 18,
     seasons: ['printemps', 'automne', 'ete'],
-    image: '/images/immersion-totale.jpeg',
+    image: 'https://cdn.bahorvoyage.com/images/immersion-totale.jpeg',
     href: '/circuits/grand-circuit-18j',
   },
 ] as const;

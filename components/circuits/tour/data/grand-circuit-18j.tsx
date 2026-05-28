@@ -3,9 +3,9 @@ import type { TourData } from '../types';
 export const grandCircuit18j: TourData = {
   prefix: 'grand_circuit_18j',
 
-  heroImage: '/images/tours/khiva-hero.jpg',
+  heroImage: 'https://cdn.bahorvoyage.com/images/tours/khiva-hero.jpg',
 
-  introImage: '/images/tours/Khiva-3.jpg',
+  introImage: 'https://cdn.bahorvoyage.com/images/tours/Khiva-3.jpg',
   introImageAlt: 'Khiva, Ouzbékistan',
 
   routeLabel:
@@ -20,92 +20,93 @@ export const grandCircuit18j: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/tashkent-3.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/tashkent-3.jpg',
       imageAlt: 'Tachkent, Ouzbékistan',
     },
     {
       key: 'day2',
-      image: '/images/tours/tashkent-6.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/tashkent-6.jpg',
       imageAlt: 'Vieille ville de Tachkent',
     },
     {
       key: 'day3',
-      image: '/images/tours/Musee-Savitsky.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Musee-Savitsky.jpg',
       imageAlt: 'Musée Savitsky, Nukus',
     },
     {
       key: 'day4',
-      image: '/images/tours/Aral.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Aral.jpg',
       imageAlt: 'Aral, Karakalpakstan',
     },
     {
       key: 'day5',
-      image: '/images/tours/Khiva-2.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Khiva-2.jpg',
       imageAlt: 'Khiva',
     },
     {
       key: 'day6',
-      image: '/images/tours/Projet-AFOR.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Projet-AFOR.jpg',
       imageAlt: 'Projet AFOR, Gurlan',
     },
     {
       key: 'day7',
-      image: '/images/tours/Bukhara-Old-Sity.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-Old-Sity.jpg',
       imageAlt: 'Boukhara',
     },
     {
       key: 'day8',
-      image: '/images/tours/Bukhara-Ark.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-Ark.jpg',
       imageAlt: 'Boukhara — Citadelle Ark',
     },
     {
       key: 'day9',
-      image: '/images/tours/Bukhara.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara.jpg',
       imageAlt: 'Médersas de Boukhara',
     },
     {
       key: 'day10',
-      image: '/images/tours/Bukhara-3.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-3.jpg',
       imageAlt: 'Boukhara',
     },
     {
       key: 'day11',
-      image: '/images/tours/Registan.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Registan.jpg',
       imageAlt: 'Samarcande — Régistan',
     },
     {
       key: 'day12',
-      image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+      image:
+        'https://cdn.bahorvoyage.com/images/tours/Bibi-Khanu-Samarkand.jpg',
       imageAlt: 'Mosquée Bibi-Khanym',
     },
     {
       key: 'day13',
-      image: '/images/tours/shohizinda.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/shohizinda.jpg',
       imageAlt: 'Shah-i-Zinda, nécropole sacrée',
     },
     {
       key: 'day14',
-      image: '/images/tours/Samarkand-2.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Samarkand-2.jpg',
       imageAlt: 'Samarcande',
     },
     {
       key: 'day15',
-      image: '/images/tours/Margilan.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Margilan.jpg',
       imageAlt: 'Vallée de Ferghana, Margilan',
     },
     {
       key: 'day16',
-      image: '/images/tours/Kokand.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Kokand.jpg',
       imageAlt: 'Kokand',
     },
     {
       key: 'day17',
-      image: '/images/tours/Andijan.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Andijan.jpg',
       imageAlt: 'Andijan. Photo: Carpodacus / Wikimedia Commons / CC BY-SA 4.0',
     },
     {
       key: 'day18',
-      image: '/images/tours/tashkent-5.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/tashkent-5.jpg',
       imageAlt: 'Tachkent',
     },
   ],

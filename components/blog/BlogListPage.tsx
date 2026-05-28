@@ -218,7 +218,10 @@ export default function BlogListPage({ posts }: { posts: BlogPostCard[] }) {
   return (
     <>
       <PageHero
-        image={{ src: '/images/Boukhara.jpg', alt: 'Blog Bahor-Voyage' }}
+        image={{
+          src: 'https://cdn.bahorvoyage.com/images/Boukhara.jpg',
+          alt: 'Blog Bahor-Voyage',
+        }}
         kicker={t('hero_kicker')}
         title={t('hero_title')}
         subtitle={t('hero_subtitle')}

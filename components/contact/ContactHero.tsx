@@ -14,7 +14,7 @@ export default function ContactHero({
   return (
     <PageHero
       image={{
-        src: '/images/khiva-old-city.jpg',
+        src: 'https://cdn.bahorvoyage.com/images/khiva-old-city.jpg',
         alt: 'Uzbek craftsmanship - Bahor Voyage',
       }}
       kicker={kicker}

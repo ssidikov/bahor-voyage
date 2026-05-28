@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: '/images/tours/Registan.jpg',
+          url: 'https://cdn.bahorvoyage.com/images/tours/Registan.jpg',
           width: 1200,
           height: 630,
           alt: isFr
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/images/tours/Registan.jpg'],
+      images: ['https://cdn.bahorvoyage.com/images/tours/Registan.jpg'],
     },
   };
 }

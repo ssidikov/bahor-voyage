@@ -25,22 +25,22 @@ type Circuit = {
 const CIRCUITS: readonly Circuit[] = [
   {
     id: 'c1',
-    image: '/images/Boukhara.jpg',
+    image: 'https://cdn.bahorvoyage.com/images/Boukhara.jpg',
     href: '/circuits/samarcande-boukhara',
   },
   {
     id: 'c2',
-    image: '/images/voyage-solidaire.avif',
+    image: 'https://cdn.bahorvoyage.com/images/voyage-solidaire.avif',
     href: '/circuits/voyage-solidaire-11j',
   },
   {
     id: 'c3',
-    image: '/images/afor-voyage-2.jpeg',
+    image: 'https://cdn.bahorvoyage.com/images/afor-voyage-2.jpeg',
     href: '/circuits/immersion-totale-14j',
   },
   {
     id: 'c4',
-    image: '/images/immersion-totale.jpeg',
+    image: 'https://cdn.bahorvoyage.com/images/immersion-totale.jpeg',
     href: '/circuits/grand-circuit-18j',
   },
 ] as const;
@@ -193,7 +193,10 @@ export default function CircuitsPage() {
       {/* HERO                                                          */}
       {/* ============================================================ */}
       <PageHero
-        image={{ src: '/images/Boukhara.jpg', alt: 'Circuits en Ouzbékistan' }}
+        image={{
+          src: 'https://cdn.bahorvoyage.com/images/Boukhara.jpg',
+          alt: 'Circuits en Ouzbékistan',
+        }}
         kicker={t('page_hero_kicker')}
         title={t('page_hero_title')}
         subtitle={t('page_hero_subtitle')}

@@ -3,9 +3,9 @@ import type { TourData } from '../types';
 export const samarkandBoukhara: TourData = {
   prefix: 'samarkand_boukhara',
 
-  heroImage: '/images/tours/shohizinda-hero.jpg',
+  heroImage: 'https://cdn.bahorvoyage.com/images/tours/shohizinda-hero.jpg',
 
-  introImage: '/images/tours/Registan.jpg',
+  introImage: 'https://cdn.bahorvoyage.com/images/tours/Registan.jpg',
   introImageAlt: 'Registan — Samarkand',
 
   routeLabel: 'Samarkand · Boukhara · Shahrisabz',
@@ -19,37 +19,38 @@ export const samarkandBoukhara: TourData = {
   days: [
     {
       key: 'day1',
-      image: '/images/tours/Registan-2.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Registan-2.jpg',
       imageAlt: 'Registan, Samarkand',
     },
     {
       key: 'day2',
-      image: '/images/tours/Mosquee-Bibi-Khanum.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Mosquee-Bibi-Khanum.jpg',
       imageAlt: 'Mosquee Bibi Khanum',
     },
     {
       key: 'day3',
-      image: '/images/tours/shohizinda.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/shohizinda.jpg',
       imageAlt: 'Shohizinda',
     },
     {
       key: 'day4',
-      image: '/images/tours/Bukhara.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara.jpg',
       imageAlt: 'Boukhara',
     },
     {
       key: 'day5',
-      image: '/images/tours/Bukhara-Ark.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Bukhara-Ark.jpg',
       imageAlt: 'Bukhara, Ark',
     },
     {
       key: 'day6',
-      image: '/images/tours/Samarkand-2.jpg',
+      image: 'https://cdn.bahorvoyage.com/images/tours/Samarkand-2.jpg',
       imageAlt: 'Samarkand',
     },
     {
       key: 'day7',
-      image: '/images/tours/Bibi-Khanu-Samarkand.jpg',
+      image:
+        'https://cdn.bahorvoyage.com/images/tours/Bibi-Khanu-Samarkand.jpg',
       imageAlt: 'Bibi-Khanu-Samarkand',
     },
   ],

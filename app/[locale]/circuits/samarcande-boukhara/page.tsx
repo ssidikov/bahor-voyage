@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: '/images/samarkand.jpeg',
+          url: 'https://cdn.bahorvoyage.com/images/samarkand.jpeg',
           width: 1200,
           height: 630,
           alt: isFr
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/images/samarkand.jpeg'],
+      images: ['https://cdn.bahorvoyage.com/images/samarkand.jpeg'],
     },
   };
 }

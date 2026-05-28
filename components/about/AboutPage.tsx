@@ -214,13 +214,16 @@ export function AboutPage() {
 
   /* history images – destructured so TS knows every element is defined */
   const [historyImg0, historyImg1, historyImg2] = [
-    { src: '/images/afor-voyage.jpg', alt: 'Fondation AFOR Lyon 2012' },
     {
-      src: '/images/tours/Registan.jpg',
+      src: 'https://cdn.bahorvoyage.com/images/afor-voyage.jpg',
+      alt: 'Fondation AFOR Lyon 2012',
+    },
+    {
+      src: 'https://cdn.bahorvoyage.com/images/tours/Registan.jpg',
       alt: 'Premier voyage solidaire \u2013 Route de la Soie',
     },
     {
-      src: '/images/afor-voyage-2.jpeg',
+      src: 'https://cdn.bahorvoyage.com/images/afor-voyage-2.jpeg',
       alt: 'Projets communautaires \u00e0 Khorezm',
     },
   ] as const;
@@ -230,7 +233,7 @@ export function AboutPage() {
       {/* ═══ HERO ══════════════════════════════════════════════════════════ */}
       <PageHero
         image={{
-          src: '/images/afor-voyage.jpg',
+          src: 'https://cdn.bahorvoyage.com/images/afor-voyage.jpg',
           alt: 'AFOR – Association France Ouzbékistan Racines',
         }}
         kicker={t('hero_kicker')}
@@ -365,7 +368,7 @@ export function AboutPage() {
               name={t('t1_name')}
               role={t('t1_role')}
               bio={t('t1_bio')}
-              imageSrc="/images/Navbakhor-BUDOT.jpg"
+              imageSrc="https://cdn.bahorvoyage.com/images/Navbakhor-BUDOT.jpg"
             />
             <TeamCard
               name={t('t2_name')}

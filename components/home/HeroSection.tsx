@@ -11,25 +11,25 @@ import { Link } from '@/i18n/navigation';
 const MINI_DESTINATIONS = [
   {
     name: 'Samarcande',
-    image: '/images/samarkand.jpeg',
+    image: 'https://cdn.bahorvoyage.com/images/samarkand.jpeg',
     href: '/circuits/samarcande-boukhara',
     tag: '11 jours',
   },
   {
     name: 'Boukhara',
-    image: '/images/Boukhara.jpg',
+    image: 'https://cdn.bahorvoyage.com/images/Boukhara.jpg',
     href: '/circuits/samarcande-boukhara',
     tag: 'Route de la Soie',
   },
   {
     name: 'Khiva',
-    image: '/images/khiva-old-city.jpg',
+    image: 'https://cdn.bahorvoyage.com/images/khiva-old-city.jpg',
     href: '/circuits/immersion-totale-14j',
     tag: '14 jours',
   },
   {
     name: 'Immersion',
-    image: '/images/afor-voyage-2.jpeg',
+    image: 'https://cdn.bahorvoyage.com/images/afor-voyage-2.jpeg',
     href: '/circuits/grand-circuit-18j',
     tag: '18 jours',
   },
@@ -77,7 +77,7 @@ export function HeroSection() {
         {/* Hero image card — ends above form midpoint */}
         <div className="mx-2 mt-4 rounded-3xl overflow-hidden relative h-[44vh] min-h-[400px]">
           <Image
-            src="/images/khiva-old-city.jpg"
+            src="https://cdn.bahorvoyage.com/images/khiva-old-city.jpg"
             alt=""
             fill
             priority
@@ -150,7 +150,7 @@ export function HeroSection() {
       {/* ── DESKTOP layout (lg+) ── */}
       <div className="hidden lg:block mx-2 rounded-3xl overflow-hidden relative h-[88vh] min-h-[600px]">
         <Image
-          src="/images/khiva-old-city.jpg"
+          src="https://cdn.bahorvoyage.com/images/khiva-old-city.jpg"
           alt=""
           fill
           priority

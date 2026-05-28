@@ -5,6 +5,8 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import BlogListPage from '@/components/blog/BlogListPage';
 import { getBlogPosts } from '@/lib/sanity-queries';
 
+export const revalidate = 60;
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
