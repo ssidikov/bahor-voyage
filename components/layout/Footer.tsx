@@ -66,7 +66,7 @@ export function Footer() {
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://www.instagram.com/esprit_ouzbekistan"
+                href="https://www.instagram.com/bahor_voyage"
                 className="flex items-center justify-center w-10 h-10 rounded-full border border-charcoal-100/70 bg-[#fafafa] text-charcoal-400 hover:text-charcoal-700 hover:border-charcoal-200 transition-colors duration-300"
                 aria-label="Instagram"
                 target="_blank"

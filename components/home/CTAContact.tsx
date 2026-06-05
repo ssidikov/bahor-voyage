@@ -135,7 +135,7 @@ export function CTAContact() {
                   ),
                 },
                 {
-                  href: 'https://www.instagram.com/esprit_ouzbekistan',
+                  href: 'https://www.instagram.com/bahor_voyage',
                   label: 'Instagram',
                   icon: (
                     <svg
