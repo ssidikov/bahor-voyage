@@ -48,3 +48,10 @@ next-env.d.ts
 
 # blog publishing draft (temp file, regenerated per article)
 /scripts/article-draft.json
+# agent skills (duplicate third-party/local skills)
+.agent/skills/
+.agents/skills/
+.cursor/skills/
+.claude/skills/
+.codex/skills/
+.github/skills/
