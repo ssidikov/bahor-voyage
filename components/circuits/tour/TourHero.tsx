@@ -113,39 +113,6 @@ export default function TourHero({
                 {t(`${prefix}_duration` as Parameters<typeof t>[0])}
               </span>
             </div>
-
-            {/* Price */}
-            <div
-              className="inline-flex items-center gap-3 rounded-2xl px-6 py-4"
-              style={{
-                background:
-                  'linear-gradient(135deg, rgba(200,160,80,0.20) 0%, rgba(200,160,80,0.08) 100%)',
-                backdropFilter: 'blur(16px) saturate(1.6)',
-                WebkitBackdropFilter: 'blur(16px) saturate(1.6)',
-                border: '1px solid rgba(200,160,80,0.38)',
-                boxShadow:
-                  'inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 16px rgba(200,160,80,0.18)',
-              }}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M8 1l1.8 3.6L14 5.6l-3 2.9.7 4.1L8 10.5l-3.7 2.1.7-4.1-3-2.9 4.2-.9L8 1z"
-                  stroke="rgba(255,255,255,0.65)"
-                  strokeWidth="1.2"
-                  strokeLinejoin="round"
-                  fill="rgba(200,160,80,0.18)"
-                />
-              </svg>
-              <span className="font-serif text-xl leading-none text-white/85">
-                {t(`${prefix}_price` as Parameters<typeof t>[0])}
-              </span>
-            </div>
           </motion.div>
 
           <motion.div
