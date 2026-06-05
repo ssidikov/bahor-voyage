@@ -68,69 +68,6 @@ function IconLeaf() {
   );
 }
 
-/* ─── timeline step ────────────────────────────────────────────────────────── */
-type TimelineStepProps = {
-  label: string;
-  title: string;
-  body: string;
-  imageSrc: string;
-  imageAlt: string;
-  reverse?: boolean;
-};
-
-function TimelineStep({
-  label,
-  title,
-  body,
-  imageSrc,
-  imageAlt,
-  reverse,
-}: TimelineStepProps) {
-  return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
-      className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${reverse ? 'lg:grid-flow-dense' : ''}`}
-    >
-      {/* image */}
-      <motion.div
-        variants={reverse ? slideLeft : slideRight}
-        className={reverse ? 'lg:col-start-2' : ''}
-      >
-        <div className="relative aspect-4/3 overflow-hidden rounded-sm">
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            quality={100}
-            className="object-cover"
-          />
-          {/* gold label overlay */}
-          <div className="absolute bottom-0 left-0 px-5 py-3 bg-charcoal-800/80 backdrop-blur-sm">
-            <span className="font-serif italic text-gold text-xl">{label}</span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* text */}
-      <motion.div
-        variants={reverse ? slideRight : slideLeft}
-        className={reverse ? 'lg:col-start-1 lg:row-start-1' : ''}
-      >
-        <div className="w-8 h-px bg-gold mb-6" />
-        <h3 className="font-serif text-display-md text-charcoal-700 font-light leading-snug mb-5">
-          {title}
-        </h3>
-        <p className="font-sans text-body-md text-charcoal-500 leading-relaxed">
-          {body}
-        </p>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 /* ─── team card ────────────────────────────────────────────────────────────── */
 type TeamCardProps = {
   name: string;
@@ -212,29 +149,13 @@ function CommitCard({ icon, title, body }: CommitCardProps) {
 export function AboutPage() {
   const t = useTranslations('about');
 
-  /* history images – destructured so TS knows every element is defined */
-  const [historyImg0, historyImg1, historyImg2] = [
-    {
-      src: 'https://cdn.bahorvoyage.com/images/afor-voyage.jpg',
-      alt: 'Fondation AFOR Lyon 2012',
-    },
-    {
-      src: 'https://cdn.bahorvoyage.com/images/tours/Registan.jpg',
-      alt: 'Premier voyage solidaire \u2013 Route de la Soie',
-    },
-    {
-      src: 'https://cdn.bahorvoyage.com/images/afor-voyage-2.jpeg',
-      alt: 'Projets communautaires \u00e0 Khorezm',
-    },
-  ] as const;
-
   return (
     <>
       {/* ═══ HERO ══════════════════════════════════════════════════════════ */}
       <PageHero
         image={{
-          src: 'https://cdn.bahorvoyage.com/images/afor-voyage.jpg',
-          alt: 'AFOR – Association France Ouzbékistan Racines',
+          src: 'https://cdn.bahorvoyage.com/images/about.jpg',
+          alt: 'BAHOR Voyage — le voyage comme rencontre',
         }}
         kicker={t('hero_kicker')}
         title={t('hero_title')}
@@ -242,8 +163,131 @@ export function AboutPage() {
         containerClassName="h-[72vh] min-h-125"
       />
 
-      {/* ═══ QUOTE ═════════════════════════════════════════════════════════ */}
-      <section className="bg-[#fafafa] py-16 md:py-20">
+      {/* ═══ ORIGIN — Uzbek childhood ═══════════════════════════════════════ */}
+      <section className="py-16 md:py-20 lg:py-section bg-white">
+        <div className="max-w-content mx-auto px-6 md:px-10">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+          >
+            {/* text */}
+            <motion.div variants={slideRight}>
+              <div className="w-8 h-px bg-gold mb-6" />
+              <h2 className="font-serif text-display-lg text-charcoal-700 font-light leading-snug mb-6">
+                {t('origin_title')}
+              </h2>
+              <p className="font-sans text-body-md text-charcoal-500 leading-relaxed mb-5">
+                {t('origin_p1')}
+              </p>
+              <p className="font-sans text-body-md text-charcoal-400 leading-relaxed">
+                {t('origin_p2')}
+              </p>
+            </motion.div>
+
+            {/* image */}
+            <motion.div variants={slideLeft}>
+              <div className="relative aspect-4/3 overflow-hidden rounded-sm">
+                <Image
+                  src="https://cdn.bahorvoyage.com/images/about/uzbek-bazaar.png"
+                  alt="Bazar ouzbek — couleurs, soie et thé partagé"
+                  fill
+                  quality={90}
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ LYON — Silk connection ═══════════════════════════════════════ */}
+      <section className="py-16 md:py-20 lg:py-section bg-[#fafafa]">
+        <div className="max-w-content mx-auto px-6 md:px-10">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center lg:grid-flow-dense"
+          >
+            {/* image — left on desktop */}
+            <motion.div variants={slideRight}>
+              <div className="relative aspect-4/3 overflow-hidden rounded-sm">
+                <Image
+                  src="https://cdn.bahorvoyage.com/images/about/lyon-silk.png"
+                  alt="Atelier de tissage de soie — Lyon, Croix-Rousse"
+                  fill
+                  quality={90}
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* text — right on desktop */}
+            <motion.div variants={slideLeft} className="lg:col-start-2">
+              <div className="w-8 h-px bg-gold mb-6" />
+              <h2 className="font-serif text-display-lg text-charcoal-700 font-light leading-snug mb-6">
+                {t('lyon_title')}
+              </h2>
+              <p className="font-sans text-body-md text-charcoal-500 leading-relaxed">
+                {t('lyon_body')}
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ ENTERPRISE — Full-width image band ═══════════════════════════ */}
+      <section className="relative bg-[#fafafa] py-6">
+        <div className="mx-2 rounded-3xl overflow-hidden relative min-h-[50vh]">
+          {/* Background image */}
+          <Image
+            src="https://cdn.bahorvoyage.com/images/ateliers-bahor.webp"
+            alt="Ateliers BAHOR — projets communautaires"
+            fill
+            quality={90}
+            className="object-cover"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-charcoal-900/65" />
+
+          {/* Content */}
+          <div className="relative z-10 max-w-content mx-auto px-8 md:px-14 py-16 md:py-24">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+              className="max-w-2xl"
+            >
+              <motion.div
+                variants={fadeUp}
+                className="flex items-center gap-3 mb-6"
+              >
+                <div className="h-px w-8 bg-gold" />
+              </motion.div>
+              <motion.h2
+                variants={fadeUp}
+                className="font-serif text-display-lg text-white font-light leading-snug mb-6"
+              >
+                {t('enterprise_title')}
+              </motion.h2>
+              <motion.p
+                variants={fadeUp}
+                className="font-sans text-body-md text-white/80 leading-relaxed"
+              >
+                {t('enterprise_body')}
+              </motion.p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ MISSION — Centered blockquote ═══════════════════════════════ */}
+      <section className="bg-white py-16 md:py-20">
         <div className="max-w-content mx-auto px-6 md:px-10">
           <motion.div
             variants={staggerContainer}
@@ -257,25 +301,74 @@ export function AboutPage() {
               variants={fadeUp}
               className="font-serif text-display-md text-charcoal-700 font-light leading-relaxed italic"
             >
-              {'“'}
-              {t('quote')}
-              {'”'}
+              {'"'}
+              {t('mission_quote')}
+              {'"'}
             </motion.blockquote>
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-label uppercase tracking-[0.12em] text-gold"
+              className="mt-8 font-sans text-body-md text-charcoal-500 leading-relaxed"
             >
-              — {t('quote_attribution')}
+              {t('mission_p1')}
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 font-sans text-body-md text-charcoal-400 leading-relaxed"
+            >
+              {t('mission_p2')}
             </motion.p>
             <div className="divider-gold-center mt-8" />
           </motion.div>
         </div>
       </section>
 
-      {/* ═══ HISTORY ═══════════════════════════════════════════════════════ */}
+      {/* ═══ IMMERSION — Image + text ═════════════════════════════════════ */}
+      <section className="py-16 md:py-20 lg:py-section bg-[#fafafa]">
+        <div className="max-w-content mx-auto px-6 md:px-10">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+          >
+            {/* text */}
+            <motion.div variants={slideRight}>
+              <div className="w-8 h-px bg-gold mb-6" />
+              <h2 className="font-serif text-display-lg text-charcoal-700 font-light leading-snug mb-6">
+                {t('immersion_title')}
+              </h2>
+              <p className="font-sans text-body-md text-charcoal-500 leading-relaxed mb-5">
+                {t('immersion_p1')}
+              </p>
+              <p className="font-sans text-body-md text-charcoal-400 leading-relaxed mb-5">
+                {t('immersion_p2')}
+              </p>
+              <p className="font-sans text-body-md text-charcoal-400 leading-relaxed">
+                {t('immersion_p3')}
+              </p>
+            </motion.div>
+
+            {/* image */}
+            <motion.div variants={slideLeft}>
+              <div className="relative aspect-4/3 overflow-hidden rounded-sm">
+                <Image
+                  src="https://cdn.bahorvoyage.com/images/voyage-solidaire.avif"
+                  alt="Rencontres authentiques — artisans et voyageurs"
+                  fill
+                  quality={90}
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ IMPACT — Cards ══════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 lg:py-section bg-white">
         <div className="max-w-content mx-auto px-6 md:px-10">
-          {/* section header */}
+          {/* header */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -283,51 +376,57 @@ export function AboutPage() {
             viewport={{ once: true, margin: '-60px' }}
             className="mb-14 md:mb-20"
           >
-            <motion.p
-              variants={fadeUp}
-              className="text-label uppercase tracking-[0.15em] text-gold mb-3"
-            >
-              {t('history_kicker')}
-            </motion.p>
+            <motion.div variants={fadeUp} className="w-8 h-px bg-gold mb-6" />
             <motion.h2
               variants={fadeUp}
-              className="font-serif text-display-lg text-charcoal-700 font-light max-w-2xl"
+              className="font-serif text-display-lg text-charcoal-700 font-light max-w-2xl mb-5"
             >
-              {t('history_title')}
+              {t('impact_title')}
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-5 font-sans text-body-md text-charcoal-400 max-w-2xl leading-relaxed"
+              className="font-sans text-body-md text-charcoal-400 max-w-2xl leading-relaxed mb-4"
             >
-              {t('history_intro')}
+              {t('impact_p1')}
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="font-sans text-body-md text-charcoal-400 max-w-2xl leading-relaxed mb-4"
+            >
+              {t('impact_p2')}
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="font-sans text-body-md text-charcoal-400 max-w-2xl leading-relaxed"
+            >
+              {t('impact_p3')}
             </motion.p>
           </motion.div>
 
-          {/* timeline steps */}
-          <div className="flex flex-col gap-16 md:gap-24">
-            <TimelineStep
-              label={t('h1_label')}
-              title={t('h1_title')}
-              body={t('h1_body')}
-              imageSrc={historyImg0.src}
-              imageAlt={historyImg0.alt}
+          {/* cards */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            <CommitCard
+              icon={<IconHeart />}
+              title={t('impact_e1_title')}
+              body={t('impact_e1_body')}
             />
-            <TimelineStep
-              label={t('h2_label')}
-              title={t('h2_title')}
-              body={t('h2_body')}
-              imageSrc={historyImg1.src}
-              imageAlt={historyImg1.alt}
-              reverse
+            <CommitCard
+              icon={<IconCompass />}
+              title={t('impact_e2_title')}
+              body={t('impact_e2_body')}
             />
-            <TimelineStep
-              label={t('h3_label')}
-              title={t('h3_title')}
-              body={t('h3_body')}
-              imageSrc={historyImg2.src}
-              imageAlt={historyImg2.alt}
+            <CommitCard
+              icon={<IconLeaf />}
+              title={t('impact_e3_title')}
+              body={t('impact_e3_body')}
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -384,131 +483,88 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ COMMITMENTS ═══════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 lg:py-section bg-white">
-        <div className="max-w-content mx-auto px-6 md:px-10">
-          {/* header */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="text-center mb-14 md:mb-20"
-          >
-            <motion.p
-              variants={fadeUp}
-              className="text-label uppercase tracking-[0.15em] text-gold mb-3"
-            >
-              {t('commitments_kicker')}
-            </motion.p>
-            <motion.h2
-              variants={fadeUp}
-              className="font-serif text-display-lg text-charcoal-700 font-light max-w-2xl mx-auto"
-            >
-              {t('commitments_title')}
-            </motion.h2>
-          </motion.div>
-
-          {/* cards */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            <CommitCard
-              icon={<IconHeart />}
-              title={t('e1_title')}
-              body={t('e1_body')}
-            />
-            <CommitCard
-              icon={<IconCompass />}
-              title={t('e2_title')}
-              body={t('e2_body')}
-            />
-            <CommitCard
-              icon={<IconLeaf />}
-              title={t('e3_title')}
-              body={t('e3_body')}
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══ PARTNERS ══════════════════════════════════════════════════════ */}
-      <section className="py-14 md:py-20 bg-[#fafafa]">
-        <div className="max-w-content mx-auto px-6 md:px-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="text-center"
-          >
-            <motion.p
-              variants={fadeUp}
-              className="text-label uppercase tracking-[0.15em] text-gold mb-3"
-            >
-              {t('partners_kicker')}
-            </motion.p>
-            <motion.h2
-              variants={fadeUp}
-              className="font-serif text-display-md text-charcoal-700 font-light mb-4"
-            >
-              {t('partners_title')}
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="font-sans text-body-md text-charcoal-400 max-w-2xl mx-auto mb-12"
-            >
-              {t('partners_body')}
-            </motion.p>
-
-            <motion.ul
-              variants={staggerContainer}
-              className="flex flex-col items-center gap-6"
-            >
-              {(['p1', 'p2', 'p3', 'p4', 'p5'] as const).map((key, i) => (
-                <motion.li
-                  key={key}
-                  variants={fadeUp}
-                  className="flex flex-col items-center gap-2"
-                >
-                  <span className="font-sans text-charcoal-500 tracking-wide">
-                    {t(key)}
-                  </span>
-                  {i < 4 && <div className="w-px h-5 bg-sand-300" />}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══ CTA ═══════════════════════════════════════════════════════════ */}
+      {/* ═══ CLOSING — BAHOR = Printemps ═════════════════════════════════ */}
       <section className="bg-[#fafafa] py-6">
-        <div className="mx-2 rounded-3xl overflow-hidden bg-charcoal-800">
-          <div className="max-w-content mx-auto px-6 md:px-10 py-16 md:py-20 lg:py-section">
+        <div className="mx-2 rounded-3xl overflow-hidden relative">
+          {/* Background image — spring blossoms */}
+          <Image
+            src="https://cdn.bahorvoyage.com/images/about/spring.jpg"
+            alt="Printemps en Ouzbékistan — fleurs et architecture"
+            fill
+            quality={90}
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-charcoal-900/70" />
+
+          <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 py-16 md:py-24 lg:py-section">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-80px' }}
-              className="text-center max-w-2xl mx-auto"
+              className="max-w-2xl mx-auto text-center"
             >
               <motion.h2
                 variants={fadeUp}
-                className="font-serif text-display-lg text-white font-light mb-5"
+                className="font-serif text-display-lg text-white font-light mb-6"
               >
-                {t('cta_title')}
+                {t('closing_headline')}
               </motion.h2>
               <motion.p
                 variants={fadeUp}
-                className="font-sans text-body-md text-charcoal-200 leading-relaxed mb-10"
+                className="font-sans text-body-lg text-white/80 leading-relaxed mb-4"
               >
-                {t('cta_body')}
+                {t('closing_p1')}
               </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="font-sans text-body-md text-white/70 leading-relaxed mb-8"
+              >
+                {t('closing_p2')}
+              </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="font-sans text-body-md text-white/70 leading-relaxed mb-10"
+              >
+                {t('closing_p3')}
+              </motion.p>
+
+              <motion.div
+                variants={fadeUp}
+                className="divider-gold-center mb-10"
+              />
+
+              <motion.p
+                variants={fadeUp}
+                className="font-serif text-display-md text-gold font-light italic mb-3"
+              >
+                {t('closing_bahor')}
+              </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="font-sans text-body-md text-white/70 leading-relaxed mb-10"
+              >
+                {t('closing_bahor_body')}
+              </motion.p>
+
+              <motion.div
+                variants={fadeUp}
+                className="divider-gold-center mb-10"
+              />
+
+              <motion.p
+                variants={fadeUp}
+                className="font-serif text-display-md text-white font-light mb-3"
+              >
+                {t('closing_welcome')}
+              </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="font-sans text-body-md text-white/60 leading-relaxed mb-10"
+              >
+                {t('closing_welcome_body')}
+              </motion.p>
+
               <motion.div variants={fadeUp}>
                 <Button
                   href="/contact"
@@ -516,7 +572,7 @@ export function AboutPage() {
                   size="lg"
                   className="group text-label uppercase tracking-widest"
                 >
-                  {t('cta_button')}
+                  {t('closing_cta')}
                   <span
                     aria-hidden="true"
                     className="inline-block transition-transform duration-300 group-hover:translate-x-1"

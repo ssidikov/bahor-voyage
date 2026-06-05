@@ -12,9 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isFr = locale === 'fr';
 
-  const title = isFr
-    ? 'À propos — AFOR & Bahor-Voyage'
-    : 'About — AFOR & Bahor-Voyage';
+  const title = isFr ? 'À propos — BAHOR Voyage' : 'About — BAHOR Voyage';
 
   const description = isFr
     ? "Découvrez l'histoire de l'AFOR, association franco-ouzbèke fondée à Lyon en 2012, et l'équipe passionnée derrière Bahor-Voyage. Un tourisme solidaire au service de l'humain."
