@@ -132,8 +132,8 @@ export async function generateBookingPdf(
   const status =
     booking.paymentStatus === 'PAID'
       ? 'Paiement validé'
-      : 'En attente de paiement';
-  doc.text(`Statut: ${status}`, margin + 5, paymentY + 10);
+      : 'À convenir avec l’équipe Bahor-Voyage';
+  doc.text(`Paiement: ${status}`, margin + 5, paymentY + 10);
 
   // Footer
   doc.setFontSize(8);
@@ -145,7 +145,7 @@ export async function generateBookingPdf(
     { align: 'center' },
   );
   doc.text(
-    'Ce document fait office de confirmation officielle.',
+    'Ce document confirme votre réservation. Pour le paiement, notre équipe vous contactera.',
     pageWidth / 2,
     285,
     { align: 'center' },

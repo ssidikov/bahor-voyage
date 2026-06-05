@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
@@ -26,40 +26,27 @@ type BookingDetail = {
 
 export default function BookingSuccess() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const locale = useLocale() as 'fr' | 'en';
   const t = useTranslations('booking_success');
 
   const bookingId = searchParams?.get('bookingId');
-  const sessionId = searchParams?.get('session_id');
-  const isTest = bookingId === 'test';
 
   const [booking, setBooking] = useState<BookingDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    // If it's a real Stripe session, fetch booking by session_id (client_reference_id)
-    // If test mode, show a mock confirmation
     async function fetchBooking() {
-      if (isTest) {
-        // Mock data for test mode
-        setBooking(null);
-        setLoading(false);
-        return;
-      }
-
-      if (!sessionId && !bookingId) {
+      if (!bookingId) {
         setError(true);
         setLoading(false);
         return;
       }
 
       try {
-        const param = sessionId
-          ? `session_id=${sessionId}`
-          : `booking_id=${bookingId}`;
-        const res = await fetch(`/api/bookings/confirmation?${param}`);
+        const res = await fetch(
+          `/api/bookings/confirmation?booking_id=${bookingId}`,
+        );
         if (res.ok) {
           const data = await res.json();
           setBooking(data.booking);
@@ -73,7 +60,7 @@ export default function BookingSuccess() {
       }
     }
     fetchBooking();
-  }, [sessionId, bookingId, isTest, router]);
+  }, [bookingId]);
 
   if (loading) {
     return (
@@ -161,20 +148,6 @@ export default function BookingSuccess() {
             />
           </div>
         </motion.div>
-
-        {/* Test badge */}
-        {isTest && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mb-6 text-center"
-          >
-            <span className="inline-block px-4 py-1.5 bg-amber-100 text-amber-700 text-xs font-medium rounded-full border border-amber-200">
-              {t('test_badge')}
-            </span>
-          </motion.div>
-        )}
 
         {/* Header */}
         <motion.div

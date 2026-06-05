@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import Stripe from 'stripe';
-import { getStripeSecretKey } from '@/lib/stripe-config';
+import { sendBookingConfirmationEmails } from '@/lib/booking-email';
 
 interface TravelerData {
   firstName: string;
@@ -56,22 +55,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Prepare line items for Stripe
-    const line_items = [
-      {
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: tourDate.tour.titleFr,
-            description: `Départ le ${tourDate.startDate.toLocaleDateString('fr-FR')} - ${passengers} voyageur(s)`,
-          },
-          unit_amount: Math.round(tourDate.price * 100), // in cents
-        },
-        quantity: passengers,
-      },
-    ];
-
-    // Compute options amount and create BookingOption array
+    // 2. Compute options amount and create BookingOption array
     let optionsAmount = 0;
     const bookingOptionsData = [];
 
@@ -87,27 +71,15 @@ export async function POST(req: Request) {
               quantity,
               priceAtBooking: tourOpt.price,
             });
-
-            line_items.push({
-              price_data: {
-                currency: 'eur',
-                product_data: {
-                  name: tourOpt.nameFr,
-                  description: `Option`,
-                },
-                unit_amount: Math.round(tourOpt.price * 100),
-              },
-              quantity,
-            });
           }
         }
       }
     }
 
-    // 2. Compute Total Price
+    // 3. Compute Total Price
     const totalAmount = tourDate.price * passengers + optionsAmount;
 
-    // 3. Create Booking in DB as PENDING
+    // 4. Create Booking in DB
     const booking = await prisma.booking.create({
       data: {
         tourDateId,
@@ -119,7 +91,7 @@ export async function POST(req: Request) {
         message,
         totalAmount,
         paymentStatus: 'PENDING',
-        status: 'PENDING',
+        status: 'CONFIRMED',
         options: {
           create: bookingOptionsData,
         },
@@ -133,46 +105,42 @@ export async function POST(req: Request) {
             : [],
         },
       },
+      include: {
+        tourDate: {
+          include: {
+            tour: true,
+          },
+        },
+        travelers: true,
+        options: { include: { tourOption: true } },
+      },
     });
 
-    // 4. Create Stripe Checkout Session
-    // Mettre l'URL absolue pour Stripe
-    const origin =
-      req.headers.get('origin') ||
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      'http://localhost:3000';
+    // 5. Increment booked seats
+    await prisma.tourDate.update({
+      where: { id: tourDateId },
+      data: {
+        bookedSeats: {
+          increment: passengers,
+        },
+      },
+    });
 
-    // Only works if Stripe key is present
-    const stripeSecretKey = getStripeSecretKey();
-    if (!stripeSecretKey) {
-      return NextResponse.json(
-        { error: 'Stripe is not configured in environment' },
-        { status: 500 },
-      );
+    // 6. Send confirmation emails
+    let emailSent = false;
+    try {
+      emailSent = await sendBookingConfirmationEmails(booking);
+    } catch (error) {
+      console.error('Booking email failed:', {
+        bookingId: booking.id,
+        error,
+      });
     }
 
-    const stripe = new Stripe(stripeSecretKey, {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      apiVersion: '2023-10-16' as any, // Using an older version specifically if the installed Stripe package requires it or typing works
-    });
-
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items,
-      mode: 'payment',
-      success_url: `${origin}/booking/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/booking?canceled=true`,
-      client_reference_id: booking.id,
-      customer_email: email,
-    });
-
-    // 5. Update booking with Stripe Session ID
-    await prisma.booking.update({
-      where: { id: booking.id },
-      data: { paymentIntentId: session.id },
-    });
-
-    return NextResponse.json({ sessionId: session.id }, { status: 200 });
+    return NextResponse.json(
+      { success: true, bookingId: booking.id, emailSent },
+      { status: 200 },
+    );
   } catch (error) {
     console.error('API /checkout error:', error);
     return NextResponse.json(

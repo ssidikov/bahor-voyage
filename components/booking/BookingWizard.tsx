@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { loadStripe } from '@stripe/stripe-js';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { useSearchParams, useRouter } from 'next/navigation';
 
 // Ce composant nécessite des dates réelles venant de l'API.
 // Il gère la sélection du circuit, de la date, le nombre de passagers,
-// les infos de contact, et la redirection vers Stripe Checkout.
+// les infos de contact, et la confirmation de la réservation.
 
 type TourOption = {
   id: string;
@@ -141,7 +140,7 @@ export default function BookingWizard() {
     });
   };
 
-  const handleCheckout = async () => {
+  const handleReservation = async () => {
     setCheckoutLoading(true);
     setError(null);
     try {
@@ -162,49 +161,12 @@ export default function BookingWizard() {
       });
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || 'Checkout failed');
+      if (!res.ok) throw new Error(data.error || 'Reservation failed');
 
-      // Redirect to Stripe
-      const stripe = await loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
-      );
-      await stripe?.redirectToCheckout({ sessionId: data.sessionId });
+      router.push(`/booking/success?bookingId=${data.bookingId}`);
     } catch (err: unknown) {
       const error = err as Error;
       setError(error.message);
-      setCheckoutLoading(false);
-    }
-  };
-
-  const handleTestCheckout = async () => {
-    setCheckoutLoading(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/checkout/test', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          tourDateId: selectedDateId,
-          options: selectedOptions,
-          passengers,
-          firstName,
-          lastName,
-          email,
-          phone,
-          message,
-          travelers,
-        }),
-      });
-
-      if (res.ok) {
-        // En cas de succès du test, redirection directe vers la page de succès
-        router.push(`/booking/success?bookingId=test`);
-      } else {
-        const data = await res.json();
-        throw new Error(data.error || 'Test checkout failed');
-      }
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
       setCheckoutLoading(false);
     }
   };
@@ -234,7 +196,7 @@ export default function BookingWizard() {
           {[
             locale === 'fr' ? 'Date' : 'Date',
             locale === 'fr' ? 'Informations' : 'Details',
-            locale === 'fr' ? 'Paiement' : 'Payment',
+            locale === 'fr' ? 'Confirmation' : 'Confirmation',
           ].map((label, i) => (
             <div
               key={i}
@@ -585,14 +547,14 @@ export default function BookingWizard() {
                 className="px-6 py-3 bg-charcoal-700 hover:bg-charcoal-800 text-white rounded-full font-medium disabled:opacity-50"
               >
                 {locale === 'fr'
-                  ? 'Continuer vers le paiement'
-                  : 'Continue to Payment'}
+                  ? 'Continuer vers la confirmation'
+                  : 'Continue to Confirmation'}
               </motion.button>
             </div>
           </motion.div>
         )}
 
-        {/* STEP 3: OPTIONS & CHECKOUT */}
+        {/* STEP 3: OPTIONS & CONFIRMATION */}
         {step === 3 && selectedDate && (
           <motion.div
             key="step3"
@@ -604,7 +566,9 @@ export default function BookingWizard() {
             className="space-y-6"
           >
             <h2 className="text-2xl font-serif text-charcoal-700">
-              {locale === 'fr' ? 'Options & Paiement' : 'Options & Payment'}
+              {locale === 'fr'
+                ? 'Options & Confirmation'
+                : 'Options & Confirmation'}
             </h2>
 
             {selectedDate.tour.options &&
@@ -693,6 +657,20 @@ export default function BookingWizard() {
               </div>
             </div>
 
+            {/* Payment info notice */}
+            <div className="p-4 bg-amber-50 rounded-xl border border-amber-200 text-amber-800 text-sm">
+              <p className="font-medium mb-1">
+                {locale === 'fr'
+                  ? '💳 Paiement sur place'
+                  : '💳 Payment on site'}
+              </p>
+              <p>
+                {locale === 'fr'
+                  ? 'Après confirmation de votre réservation, notre équipe vous contactera pour convenir des modalités de paiement.'
+                  : 'After confirming your reservation, our team will contact you to arrange payment details.'}
+              </p>
+            </div>
+
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-4">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -702,45 +680,32 @@ export default function BookingWizard() {
               >
                 Retour
               </motion.button>
-              <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-                {process.env.NEXT_PUBLIC_ENABLE_TEST_CHECKOUT === 'true' && (
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={handleTestCheckout}
-                    disabled={checkoutLoading}
-                    className="px-6 py-3 bg-amber-100 text-amber-700 hover:bg-amber-200 rounded-full font-medium transition-colors border border-amber-200"
-                  >
-                    Test Payment (No Stripe)
-                  </motion.button>
+              <motion.button
+                whileHover={{ scale: checkoutLoading ? 1 : 1.02 }}
+                whileTap={{ scale: checkoutLoading ? 1 : 0.98 }}
+                onClick={handleReservation}
+                disabled={checkoutLoading}
+                className="px-8 py-3 bg-primary-400 hover:bg-primary-500 text-white rounded-full font-medium transition-colors flex items-center gap-2"
+              >
+                {checkoutLoading && (
+                  <motion.span
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: 'linear',
+                    }}
+                    className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                  />
                 )}
-                <motion.button
-                  whileHover={{ scale: checkoutLoading ? 1 : 1.02 }}
-                  whileTap={{ scale: checkoutLoading ? 1 : 0.98 }}
-                  onClick={handleCheckout}
-                  disabled={checkoutLoading}
-                  className="px-8 py-3 bg-primary-400 hover:bg-primary-500 text-white rounded-full font-medium transition-colors flex items-center gap-2"
-                >
-                  {checkoutLoading && (
-                    <motion.span
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 1,
-                        repeat: Infinity,
-                        ease: 'linear',
-                      }}
-                      className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-                    />
-                  )}
-                  {checkoutLoading
-                    ? locale === 'fr'
-                      ? 'Redirection...'
-                      : 'Redirecting...'
-                    : locale === 'fr'
-                      ? 'Payer en ligne'
-                      : 'Pay Online'}
-                </motion.button>
-              </div>
+                {checkoutLoading
+                  ? locale === 'fr'
+                    ? 'Confirmation...'
+                    : 'Confirming...'
+                  : locale === 'fr'
+                    ? 'Confirmer ma réservation'
+                    : 'Confirm my reservation'}
+              </motion.button>
             </div>
           </motion.div>
         )}

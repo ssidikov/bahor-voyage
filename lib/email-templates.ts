@@ -77,11 +77,16 @@ interface BookingEmailData {
 export function customerConfirmationEmail(data: BookingEmailData): string {
   const content = `
     <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Confirmation</p>
-    <h1 style="margin:0 0 24px;font-size:28px;color:${brand.dark};font-weight:normal;">Votre voyage est réservé !</h1>
+    <h1 style="margin:0 0 24px;font-size:28px;color:${brand.dark};font-weight:normal;">Votre voyage est bien réservé !</h1>
     <p style="font-family:Arial,sans-serif;font-size:15px;color:#444;line-height:1.6;margin:0 0 28px;">
       Bonjour <strong>${data.firstName}</strong>,<br /><br />
-      Merci pour votre réservation. Votre paiement a bien été reçu et votre voyage est confirmé. Notre équipe vous contactera dans les 48 heures pour finaliser les détails.
+      Merci pour votre réservation. Votre voyage est confirmé et notre équipe vous contactera dans les 48 heures pour finaliser les détails et convenir des modalités de paiement.
     </p>
+
+    <!-- Payment notice -->
+    <div style="background-color:#FFF8E1;border:1px solid #FFE082;border-radius:8px;padding:16px 20px;margin-bottom:28px;font-family:Arial,sans-serif;font-size:14px;color:#6D4C00;line-height:1.6;">
+      💳 <strong>Paiement</strong> — Notre équipe vous contactera prochainement pour convenir des modalités de paiement.
+    </div>
 
     <!-- Details table -->
     <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${brand.border};border-radius:8px;overflow:hidden;margin-bottom:32px;">
@@ -89,7 +94,7 @@ export function customerConfirmationEmail(data: BookingEmailData): string {
       ${row('Date de départ', data.startDate)}
       ${row('Date de retour', data.endDate)}
       ${row('Voyageurs', String(data.passengers))}
-      ${row('Montant total', `${data.totalAmount} €`)}
+      ${row('Montant estimé', `${data.totalAmount} €`)}
       ${row('Référence', `<code style="font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:4px;">${data.bookingRef}</code>`)}
     </table>
 
@@ -97,8 +102,8 @@ export function customerConfirmationEmail(data: BookingEmailData): string {
     <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:14px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Prochaines étapes</p>
     <table cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
       ${[
-        'Vous recevrez bientôt des informations pratiques avant votre départ.',
-        'Notre équipe vous contactera sous 48h pour finaliser la logistique.',
+        'Notre équipe vous contactera sous 48h pour convenir du paiement.',
+        'Vous recevrez des informations pratiques avant votre départ.',
         "N'hésitez pas à nous contacter pour toute question.",
       ]
         .map(
@@ -125,7 +130,7 @@ export function adminBookingAlert(
 ): string {
   const content = `
     <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Nouvelle réservation</p>
-    <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Réservation payée — ${data.tourTitle}</h1>
+    <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Nouvelle réservation — ${data.tourTitle}</h1>
 
     <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${brand.border};border-radius:8px;overflow:hidden;margin-bottom:28px;">
       ${row('Client', `${data.firstName} ${data.lastName}`)}
@@ -136,7 +141,8 @@ export function adminBookingAlert(
       ${row('Retour', data.endDate)}
       ${row('Voyageurs', String(data.passengers))}
       ${data.travelers ? row('Autres voyageurs', data.travelers) : ''}
-      ${row('Montant payé', `${data.totalAmount} €`)}
+      ${row('Montant estimé', `${data.totalAmount} €`)}
+      ${row('Paiement', '<span style="color:#E65100;">À organiser</span>')}
       ${row('Référence', data.bookingRef)}
     </table>
 
