@@ -225,6 +225,15 @@ export async function updateBookingStatus(id: string, status: string) {
   revalidatePath('/admin/bookings');
 }
 
+export async function updatePaymentStatus(id: string, paymentStatus: string) {
+  await checkAdmin();
+  await prisma.booking.update({
+    where: { id },
+    data: { paymentStatus },
+  });
+  revalidatePath('/admin/bookings');
+}
+
 export async function syncDatabaseSchema() {
   // Bypassing checkAdmin for maintenance since the DB might be in a broken state
   // await checkAdmin();

@@ -65,41 +65,6 @@ const STATUS_LABELS: Record<string, string> = {
 };
 const PAGE_SIZE = 20;
 
-const paymentBadge = (status: string) => {
-  switch (status) {
-    case 'PAID':
-      return (
-        <span className="text-green-700 bg-green-50 border border-green-100 px-2 py-0.5 rounded-full text-xs font-medium">
-          Payé
-        </span>
-      );
-    case 'PENDING':
-      return (
-        <span className="text-yellow-700 bg-yellow-50 border border-yellow-100 px-2 py-0.5 rounded-full text-xs font-medium">
-          En attente
-        </span>
-      );
-    case 'FAILED':
-      return (
-        <span className="text-red-700 bg-red-50 border border-red-100 px-2 py-0.5 rounded-full text-xs font-medium">
-          Échoué
-        </span>
-      );
-    case 'REFUNDED':
-      return (
-        <span className="text-purple-700 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-full text-xs font-medium">
-          Remboursé
-        </span>
-      );
-    default:
-      return (
-        <span className="text-charcoal-500 bg-sand-50 px-2 py-0.5 rounded-full text-xs">
-          {status}
-        </span>
-      );
-  }
-};
-
 export default function BookingsTable({ bookings }: { bookings: Booking[] }) {
   const [search, setSearch] = useState('');
   const [paymentFilter, setPaymentFilter] = useState('');
@@ -328,7 +293,12 @@ export default function BookingsTable({ bookings }: { bookings: Booking[] }) {
                     <div className="font-medium mb-1">
                       {booking.totalAmount} €
                     </div>
-                    {paymentBadge(booking.paymentStatus)}
+                    <StatusUpdater
+                      id={booking.id}
+                      currentStatus={booking.paymentStatus}
+                      type="payment"
+                      options={['PENDING', 'PAID', 'FAILED', 'REFUNDED']}
+                    />
                   </td>
                   <td className="px-6 py-4">
                     <StatusUpdater

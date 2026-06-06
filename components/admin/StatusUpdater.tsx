@@ -1,13 +1,17 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import { updateContactStatus, updateBookingStatus } from '@/lib/actions/admin';
+import {
+  updateContactStatus,
+  updateBookingStatus,
+  updatePaymentStatus,
+} from '@/lib/actions/admin';
 import { ChevronDown } from '@/components/ui/Icons';
 
 type Props = {
   id: string;
   currentStatus: string;
-  type: 'contact' | 'booking';
+  type: 'contact' | 'booking' | 'payment';
   options: string[];
 };
 
@@ -40,6 +44,8 @@ export default function StatusUpdater({
       try {
         if (type === 'contact') {
           await updateContactStatus(id, newStatus);
+        } else if (type === 'payment') {
+          await updatePaymentStatus(id, newStatus);
         } else {
           await updateBookingStatus(id, newStatus);
         }
