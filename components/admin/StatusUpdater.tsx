@@ -21,6 +21,10 @@ const STATUS_LABELS: Record<string, string> = {
   CONFIRMED: 'Confirmé',
   CANCELLED: 'Annulé',
   COMPLETED: 'Terminé',
+  // Payment statuses
+  PAID: 'Payé',
+  FAILED: 'Échoué',
+  REFUNDED: 'Remboursé',
   // Contact statuses
   NOUVEAU: 'Nouveau',
   CONTACTE: 'Contacté',
