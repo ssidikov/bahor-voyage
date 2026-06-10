@@ -1,51 +1,37 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import Stripe from 'stripe';
-import { getStripeSecretKey } from '@/lib/stripe-config';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const sessionId = searchParams.get('session_id');
   const bookingId = searchParams.get('booking_id');
 
+  if (!bookingId) {
+    return NextResponse.json({ error: 'Missing booking_id' }, { status: 400 });
+  }
+
   try {
-    let booking = null;
-
-    if (sessionId) {
-      // Look up booking via Stripe session's client_reference_id
-      // First get the session from Stripe to get our booking ID
-      const stripeKey = getStripeSecretKey();
-      if (!stripeKey) {
-        return NextResponse.json(
-          { error: 'Stripe not configured' },
-          { status: 500 },
-        );
-      }
-
-      const stripe = new Stripe(stripeKey, {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        apiVersion: '2023-10-16' as any,
-      });
-
-      const session = await stripe.checkout.sessions.retrieve(sessionId);
-      const refId = session.client_reference_id;
-
-      if (refId) {
-        booking = await prisma.booking.findUnique({
-          where: { id: refId },
-          include: {
-            tourDate: { include: { tour: true } },
+    const booking = await prisma.booking.findUnique({
+      where: { id: bookingId },
+      select: {
+        id: true,
+        passengers: true,
+        totalAmount: true,
+        status: true,
+        createdAt: true,
+        tourDate: {
+          select: {
+            startDate: true,
+            endDate: true,
+            tour: {
+              select: {
+                titleFr: true,
+                titleEn: true,
+              },
+            },
           },
-        });
-      }
-    } else if (bookingId) {
-      booking = await prisma.booking.findUnique({
-        where: { id: bookingId },
-        include: {
-          tourDate: { include: { tour: true } },
         },
-      });
-    }
+      },
+    });
 
     if (!booking) {
       return NextResponse.json({ error: 'Booking not found' }, { status: 404 });

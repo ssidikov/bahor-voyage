@@ -139,7 +139,7 @@ export default async function AdminDashboard() {
           label="Réservations"
           value={confirmedBookings}
           icon={icons.bookings}
-          description="Paiements Stripe réussis"
+          description="Réservations confirmées"
         />
         <StatsCard
           label="Total Voyageurs"
@@ -184,7 +184,7 @@ export default async function AdminDashboard() {
                   Paiements
                 </h4>
                 <p className="text-sm text-charcoal-500">
-                  Suivi automatique des transactions via Stripe.
+                  Suivi des réservations et paiements.
                 </p>
               </div>
               <div className="rounded-2xl bg-white/40 p-4 border border-white/40">

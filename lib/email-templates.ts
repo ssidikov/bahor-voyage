@@ -1,6 +1,6 @@
 /**
  * Branded HTML email templates for Bahor-Voyage.
- * Used by: webhook/stripe (booking confirmation) and api/contact (contact form).
+ * Used by: api/checkout (booking confirmation) and api/contact (contact form).
  */
 
 const brand = {
@@ -11,6 +11,14 @@ const brand = {
   logo: 'Bahor-Voyage',
   site: 'https://www.bahorvoyage.com',
 };
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
 const wrapper = (content: string) => `
 <!DOCTYPE html>
@@ -79,7 +87,7 @@ export function customerConfirmationEmail(data: BookingEmailData): string {
     <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Confirmation</p>
     <h1 style="margin:0 0 24px;font-size:28px;color:${brand.dark};font-weight:normal;">Votre voyage est bien réservé !</h1>
     <p style="font-family:Arial,sans-serif;font-size:15px;color:#444;line-height:1.6;margin:0 0 28px;">
-      Bonjour <strong>${data.firstName}</strong>,<br /><br />
+      Bonjour <strong>${escapeHtml(data.firstName)}</strong>,<br /><br />
       Merci pour votre réservation. Votre voyage est confirmé et notre équipe vous contactera dans les 48 heures pour finaliser les détails et convenir des modalités de paiement.
     </p>
 
@@ -90,12 +98,12 @@ export function customerConfirmationEmail(data: BookingEmailData): string {
 
     <!-- Details table -->
     <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${brand.border};border-radius:8px;overflow:hidden;margin-bottom:32px;">
-      ${row('Circuit', data.tourTitle)}
-      ${row('Date de départ', data.startDate)}
-      ${row('Date de retour', data.endDate)}
+      ${row('Circuit', escapeHtml(data.tourTitle))}
+      ${row('Date de départ', escapeHtml(data.startDate))}
+      ${row('Date de retour', escapeHtml(data.endDate))}
       ${row('Voyageurs', String(data.passengers))}
       ${row('Montant estimé', `${data.totalAmount} €`)}
-      ${row('Référence', `<code style="font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:4px;">${data.bookingRef}</code>`)}
+      ${row('Référence', `<code style="font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:4px;">${escapeHtml(data.bookingRef)}</code>`)}
     </table>
 
     <!-- Next steps -->
@@ -130,20 +138,20 @@ export function adminBookingAlert(
 ): string {
   const content = `
     <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Nouvelle réservation</p>
-    <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Nouvelle réservation — ${data.tourTitle}</h1>
+    <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Nouvelle réservation — ${escapeHtml(data.tourTitle)}</h1>
 
     <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${brand.border};border-radius:8px;overflow:hidden;margin-bottom:28px;">
-      ${row('Client', `${data.firstName} ${data.lastName}`)}
-      ${row('Email', data.email)}
-      ${row('Téléphone', data.phone)}
-      ${row('Circuit', data.tourTitle)}
-      ${row('Départ', data.startDate)}
-      ${row('Retour', data.endDate)}
+      ${row('Client', `${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)}`)}
+      ${row('Email', escapeHtml(data.email))}
+      ${row('Téléphone', escapeHtml(data.phone))}
+      ${row('Circuit', escapeHtml(data.tourTitle))}
+      ${row('Départ', escapeHtml(data.startDate))}
+      ${row('Retour', escapeHtml(data.endDate))}
       ${row('Voyageurs', String(data.passengers))}
-      ${data.travelers ? row('Autres voyageurs', data.travelers) : ''}
+      ${data.travelers ? row('Autres voyageurs', escapeHtml(data.travelers)) : ''}
       ${row('Montant estimé', `${data.totalAmount} €`)}
       ${row('Paiement', '<span style="color:#E65100;">À organiser</span>')}
-      ${row('Référence', data.bookingRef)}
+      ${row('Référence', escapeHtml(data.bookingRef))}
     </table>
 
     <a href="${brand.site}/admin/bookings" style="display:inline-block;background-color:${brand.primary};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Voir dans le Dashboard</a>
@@ -161,13 +169,13 @@ export function contactConfirmationEmail(data: {
     <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Confirmation</p>
     <h1 style="margin:0 0 24px;font-size:28px;color:${brand.dark};font-weight:normal;">Merci pour votre message !</h1>
     <p style="font-family:Arial,sans-serif;font-size:15px;color:#444;line-height:1.6;margin:0 0 28px;">
-      Bonjour <strong>${data.name}</strong>,<br /><br />
+      Bonjour <strong>${escapeHtml(data.name)}</strong>,<br /><br />
       Nous avons bien reçu votre message et nous vous répondrons dans les <strong>24 à 48 heures</strong>.<br /><br />
       En attendant, n'hésitez pas à explorer nos circuits sur notre site.
     </p>
 
     <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:13px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Votre message</p>
-    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:32px;white-space:pre-wrap;">${data.message}</div>
+    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:32px;white-space:pre-wrap;">${escapeHtml(data.message)}</div>
 
     <a href="${brand.site}/circuits" style="display:inline-block;background-color:${brand.dark};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Découvrir nos circuits</a>
   `;
@@ -190,21 +198,21 @@ export function dataDeletionEmail(data: DataDeletionEmailData): string {
     <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Demande de suppression de données</h1>
 
     <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${brand.border};border-radius:8px;overflow:hidden;margin-bottom:28px;">
-      ${row('Nom', data.name)}
-      ${row('Email', `<a href="mailto:${data.email}" style="color:${brand.primary};">${data.email}</a>`)}
+      ${row('Nom', escapeHtml(data.name))}
+      ${row('Email', `<a href="mailto:${encodeURIComponent(data.email)}" style="color:${brand.primary};">${escapeHtml(data.email)}</a>`)}
     </table>
 
     ${
       data.message
         ? `
     <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:13px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Précisions</p>
-    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:28px;white-space:pre-wrap;">${data.message}</div>
+    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:28px;white-space:pre-wrap;">${escapeHtml(data.message)}</div>
     `
         : ''
     }
 
     <p style="font-family:Arial,sans-serif;font-size:13px;color:#888;line-height:1.6;">Cette demande doit être traitée dans un délai d'un mois conformément à l'article 12 du RGPD.</p>
-    <a href="mailto:${data.email}" style="display:inline-block;background-color:${brand.dark};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Répondre à ${data.name}</a>
+    <a href="mailto:${encodeURIComponent(data.email)}" style="display:inline-block;background-color:${brand.dark};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Répondre à ${escapeHtml(data.name)}</a>
   `;
   return wrapper(content);
 }
@@ -222,19 +230,19 @@ interface ContactEmailData {
 export function contactFormEmail(data: ContactEmailData): string {
   const content = `
     <p style="margin:0 0 8px;font-size:14px;color:${brand.primary};font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;">Nouveau message</p>
-    <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Message de ${data.name}</h1>
+    <h1 style="margin:0 0 24px;font-size:24px;color:${brand.dark};font-weight:normal;">Message de ${escapeHtml(data.name)}</h1>
 
     <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${brand.border};border-radius:8px;overflow:hidden;margin-bottom:28px;">
-      ${row('Nom', data.name)}
-      ${row('Email', `<a href="mailto:${data.email}" style="color:${brand.primary};">${data.email}</a>`)}
-      ${data.phone ? row('Téléphone', data.phone) : ''}
-      ${data.tourInterest ? row('Circuit souhaité', data.tourInterest) : ''}
+      ${row('Nom', escapeHtml(data.name))}
+      ${row('Email', `<a href="mailto:${encodeURIComponent(data.email)}" style="color:${brand.primary};">${escapeHtml(data.email)}</a>`)}
+      ${data.phone ? row('Téléphone', escapeHtml(data.phone)) : ''}
+      ${data.tourInterest ? row('Circuit souhaité', escapeHtml(data.tourInterest)) : ''}
     </table>
 
     <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:13px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Message</p>
-    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:28px;white-space:pre-wrap;">${data.message}</div>
+    <div style="background:${brand.sand};border:1px solid ${brand.border};border-radius:8px;padding:20px;font-family:Arial,sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:28px;white-space:pre-wrap;">${escapeHtml(data.message)}</div>
 
-    <a href="mailto:${data.email}" style="display:inline-block;background-color:${brand.dark};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Répondre à ${data.name}</a>
+    <a href="mailto:${encodeURIComponent(data.email)}" style="display:inline-block;background-color:${brand.dark};color:white;padding:14px 28px;border-radius:50px;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;">Répondre à ${escapeHtml(data.name)}</a>
   `;
   return wrapper(content);
 }

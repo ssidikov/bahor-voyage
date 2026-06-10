@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { generateBookingPdf } from '@/lib/pdf-generator';
 import type { BookingForEmail } from '@/lib/pdf-generator';
@@ -8,6 +10,12 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  // Require admin auth
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.email || session.user.role !== 'ADMIN') {
+    return new NextResponse('Unauthorized', { status: 401 });
+  }
+
   try {
     const { id } = await params;
 
