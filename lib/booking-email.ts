@@ -92,7 +92,7 @@ export async function sendBookingConfirmationEmails(
 
   await transporter.sendMail({
     from: `"Bahor-Voyage" <${process.env.SMTP_USER}>`,
-    to: process.env.SMTP_USER,
+    to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
     subject: `🎉 NOUVELLE RÉSERVATION — ${emailData.tourTitle}`,
     html: adminBookingAlert(emailData),
   });
