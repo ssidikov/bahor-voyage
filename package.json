@@ -36,7 +36,7 @@
     "next-auth": "^4.24.13",
     "next-intl": "^4.13.0",
     "next-sanity": "^13.0.3",
-    "nodemailer": "^8.0.10",
+    "nodemailer": "^7.0.13",
     "pg": "^8.20.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/nodemailer": "^8.0.0",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.57.0",
