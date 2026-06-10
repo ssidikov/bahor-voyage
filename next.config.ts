@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
     'styled-components',
   ],
   images: {
-    qualities: [100, 90, 80, 75, 70],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
